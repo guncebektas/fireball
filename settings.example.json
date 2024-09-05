@@ -1,6 +1,7 @@
 {
   "public": {
     "appName": "Saas Boilerplate",
+    "appLogo": "/online/images/logo.svg",
     "defaultLanguage": "en-US"
   },
   "private": {
