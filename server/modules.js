@@ -1,3 +1,4 @@
+import '../imports/modules/contactRequests/server'
 import '../imports/modules/dummy/server';
 import '../imports/modules/links/server';
 import '../imports/modules/notifications/server';

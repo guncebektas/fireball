@@ -1,5 +1,7 @@
 export const ROUTE = {
   ADMIN: '/admin',
+  CONTACT_FORM: '/contact-form',
+  CONTACT_REQUESTS: '/contact-requests',
   DOCS: '/docs',
   INFO: '/info',
   HOME: '/',

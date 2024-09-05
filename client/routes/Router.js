@@ -9,10 +9,14 @@ import {Prices} from "../ui/pages/prices/Prices.jsx";
 import {Tickets} from "../ui/pages/tickets/Tickets.jsx";
 import {Ticket} from "../ui/pages/tickets/Ticket.jsx";
 import {Settings} from "../ui/pages/settings/Settings.jsx";
+import {ContactForm} from "../ui/pages/contacts/ContactForm";
+import {ContactRequests} from "../ui/pages/contacts/ContactRequests";
 
 export const Router = () => (
   <Routes>
     <Route path={ROUTE.ADMIN} element={<Admin/>}/>
+  <Route path={ROUTE.CONTACT_FORM} element={<ContactForm />} />
+  <Route path={ROUTE.CONTACT_REQUESTS} element={<ContactRequests />} />
     <Route path={ROUTE.DOCS} element={<Docs/>}/>
     <Route path={ROUTE.HOME} element={<Hello/>}/>
     <Route path={ROUTE.PROFILE} element={<Profile/>}/>
