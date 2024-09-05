@@ -1,30 +1,24 @@
 import React from 'react';
 import {H2} from "../../components/heading/Headings.jsx";
 import {useTracker} from "meteor/react-meteor-data";
-import {ticketRepository} from "../../../../imports/modules/tickets/ticketRepository.js";
-import {TICKET_PUBLICATION} from "../../../../imports/modules/tickets/enums/publication.js";
-import {Link} from "react-router-dom";
-import {ROUTE} from "../../../routes/enums/route.js";
 import {Button, Table} from "flowbite-react";
-import {setParam} from "../../../shared/helpers/setParam.js";
-import {ticketRemove} from "../../../../imports/modules/tickets/ticket.methods.js";
-import {CONTACT_PUBLICATION} from "../../../../imports/modules/contactRequests/enums/publication";
-import {contactRepository} from "../../../../imports/modules/contactRequests/contactRepository";
-import {contactRemove} from "../../../../imports/modules/contactRequests/contact.methods";
+import {CONTACT_REQUESTS_PUBLICATION} from "../../../../imports/modules/contactRequests/enums/publication";
+import {contactRequestRepository} from "../../../../imports/modules/contactRequests/contactRequestRepository";
+import {contactRequestRemove} from "../../../../imports/modules/contactRequests/contact.methods";
 
 export const ContactRequests = () => {
   const items = useTracker(() => {
-    const handle = Meteor.subscribe(CONTACT_PUBLICATION.ALL);
+    const handle = Meteor.subscribe(CONTACT_REQUESTS_PUBLICATION.ALL);
 
     if (!handle.ready()) {
       return [];
     }
 
-    return contactRepository.find().fetch();
+    return contactRequestRepository.find().fetch();
   });
 
   const handleRemove = async (_id) => {
-    await contactRemove({_id});
+    await contactRequestRemove(_id);
   };
 
   return (

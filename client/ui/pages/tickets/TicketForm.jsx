@@ -9,7 +9,7 @@ import {TICKET_PUBLICATION} from "../../../../imports/modules/tickets/enums/publ
 import {ticketRepository} from "../../../../imports/modules/tickets/ticketRepository.js";
 import {FORM_TYPE} from "../../../shared/enums/formType.js";
 
-export const Ticket = () => {
+export const TicketForm = () => {
   const {_id} = useParams();
 
   let ticket = {};

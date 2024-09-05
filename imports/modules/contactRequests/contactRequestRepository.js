@@ -7,4 +7,4 @@ class ContactRepository extends BaseRepository {
   }
 }
 
-export const contactRepository = new ContactRepository(ContactRequests);
+export const contactRequestRepository = new ContactRepository(ContactRequests);

@@ -21,7 +21,7 @@ export const Tickets = () => {
   });
 
   const handleRemove = async (_id) => {
-    await ticketRemove({_id});
+    await ticketRemove(_id);
   };
 
   return (

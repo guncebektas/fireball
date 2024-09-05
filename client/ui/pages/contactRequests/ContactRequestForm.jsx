@@ -2,14 +2,14 @@ import React from 'react';
 import {H2} from "../../components/heading/Headings";
 import {AutoForm} from "../../../../imports/modules/shared/uniforms-tailwind/src";
 import {contactBridge} from "../../../../imports/modules/contactRequests/schemas/contactSchema";
-import {contactUpsert} from "../../../../imports/modules/contactRequests/contact.methods";
+import {contactRequestUpsert} from "../../../../imports/modules/contactRequests/contact.methods";
 import Map from "../../components/map/Map";
 
-export const ContactForm = () => {
+export const ContactRequestForm = () => {
   const {appName} = Meteor.settings.public;
 
   const handleSubmit = async function (formData) {
-    contactUpsert(formData)
+    contactRequestUpsert(formData)
       .then(response => {
         console.log(response);
       })
