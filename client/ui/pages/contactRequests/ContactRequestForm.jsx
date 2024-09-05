@@ -6,7 +6,7 @@ import {contactRequestUpsert} from "../../../../imports/modules/contactRequests/
 import Map from "../../components/map/Map";
 
 export const ContactRequestForm = () => {
-  const {appName} = Meteor.settings.public;
+  const {name} = Meteor.settings.public.app;
 
   const handleSubmit = async function (formData) {
     contactRequestUpsert(formData)
@@ -26,7 +26,7 @@ export const ContactRequestForm = () => {
           <AutoForm schema={contactBridge} onSubmit={handleSubmit} />
         </div>
 
-        <Map title={appName} latitude={41.0434} longitude={29.0091} zoom={14} />
+        <Map title={name} latitude={41.0434} longitude={29.0091} zoom={14} />
       </div>
     </div>
   );

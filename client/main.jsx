@@ -32,7 +32,7 @@ const _setLocalization = language => {
       navigator.language ||
       navigator.browserLanguage ||
       navigator.userLanguage ||
-      Meteor.settings.public["defaultLanguage"];
+      Meteor.settings.public.app["defaultLanguage"];
 
     document.documentElement.setAttribute('translate', 'no');
     document.documentElement.setAttribute('lang', language);

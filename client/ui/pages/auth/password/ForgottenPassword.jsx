@@ -3,7 +3,7 @@ import {Button, Label, TextInput} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 
 export const ForgottenPassword = ({onStateChange}) => {
-  const {appName, appLogo} = Meteor.settings.public;
+  const {name, logo} = Meteor.settings.public.app;
 
   const emailRef = useRef();
 
@@ -29,9 +29,9 @@ export const ForgottenPassword = ({onStateChange}) => {
   return (
     <>
       <div className="flex flex-col items-center justify-center mx-auto mb-4 text-4xl scale-150">
-        <img src={appLogo} alt={appName}/>
+        <img src={logo} alt={name}/>
         <span className="hidden md:block self-center text-2xl font-extrabold whitespace-nowrap dark:text-white">
-            {appName}
+            {name}
           </span>
       </div>
 

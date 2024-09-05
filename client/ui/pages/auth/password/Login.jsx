@@ -7,7 +7,7 @@ import PasswordInput from "../../../components/form/PasswordInput";
 import {Alert} from "../../../components/alert/Alert"
 
 export const Login = ({onStateChange}) => {
-  const {appName, appLogo} = Meteor.settings.public;
+  const {name, logo} = Meteor.settings.public.app;
 
   const [openModal, setOpenModal] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
@@ -91,9 +91,9 @@ export const Login = ({onStateChange}) => {
       </Modal>
 
       <div className="flex flex-col items-center justify-center mx-auto mb-4 text-4xl scale-150">
-        <img src={appLogo} alt={appName}/>
+        <img src={logo} alt={name}/>
         <span className="hidden md:block self-center text-2xl font-extrabold whitespace-nowrap dark:text-white">
-          {appName}
+          {name}
         </span>
       </div>
 
