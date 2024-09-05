@@ -18,7 +18,7 @@ const Map = ({ title, latitude = 41.0434, longitude = 29.0091, zoom = 14 }) => {
         mapRef.current = L.map(mapContainerRef.current).setView([latitude, longitude], zoom);
 
         // Add tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
           attribution: '',
         }).addTo(mapRef.current);
 
