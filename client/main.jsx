@@ -1,20 +1,8 @@
 import React from 'react';
 import {Meteor} from 'meteor/meteor';
-import i18n from 'meteor/universe:i18n';
 import {createRoot} from 'react-dom/client';
 import {App} from '/client/ui/App';
-
-const onChangeLocale = locale => {
-  /* eslint-disable no-unreachable */
-  if (false) {
-    import '../translations/en-US.i18n.json';
-    import '../translations/tr-TR.i18n.json';
-  }
-
-  import(`../translations/${locale}`).then(() => {
-    i18n.setLocale(locale);
-  });
-};
+import {onChangeLocale} from "./shared/functions/onChangeLocale";
 
 /**
  * @param language {string} [optional]
@@ -27,7 +15,8 @@ const _setLocalization = language => {
    * @private
    */
   function _getLang(language) {
-    language = language ||
+    language =
+      language ||
       navigator.languages && navigator.languages[0] ||
       navigator.language ||
       navigator.browserLanguage ||

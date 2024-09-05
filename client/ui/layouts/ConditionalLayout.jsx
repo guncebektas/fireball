@@ -5,10 +5,14 @@ import {Router} from "../../routes/Router.js";
 import {Auth} from "../pages/auth/Auth.jsx";
 import {useTracker} from "meteor/react-meteor-data";
 import {NavMobile} from "../components/navMobile/NavMobile";
+import {Navbar} from "flowbite-react";
+import {LanguageSelector} from "../components/languageSelector/LanguageSelector";
+import {Link} from "react-router-dom";
 
 const InnerLayout = () => {
-  const user = useTracker(() => { return Meteor.userId() });
+  const {name, logo} = Meteor.settings.public.app;
 
+  const user = useTracker(() => { return Meteor.userId() });
   if (user) {
     return (
       <section className="dark:bg-gray-800">
@@ -35,6 +39,20 @@ const InnerLayout = () => {
 
   return (
     <section className="dark:bg-gray-900">
+      <Navbar rounded className="mb-3">
+        <Navbar.Brand as={Link} href="/">
+          <img src={logo} alt={name}/>
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{name}</span>
+        </Navbar.Brand>
+        <Navbar.Toggle/>
+        <Navbar.Collapse>
+          <Navbar.Link href="#">About</Navbar.Link>
+          <Navbar.Link href="#">Contact</Navbar.Link>
+          <Navbar.Link>
+            <LanguageSelector/>
+          </Navbar.Link>
+        </Navbar.Collapse>
+      </Navbar>
       <main>
         <div className="mx-auto px-4 sm:px-6 lg:items-center lg:justify-between lg:py-24 lg:px-8">
           <Auth/>

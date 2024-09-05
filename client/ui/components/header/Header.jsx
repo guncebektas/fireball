@@ -6,6 +6,7 @@ import {HeaderToggleButton} from "./HeaderToggleButton.jsx";
 import {HeaderNotifications} from "./HeaderNotifications.jsx";
 import {HeaderApps} from "./HeaderApps.jsx";
 import {HeaderProfile} from "./HeaderProfile.jsx";
+import {LanguageSelector} from "../languageSelector/LanguageSelector";
 
 export const Header = () => {
 
@@ -74,6 +75,7 @@ export const Header = () => {
           <HeaderNotifications/>
           <HeaderApps/>
           <HeaderProfile/>
+          <LanguageSelector/>
         </div>
       </div>
     </nav>

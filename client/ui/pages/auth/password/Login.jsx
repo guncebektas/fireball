@@ -1,19 +1,17 @@
-import React, {useRef} from 'react';
-import {Button, Label, TextInput, Modal} from 'flowbite-react';
+import React, {useRef, useState} from 'react';
+import {Button, Label, Modal, TextInput} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 import {useTranslator} from "../../../providers/i18n";
-import { useState } from "react";
 import PasswordInput from "../../../components/form/PasswordInput";
 import {Alert} from "../../../components/alert/Alert"
 
 export const Login = ({onStateChange}) => {
-  const {name, logo} = Meteor.settings.public.app;
-
   const [openModal, setOpenModal] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
 
   const t = useTranslator();
+
   const emailRef = useRef();
   const passwordRef = useRef();
   const codeRef = useRef();
@@ -89,13 +87,6 @@ export const Login = ({onStateChange}) => {
           </Modal.Footer>
         </form>
       </Modal>
-
-      <div className="flex flex-col items-center justify-center mx-auto mb-4 text-4xl scale-150">
-        <img src={logo} alt={name}/>
-        <span className="hidden md:block self-center text-2xl font-extrabold whitespace-nowrap dark:text-white">
-          {name}
-        </span>
-      </div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
