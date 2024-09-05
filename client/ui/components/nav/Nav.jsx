@@ -22,17 +22,17 @@ export const Nav = () => {
           <ul>
             <Sidebar.Collapse
               icon={HiShoppingBag}
-              label="E-commerce"
+              label="Parent"
               renderChevronIcon={(theme, open) => {
                 const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
 
                 return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])}/>;
               }}
             >
-              <Sidebar.Item href="#">Products</Sidebar.Item>
-              <Sidebar.Item href="#">Sales</Sidebar.Item>
-              <Sidebar.Item href="#">Refunds</Sidebar.Item>
-              <Sidebar.Item href="#">Shipping</Sidebar.Item>
+              <Sidebar.Item href="#">Sub item</Sidebar.Item>
+              <Sidebar.Item href="#">Sub item</Sidebar.Item>
+              <Sidebar.Item href="#">Sub item</Sidebar.Item>
+              <Sidebar.Item href="#">Sub item</Sidebar.Item>
             </Sidebar.Collapse>
           </ul>
           <li>
