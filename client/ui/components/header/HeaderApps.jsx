@@ -1,6 +1,6 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCog, faEnvelope, faShoppingCart, faSuitcase, faTags, faUsers,} from "@fortawesome/free-solid-svg-icons";
+import {faBell, faCog, faSuitcase, faUsers,} from "@fortawesome/free-solid-svg-icons";
 
 const DropdownItem = ({ icon, label }) => (
   <a
@@ -37,9 +37,7 @@ export const HeaderApps = () => {
           Organization
         </div>
         <div className="grid grid-cols-3 gap-4 p-4">
-          <DropdownItem icon={faTags} label="Products" />
-          <DropdownItem icon={faShoppingCart} label="Sales" />
-          <DropdownItem icon={faEnvelope} label="Inbox" />
+          <DropdownItem icon={faBell} label="Notifications" />
           <DropdownItem icon={faUsers} label="Users" />
           <DropdownItem icon={faCog} label="Settings" />
         </div>
