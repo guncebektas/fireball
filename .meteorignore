@@ -1,0 +1,7 @@
+.doc/
+.docker/
+.github/
+backups/
+cypress/
+tests/cypress/
+cypress.config.js

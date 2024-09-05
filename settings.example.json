@@ -1,0 +1,24 @@
+{
+  "public": {
+    "appName": "Saas Boilerplate",
+    "defaultLanguage": "en-US"
+  },
+  "private": {
+    "mailUrl": "smtp://username:password@smtp.domain.com:587",
+    "mailFromName": "Saas Boilerplate",
+    "mailFromEmail": "info@ritapos.com",
+    "mailSiteName": "saasboilerplate.com"
+  },
+  "redisOplog": {
+    "redis": {
+      "port": 6379,
+      "host": "127.0.0.1"
+    },
+    "retryIntervalMs": 10000,
+    "mutationDefaults": {
+      "optimistic": true,
+      "pushToRedis": true
+    },
+    "debug": false
+  }
+}

@@ -1,0 +1,55 @@
+version: "2.1"
+name: "saas"
+
+services:
+  saas:
+    image: "saas/saas:latest"
+    command: >
+      bash -c
+        meteor
+    restart: unless-stopped
+    volumes:
+      - ../../saas-volume/app:/data
+    environment:
+      - PORT=3000
+      - ROOT_URL=http://localhost:3000
+      - MONGO_URL=mongodb://mongo:27017/saas
+      - MONGO_OPLOG_URL=mongodb://mongo:27017/local
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+
+  redis:
+    image: "redis:alpine"
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+  mongo:
+    image: mongo:4.0
+    restart: unless-stopped
+    volumes:
+      - ../../saas-volume/db:/data/db
+    command: mongod --smallfiles --oplogSize 128 --replSet rs0
+    ports:
+      - "27017:27017"
+
+  # this container's job is just run the command to initialize the replica set.
+  # it will run the command and remove himself (it will not stay running)
+  mongo-init-replica:
+    image: mongo:4.0
+    command: >
+      bash -c
+        "for i in `seq 1 30`; do
+          mongo mongo/saas --eval \"
+            rs.initiate({
+              _id: 'rs0',
+              members: [ { _id: 0, host: 'localhost:27017' } ]})\" &&
+          s=$$? && break || s=$$?;
+          echo \"Tried $$i times. Waiting 5 secs...\";
+          sleep 5;
+        done; (exit $$s)"
+    depends_on:
+      - mongo
+
