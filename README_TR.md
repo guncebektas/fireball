@@ -68,6 +68,7 @@ Monti
 - [x] Roller
 - [ ] Şifre kurtarma
 - [x] Hesap yönetimi
+- [x] Şifre değiştirme
 - [x] 2AD
 - [x] Sayfalar arası geçiş
 - [x] Zor köprülü uniform

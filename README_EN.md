@@ -69,6 +69,8 @@ Monti
 - [x] Register
 - [x] Roles
 - [ ] Forgotten password
+- [x] Profile page
+- [x] Change password
 - [x] 2FA
 - [x] Page routing
 - [x] Uniform with zod bridge
