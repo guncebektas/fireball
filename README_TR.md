@@ -71,7 +71,7 @@ Monti
 - [x] Şifre değiştirme
 - [x] 2AD
 - [x] Sayfalar arası geçiş
-- [x] Zor köprülü uniform
+- [x] Zod köprülü uniform
 - [x] Tailwind ile yazılmış basit form elemanları
 - [x] Fiyatlar sayfası
 - [ ] Ödeme sayfası
@@ -82,5 +82,6 @@ Monti
 - [ ] Destek sayfası
 - [ ] Headless CMS entegrasyonu
 - [ ] AWS s3 entegrasyonu
+- [x] MontiAPM ile performans takibi
 - [ ] Axios kullanımı
 - [ ] Openapi implementation

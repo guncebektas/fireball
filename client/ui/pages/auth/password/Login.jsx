@@ -4,6 +4,8 @@ import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 import {useTranslator} from "../../../providers/i18n";
 import PasswordInput from "../../../components/form/PasswordInput";
 import {Alert} from "../../../components/alert/Alert"
+import {LoginWithGoogle} from "../services/LoginWithGoogle";
+import {LoginWithGithub} from "../services/LoginWithGithub";
 
 export const Login = ({onStateChange}) => {
   const [openModal, setOpenModal] = useState(false);
@@ -133,6 +135,9 @@ export const Login = ({onStateChange}) => {
                 <button className="font-medium hover:underline mx-1" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.REGISTER)}>Register</button>
               </p>
             </form>
+
+            <LoginWithGoogle/>
+            <LoginWithGithub/>
           </div>
         </div>
       </div>

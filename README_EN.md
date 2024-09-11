@@ -85,5 +85,6 @@ Monti
 - [ ] Headless CMS integration
 - [ ] Complex form components written with tailwind
 - [ ] AWS s3 integration
+- [x] Performance monitoring with MontiAPM
 - [ ] Axios implementation
 - [ ] Openapi implementation

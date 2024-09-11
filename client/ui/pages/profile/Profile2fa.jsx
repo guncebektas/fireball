@@ -11,7 +11,7 @@ export const Profile2fa = () => {
     code: ''
   });
 
-  const appName = Meteor.settings.public["appName"];
+  const appName = Meteor.settings.public.app.name;
 
   const generate2faActivationQrCode = () => {
     Accounts.generate2faActivationQrCode(appName, (err, result) => {

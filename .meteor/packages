@@ -48,3 +48,6 @@ ddp-rate-limiter@1.2.1-rc300.4
 # montiapm:agent
 react-meteor-data@3.0.0-beta300.1
 montiapm:agent
+service-configuration
+accounts-github
+accounts-google
