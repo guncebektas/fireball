@@ -15,8 +15,8 @@ import {ContactRequests} from "../ui/pages/contactRequests/ContactRequests";
 export const Router = () => (
   <Routes>
     <Route path={ROUTE.ADMIN} element={<Admin/>}/>
-  <Route path={ROUTE.CONTACT_FORM} element={<ContactRequestForm />} />
-  <Route path={ROUTE.CONTACT_REQUESTS} element={<ContactRequests />} />
+    <Route path={ROUTE.CONTACT_FORM} element={<ContactRequestForm />} />
+    <Route path={ROUTE.CONTACT_REQUESTS} element={<ContactRequests />} />
     <Route path={ROUTE.DOCS} element={<Docs/>}/>
     <Route path={ROUTE.HOME} element={<Hello/>}/>
     <Route path={ROUTE.PROFILE} element={<Profile/>}/>
