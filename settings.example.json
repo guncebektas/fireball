@@ -8,10 +8,17 @@
     }
   },
   "private": {
-    "mailUrl": "smtp://username:password@smtp.domain.com:587",
-    "mailFromName": "Saas Boilerplate",
-    "mailFromEmail": "info@ritapos.com",
-    "mailSiteName": "saasboilerplate.com"
+    "mail": {
+      "url": "smtp://username:password@smtp.xxx.com:587",
+      "fromName": "Saas Boilerplate",
+      "fromEmail": "info@xxx.com",
+      "siteName": "xxx.com"
+    },
+    "monti": {
+      "appId": "",
+      "appSecret": "",
+      "eventStackTrace": true
+    }
   },
   "redisOplog": {
     "redis": {

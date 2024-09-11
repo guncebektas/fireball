@@ -25,15 +25,15 @@ class ServerInit {
     Log.debug('_setMailURL initialized');
 
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-    process.env.MAIL_URL = Meteor.settings.private["mailUrl"];
+    process.env.MAIL_URL = Meteor.settings.private.mail.url;
   }
 
   /**
    * @private
    */
   _setAccountConfigurations() {
-    Accounts.emailTemplates.from = Meteor.settings.private["mailFromName"];
-    Accounts.emailTemplates.sitename = Meteor.settings.private["mailSiteName"];
+    Accounts.emailTemplates.from = Meteor.settings.private.mail.fromName;
+    Accounts.emailTemplates.sitename = Meteor.settings.private.mail.siteName;
   }
 }
 
