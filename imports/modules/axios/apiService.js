@@ -1,64 +1,78 @@
-import axios from './axiosConfig'; // Import the configured axios instance
+import axios from './axiosConfig';
+import { ZodError } from 'zod';
 
-class ApiService {
-  // Method to perform GET requests
-  static async get(url, params = {}, config = {}) {
+export class ApiService {
+  constructor(contractRegistry = []) {
+    this.contractRegistry = contractRegistry;
+  }
+
+  // Public method to perform a GET request
+  async get(url, params = {}, config = {}) {
     try {
       const response = await axios.get(url, { params, ...config });
-      return response.data;
+      return this._validateResponse(url, response);
     } catch (error) {
-      ApiService.handleError(error);
+      this._handleError(error);
     }
   }
 
-  // Method to perform POST requests
-  static async post(url, data = {}, config = {}) {
+  // Public method to perform a POST request
+  async post(url, data = {}, config = {}) {
     try {
       const response = await axios.post(url, data, config);
-      return response.data;
+      return this._validateResponse(url, response);
     } catch (error) {
-      ApiService.handleError(error);
+      this._handleError(error);
     }
   }
 
-  // Method to perform PUT requests
-  static async put(url, data = {}, config = {}) {
+  // Additional methods (PUT, DELETE, etc.) would be similarly structured
+
+  // Private method to validate the response based on the contract for the given URL
+  _validateResponse(url, response) {
+    const contract = this._findContract(url);
+
+    // If no contract is found, return the raw response data without validation
+    if (!contract) {
+      return response.data;
+    }
+
     try {
-      const response = await axios.put(url, data, config);
-      return response.data;
-    } catch (error) {
-      ApiService.handleError(error);
+      // Parse and validate the response using the specified contract
+      const parsedResponse = contract.parse({
+        status: response.status.toString(),
+        data: response.data,
+      });
+      return parsedResponse;
+    } catch (validationError) {
+      if (validationError instanceof ZodError) {
+        console.error('Response validation failed:', validationError.errors);
+        throw new Error('Invalid response structure');
+      }
+      throw validationError;
     }
   }
 
-  // Method to perform DELETE requests
-  static async delete(url, config = {}) {
-    try {
-      const response = await axios.delete(url, config);
-      return response.data;
-    } catch (error) {
-      ApiService.handleError(error);
+  // Private method to find the contract based on URL patterns
+  _findContract(url) {
+    for (const { pattern, contract } of this.contractRegistry) {
+      const regexPattern = new RegExp(`^${pattern.replace(/\*/g, '.*')}$`);
+      if (regexPattern.test(url)) {
+        return contract;
+      }
     }
+    return null; // Return null if no matching contract is found
   }
 
-  // Method to handle errors
-  static handleError(error) {
-    // Centralized error handling logic
+  // Private method for handling errors
+  _handleError(error) {
     if (error.code === 'ECONNABORTED') {
       console.error('Request timeout:', error.message);
     } else if (error.response) {
-      console.error(
-        'Server error:',
-        error.response.status,
-        error.response.data
-      );
+      console.error('Server error:', error.response.status, error.response.data);
     } else {
       console.error('Network error:', error.message);
     }
-
-    // Optionally throw or return error to be handled by the caller
-    throw error;
+    throw error; // Re-throw the error for further handling if necessary
   }
 }
-
-export default ApiService;
