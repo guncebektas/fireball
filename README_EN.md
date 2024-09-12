@@ -89,3 +89,4 @@ Monti
 - [x] Performance monitoring with MontiAPM
 - [ ] Axios implementation
 - [ ] Openapi implementation
+- [x] PWA
