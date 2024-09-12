@@ -78,6 +78,7 @@ Monti
 - [x] Price page
 - [ ] Payment page
 - [ ] License management 
+- [x] Completely soft-remove
 - [ ] Multi-tenant database partitioning
 - [ ] Organization management
 - [ ] User management

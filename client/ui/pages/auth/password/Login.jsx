@@ -101,7 +101,7 @@ export const Login = ({onStateChange}) => {
               <span className="font-medium">Error:</span> {errorMessage}
             </Alert>
 
-            <form className="space-y-6" onSubmit={handleLogin}>
+            <form className="space-y-6 mb-5" onSubmit={handleLogin}>
               <div className="mb-1">
                 <div className="mb-2 block">
                   <Label htmlFor="email" value="Email Address"/>

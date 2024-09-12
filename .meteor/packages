@@ -42,6 +42,7 @@ accounts-2fa
 alanning:roles@4.0.0
 
 jam:method@1.7.1
+jam:soft-delete
 jam:offline
 ddp-rate-limiter@1.2.1-rc300.4
 

@@ -77,6 +77,7 @@ Monti
 - [ ] Ödeme sayfası
 - [ ] Lisans yönetimi
 - [ ] Multi-tenant database partitioning
+- [x] Soft-remove
 - [ ] Organizasyon yönetimi
 - [ ] Kullanıcı yönetimi
 - [ ] Destek sayfası
