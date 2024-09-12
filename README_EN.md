@@ -68,6 +68,7 @@ Monti
 - [x] Login
 - [x] Register
 - [x] Roles
+- [x] Logging
 - [ ] Forgotten password
 - [x] Profile page
 - [x] Change password

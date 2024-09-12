@@ -66,6 +66,7 @@ Monti
 - [x] Giriş
 - [x] Kayıt
 - [x] Roller
+- [x] Log
 - [ ] Şifre kurtarma
 - [x] Hesap yönetimi
 - [x] Şifre değiştirme
