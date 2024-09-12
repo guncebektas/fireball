@@ -54,7 +54,7 @@ const InnerLayout = () => {
         </Navbar.Collapse>
       </Navbar>
       <main>
-        <div className="mx-auto px-4 sm:px-6 lg:items-center lg:justify-between lg:py-24 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:items-center lg:justify-between lg:py-16 lg:px-8">
           <Auth/>
         </div>
       </main>

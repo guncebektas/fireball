@@ -3,6 +3,7 @@ import {Meteor} from 'meteor/meteor';
 import {createRoot} from 'react-dom/client';
 import {App} from '/client/ui/App';
 import {onChangeLocale} from "./shared/functions/onChangeLocale";
+import {DeviceUtility} from "./shared/utilities/DeviceUtility";
 
 /**
  * @param language {string} [optional]
@@ -34,7 +35,15 @@ const _setLocalization = language => {
 }
 
 Meteor.startup(async () => {
-  _setLocalization('en-US');
+  _setLocalization(Meteor.settings.public.app.defaultLanguage);
+
+  if (DeviceUtility.isServiceWorkerAvailable()) {
+    try {
+      await navigator.serviceWorker.register('/sw.js');
+    } catch (error) {
+      console.error('Service Worker registration failed:', error);
+    }
+  }
 
   const container = document.getElementById('react-target');
   const root = createRoot(container);

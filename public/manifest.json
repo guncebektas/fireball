@@ -1,0 +1,43 @@
+{
+  "short_name": "SaaS Boilerplate",
+  "name": "SaaS Boilerplate - Meteor.js 3",
+  "description": "Powerful yet simple saas boilerplate that is written with Meteor.js",
+  "theme_color": "#0032a0",
+  "background_color": "#edf2f9",
+  "start_url": "/",
+  "display_override": [
+    "fullscreen",
+    "minimal-ui",
+    "window-controls-overlay"
+  ],
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/online/images/icons/favicon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/online/images/icons/favicon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "",
+      "id": ""
+    }, {
+      "platform": "itunes",
+      "url": ""
+    }
+  ],
+  "lang": "en",
+  "id": "saas-boilerplate",
+  "categories": [
+    "business",
+    "finance",
+    "utilities"
+  ]
+}
