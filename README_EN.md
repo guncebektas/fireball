@@ -3,7 +3,7 @@
 </h1>
 
 ### Introduction
-We are using Meteor.js 3, MongoDB, Redis, React 18, Tailwind and FlowBite UI.
+We are using Meteor.js 3, MongoDB, Redis, React 18, Axios, Zod, Monti APM, Uniform, i18n, Tailwind and FlowBite UI.
 There are small differences on our approach to Meteor.js. However, learning Meteor.js from its own guide will be
 enough to contribute.
 
