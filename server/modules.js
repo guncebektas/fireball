@@ -1,3 +1,4 @@
+import '../imports/modules/axios/server';
 import '../imports/modules/contactRequests/server'
 import '../imports/modules/dummy/server';
 import '../imports/modules/links/server';

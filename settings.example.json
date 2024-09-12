@@ -30,11 +30,6 @@
       "secret": "",
       "bucket": "",
       "region": ""
-    },
-    "monti": {
-      "appId": "",
-      "appSecret": "",
-      "eventStackTrace": true
     }
   },
   "redisOplog": {
@@ -48,5 +43,10 @@
       "pushToRedis": true
     },
     "debug": false
+  },
+  "monti": {
+    "appId": "",
+    "appSecret": "",
+    "eventStackTrace": true
   }
 }
