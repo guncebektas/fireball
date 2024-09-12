@@ -73,6 +73,7 @@ Monti
 - [x] Profile page
 - [x] Change password
 - [x] 2FA
+- [x] Dark mode
 - [x] Page routing
 - [x] Uniform with zod bridge
 - [x] Basic form components written with tailwind

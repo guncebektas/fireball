@@ -71,6 +71,7 @@ Monti
 - [x] Hesap yönetimi
 - [x] Şifre değiştirme
 - [x] 2AD
+- [x] Karanlık tema
 - [x] Sayfalar arası geçiş
 - [x] Zod köprülü uniform
 - [x] Tailwind ile yazılmış basit form elemanları
