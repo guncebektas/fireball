@@ -1,5 +1,15 @@
 {
   "_locale": "tr-TR",
+  "Error": "Hata",
   "Login": "Giriş",
-  "Register": "Kayıt"
+  "Email address": "E-posta adresi",
+  "Enter your email": "E-posta adresinizi girin",
+  "Password": "Şifre",
+  "Type your password": "Şifrenizi yazın",
+  "Remember me": "Beni hatırla",
+  "Forgotten password": "Şifremi unuttum",
+  "Don’t have an account yet": "Hesabınız yok mu",
+  "Register": "Kayıt",
+  "Login with Github": "Github ile bağlan",
+  "Login with Google": "Google ile bağlan"
 }

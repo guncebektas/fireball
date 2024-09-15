@@ -85,7 +85,7 @@ export const Login = ({onStateChange}) => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button type="submit" className="w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Login</Button>
+            <Button type="submit" className="w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{t('Login')}</Button>
           </Modal.Footer>
         </form>
       </Modal>
@@ -98,19 +98,19 @@ export const Login = ({onStateChange}) => {
         <div className="bg-white dark:bg-gray-900 py-8 px-4 mt-8 shadow sm:rounded-lg sm:px-10">
           <div>
             <Alert show={openAlert} color="failure" iconName="warning">
-              <span className="font-medium">Error:</span> {errorMessage}
+              <span className="font-medium">{t('Error')}:</span> {errorMessage}
             </Alert>
 
             <form className="space-y-6 mb-5" onSubmit={handleLogin}>
               <div className="mb-1">
                 <div className="mb-2 block">
-                  <Label htmlFor="email" value="Email Address"/>
+                  <Label htmlFor="email" value={t('Email address')}/>
                 </div>
-                <TextInput id="email" type="email" placeholder="Enter your email" ref={emailRef} required/>
+                <TextInput id="email" type="email" placeholder={t('Enter your email')} ref={emailRef} required/>
               </div>
               <div className="mb-1">
                 <div className="mb-2 block">
-                  <Label htmlFor="password" value="Password"/>
+                  <Label htmlFor="password" value={t('Password')}/>
                 </div>
                 <PasswordInput ref={passwordRef} required/>
               </div>
@@ -121,18 +121,18 @@ export const Login = ({onStateChange}) => {
                     <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"/>
                   </div>
                   <div className="ml-3 text-sm">
-                    <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
+                    <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">{t('Remember me')}</label>
                   </div>
                 </div>
-                <button type="button" className="font-medium text-gray-500 dark:text-gray-400 hover:underline" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.FORGOTTEN_PASSWORD)}>Forgotten password?</button>
+                <button type="button" className="font-medium text-gray-500 dark:text-gray-400 hover:underline" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.FORGOTTEN_PASSWORD)}>{t('Forgotten password')}</button>
               </div>
               <div>
-                <Button type="submit" className="w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Login</Button>
+                <Button type="submit" className="w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{t('Login')}</Button>
               </div>
 
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Don’t have an account yet?
-                <button className="font-medium hover:underline mx-1" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.REGISTER)}>Register</button>
+                {t('Don’t have an account yet')}?
+                <button className="font-medium hover:underline mx-1" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.REGISTER)}>{t('Register')}</button>
               </p>
             </form>
 

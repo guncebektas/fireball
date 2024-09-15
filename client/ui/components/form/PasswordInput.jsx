@@ -2,8 +2,11 @@ import React, {forwardRef, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Button, TextInput } from 'flowbite-react';
+import {useTranslator} from "../../providers/i18n";
 
 const PasswordInput = forwardRef((props, ref) => {
+  const t = useTranslator();
+
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -14,7 +17,7 @@ const PasswordInput = forwardRef((props, ref) => {
     <div className="relative w-full">
       <TextInput
         type={passwordVisible ? 'text' : 'password'}
-        placeholder="Type your password"
+        placeholder={t('Type your password')}
         className="w-full"
         ref={ref}
         {...props}
