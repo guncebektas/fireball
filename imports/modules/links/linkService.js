@@ -2,16 +2,17 @@ import {BaseService} from "../shared/service/baseService.js";
 import {linkRepository} from "./linkRepository";
 
 class LinkService extends BaseService {
-  constructor(linkRepository) {
-    super();
-    this.linkRepository = linkRepository;
+  constructor({repository}) {
+    super({repository});
   }
 
   async add(title, url) {
-    await this.linkRepository.insertAsync({
+    await this.repository.insertAsync({
       title, url
     })
   }
 }
 
-export const linkService = new LinkService(linkRepository);
+export const linkService = new LinkService({
+  repository: linkRepository
+});

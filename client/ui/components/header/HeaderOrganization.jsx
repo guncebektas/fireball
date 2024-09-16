@@ -1,6 +1,7 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBell, faCog, faSuitcase, faUsers,} from "@fortawesome/free-solid-svg-icons";
+import {isOrganizationEnabled} from "../../../../imports/modules/shared/functions/isOrganizationEnabled";
 
 const DropdownItem = ({ icon, label }) => (
   <a
@@ -15,7 +16,11 @@ const DropdownItem = ({ icon, label }) => (
   </a>
 );
 
-export const HeaderApps = () => {
+export const HeaderOrganization = () => {
+  if (!isOrganizationEnabled()) {
+    return;
+  }
+
   return (
     <>
       <button

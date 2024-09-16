@@ -2,6 +2,9 @@ import {BaseService} from "../shared/service/baseService.js";
 import {profileRepository} from "./profileRepository.js";
 
 class ProfileService extends BaseService {
+  constructor({repository}) {
+    super({repository});
+  }
   /**
    * @param _id {string}
    * @return {Promise<string>}
@@ -22,4 +25,6 @@ class ProfileService extends BaseService {
   }
 }
 
-export const profileService = new ProfileService();
+export const profileService = new ProfileService({
+  repository: profileRepository
+});

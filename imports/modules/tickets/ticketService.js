@@ -2,9 +2,8 @@ import {BaseService} from "../shared/service/baseService.js";
 import {ticketRepository} from "./ticketRepository.js";
 
 class TicketService extends BaseService {
-  constructor(ticketRepository) {
-    super();
-    this.repository = ticketRepository;
+  constructor({repository}) {
+    super({repository});
   }
   /**
    * @param object {object}
@@ -27,4 +26,6 @@ class TicketService extends BaseService {
   }
 }
 
-export const ticketService = new TicketService(ticketRepository);
+export const ticketService = new TicketService({
+  repository: ticketRepository
+});

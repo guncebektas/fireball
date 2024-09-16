@@ -1,4 +1,4 @@
-import {isDefined} from '../functions/isDefined';
+import {isDefined} from '../../../imports/modules/shared/functions/isDefined';
 
 /**
  * Finds device type of current user

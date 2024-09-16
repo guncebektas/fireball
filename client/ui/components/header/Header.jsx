@@ -4,7 +4,7 @@ import {HeaderLogo} from "./HeaderLogo.jsx";
 import {HeaderSearch} from "./HeaderSearch.jsx";
 import {HeaderToggleButton} from "./HeaderToggleButton.jsx";
 import {HeaderNotifications} from "./HeaderNotifications.jsx";
-import {HeaderApps} from "./HeaderApps.jsx";
+import {HeaderOrganization} from "./HeaderOrganization.jsx";
 import {HeaderProfile} from "./HeaderProfile.jsx";
 import {LanguageSelector} from "../languageSelector/LanguageSelector";
 
@@ -73,7 +73,7 @@ export const Header = () => {
           <DarkThemeToggle/>
 
           <HeaderNotifications/>
-          <HeaderApps/>
+          <HeaderOrganization/>
           <HeaderProfile/>
 
           <div className="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">

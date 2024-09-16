@@ -6,7 +6,7 @@ import {TICKET_PUBLICATION} from "../../../../imports/modules/tickets/enums/publ
 import {Link} from "react-router-dom";
 import {ROUTE} from "../../../routes/enums/route.js";
 import {Button, Table} from "flowbite-react";
-import {setParam} from "../../../shared/functions/setParam.js";
+import {setParam} from "../../../../imports/modules/shared/functions/setParam.js";
 import {ticketRemove} from "../../../../imports/modules/tickets/ticket.methods.js";
 
 export const Tickets = () => {

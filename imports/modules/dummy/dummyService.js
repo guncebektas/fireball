@@ -4,8 +4,8 @@ import {linkRepository} from "../links/linkRepository";
 import {linkService} from "../links/linkService";
 
 export class DummyService extends BaseService {
-  constructor(repository, service, data) {
-    super();
+  constructor({repository, service, data}) {
+    super({repository});
 
     this.repository = linkRepository;
     this.service = linkService;

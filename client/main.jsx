@@ -2,7 +2,7 @@ import React from 'react';
 import {Meteor} from 'meteor/meteor';
 import {createRoot} from 'react-dom/client';
 import {App} from '/client/ui/App';
-import {onChangeLocale} from "./shared/functions/onChangeLocale";
+import {onChangeLocale} from "../imports/modules/shared/functions/onChangeLocale";
 import {DeviceUtility} from "./shared/utilities/DeviceUtility";
 
 /**
