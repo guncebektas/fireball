@@ -8,6 +8,7 @@ import {useTracker} from "meteor/react-meteor-data";
 import {TICKET_PUBLICATION} from "../../../../imports/modules/tickets/enums/publication.js";
 import {ticketRepository} from "../../../../imports/modules/tickets/ticketRepository.js";
 import {FORM_TYPE} from "../../../shared/enums/formType.js";
+import {ToastSuccess} from "../../components/alert/Toast";
 
 export const TicketForm = () => {
   const {_id} = useParams();
@@ -30,6 +31,7 @@ export const TicketForm = () => {
     ticketUpsert(formData)
     .then(response => {
       console.log(response);
+      ToastSuccess()
     })
     .catch(error => {
       console.log(error);
