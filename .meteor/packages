@@ -36,19 +36,20 @@ accounts-base@3.0.0-rc300.4
 accounts-password@3.0.0-rc300.4
 accounts-passwordless@3.0.0-rc300.4
 accounts-2fa
+service-configuration
+accounts-github
+accounts-google
 
-# wildhart:partitioner
+react-meteor-accounts
+react-meteor-data@3.0.0-beta300.1
 
 alanning:roles@4.0.0
+
+# wildhart:partitioner
 
 jam:method@1.7.1
 # jam:soft-delete
 jam:offline
 ddp-rate-limiter@1.2.1-rc300.4
 
-# montiapm:agent
-react-meteor-data@3.0.0-beta300.1
 montiapm:agent
-service-configuration
-accounts-github
-accounts-google
