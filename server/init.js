@@ -37,17 +37,6 @@ class ServerInit {
   }
 }
 
-import { ServiceConfiguration } from "meteor/service-configuration";
-const services = Meteor.settings.private.oAuth;
-
-if (services) {
-  for (let service in services) {
-    await ServiceConfiguration.configurations.upsertAsync({service: service}, {
-      $set: services[service]
-    });
-  }
-}
-
 /**
  * No need to export.
  * It will only run once on server initialize
