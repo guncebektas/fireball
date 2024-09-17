@@ -1,15 +1,14 @@
 import {BaseService} from "../shared/service/baseService";
 import {organizationRepository} from "./organizationRepository";
+import {isOrganizationEnabled} from "../shared/functions/isOrganizationEnabled";
 
 class OrganizationService extends BaseService{
-  constructor(repository) {
-    super();
-
-    this.repository = repository
+  constructor({repository, isFeatureEnabled}) {
+    super({ repository, isFeatureEnabled });
   }
 
   async create(userId) {
-    await this.repository.insertAsync({_id: userId});
+   await this.repository.insertAsync({_id: userId});
   }
 
   async addKey() {
@@ -21,5 +20,8 @@ class OrganizationService extends BaseService{
   }
 }
 
-export const organizationService = new OrganizationService(organizationRepository)
+export const organizationService = new OrganizationService({
+  repository: organizationRepository,
+  isFeatureEnabled: isOrganizationEnabled,
+})
 
