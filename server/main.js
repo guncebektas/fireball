@@ -1,11 +1,24 @@
 import './init.js';
 import './modules.js';
-import {DummyService} from "../imports/modules/dummy/dummyService";
-import {linkRepository} from "../imports/modules/links/linkRepository";
-import {linkService} from "../imports/modules/links/linkService";
-import {DUMMY_LINKS} from "../imports/modules/dummy/enums/links";
+import {Meteor} from "meteor/meteor";
+import {ServiceConfiguration} from "meteor/service-configuration";
+import {Roles} from 'meteor/alanning:roles'
+import {ROLE} from "../imports/modules/shared/enums/role";
+import {ROLE_SCOPE} from "../imports/modules/shared/enums/roleScope";
 
 Meteor.startup(async () => {
-  const dummyService = new DummyService(linkRepository, linkService, DUMMY_LINKS)
-  await dummyService.insert();
+  // Set oAuth services
+  const services = Meteor.settings.private.oAuth;
+
+  if (services) {
+    for (let service in services) {
+      await ServiceConfiguration.configurations.upsertAsync({service: service}, {
+        $set: services[service]
+      });
+    }
+  }
+
+  // Set user roles
+  await Roles.createRoleAsync(ROLE.ADMIN, ROLE_SCOPE.USER);
+  await Roles.createRoleAsync(ROLE.USER, ROLE_SCOPE.USER);
 });
