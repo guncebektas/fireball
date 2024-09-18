@@ -6,21 +6,25 @@ import { ROUTE } from "../../../routes/enums/route.js";
 import { useUserId } from 'meteor/react-meteor-accounts';
 import { ROLE_SCOPE } from "../../../../imports/modules/shared/enums/roleScope";
 import { Roles } from 'meteor/alanning:roles';
+import { useTracker } from 'meteor/react-meteor-data';
 
 export const NavFooter = () => {
   const userId = useUserId();
   const [roles, setRoles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const userRoles = Roles.getRolesForUser(userId, ROLE_SCOPE.USER);
 
   useEffect(() => {
     // Ensure roles are fetched and then update state
-    const userRoles = Roles.getRolesForUser(userId, ROLE_SCOPE.USER);
-    setRoles(userRoles);
-    setLoading(false); // Stop loading once roles are fetched
-  }, [userId, roles]);
+    if (roles.length === 0) {
+      setRoles(userRoles);
+    }
+    setIsLoading(false); // Stop loading once roles are fetched
+  }, [userRoles]);
 
   // If still loading, you can choose to render nothing or a loading indicator
-  if (loading) return null;
+  if (isLoading) return null;
 
   const links = [
     // Only add the Admin link if the user has the 'admin' role

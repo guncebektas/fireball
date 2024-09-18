@@ -25,7 +25,7 @@ export const NavMobile = () => {
   }
 
   return (
-    <Navbar className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 sm:hidden">
+    <Navbar className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-10 sm:hidden">
       <ul className="flex justify-evenly w-full list-none p-0 m-0">
         {navLinks.map(({ href, icon, specialClass = "" }, index) => (
           <Navbar.Link
