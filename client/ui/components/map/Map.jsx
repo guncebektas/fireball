@@ -26,7 +26,7 @@ const Map = ({ title, latitude = 41.0434, longitude = 29.0091, zoom = 14 }) => {
 
         // Add marker
         const markerIcon = L.icon({
-          iconUrl: `/online/images/logo.svg`,
+          iconUrl: `/online/brand/logo.svg`,
           iconSize: [48, 48], // size of the icon
           iconAnchor: [10, 10], // point of the icon which will correspond to marker's location
           popupAnchor: [0, -5] // point from which the popup should open relative to the iconAnchor
