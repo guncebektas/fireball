@@ -4,7 +4,7 @@
     "app": {
       "_id": "zvmXwvXe5P2dHkQDY",
       "name": "Saas Boilerplate",
-      "logo": "/online/images/logo.svg",
+      "logo": "/online/brand/logo.svg",
       "defaultLanguage": "en-US",
       "supportedLanguages": [{
         "languageCode": "en-US",
