@@ -7,6 +7,7 @@ import {faBell, faCheck, faClipboard, faClipboardList, faCodeMerge, faCoffee, fa
 import {LocaleProvider} from "./providers/i18n";
 import {faGithub} from "@fortawesome/free-brands-svg-icons/faGithub";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons";
+import {ConnectionAlert} from "./components/alert/ConnectionAlert";
 
 fontawesome.library.add(
   faBell,
@@ -35,6 +36,7 @@ export function App() {
         <div className="antialiased bg-indigo-50 dark:bg-gray-800">
           <div className="min-h-screen mx-auto">
             <LocaleProvider>
+              <ConnectionAlert/>
               <ConditionalLayout/>
             </LocaleProvider>
           </div>
