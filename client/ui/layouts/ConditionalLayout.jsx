@@ -4,7 +4,7 @@ import {Nav} from "../components/nav/Nav.jsx";
 import {Router} from "../../routes/Router.js";
 import {Auth} from "../pages/auth/Auth.jsx";
 import {useTracker} from "meteor/react-meteor-data";
-import {NavMobile} from "../components/navMobile/NavMobile";
+import {NavMobile} from "../components/nav/NavMobile";
 import {Navbar} from "flowbite-react";
 import {LanguageSelector} from "../components/languageSelector/LanguageSelector";
 import {Link} from "react-router-dom";
