@@ -1,10 +1,19 @@
 {
   "public": {
+    "isOrganizationEnabled": false,
     "app": {
-      "_id": "uniqueId",
+      "_id": "zvmXwvXe5P2dHkQDY",
       "name": "Saas Boilerplate",
       "logo": "/online/images/logo.svg",
-      "defaultLanguage": "en-US"
+      "defaultLanguage": "en-US",
+      "supportedLanguages": [{
+        "languageCode": "en-US",
+        "languageLabel": "English"
+      }, {
+        "languageCode": "tr-TR",
+        "languageLabel": "Türkçe"
+      }],
+      "showMobileNavigation": true
     }
   },
   "private": {
