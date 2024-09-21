@@ -19,7 +19,7 @@ export const LanguageSelector = (onlyIcon = false) => {
     <Dropdown label={label} inline className="mr-3">
       {supportedLanguages.map(({ languageCode, languageLabel }) => (
         <Dropdown.Item key={languageCode} onClick={() => onChangeLocale(languageCode)}>
-          <img src={`online/images/flags/${languageCode}.svg`} alt={languageLabel} className="w-5 mr-1"/>
+          <img src={`/online/images/flags/${languageCode}.svg`} alt={languageLabel} className="w-5 mr-1"/>
           {languageLabel}
         </Dropdown.Item>
       ))}
