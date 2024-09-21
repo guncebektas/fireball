@@ -8,7 +8,7 @@ import Skeleton from "react-loading-skeleton";
 export const RssFeedList = () => {
   const [rssItems, setRssItems] = useState(null);
   const [error, setError] = useState(null);
-  const url = 'https://sports.yahoo.com/rss/';
+  const url = Meteor.settings.public.rssUrl;
 
   useEffect(() => {
     const fetchRSSFeed = async () => {

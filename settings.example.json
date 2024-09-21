@@ -1,6 +1,5 @@
 {
   "public": {
-    "isOrganizationEnabled": false,
     "app": {
       "_id": "zvmXwvXe5P2dHkQDY",
       "name": "Saas Boilerplate",
@@ -14,7 +13,9 @@
         "languageLabel": "Türkçe"
       }],
       "showMobileNavigation": true
-    }
+    },
+    "isOrganizationEnabled": false,
+    "rssUrl": "https://sports.yahoo.com/rss/"
   },
   "private": {
     "mail": {
