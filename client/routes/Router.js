@@ -11,7 +11,6 @@ import {TicketForm} from "../ui/pages/tickets/TicketForm.jsx";
 import {Settings} from "../ui/pages/settings/Settings.jsx";
 import {ContactRequestForm} from "../ui/pages/contactRequests/ContactRequestForm";
 import {ContactRequests} from "../ui/pages/contactRequests/ContactRequests";
-import RssFeedDetail from "../ui/pages/rssFeed/RssFeedDetail";
 import {RssFeedList} from "../ui/pages/rssFeed/RssFeedList";
 
 export const Router = () => (
@@ -23,7 +22,6 @@ export const Router = () => (
     <Route path={ROUTE.HOME} element={<Hello/>}/>
     <Route path={ROUTE.PRICE} element={<Prices/>}/>
     <Route path={ROUTE.PROFILE} element={<Profile/>}/>
-    <Route path={ROUTE.RSS_FEED_DETAIL} element={<RssFeedDetail/>}/>
     <Route path={ROUTE.RSS_FEED_LIST} element={<RssFeedList/>}/>
     <Route path={ROUTE.SETTINGS} element={<Settings/>}/>
     <Route path={ROUTE.TICKETS} element={<Tickets/>}/>
