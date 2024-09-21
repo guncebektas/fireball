@@ -40,6 +40,11 @@ export const Nav = () => {
         </ul>
         <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
           <li>
+            <NavItem link={ROUTE.RSS_FEED_LIST} icon="rss" text="RSS"/>
+          </li>
+        </ul>
+        <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+          <li>
             <NavItem link={ROUTE.TICKETS} icon="clipboard-list" text="Ticket"/>
           </li>
         </ul>
@@ -60,4 +65,5 @@ export const Nav = () => {
 
       <NavFooter/>
     </Sidebar>
-)};
+  )
+};
