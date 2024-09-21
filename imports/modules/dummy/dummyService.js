@@ -1,18 +1,24 @@
 import {BaseService} from "../shared/service/baseService.js";
-import {DUMMY_LINKS} from "./enums/links";
 import {linkRepository} from "../links/linkRepository";
 import {linkService} from "../links/linkService";
+import {DUMMY_LINKS} from "./enums/links";
 
-export class DummyService extends BaseService {
+class DummyService extends BaseService {
   constructor({repository, service, data}) {
     super({repository});
 
-    this.repository = linkRepository;
-    this.service = linkService;
-    this.data = DUMMY_LINKS;
+    this.service = service;
+    this.data = data;
   }
 
-  async insert() {
+  async add() {
+    //
+    // XXX: Do not fill dummy data in production
+    //
+    if (Meteor.isProduction) {
+      return;
+    }
+
     if (await this.repository.find().countAsync() === 0) {
       for (const link of this.data) {
         await this.service.add(link.title, link.url);
@@ -20,3 +26,9 @@ export class DummyService extends BaseService {
     }
   }
 }
+
+export const dummyLinkService = new DummyService({
+  repository: linkRepository,
+  service: linkService,
+  data: DUMMY_LINKS
+})

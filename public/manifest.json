@@ -13,12 +13,12 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "/online/images/brand/favicon-192.png",
+      "src": "/online/brand/icons/favicon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/online/images/brand/favicon-512.png",
+      "src": "/online/brand/icons/favicon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

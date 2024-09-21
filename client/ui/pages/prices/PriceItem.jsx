@@ -14,8 +14,8 @@ export const PriceItem = ({title, subTitle, price, features, onClick}) => {
 
       <ul role="list" className="mb-8 space-y-4 text-left">
         {
-          features.map((feature) =>
-            <li className="flex items-center space-x-3">
+          features.map((feature, index) =>
+            <li className="flex items-center space-x-3" key={index}>
               <FontAwesomeIcon icon="check" className="text-green-500 dark:text-green-400"/>
               <span>{feature}</span>
             </li>

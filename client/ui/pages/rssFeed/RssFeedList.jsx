@@ -3,6 +3,7 @@ import {Table} from 'flowbite-react';
 import {rssFeedFetch} from '../../../../imports/modules/rss/rss.methods';
 import {ToastSuccess, ToastWarning} from '../../components/alert/Toast';
 import {H2} from "../../components/heading/Headings";
+import Skeleton from "react-loading-skeleton";
 
 export const RssFeedList = () => {
   const [rssItems, setRssItems] = useState(null);
@@ -41,7 +42,11 @@ export const RssFeedList = () => {
   }
 
   if (!rssItems) {
-    return <div>Loading...</div>;
+    return (
+      <div className="px-4 py-5 sm:p-6">
+        <Skeleton count={3} />
+      </div>
+    )
   }
 
   return (
