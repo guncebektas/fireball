@@ -5,6 +5,7 @@ import '../imports/modules/links/server';
 import '../imports/modules/notifications/server';
 import '../imports/modules/organizations/server';
 import '../imports/modules/profiles/server';
+import '../imports/modules/rss/server';
 import '../imports/modules/swagger/server';
 import '../imports/modules/users/server';
 import '../imports/modules/userPartition/server';
