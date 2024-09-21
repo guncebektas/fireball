@@ -6,7 +6,7 @@ export const DUMMY_LINKS = [{
   url: 'https://guide.meteor.com'
 }, {
   title: 'Read the Docs',
-  url: 'https://docs.meteor.com',
+  url: 'https://v3-docs.meteor.com/',
 }, {
   title: 'Discussions',
   url: 'https://forums.meteor.com',
