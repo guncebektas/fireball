@@ -8,6 +8,8 @@ export const ROUTE = {
   LOGOUT: '/logout',
   PRICE: '/price',
   PROFILE: '/profile',
+  RSS_FEED_DETAIL: '/rss-feed/:id',
+  RSS_FEED_LIST: '/rss-feed/list',
   SETTINGS: '/settings',
   TICKETS: '/ticket/list',
   TICKET: '/ticket/form/:_id',
