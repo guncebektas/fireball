@@ -7,38 +7,38 @@
 # cultofcoders:redis-oplog      # Uses redis oplog instead of mongo oplog
 # disable-oplog@1.0.7           # Disables default mongo oplog
 
-meteor-base@1.5.2-rc300.4             # Packages every Meteor app needs to have
-mobile-experience@1.1.2-rc300.4       # Packages for a great mobile UX
-mongo@2.0.0-rc300.4                  # The database Meteor supports right now
-reactive-var@1.0.13-rc300.4           # Reactive variable for tracker
+meteor-base@1.5.2             # Packages every Meteor app needs to have
+mobile-experience@1.1.2       # Packages for a great mobile UX
+mongo@2.0.2                  # The database Meteor supports right now
+reactive-var@1.0.13           # Reactive variable for tracker
 
-standard-minifier-css@1.9.3-rc300.4   # CSS minifier run for production mode
-standard-minifier-js@3.0.0-rc300.4    # JS minifier run for production mode
-es5-shim@4.8.1-rc300.4                # ECMAScript 5 compatibility for older browsers
-ecmascript@0.16.9-rc300.4             # Enable ECMAScript2015+ syntax in app code
-typescript@5.4.3-rc300.4              # Enable TypeScript syntax in .ts and .tsx modules
-shell-server@0.6.0-rc300.4            # Server-side component of the `meteor shell` command
-hot-module-replacement@0.5.4-rc300.4  # Update client in development without reloading the page
+standard-minifier-css@1.9.3   # CSS minifier run for production mode
+standard-minifier-js@3.0.0    # JS minifier run for production mode
+es5-shim@4.8.1                # ECMAScript 5 compatibility for older browsers
+ecmascript@0.16.9             # Enable ECMAScript2015+ syntax in app code
+typescript@5.4.3              # Enable TypeScript syntax in .ts and .tsx modules
+shell-server@0.6.0            # Server-side component of the `meteor shell` command
+hot-module-replacement@0.5.4  # Update client in development without reloading the page
 
-static-html@1.3.3-rc300.4             # Define static page content in .html files
+static-html@1.3.3             # Define static page content in .html files
 
-logging@1.3.5-rc300.4
+logging@1.3.5
 zodern:types
-fetch@0.1.5-rc300.4
-email@3.0.100
+fetch@0.1.5
+email@3.1.0
 
 universe:i18n
 
 percolate:migrations
 reywood:publish-composite
 
-accounts-base@3.0.0-rc300.4
-accounts-password@3.0.0-rc300.4
-accounts-passwordless@3.0.0-rc300.4
-accounts-2fa
-service-configuration
-accounts-github
-accounts-google
+accounts-base@3.0.2
+accounts-password@3.0.2
+accounts-passwordless@3.0.0
+accounts-2fa@3.0.1
+service-configuration@1.3.5
+accounts-github@1.5.1
+accounts-google@1.4.1
 
 react-meteor-accounts
 react-meteor-data@3.0.0-beta300.1
@@ -47,9 +47,9 @@ alanning:roles@4.0.0
 
 # wildhart:partitioner
 
-jam:method@1.7.1
+jam:method
 # jam:soft-delete
 jam:offline
-ddp-rate-limiter@1.2.1-rc300.4
+ddp-rate-limiter@1.2.2
 
 montiapm:agent
