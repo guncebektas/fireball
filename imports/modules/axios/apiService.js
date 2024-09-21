@@ -1,5 +1,6 @@
 import axios from './axiosConfig';
-import { ZodError } from 'zod';
+import {ZodError} from 'zod';
+import {Log} from "meteor/logging";
 
 export class ApiService {
   constructor(contractRegistry = []) {
@@ -34,16 +35,16 @@ export class ApiService {
 
     // If no contract is found, return the raw response data without validation
     if (!contract) {
+      Log.info(`The response has no contract so will return data directly`)
       return response.data;
     }
 
     try {
       // Parse and validate the response using the specified contract
-      const parsedResponse = contract.parse({
+      return contract.parse({
         status: response.status.toString(),
         data: response.data,
       });
-      return parsedResponse;
     } catch (validationError) {
       if (validationError instanceof ZodError) {
         console.error('Response validation failed:', validationError.errors);
