@@ -12,7 +12,6 @@ export const ContactRequestForm = () => {
   const handleSubmit = async function (formData) {
     contactRequestUpsert(formData)
       .then(response => {
-        console.log(response);
         ToastSuccess()
       })
       .catch(error => {
