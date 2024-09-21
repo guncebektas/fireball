@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2'
 
-export const ToastWarning = (text = 'An error occurred, please try again', object = {}) => {
+export const ToastWarning = async (text = 'An error occurred, please try again', object = {}) => {
   let options = {
     toast: true,
     timer: 3000,
@@ -18,10 +18,10 @@ export const ToastWarning = (text = 'An error occurred, please try again', objec
 
   options = {...options, ...object};
 
-  Swal.fire(options).then(r => console.log(r));
+  await Swal.fire(options);
 }
 
-export const ToastError = (text = 'An error occurred, please try again', object = {}) => {
+export const ToastError = async (text = 'An error occurred, please try again', object = {}) => {
   let options = {
     toast: true,
     timer: 3000,
@@ -39,10 +39,10 @@ export const ToastError = (text = 'An error occurred, please try again', object 
 
   options = {...options, ...object};
 
-  Swal.fire(options).then(r => console.log(r));
+  await Swal.fire(options);
 }
 
-export const ToastSuccess = (text = 'Completed successfully', object = {}) => {
+export const ToastSuccess = async (text = 'Completed successfully', object = {}) => {
   let options = {
     toast: true,
     timer: 3000,
@@ -60,5 +60,5 @@ export const ToastSuccess = (text = 'Completed successfully', object = {}) => {
 
   options = {...options, ...object};
 
-  Swal.fire(options).then(r => console.log(r));
+  await Swal.fire(options);
 }
