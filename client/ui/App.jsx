@@ -3,7 +3,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {Flowbite} from "flowbite-react";
 import {ConditionalLayout} from "./layouts/ConditionalLayout.jsx";
 import * as fontawesome from "@fortawesome/fontawesome-svg-core";
-import {faBell, faCheck, faClipboard, faClipboardList, faCodeMerge, faCoffee, faCog, faDashboard, faFile, faMeteor, faMoneyBillWave, faPenRuler, faSuitcase, faUser, faUserTie} from "@fortawesome/free-solid-svg-icons";
+import {faBell, faCheck, faClipboard, faClipboardList, faCodeMerge, faCoffee, faCog, faDashboard, faFile, faMeteor, faMoneyBillWave, faPenRuler, faRss, faSuitcase, faUser, faUserTie} from "@fortawesome/free-solid-svg-icons";
 import {LocaleProvider} from "./providers/i18n";
 import {faGithub} from "@fortawesome/free-brands-svg-icons/faGithub";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons";
@@ -22,6 +22,7 @@ fontawesome.library.add(
   faMoneyBillWave,
   faMeteor,
   faPenRuler,
+  faRss,
   faSuitcase,
   faUser,
   faUserTie,
