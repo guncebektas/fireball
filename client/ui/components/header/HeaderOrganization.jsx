@@ -1,7 +1,8 @@
 import React from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBell, faCog, faSuitcase, faUsers,} from "@fortawesome/free-solid-svg-icons";
-import {isOrganizationEnabled} from "../../../../imports/modules/shared/functions/isOrganizationEnabled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell, faCog, faSuitcase, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { Dropdown } from "flowbite-react";
+import { isOrganizationEnabled } from "../../../../imports/modules/shared/functions/isOrganizationEnabled";
 
 const DropdownItem = ({ icon, label }) => (
   <a
@@ -18,35 +19,25 @@ const DropdownItem = ({ icon, label }) => (
 
 export const HeaderOrganization = () => {
   if (!isOrganizationEnabled()) {
-    return;
+    return null;
   }
 
   return (
-    <>
-      <button
-        type="button"
-        data-dropdown-toggle="apps-dropdown"
-        className="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-      >
-        <span className="sr-only">Your organization</span>
-        <FontAwesomeIcon icon={faSuitcase} />
-      </button>
-
-      <div
-        className="hidden overflow-hidden z-10 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
-        id="apps-dropdown"
-      >
-        <div
-          className="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-600 dark:text-gray-300"
-        >
+    <Dropdown
+      label={<FontAwesomeIcon icon={faSuitcase} className="header-dropdown-wrapper" />}
+      arrowIcon={false}
+      inline={true}
+    >
+      <Dropdown.Header>
+        <span className="block text-sm">
           Organization
-        </div>
-        <div className="grid grid-cols-3 gap-4 p-4">
-          <DropdownItem icon={faBell} label="Notifications" />
-          <DropdownItem icon={faUsers} label="Users" />
-          <DropdownItem icon={faCog} label="Settings" />
-        </div>
+        </span>
+      </Dropdown.Header>
+      <div className="grid grid-cols-3 gap-4 p-4">
+        <DropdownItem icon={faBell} label="Notifications"/>
+        <DropdownItem icon={faUsers} label="Users"/>
+        <DropdownItem icon={faCog} label="Settings"/>
       </div>
-    </>
+    </Dropdown>
   );
 };

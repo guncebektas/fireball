@@ -3,7 +3,7 @@ import {Dropdown} from "flowbite-react";
 import {useTranslator} from "../../providers/i18n";
 import {onChangeLocale} from "../../../../imports/modules/shared/functions/onChangeLocale";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faLanguage } from '@fortawesome/free-solid-svg-icons'; // Import the language icon
+import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 
 export const LanguageSelector = (onlyIcon = false) => {
   const t = useTranslator();
