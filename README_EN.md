@@ -86,10 +86,11 @@ Monti
 - [ ] User management
 - [ ] Support page
 - [ ] Headless CMS integration
+- [x] RSS Fetcher
 - [ ] Complex form components written with tailwind
 - [ ] AWS s3 integration
 - [ ] Job module
 - [x] Performance monitoring with MontiAPM
 - [x] Axios implementation
-- [ ] Openapi implementation
+- [ ] Swagger implementation
 - [x] PWA
