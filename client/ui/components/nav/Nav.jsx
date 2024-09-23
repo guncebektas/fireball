@@ -11,9 +11,9 @@ export const Nav = () => {
     <Sidebar
       aria-label="Sidenav"
       id="drawer-navigation"
-      className="fixed top-0 left-0 z-10 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+      className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
       >
-      <div className="overflow-y-auto pt-16 sm:pt-14 px-3 h-full">
+      <div className="overflow-y-auto pt-16 px-3 h-full">
         <ul className="space-y-2">
           <li>
             <NavItem link={ROUTE.HOME} icon="dashboard" text="Dashboard"/>

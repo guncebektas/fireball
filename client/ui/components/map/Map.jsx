@@ -50,7 +50,7 @@ const Map = ({ title, latitude = 41.0434, longitude = 29.0091, zoom = 14 }) => {
     };
   }, [latitude, longitude, zoom]);
 
-  return <div ref={mapContainerRef} className="w-full h-[500px]" id="map" />;
+  return <div ref={mapContainerRef} className="w-full h-[500px] z-0" id="map" />;
 };
 
 export default Map;
