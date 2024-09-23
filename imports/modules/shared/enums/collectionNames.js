@@ -3,6 +3,6 @@ export const COLLECTION_NAME = {
   LINKS: 'links',
   NOTIFICATIONS: 'notifications',
   ORGANIZATIONS: 'organizations',
-  PROFILES: 'profiles',
+  USER_PROFILES: 'profiles', // TODO: change this to userProfiles
   TICKETS: 'tickets'
 };

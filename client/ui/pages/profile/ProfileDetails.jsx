@@ -4,9 +4,9 @@ import {H2} from "../../components/heading/Headings.jsx";
 import {ToastSuccess, ToastWarning} from "../../components/alert/Toast";
 import {useTracker} from "meteor/react-meteor-data";
 import {Meteor} from "meteor/meteor";
-import {PROFILE_PUBLICATION} from "../../../../imports/modules/profiles/enums/publication.js";
-import {profileRepository} from "../../../../imports/modules/profiles/profileRepository.js";
-import {profileUpdate} from "../../../../imports/modules/profiles/profile.methods.js";
+import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/userProfiles/enums/publication.js";
+import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository.js";
+import {profileUpdate} from "../../../../imports/modules/userProfiles/userProfile.methods.js";
 
 export const ProfileDetails = () => {
   const [formData, setFormData] = useState({
@@ -18,10 +18,10 @@ export const ProfileDetails = () => {
   const user = useTracker(() => Meteor.user(), []);
 
   useTracker(() => {
-    const handle = Meteor.subscribe(PROFILE_PUBLICATION.ME);
+    const handle = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
 
     if (handle.ready()) {
-      const me = profileRepository.findOne({_id: Meteor.userId()}) || {};
+      const me = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
       let email  = user?.emails?.length > 0 ? user?.emails[0]?.address : '';
 
       setFormData({

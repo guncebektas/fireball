@@ -1,5 +1,5 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
-import {profileUpdate} from "../profile.methods.js";
+import {profileUpdate} from "../userProfile.methods.js";
 
 const LISTS_METHODS = [
   profileUpdate,

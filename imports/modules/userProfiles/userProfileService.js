@@ -1,7 +1,7 @@
 import {BaseService} from "../shared/service/baseService.js";
-import {profileRepository} from "./profileRepository.js";
+import {userProfileRepository} from "./userProfileRepository.js";
 
-class ProfileService extends BaseService {
+class UserProfileService extends BaseService {
   constructor({repository}) {
     super({repository});
   }
@@ -10,11 +10,11 @@ class ProfileService extends BaseService {
    * @return {Promise<string>}
    */
   async create(_id) {
-    return profileRepository.insertAsync({_id});
+    return userProfileRepository.insertAsync({_id});
   }
 
   async edit(userId, firstname, lastname) {
-    return profileRepository.updateAsync({
+    return userProfileRepository.updateAsync({
       _id: userId
     }, {
       $set: {
@@ -25,6 +25,6 @@ class ProfileService extends BaseService {
   }
 }
 
-export const profileService = new ProfileService({
-  repository: profileRepository
+export const userProfileService = new UserProfileService({
+  repository: userProfileRepository
 });
