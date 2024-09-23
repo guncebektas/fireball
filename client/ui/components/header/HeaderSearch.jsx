@@ -1,6 +1,11 @@
 import React from "react";
+import {isSearchEnabled} from "../../../../imports/modules/shared/functions/isSearchEnabled";
 
 export const HeaderSearch = () => {
+  if (!isSearchEnabled()) {
+    return null;
+  }
+
   return (
     <form action="#" method="GET" className="hidden md:block md:pl-2">
       <label htmlFor="topbar-search" className="sr-only">Search</label>
