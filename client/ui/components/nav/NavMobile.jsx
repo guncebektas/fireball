@@ -10,7 +10,7 @@ export const NavMobile = () => {
   const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
 
   const navLinks = [
-    { href: "#", icon: faHouse },
+    { href: "/", icon: faHouse },
     { href: "#", icon: faStar },
     {
       href: "#",
