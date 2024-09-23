@@ -66,7 +66,7 @@ export const Profile2fa = () => {
   };
 
   return (
-    <div className="px-4 py-5 sm:p-6">
+    <>
       {enabled2fa ? (
         <>
           <H2 text="2FA Enabled"/>
@@ -123,6 +123,6 @@ export const Profile2fa = () => {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 };

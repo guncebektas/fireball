@@ -23,34 +23,32 @@ export const ContactRequests = () => {
 
   return (
     <>
-      <div className="px-4 py-5 sm:p-6">
-        <div className="sm:flex sm:items-start sm:justify-between">
-          <div>
-            <div className="flex items-center">
-              <H2 text="Contact requests"></H2>
-            </div>
+      <div className="sm:flex sm:items-start sm:justify-between">
+        <div>
+          <div className="flex items-center">
+            <H2 text="Contact requests"></H2>
           </div>
         </div>
-        <div className="mt-2 w-full text-gray-500 text-lg">
-          <Table striped hoverable className="w-full">
-            <Table.Body>
-              {items.map((item) => (
-                <Table.Row key={item._id}>
-                  <Table.Cell>{item.name}</Table.Cell>
-                  <Table.Cell>{item.phoneNumber}</Table.Cell>
-                  <Table.Cell>{item.email}</Table.Cell>
-                  <Table.Cell>{item.subject}</Table.Cell>
-                  <Table.Cell>{item.message}</Table.Cell>
-                  <Table.Cell>
-                    <div className="flex flex-wrap gap-2">
-                      <Button color="failure" onClick={() => handleRemove(item._id)}>Delete</Button>
-                    </div>
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
-        </div>
+      </div>
+      <div className="mt-2 w-full text-gray-500 text-lg">
+        <Table striped hoverable className="w-full">
+          <Table.Body>
+            {items.map((item) => (
+              <Table.Row key={item._id}>
+                <Table.Cell>{item.name}</Table.Cell>
+                <Table.Cell>{item.phoneNumber}</Table.Cell>
+                <Table.Cell>{item.email}</Table.Cell>
+                <Table.Cell>{item.subject}</Table.Cell>
+                <Table.Cell>{item.message}</Table.Cell>
+                <Table.Cell>
+                  <div className="flex flex-wrap gap-2">
+                    <Button color="failure" onClick={() => handleRemove(item._id)}>Delete</Button>
+                  </div>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
       </div>
     </>
   );

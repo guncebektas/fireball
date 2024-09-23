@@ -11,7 +11,7 @@ export const Hello = () => {
 
   return (
     <>
-      <div className="px-4 py-5 sm:p-6">
+      <div className="px-4 py-5 sm:p-6 sm:pt-8">
         <div className="sm:flex sm:items-start sm:justify-between">
           <div>
             <div className="flex items-center">

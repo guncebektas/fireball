@@ -43,54 +43,50 @@ export const RssFeedList = () => {
 
   if (!rssItems) {
     return (
-      <div className="px-4 py-5 sm:p-6">
-        <Skeleton count={3} />
-      </div>
+      <Skeleton count={3} />
     )
   }
 
   return (
     <>
-      <div className="px-4 py-5 sm:p-6">
-        <div className="sm:flex sm:items-start sm:justify-between">
-          <div>
-            <div className="flex items-center">
-              <H2 text="RSS Feed"/>
-            </div>
+      <div className="sm:flex sm:items-start sm:justify-between">
+        <div>
+          <div className="flex items-center">
+            <H2 text="RSS Feed"/>
           </div>
         </div>
-        <div className="mt-2 w-full text-gray-500 text-lg">
-          <Table striped hoverable className="w-full">
-            <Table.Body>
-              {rssItems.map((item, index) => (
-                <Table.Row key={index}>
-                  <Table.Cell>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-500 hover:underline"
-                    >
-                      <h2 className="font-bold text-xl text-blue-600">{item.title}</h2>
-                    </a>
-                    <p className="text-gray-600">{new Date(item.pubDate).toLocaleDateString()}</p>
-                    <p>{item.description || 'No description available.'}</p>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-500 hover:underline"
-                    >
-                      Read more
-                    </a>
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
-        </div>
+      </div>
+      <div className="mt-2 w-full text-gray-500 text-lg">
+        <Table striped hoverable className="w-full">
+          <Table.Body>
+            {rssItems.map((item, index) => (
+              <Table.Row key={index}>
+                <Table.Cell>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    <h2 className="font-bold text-xl text-blue-600">{item.title}</h2>
+                  </a>
+                  <p className="text-gray-600">{new Date(item.pubDate).toLocaleDateString()}</p>
+                  <p>{item.description || 'No description available.'}</p>
+                </Table.Cell>
+                <Table.Cell>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    Read more
+                  </a>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
       </div>
     </>
   );

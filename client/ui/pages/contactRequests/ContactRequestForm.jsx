@@ -20,7 +20,7 @@ export const ContactRequestForm = () => {
   };
 
   return (
-    <div className="px-4 py-5 sm:p-6">
+    <>
       <H2 text="Contact us" />
       <div className="grid grid-cols-2 gap-4"> {/* Two-column layout */}
         <div className="flex flex-col">
@@ -29,6 +29,6 @@ export const ContactRequestForm = () => {
 
         <Map title={name} latitude={41.0434} longitude={29.0091} zoom={14} />
       </div>
-    </div>
+    </>
   );
 };

@@ -39,11 +39,11 @@ export const TicketForm = () => {
   };
 
   return (
-    <div className="px-4 py-5 sm:p-6">
+    <>
       <H2 text="Ticket"></H2>
       <div className="grid grid-flow-col justify-stretch space-x-4">
         <AutoForm schema={ticketBridge} model={ticket} onSubmit={handleSubmit}/>
       </div>
-    </div>
+    </>
   );
 };

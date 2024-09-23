@@ -52,7 +52,7 @@ export const ProfileDetails = () => {
   };
 
   return (
-    <div className="px-4 py-5 sm:p-6">
+    <>
       <H2 text="Profile"></H2>
       <div className="grid grid-flow-col justify-stretch space-x-4">
         <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
@@ -79,6 +79,6 @@ export const ProfileDetails = () => {
           </div>
         </form>
       </div>
-    </div>
+    </>
   );
 };

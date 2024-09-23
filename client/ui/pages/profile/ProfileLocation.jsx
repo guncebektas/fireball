@@ -31,7 +31,7 @@ export const ProfileLocation = () => {
   };
 
   return (
-    <div className="px-4 py-5 sm:p-6">
+    <>
       <Button
         type="button"
         onClick={getLocation}
@@ -75,6 +75,6 @@ export const ProfileLocation = () => {
           {error ? error : 'Click the button to get your location'}
         </p>
       )}
-    </div>
+    </>
   );
 };
