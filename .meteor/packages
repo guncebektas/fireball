@@ -49,7 +49,7 @@ alanning:roles@4.0.0
 
 jam:method
 # jam:soft-delete
-jam:offline
+# jam:offline
 ddp-rate-limiter@1.2.2
 
 montiapm:agent
