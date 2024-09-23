@@ -1,11 +1,11 @@
 import {z} from 'zod';
 import {ZodBridge} from 'uniforms-bridge-zod';
+import {SUBJECT_OPTIONS} from "../enums/subjectOptions";
 
 export const ticketFormSchema = {
+  level: z.enum(SUBJECT_OPTIONS),
   message: z.string(),
-  question: z.string(),
-  answer: z.string(),
-  answer2: z.string(),
+  response: z.string(),
 };
 
 export const ticketSchema = z.object(ticketFormSchema);
