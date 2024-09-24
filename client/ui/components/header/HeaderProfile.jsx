@@ -19,6 +19,7 @@ export const HeaderProfile = () => {
 
   useTracker(() => {
     const handle = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
+
     if (handle.ready()) {
       const me = userProfileRepository.findOne({ _id: Meteor.userId() }) || {};
       let email = user?.emails?.length > 0 ? user?.emails[0]?.address : '';
