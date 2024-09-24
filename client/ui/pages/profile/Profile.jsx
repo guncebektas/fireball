@@ -1,9 +1,10 @@
 import React from 'react';
 import {Tabs} from "flowbite-react";
 import {ProfileDetails} from "./ProfileDetails";
+import {ProfilePicture} from "./ProfilePicture";
+import {ProfileChangePassword} from "./ProfileChangePassword";
 import {Profile2fa} from "./Profile2fa";
 import {ProfileLocation} from "./ProfileLocation";
-import {ProfileChangePassword} from "./ProfileChangePassword";
 
 export const Profile = () => {
   return (
@@ -11,6 +12,10 @@ export const Profile = () => {
       <Tabs.Group aria-label="Profile settings tabs" style="underline">
         <Tabs.Item active title="Details">
           <ProfileDetails/>
+        </Tabs.Item>
+
+        <Tabs.Item title="Picture">
+          <ProfilePicture/>
         </Tabs.Item>
 
         <Tabs.Item title="Change password">
