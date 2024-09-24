@@ -23,6 +23,16 @@ class UserProfileService extends BaseService {
       }
     });
   }
+
+  async saveOtp(userId, otp) {
+    return userProfileRepository.updateAsync({
+      _id: userId
+    }, {
+      $set: {
+        otp
+      }
+    });
+  }
 }
 
 export const userProfileService = new UserProfileService({
