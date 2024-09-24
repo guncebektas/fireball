@@ -32,13 +32,6 @@ export const ProfileDetails = () => {
     }
   }, [user]);
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -49,6 +42,13 @@ export const ProfileDetails = () => {
       .catch(error => {
         ToastWarning();
       })
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
   };
 
   return (
