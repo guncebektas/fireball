@@ -3,7 +3,7 @@ import {event} from "../../shared/event/server/init.js";
 import {EVENT} from "../../shared/enums/event.js";
 
 const _isFirstUser = async () => {
-  return await Meteor.users.find().countAsync() === 1;
+  return await Meteor.users.find().countAsync() === 0;
 };
 
 Accounts.onCreateUser(async function (options, user) {
