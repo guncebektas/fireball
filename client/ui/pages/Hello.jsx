@@ -29,7 +29,7 @@ export const Hello = () => {
           </div>
           <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
             <Button
-              color="blue"
+              gradientMonochrome="purple"
               onClick={increment}
             >
               Click Me

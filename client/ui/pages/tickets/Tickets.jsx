@@ -8,6 +8,8 @@ import {ROUTE} from "../../../routes/enums/route.js";
 import {Button, Table} from "flowbite-react";
 import {setParam} from "../../../../imports/modules/shared/functions/setParam.js";
 import {ticketRemove} from "../../../../imports/modules/tickets/ticket.methods.js";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 export const Tickets = () => {
   const tickets = useTracker(() => {
@@ -29,11 +31,14 @@ export const Tickets = () => {
       <div className="sm:flex sm:items-start sm:justify-between">
         <div>
           <div className="flex items-center">
-            <H2 text="Ticket"></H2>
+            <h2 className="title text-4xl">Ticket</h2>
 
             <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
               <Link to={setParam(ROUTE.TICKET, {key: '_id', value: 'new'})}>
-                <Button gradientMonochrome="purple">New</Button>
+                <Button gradientMonochrome="purple" size="sm">
+                  <FontAwesomeIcon icon={faPlus}/>
+                  New
+                </Button>
               </Link>
             </div>
           </div>
@@ -48,9 +53,15 @@ export const Tickets = () => {
                 <Table.Cell>
                   <div className="flex flex-wrap gap-2">
                     <Link to={setParam(ROUTE.TICKET, {key: '_id', value: item._id})}>
-                      <Button color="blue">Edit</Button>
+                      <Button outline gradientDuoTone="purpleToPink" size="xs">
+                        <FontAwesomeIcon icon={faEdit}/>
+                        Edit
+                      </Button>
                     </Link>
-                    <Button color="failure" onClick={() => handleRemove(item._id)}>Delete</Button>
+                    <Button outline gradientDuoTone="pinkToOrange"  size="xs" onClick={() => handleRemove(item._id)}>
+                      <FontAwesomeIcon icon={faTrash}/>
+                      Delete
+                    </Button>
                   </div>
                 </Table.Cell>
               </Table.Row>
