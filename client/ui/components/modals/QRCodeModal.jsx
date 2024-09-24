@@ -1,15 +1,22 @@
-import React from 'react';
-import {Button, Modal} from 'flowbite-react';
-import {QRCodeCanvas} from 'qrcode.react';
-import {Meteor} from 'meteor/meteor';
+import React, { useState } from 'react';
+import { Button, Modal } from 'flowbite-react';
+import { QRCodeCanvas } from 'qrcode.react';
+import { Meteor } from 'meteor/meteor';
+import Countdown from "../countDown/CountDown";
 
 export const QRCodeModal = ({ isOpen, onClose }) => {
+  const [otp, setOtp] = useState(generateOTP());
+
+  // Function to generate a new OTP
   function generateOTP() {
     return Math.floor(100000 + Math.random() * 900000).toString();
   }
 
-  const otp = generateOTP();
-  const {logo} = Meteor.settings.public.app;
+  const handleExpire = () => {
+    setOtp(generateOTP()); // Generate a new OTP when the countdown expires
+  };
+
+  const { logo } = Meteor.settings.public.app;
 
   return (
     <Modal show={isOpen} size="md" onClose={onClose}>
@@ -27,8 +34,10 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
             }}
           />
         </div>
-        <div className="flex justify-center"><p className="scale-150 font-extrabold text-center py-3">{otp}</p>
+        <div className="flex justify-center">
+          <p className="scale-150 font-extrabold text-center py-3">{otp}</p>
         </div>
+        <Countdown initialSeconds={60} onExpire={handleExpire} />
       </Modal.Body>
       <Modal.Footer>
         <Button color="gray" onClick={onClose}>
