@@ -14,6 +14,26 @@
       }],
       "showMobileNavigation": true
     },
+    "pages": {
+      "aboutUs": {
+        "title": "About us",
+        "paragraphs": [
+          "We are a team of passionate individuals dedicated to delivering the best services to our clients. Our journey began with a shared vision of innovation and collaboration, and we have been driven by these values ever since.",
+          "Over the years, we’ve expanded our expertise across various industries, helping businesses grow and adapt in an ever-changing digital landscape. Our commitment to excellence is reflected in every project we undertake.",
+          "Our team works closely with each client, understanding their unique needs and challenges to offer tailored solutions. We believe in the power of teamwork and are proud to foster a culture that promotes creativity, integrity, and continuous growth."
+        ],
+        "carousel": [{
+          "caption": "Team photo 1",
+          "image": "https://via.placeholder.com/800x400?text=Photo+1"
+        }, {
+          "caption": "Team photo 2",
+          "image": "https://via.placeholder.com/800x400?text=Photo+2"
+        }, {
+          "caption": "Team photo 3",
+          "image": "https://via.placeholder.com/800x400?text=Photo+3"
+        }]
+      }
+    },
     "isSearchEnabled": false,
     "isOrganizationEnabled": false,
     "rssUrl": "https://sports.yahoo.com/rss/"
