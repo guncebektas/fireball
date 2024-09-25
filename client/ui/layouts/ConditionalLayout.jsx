@@ -8,6 +8,7 @@ import {NavMobile} from "../components/nav/NavMobile";
 import {Navbar} from "flowbite-react";
 import {LanguageSelector} from "../components/languageSelector/LanguageSelector";
 import {Link} from "react-router-dom";
+import {Credits} from "../components/credits/Credits";
 
 const InnerLayout = () => {
   const {name, logo} = Meteor.settings.public.app;
@@ -33,6 +34,8 @@ const InnerLayout = () => {
         </main>
 
         <NavMobile/>
+
+        <Credits/>
       </section>
     );
   }
