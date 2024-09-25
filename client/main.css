@@ -23,3 +23,8 @@
     focus:ring-gray-300 dark:focus:ring-gray-600;
   }
 }
+
+/** overwrite */
+.focus\:ring-cyan-300:focus {
+  --tw-ring-opacity: 0 !important;
+}

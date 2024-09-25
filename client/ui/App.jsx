@@ -30,9 +30,17 @@ fontawesome.library.add(
   faGoogle,
 );
 
+const customTheme = {
+  button: {
+    color: {
+      primary: "w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+    },
+  },
+};
+
 export function App() {
   return (
-    <Flowbite>
+    <Flowbite theme={{ theme: customTheme }}>
       <BrowserRouter>
         <div className="antialiased bg-indigo-50 dark:bg-gray-800">
           <div className="min-h-screen mx-auto">

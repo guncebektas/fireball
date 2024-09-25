@@ -85,7 +85,7 @@ export const Login = ({onStateChange}) => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button type="submit" className="w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{t('Login')}</Button>
+            <Button type="submit" color="primary">{t('Login')}</Button>
           </Modal.Footer>
         </form>
       </Modal>
@@ -127,7 +127,7 @@ export const Login = ({onStateChange}) => {
                 <button type="button" className="font-medium text-gray-500 dark:text-gray-400 hover:underline" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.FORGOTTEN_PASSWORD)}>{t('Forgotten password')}</button>
               </div>
               <div>
-                <Button type="submit" className="w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{t('Login')}</Button>
+                <Button type="submit"  color="primary">{t('Login')}</Button>
               </div>
 
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">

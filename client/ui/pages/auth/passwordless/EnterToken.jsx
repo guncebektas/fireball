@@ -20,7 +20,7 @@ export const EnterToken = ({onStateChange}) => {
               <TextInput id="token" type="text" required/>
             </div>
             <div>
-              <Button type="submit" className="w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</Button>
+              <Button type="submit" color="primary">Submit</Button>
             </div>
           </form>
           <div className="mt-3 flex justify-end">
