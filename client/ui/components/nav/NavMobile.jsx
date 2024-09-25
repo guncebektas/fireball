@@ -4,13 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faStar, faQrcode, faBagShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Meteor } from 'meteor/meteor';
 import {QRCodeModal} from "../modals/QRCodeModal";
+import {ROUTE} from "../../../routes/enums/route";
 
 export const NavMobile = () => {
   const { showMobileNavigation } = Meteor.settings.public.app;
   const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
 
   const navLinks = [
-    { href: "/", icon: faHouse },
+    { href: ROUTE.HOME, icon: faHouse },
     { href: "#", icon: faStar },
     {
       href: "#",
@@ -19,8 +20,8 @@ export const NavMobile = () => {
         "bg-blue-700 hover:bg-red-900 focus:ring-blue-300 active:bg-blue-300 dark:bg-blue-600 dark:hover:bg-red-900 dark:focus:ring-blue-800 dark:active:bg-blue-800 text-white rounded-full p-2 transform scale-125",
       onClick: () => setIsQRCodeModalOpen(true),
     },
-    { href: "#", icon: faBagShopping },
-    { href: "/profile", icon: faUser },
+    { href: ROUTE.STORES, icon: faBagShopping },
+    { href: ROUTE.PROFILE, icon: faUser },
   ];
 
   if (!showMobileNavigation) {

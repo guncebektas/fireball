@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css'; // Ensure this is correctly imported
 
-const Map = ({ markers = [], zoom = 14 }) => {
+const Map = ({ markers = [], zoom = 14, zoomControls = true  }) => {
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
 
@@ -42,6 +42,13 @@ const Map = ({ markers = [], zoom = 14 }) => {
         .bindPopup(title)
         .openPopup();
     });
+
+    if (zoomControls === false) {
+      mapRef.current.zoomControl.remove();
+    }
+
+    const { latitude, longitude } = markers[0];
+    mapRef.current.setView([latitude - 0.01, longitude], zoom);
 
     // Cleanup function to remove map on unmount
     return () => {

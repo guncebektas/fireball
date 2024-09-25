@@ -12,6 +12,7 @@ export const ROUTE = {
   RSS_FEED_DETAIL: '/rss-feed/:id',
   RSS_FEED_LIST: '/rss-feed/list',
   SETTINGS: '/settings',
+  STORES: '/stores',
   TICKETS: '/ticket/list',
   TICKET: '/ticket/form/:_id',
 };

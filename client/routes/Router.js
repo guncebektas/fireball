@@ -13,6 +13,7 @@ import {ContactRequestForm} from "../ui/pages/contactRequests/ContactRequestForm
 import {ContactRequests} from "../ui/pages/contactRequests/ContactRequests";
 import {RssFeedList} from "../ui/pages/rssFeed/RssFeedList";
 import {AboutUs} from "../ui/pages/aboutUs/AboutUs";
+import {Stores} from "../ui/pages/stores/Stores";
 
 export const Router = () => (
   <Routes>
@@ -26,6 +27,7 @@ export const Router = () => (
     <Route path={ROUTE.PROFILE} element={<Profile/>}/>
     <Route path={ROUTE.RSS_FEED_LIST} element={<RssFeedList/>}/>
     <Route path={ROUTE.SETTINGS} element={<Settings/>}/>
+    <Route path={ROUTE.STORES} element={<Stores/>}/>
     <Route path={ROUTE.TICKETS} element={<Tickets/>}/>
     <Route path={ROUTE.TICKET} element={<TicketForm/>}/>
   </Routes>
