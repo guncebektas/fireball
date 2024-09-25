@@ -60,6 +60,9 @@ export const Nav = () => {
           <li>
             <NavItem link={ROUTE.DOCS} icon="clipboard" text="Docs"/>
           </li>
+          <li>
+            <NavItem link={ROUTE.ABOUT_US} icon="heart" text="About us"/>
+          </li>
         </ul>
       </div>
 

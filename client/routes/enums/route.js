@@ -1,4 +1,5 @@
 export const ROUTE = {
+  ABOUT_US: '/about-us',
   ADMIN: '/admin',
   CONTACT_FORM: '/contact-form',
   CONTACT_REQUESTS: '/contact-requests',

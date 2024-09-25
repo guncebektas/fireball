@@ -12,9 +12,11 @@ import {Settings} from "../ui/pages/settings/Settings.jsx";
 import {ContactRequestForm} from "../ui/pages/contactRequests/ContactRequestForm";
 import {ContactRequests} from "../ui/pages/contactRequests/ContactRequests";
 import {RssFeedList} from "../ui/pages/rssFeed/RssFeedList";
+import {AboutUs} from "../ui/pages/aboutUs/AboutUs";
 
 export const Router = () => (
   <Routes>
+    <Route path={ROUTE.ABOUT_US} element={<AboutUs/>}/>
     <Route path={ROUTE.ADMIN} element={<Admin/>}/>
     <Route path={ROUTE.CONTACT_FORM} element={<ContactRequestForm />} />
     <Route path={ROUTE.CONTACT_REQUESTS} element={<ContactRequests />} />
