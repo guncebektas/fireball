@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.z-100 {
+  z-index: 100;
+}
+
 .svg-inline--fa {
   min-width: 24px;
 }

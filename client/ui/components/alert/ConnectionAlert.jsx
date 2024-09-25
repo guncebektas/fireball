@@ -53,7 +53,7 @@ export const ConnectionAlert = () => {
   }
 
   return (
-    <div className="absolute top-0 left-0 w-full z-50 flex justify-center">
+    <div className="absolute top-0 left-0 w-full z-100 flex justify-center">
       <Alert color="red" className="w-full">
         <div className="max-w-3xl">
           <div className="flex justify-between items-center">
