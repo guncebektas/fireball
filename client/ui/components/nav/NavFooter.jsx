@@ -40,7 +40,7 @@ export const NavFooter = () => {
   ];
 
   return (
-    <div className="absolute bottom-0 left-0 w-full flex justify-center p-4 space-x-4 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
+    <div className="absolute bottom-0 left-0 w-full flex justify-center p-4 space-x-4 bg-white dark:bg-gray-800">
       {links.map(({ to, icon, tooltip, tooltipId }) => (
         <Link
           key={tooltipId}
