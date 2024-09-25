@@ -24,7 +24,7 @@ export const AboutUs = () => {
                 alt={`Slide ${index + 1}`}
                 className="object-cover w-full h-full"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-3 text-center">
+              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3 text-center">
                 {slide.caption}
               </div>
             </div>
@@ -32,7 +32,7 @@ export const AboutUs = () => {
         </Carousel>
       </div>
 
-      <div className="text-lg space-y-6">
+      <div className="text-lg text-gray-500 space-y-6">
         {paragraphs.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}
