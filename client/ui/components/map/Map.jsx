@@ -2,53 +2,55 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css'; // Ensure this is correctly imported
 
-const Map = ({ title, latitude = 41.0434, longitude = 29.0091, zoom = 14 }) => {
+const Map = ({ markers = [], zoom = 14 }) => {
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
-    if (!mapContainerRef.current) {
-      console.error('Map container not found');
+    // Guard clause if no map container or markers are provided
+    if (!mapContainerRef.current || markers.length === 0) {
+      console.error('Map container not found or no markers provided');
       return;
     }
 
-    try {
-      if (!mapRef.current) {
-        // Initialize the map
-        mapRef.current = L.map(mapContainerRef.current).setView([latitude, longitude], zoom);
+    // Initialize the map if not already done
+    if (!mapRef.current) {
+      const { latitude, longitude } = markers[0]; // Use first marker as initial view
 
-        // Add tile layer
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-          attribution: '',
-        }).addTo(mapRef.current);
+      mapRef.current = L.map(mapContainerRef.current).setView([latitude, longitude], zoom);
 
-        mapRef.current.attributionControl.remove();
+      // Add tile layer to the map
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+        attribution: '',
+      }).addTo(mapRef.current);
 
-        // Add marker
-        const markerIcon = L.icon({
-          iconUrl: `/online/brand/logo.svg`,
-          iconSize: [48, 48], // size of the icon
-          iconAnchor: [24, 0], // point of the icon which will correspond to marker's location
-          popupAnchor: [0, -5] // point from which the popup should open relative to the iconAnchor
-        });
-
-        L.marker([latitude, longitude], {
-          icon: markerIcon
-        }).addTo(mapRef.current)
-          .bindPopup(title)
-          .openPopup();
-      }
-    } catch (error) {
-      console.error('Error initializing Leaflet map:', error);
+      mapRef.current.attributionControl.remove(); // Remove default attribution control
     }
 
+    // Define a custom marker icon
+    const markerIcon = L.icon({
+      iconUrl: Meteor.settings.public.app.logo,
+      iconSize: [48, 48], // Size of the icon
+      iconAnchor: [24, 0], // Point that corresponds to marker's location
+      popupAnchor: [0, -5], // Point from which the popup opens relative to iconAnchor
+    });
+
+    // Add markers to the map
+    markers.forEach(({ title, latitude, longitude }) => {
+      L.marker([latitude, longitude], { icon: markerIcon })
+        .addTo(mapRef.current)
+        .bindPopup(title)
+        .openPopup();
+    });
+
+    // Cleanup function to remove map on unmount
     return () => {
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
       }
     };
-  }, [latitude, longitude, zoom]);
+  }, [markers, zoom]);
 
   return <div ref={mapContainerRef} className="w-full h-[500px] z-0" id="map" />;
 };

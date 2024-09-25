@@ -19,6 +19,12 @@ export const ContactRequestForm = () => {
       });
   };
 
+  const locations = [
+    { title: 'Location 1', latitude: 41.0434, longitude: 29.0091 },
+    { title: 'Location 2', latitude: 40.7306, longitude: -73.9352 },
+    { title: 'Location 3', latitude: 48.8566, longitude: 2.3522 },
+  ];
+
   return (
     <>
       <H2 text="Contact us" />
@@ -27,7 +33,7 @@ export const ContactRequestForm = () => {
           <AutoForm schema={contactBridge} onSubmit={handleSubmit} />
         </div>
 
-        <Map title={name} latitude={41.0434} longitude={29.0091} zoom={14} />
+        <Map markers={locations} zoom={14} />
       </div>
     </>
   );
