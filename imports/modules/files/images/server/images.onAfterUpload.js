@@ -12,6 +12,11 @@ import {Log} from "meteor/logging";
 Images.on('afterUpload', function (fileRef) {
   Log.info('onAfterUpload');
 
+  const {bucket} = Meteor.settings.private.aws
+  if (bucket === "") {
+    return;
+  }
+
   // Run through each of the uploaded file
   _.each(fileRef.versions, async (vRef, version) => {
     // We use Random.id() instead of real file's _id
@@ -31,7 +36,7 @@ Images.on('afterUpload', function (fileRef) {
     await s3.putObject({
       // ServerSideEncryption: 'AES256', // Optional
       StorageClass: 'STANDARD',
-      Bucket: Meteor.settings.private.aws.bucket,
+      Bucket: bucket,
       Key: filePath,
       Body: fs.createReadStream(vRef.path),
       ContentType: vRef.type,
@@ -46,10 +51,10 @@ Images.on('afterUpload', function (fileRef) {
       }).then(async response => {
         this.unlink(await imageRepository.findOneAsync(fileRef._id), version);
       }).catch(error => {
-        console.error(error);
+        Log.error(error);
       })
     }).catch(error => {
-      console.error(error);
+      Log.error(error);
     });
   });
 });

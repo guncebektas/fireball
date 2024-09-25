@@ -85,7 +85,7 @@ Monti
 - [ ] Destek sayfası
 - [ ] Headless CMS entegrasyonu
 - [x] RSS gösterimi
-- [ ] AWS s3 entegrasyonu
+- [x] AWS s3 entegrasyonu
 - [ ] Zamanlanmış görevler
 - [x] MontiAPM ile performans takibi
 - [x] Axios kullanımı
