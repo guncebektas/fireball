@@ -1,9 +1,7 @@
 import {createMethod} from 'meteor/jam:method'; // can import { Methods } from 'meteor/jam:method' instead and use Methods.create if you prefer
 import {userProfileService} from "./userProfileService.js";
-import {fileUploadSchema} from "./schemas/fileUpload";
+import {fileIdSchema} from "./schemas/fileId";
 import {profileDetails} from "./schemas/profileDetails";
-import {Files} from "../shared/database/filesCollection";
-import {Log} from "meteor/logging";
 import {profileOtp} from "./schemas/profileOtp";
 
 export const profileUpdate = createMethod({
@@ -18,35 +16,14 @@ export const profileSaveOtp = createMethod({
   name: 'profile.saveOtp',
   schema: profileOtp,
   async run({otp}) {
-    console.log(otp)
     return userProfileService.saveOtp(this.userId, otp);
   }
 });
 
-
-export const profileUploadProfilePicture = createMethod({
-  name: 'profile.uploadProfilePicture',
-  schema: fileUploadSchema,
-  async run({ fileData, name, type }) {
-    const uploadInstance = Files.insert({
-      file: new File([fileData], name, { type }),
-      streams: 'dynamic',
-      chunkSize: 'dynamic',
-      onStart() {
-        Log.info('Upload started');
-      },
-      onUploaded(error, fileObj) {
-        if (error) {
-          throw new Meteor.Error('upload-failed', 'Upload failed');
-        } else {
-          Log.error('File uploaded successfully:', fileObj);
-        }
-      },
-      onError(error) {
-        throw new Meteor.Error('upload-failed', error.message);
-      },
-    });
-
-    return uploadInstance.config.fileId; // Return the file ID
+export const profileSetProfilePicture = createMethod({
+  name: 'profile.setProfilePicture',
+  schema: fileIdSchema,
+  async run({ fileId }) {
+    return userProfileService.saveProfilePictureId(this.userId, fileId);
   }
 });
