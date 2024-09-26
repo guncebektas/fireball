@@ -15,6 +15,14 @@
       "showMobileNavigation": true
     },
     "pages": {
+      "termsAndConditions": {
+        "title": "Terms and conditions",
+        "text": "Your terms and conditions content goes here"
+      },
+      "privacyPolicy": {
+        "title": "Privacy policy",
+        "text": "Your GDPR policy content goes here"
+      },
       "aboutUs": {
         "title": "About us",
         "paragraphs": [

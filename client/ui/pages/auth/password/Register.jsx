@@ -1,16 +1,20 @@
-import React, {useRef, useState} from 'react';
-import {Button, Label, TextInput} from 'flowbite-react';
-import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
-import {Accounts} from "meteor/accounts-base";
+import React, { useRef, useState } from 'react';
+import { Button, Label, TextInput, ToggleSwitch, Modal } from 'flowbite-react';
+import { STATE_AUTH_PASSWORD_FORM } from "./enums/state.js";
+import { Accounts } from "meteor/accounts-base";
 import PasswordInput from "../../../components/form/PasswordInput";
-import {Alert} from "../../../components/alert/Alert";
-import {useTranslator} from "../../../providers/i18n";
+import { Alert } from "../../../components/alert/Alert";
+import { useTranslator } from "../../../providers/i18n";
 
-export const Register = ({onStateChange}) => {
+export const Register = ({ onStateChange }) => {
   const t = useTranslator();
 
   const [openAlert, setOpenAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [gdprAccepted, setGdprAccepted] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({ title: '', content: '' });
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -25,6 +29,12 @@ export const Register = ({onStateChange}) => {
 
     setOpenAlert(false);
 
+    if (!termsAccepted || !gdprAccepted) {
+      setOpenAlert(true);
+      setErrorMessage('You must accept the Terms and GDPR to register.');
+      return;
+    }
+
     const formData = {
       email: emailRef.current.value,
       password: passwordRef.current.value,
@@ -32,23 +42,42 @@ export const Register = ({onStateChange}) => {
     };
 
     if (formData.password !== formData.passwordAgain) {
-      setOpenAlert(true)
-      setErrorMessage(`Passwords should be same.`)
+      setOpenAlert(true);
+      setErrorMessage(`Passwords should be same.`);
       return;
     }
 
     await Accounts.createUserAsync({
       email: formData.email,
       password: formData.password,
-      passwordAgain: formData.passwordAgain
-    }).then(response => {
-      window.location.reload();
-    }).catch(error => {
-      console.error(error);
+      passwordAgain: formData.passwordAgain,
+    })
+      .then(response => {
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error(error);
+        setOpenAlert(true);
+        setErrorMessage(error.reason);
+      });
+  };
 
-      setOpenAlert(true)
-      setErrorMessage(error.reason)
+  const openTermsModal = () => {
+    const {title, text} = Meteor.settings.public.pages.termsAndConditions;
+    setModalContent({
+      title: t(title),
+      content: `${t(text)}.`,
     });
+    setModalOpen(true);
+  };
+
+  const openPrivacyModal = () => {
+    const {title, text} = Meteor.settings.public.pages.privacyPolicy;
+    setModalContent({
+      title: t(title),
+      content: `${t(text)}.`,
+    });
+    setModalOpen(true);
   };
 
   return (
@@ -66,22 +95,49 @@ export const Register = ({onStateChange}) => {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="mb-2">
               <div className="mb-2 block">
-                <Label htmlFor="email" value="Email Address"/>
+                <Label htmlFor="email" value="Email Address" />
               </div>
-              <TextInput id="email" type="email" ref={emailRef} placeholder={t('Type your email')} required/>
+              <TextInput id="email" type="email" ref={emailRef} placeholder={t('Type your email')} required />
             </div>
             <div className="mb-2">
               <div className="mb-2 block">
-                <Label htmlFor="password" value={t('Password')}/>
+                <Label htmlFor="password" value={t('Password')} />
               </div>
-              <PasswordInput ref={passwordRef} required/>
+              <PasswordInput ref={passwordRef} required />
             </div>
             <div className="mb-2">
               <div className="mb-2 block">
-                <Label htmlFor="passwordAgain" value={t('Password again')}/>
+                <Label htmlFor="passwordAgain" value={t('Password again')} />
               </div>
-              <PasswordInput ref={passwordAgainRef} required/>
+              <PasswordInput ref={passwordAgainRef} required />
             </div>
+
+            {/* Terms Switch */}
+            <div className="mb-2 flex items-center">
+              <ToggleSwitch
+                checked={termsAccepted}
+                color="success"
+                label={t('I accept the terms and conditions')}
+                onChange={setTermsAccepted}
+              />
+              <Button onClick={openTermsModal} size="xs" color="gray" className="ml-2">
+                {t('Read')}
+              </Button>
+            </div>
+
+            {/* GDPR Switch */}
+            <div className="mb-2 flex items-center">
+              <ToggleSwitch
+                checked={gdprAccepted}
+                color="success"
+                label={t('I accept the privacy policy')}
+                onChange={setGdprAccepted}
+              />
+              <Button onClick={openPrivacyModal} size="xs" color="gray" className="ml-2">
+                {t('Read')}
+              </Button>
+            </div>
+
             <div>
               <Button type="submit" color="primary">{t('Register')}</Button>
             </div>
@@ -92,6 +148,19 @@ export const Register = ({onStateChange}) => {
           </form>
         </div>
       </div>
+
+      {/* Modal for Terms and GDPR */}
+      <Modal show={modalOpen} onClose={() => setModalOpen(false)}>
+        <Modal.Header>{modalContent.title}</Modal.Header>
+        <Modal.Body>
+          <p>{modalContent.content}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => setModalOpen(false)} color="gray">
+            {t('Close')}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
