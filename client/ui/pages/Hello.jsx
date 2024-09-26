@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import {Button} from "flowbite-react";
 import {H2} from "../components/heading/Headings.jsx";
+import {useTranslator} from "../providers/i18n";
 
 export const Hello = () => {
+  const t = useTranslator();
+
   const {name, logo} = Meteor.settings.public.app;
-  const welcomeMessage = `Welcome to ${name}!`
+  const welcomeMessage = `${t('Welcome to {$name}', {name: name})}!`
 
   const [counter, setCounter] = useState(0);
 
@@ -18,13 +21,10 @@ export const Hello = () => {
         <div className="sm:flex sm:items-start sm:justify-between">
           <div>
             <div className="flex items-center">
-              <H2 text={welcomeMessage}></H2>
-              <img src={logo} alt={name}/>
+              <H2 text={welcomeMessage}/>
             </div>
             <div className="mt-2 max-w-xl text-gray-500 text-lg">
-              <p>
-                You've pressed the button <b>{counter}</b> times.
-              </p>
+              <p>{t('You\'ve pressed the button {$counter} times', {counter: counter})}.</p>
             </div>
           </div>
           <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
@@ -32,7 +32,7 @@ export const Hello = () => {
               gradientMonochrome="purple"
               onClick={increment}
             >
-              Click Me
+              {t('Click')}
             </Button>
           </div>
         </div>

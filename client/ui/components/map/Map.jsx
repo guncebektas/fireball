@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css'; // Ensure this is correctly imported
+import 'leaflet/dist/leaflet.css';
+import {Log} from "meteor/logging"; // Ensure this is correctly imported
 
 const Map = ({ markers = [], zoom = 14, zoomControls = true  }) => {
   const mapRef = useRef(null);
@@ -9,7 +10,7 @@ const Map = ({ markers = [], zoom = 14, zoomControls = true  }) => {
   useEffect(() => {
     // Guard clause if no map container or markers are provided
     if (!mapContainerRef.current || markers.length === 0) {
-      console.error('Map container not found or no markers provided');
+      Log.error('Map container not found or no markers provided');
       return;
     }
 

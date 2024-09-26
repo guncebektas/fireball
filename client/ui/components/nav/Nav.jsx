@@ -5,8 +5,11 @@ import {Sidebar} from 'flowbite-react';
 import {HiOutlineMinusSm, HiOutlinePlusSm, HiShoppingBag} from "react-icons/hi";
 import {twMerge} from "tailwind-merge";
 import {NavFooter} from "./NavFooter";
+import {useTranslator} from "../../providers/i18n";
 
 export const Nav = () => {
+  const t = useTranslator();
+
   return (
     <Sidebar
       aria-label="Sidenav"
@@ -16,7 +19,7 @@ export const Nav = () => {
       <div className="overflow-y-auto pt-16 px-3 h-full">
         <ul className="space-y-2">
           <li>
-            <NavItem link={ROUTE.HOME} icon="dashboard" text="Dashboard"/>
+            <NavItem link={ROUTE.HOME} icon="dashboard" text={t('Dashboard')}/>
           </li>
           <ul>
             <Sidebar.Collapse
@@ -35,7 +38,7 @@ export const Nav = () => {
             </Sidebar.Collapse>
           </ul>
           <li>
-            <NavItem link={ROUTE.PRICE} icon="money-bill-wave" text="Prices"/>
+            <NavItem link={ROUTE.PRICE} icon="money-bill-wave" text={t('Prices')}/>
           </li>
         </ul>
         <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
@@ -45,23 +48,26 @@ export const Nav = () => {
         </ul>
         <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
           <li>
-            <NavItem link={ROUTE.TICKETS} icon="clipboard-list" text="Ticket"/>
+            <NavItem link={ROUTE.TICKETS} icon="clipboard-list" text={t('Ticket')}/>
           </li>
         </ul>
         <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
           <li>
-            <NavItem link={ROUTE.CONTACT_FORM} icon="clipboard" text="Contact us"/>
+            <NavItem link={ROUTE.CONTACT_FORM} icon="envelope" text={t('Contact us')}/>
           </li>
           <li>
-            <NavItem link={ROUTE.CONTACT_REQUESTS} icon="clipboard" text="Contact request"/>
+            <NavItem link={ROUTE.CONTACT_REQUESTS} icon="envelopes-bulk" text={t('Contact request')}/>
           </li>
         </ul>
         <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
           <li>
-            <NavItem link={ROUTE.DOCS} icon="clipboard" text="Docs"/>
+            <NavItem link={ROUTE.STORES} icon="store" text={t('Stores')}/>
           </li>
           <li>
-            <NavItem link={ROUTE.ABOUT_US} icon="heart" text="About us"/>
+            <NavItem link={ROUTE.DOCS} icon="clipboard" text={t('Documents')}/>
+          </li>
+          <li>
+            <NavItem link={ROUTE.ABOUT_US} icon="heart" text={t('About us')}/>
           </li>
         </ul>
       </div>

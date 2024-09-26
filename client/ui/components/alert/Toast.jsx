@@ -1,6 +1,9 @@
 import Swal from 'sweetalert2'
+import {useTranslator} from "../../providers/i18n";
 
 export const ToastWarning = async (text = 'An error occurred, please try again', object = {}) => {
+  const t = useTranslator();
+
   let options = {
     toast: true,
     timer: 3000,
@@ -11,7 +14,7 @@ export const ToastWarning = async (text = 'An error occurred, please try again',
     },
     position: 'top-end',
     icon: 'warning',
-    text: text,
+    text: t(text),
     showCloseButton: true,
     showConfirmButton: false
   };
@@ -22,6 +25,8 @@ export const ToastWarning = async (text = 'An error occurred, please try again',
 }
 
 export const ToastError = async (text = 'An error occurred, please try again', object = {}) => {
+  const t = useTranslator();
+
   let options = {
     toast: true,
     timer: 3000,
@@ -32,7 +37,7 @@ export const ToastError = async (text = 'An error occurred, please try again', o
     },
     position: 'top-end',
     icon: 'error',
-    text: text,
+    text: t(text),
     showCloseButton: true,
     showConfirmButton: false
   };
@@ -43,6 +48,8 @@ export const ToastError = async (text = 'An error occurred, please try again', o
 }
 
 export const ToastSuccess = async (text = 'Completed successfully', object = {}) => {
+  const t = useTranslator();
+
   let options = {
     toast: true,
     timer: 3000,
@@ -53,7 +60,7 @@ export const ToastSuccess = async (text = 'Completed successfully', object = {})
     },
     position: 'top-end',
     icon: 'success',
-    text: text,
+    text: t(text),
     showCloseButton: true,
     showConfirmButton: false
   };

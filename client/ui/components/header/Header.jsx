@@ -10,8 +10,10 @@ import {LanguageSelector} from "../languageSelector/LanguageSelector";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {isSearchEnabled} from "../../../../imports/modules/shared/functions/isSearchEnabled";
+import {useTranslator} from "../../providers/i18n";
 
 export const Header = () => {
+  const t = useTranslator();
 
   useEffect(() => {
     const theme = localStorage.getItem('theme');
@@ -70,26 +72,26 @@ export const Header = () => {
                   aria-controls="drawer-navigation"
                   className="p-2 mr-1 text-gray-500 rounded-lg md:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                 >
-                  <span className="sr-only">Toggle search</span>
+                  <span className="sr-only">{t('Toggle search')}</span>
                   <FontAwesomeIcon icon={faSearch}/>
                 </button>
               ) : ''
           }
 
 
-            <DarkThemeToggle/>
+          <DarkThemeToggle/>
 
-            <HeaderNotifications/>
+          <HeaderNotifications/>
 
-            <HeaderOrganization/>
+          <HeaderOrganization/>
 
-            <HeaderProfile/>
+          <HeaderProfile/>
 
-            <div className="header-dropdown-wrapper">
+          <div className="header-dropdown-wrapper">
             <LanguageSelector/>
-            </div>
-            </div>
-            </div>
-            </nav>
-            );
-          };
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};

@@ -4,8 +4,11 @@ import { QRCodeCanvas } from 'qrcode.react';
 import { Meteor } from 'meteor/meteor';
 import Countdown from "../countDown/CountDown";
 import {profileSaveOtp} from "../../../../imports/modules/userProfiles/userProfile.methods";
+import {useTranslator} from "../../providers/i18n";
 
 export const QRCodeModal = ({ isOpen, onClose }) => {
+  const t = useTranslator();
+
   const [otp, setOtp] = useState(generateOTP());
   profileSaveOtp({otp});
 
@@ -18,18 +21,18 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     profileSaveOtp({otp});
   };
 
-  const {logo} = Meteor.settings.public.app;
+  const {icon} = Meteor.settings.public.app;
 
   return (
     <Modal show={isOpen} size="md" onClose={onClose}>
-      <Modal.Header>Your QR Code</Modal.Header>
+      <Modal.Header>{t('Your qr code')}</Modal.Header>
       <Modal.Body>
         <div className="flex justify-center">
           <QRCodeCanvas
             value={otp}
             size={200}
             imageSettings={{
-              src: logo, // Path to your logo
+              src: icon, // Path to your logo
               height: 40,   // Adjust the height of the logo
               width: 40,    // Adjust the width of the logo
               excavate: true, // Ensures the QR code doesn't overlap with the image
@@ -43,7 +46,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
       </Modal.Body>
       <Modal.Footer>
         <Button color="gray" onClick={onClose}>
-          Close
+          {t('Close')}
         </Button>
       </Modal.Footer>
     </Modal>

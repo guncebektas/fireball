@@ -4,8 +4,11 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import {useTranslator} from "../../providers/i18n";
 
 export const ConnectionAlert = () => {
+  const t = useTranslator();
+
   const [isConnected, setIsConnected] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -58,12 +61,12 @@ export const ConnectionAlert = () => {
         <div className="max-w-3xl">
           <div className="flex justify-between items-center">
             <FontAwesomeIcon icon={faExclamationTriangle} />
-            <strong className="mr-1">Connection lost!</strong>
+            <strong className="mr-1">{t('Connection lost')}!</strong>
             <Button color="light" onClick={handleReconnect}>
-              Connect
+              {t('Connect')}
             </Button>
             <Button color="light" onClick={handleDismiss}>
-              Dismiss
+              {t('Dismiss')}
             </Button>
           </div>
         </div>

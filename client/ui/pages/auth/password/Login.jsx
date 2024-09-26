@@ -72,7 +72,7 @@ export const Login = ({onStateChange}) => {
   return (
     <>
       <Modal show={openModal} onClose={() => setOpenModal(false)} size="md" initialFocus={codeRef}>
-        <Modal.Header>2FA</Modal.Header>
+        <Modal.Header>{t('2FA')}</Modal.Header>
         <form className="space-y-6" onSubmit={handleLogin2FA}>
           <Modal.Body>
             <div className="space-y-6">
@@ -106,7 +106,7 @@ export const Login = ({onStateChange}) => {
                 <div className="mb-2 block">
                   <Label htmlFor="email" value={t('Email address')}/>
                 </div>
-                <TextInput id="email" type="email" placeholder={t('Enter your email')} ref={emailRef} required/>
+                <TextInput id="email" type="email" placeholder={t('Type your email')} ref={emailRef} required/>
               </div>
               <div className="mb-1">
                 <div className="mb-2 block">

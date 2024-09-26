@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Label } from "flowbite-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import {useTranslator} from "../../providers/i18n";
 
 export function DropZone({ onFileSelect }) {
+  const t = useTranslator();
   const [preview, setPreview] = useState(null);
 
   const handleDrop = (e) => {
@@ -49,16 +51,16 @@ export function DropZone({ onFileSelect }) {
               icon={faTimesCircle}
               className="absolute top-2 right-2 text-gray-500 dark:text-gray-400 cursor-pointer fa-lg"
               onClick={handleReset}
-              title="Remove image"
+              title={t('Remove image')}
             />
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center pb-6 pt-5">
             <FontAwesomeIcon icon={faCloudArrowUp} className="fa-2xl text-gray-500 dark:text-gray-400 mb-3" />
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <span className="font-semibold">Click to upload</span> or drag and drop
+              <span className="font-semibold">{t('Click to upload')}</span> {t('or')} <span className="font-semibold">{t('drag and drop')}</span>
             </p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG {t('or')} GIF</p>
           </div>
         )}
         <input

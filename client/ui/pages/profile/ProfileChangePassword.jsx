@@ -3,8 +3,11 @@ import { Button, Label, TextInput, Alert } from 'flowbite-react';
 import { H2 } from '../../components/heading/Headings.jsx';
 import { Accounts } from 'meteor/accounts-base';
 import PasswordInput from "../../components/form/PasswordInput";
+import {useTranslator} from "../../providers/i18n";
 
 export const ProfileChangePassword = () => {
+  const t = useTranslator();
+
   const currentPasswordRef = useRef();
   const password1Ref = useRef();
   const password2Ref = useRef();
@@ -33,40 +36,41 @@ export const ProfileChangePassword = () => {
 
     // Validation for password similarity
     if (formData.password1 !== formData.password2) {
-      setError('Passwords do not match');
+      setError(`${t('Passwords do not match')}!`);
       return;
     }
 
     // Update password using Meteor's Accounts.changePassword
     Accounts.changePassword(formData.currentPassword, formData.password1, (err) => {
       if (err) {
-        setError(err.reason || 'Failed to change password.');
+        setError(err.reason || `${t('Failed to change password')}!`);
       } else {
-        setSuccess('Password updated successfully.');
+        setSuccess( `${t('Password updated successfully')}!`);
       }
     });
   };
 
   return (
     <>
-      <H2 text="Change Password" />
+      <H2 text="Change password" />
       <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
         <div className="mb-2">
-          <Label htmlFor="currentPassword" value="Current Password" />
+          <Label htmlFor="currentPassword" value={t('Current password')} />
           <PasswordInput ref={currentPasswordRef} required/>
         </div>
         <div className="mb-2">
-          <Label htmlFor="newPassword1" value="New Password" />
+          <Label htmlFor="newPassword1" value={t('New password')} />
           <PasswordInput ref={password1Ref} required/>
         </div>
         <div className="mb-2">
-          <Label htmlFor="newPassword2" value="Confirm New Password" />
+          <Label htmlFor="newPassword2" value={t('Confirm new password')} />
           <PasswordInput ref={password2Ref} required/>
         </div>
+
         {error && <Alert color="failure">{error}</Alert>}
         {success && <Alert color="success">{success}</Alert>}
 
-        <Button type="submit" color="primary">Save</Button>
+        <Button type="submit" color="primary">{t('Save')}</Button>
       </form>
     </>
   );

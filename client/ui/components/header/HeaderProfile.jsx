@@ -7,8 +7,11 @@ import { Dropdown } from "flowbite-react";
 import { USER_PROFILE_PUBLICATION } from "../../../../imports/modules/userProfiles/enums/publication.js";
 import { userProfileRepository } from "../../../../imports/modules/userProfiles/userProfileRepository.js";
 import { ROUTE } from "../../../routes/enums/route.js";
+import {useTranslator} from "../../providers/i18n";
 
 export const HeaderProfile = () => {
+  const t = useTranslator();
+
   const [formData, setFormData] = useState({
     email: '',
     firstname: '',
@@ -52,7 +55,10 @@ export const HeaderProfile = () => {
       </Dropdown.Header>
 
       <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
-        <Link to={ROUTE.PROFILE}>My profile</Link>
+        <Link to={ROUTE.PROFILE}>
+          <FontAwesomeIcon icon="user" className="mr-2" />
+          {t('My profile')}
+        </Link>
       </Dropdown.Item>
 
       <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
@@ -79,7 +85,8 @@ export const HeaderProfile = () => {
       <Dropdown.Divider className="border-gray-200 dark:border-gray-600" />
 
       <Dropdown.Item onClick={handleLogout} className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
-        Logout
+        <FontAwesomeIcon icon="right-from-bracket" className="mr-2" />
+        {t('Logout')}
       </Dropdown.Item>
     </Dropdown>
   );

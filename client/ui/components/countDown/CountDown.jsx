@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import {useTranslator} from "../../providers/i18n";
 
 const Countdown = ({ initialSeconds, onExpire }) => {
+  const t = useTranslator();
   const [secondsLeft, setSecondsLeft] = useState(initialSeconds);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const Countdown = ({ initialSeconds, onExpire }) => {
 
   return (
     <div className="flex justify-center">
-      <p className="text-sm text-gray-500">QR code will refresh in {secondsLeft} seconds</p>
+      <p className="text-sm text-gray-500">{t('QR code will refresh in {$secondsLeft} seconds', {secondsLeft: secondsLeft})}</p>
     </div>
   );
 };

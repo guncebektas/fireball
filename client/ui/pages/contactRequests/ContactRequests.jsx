@@ -5,8 +5,11 @@ import {Button, Table} from "flowbite-react";
 import {CONTACT_REQUESTS_PUBLICATION} from "../../../../imports/modules/contactRequests/enums/publication";
 import {contactRequestRepository} from "../../../../imports/modules/contactRequests/contactRequestRepository";
 import {contactRequestRemove} from "../../../../imports/modules/contactRequests/contact.methods";
+import {useTranslator} from "../../providers/i18n";
 
 export const ContactRequests = () => {
+  const t = useTranslator();
+
   const items = useTracker(() => {
     const handle = Meteor.subscribe(CONTACT_REQUESTS_PUBLICATION.ALL);
 
@@ -42,7 +45,7 @@ export const ContactRequests = () => {
                 <Table.Cell>{item.message}</Table.Cell>
                 <Table.Cell>
                   <div className="flex flex-wrap gap-2">
-                    <Button color="failure" onClick={() => handleRemove(item._id)}>Delete</Button>
+                    <Button color="failure" onClick={() => handleRemove(item._id)}>{t('Delete')}</Button>
                   </div>
                 </Table.Cell>
               </Table.Row>

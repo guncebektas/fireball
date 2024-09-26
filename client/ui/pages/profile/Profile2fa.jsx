@@ -3,8 +3,11 @@ import {Button, Label, TextInput} from "flowbite-react";
 import {H2} from "../../components/heading/Headings.jsx";
 import {Meteor} from "meteor/meteor";
 import {Buffer} from "buffer";
+import {useTranslator} from "../../providers/i18n";
 
 export const Profile2fa = () => {
+  const t = useTranslator();
+
   const [enabled2fa, setEnabled2fa] = useState(false);
   const [qrCode, setQrCode] = useState(null);
   const [formData, setFormData] = useState({
@@ -69,35 +72,34 @@ export const Profile2fa = () => {
     <>
       {enabled2fa ? (
         <>
-          <H2 text="2FA Enabled"/>
-          <p>Your account is using 2FA</p>
+          <H2 text="2FA enabled"/>
+          <p>{t('Your account is using 2FA')}</p>
           <Button
             onClick={disable2fa}
             type="button"
             className="flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Disable
+            {t('Disable')}
           </Button>
         </>
       ) : (
         <>
           <H2 text="Secure with 2FA"/>
-          <p>Scan the code to enable 2FA</p>
+          <p>{t('Scan the code to enable 2FA')}</p>
           <div className="flex max-w-md flex-col gap-4">
             <img
               className="px-0"
               width="200"
               src={`data:image/svg+xml;base64,${qrCode}`}
-              alt="QR Code"
+              alt={t('QR code')}
             />
           </div>
           <div className="block mb-4">
             <Button
               onClick={generate2faActivationQrCode}
-              type="button"
-              className="flex justify-center border border-transparent rounded-md shadow-sm text-sm font-medium text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              outline gradientDuoTone="greenToBlue"  size="xs"
             >
-              Generate a new code
+              {t('Generate a new code')}
             </Button>
           </div>
 
@@ -105,13 +107,13 @@ export const Profile2fa = () => {
             <form className="flex max-w-md flex-col gap-4" onSubmit={enable2fa}>
               <div className="mb-2">
                 <div className="mb-2 block">
-                  <Label htmlFor="code" value="Code"/>
+                  <Label htmlFor="code" value={t('Code')}/>
                   <TextInput id="code" type="number" onChange={handleInputChange}/>
                 </div>
               </div>
               <div className="mb-2">
                 <div className="mb-2 block">
-                  <Button type="submit" color="primary">Save</Button>
+                  <Button type="submit" color="primary">{t('Save')}</Button>
                 </div>
               </div>
             </form>

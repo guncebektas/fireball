@@ -68,26 +68,26 @@ export const Register = ({onStateChange}) => {
               <div className="mb-2 block">
                 <Label htmlFor="email" value="Email Address"/>
               </div>
-              <TextInput id="email" type="email" ref={emailRef} placeholder="Type your email" required/>
+              <TextInput id="email" type="email" ref={emailRef} placeholder={t('Type your email')} required/>
             </div>
             <div className="mb-2">
               <div className="mb-2 block">
-                <Label htmlFor="password" value="Password"/>
+                <Label htmlFor="password" value={t('Password')}/>
               </div>
               <PasswordInput ref={passwordRef} required/>
             </div>
             <div className="mb-2">
               <div className="mb-2 block">
-                <Label htmlFor="passwordAgain" value="Password Again"/>
+                <Label htmlFor="passwordAgain" value={t('Password again')}/>
               </div>
               <PasswordInput ref={passwordAgainRef} required/>
             </div>
             <div>
-              <Button type="submit" color="primary">Register</Button>
+              <Button type="submit" color="primary">{t('Register')}</Button>
             </div>
 
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-              Already have an account? <button className="font-medium text-primary-600 hover:underline dark:text-primary-500" onClick={handleState}>Login here</button>
+              {t('Already have an account')}? <button className="font-medium text-primary-600 hover:underline dark:text-primary-500" onClick={handleState}>{t('Login')}</button>
             </p>
           </form>
         </div>

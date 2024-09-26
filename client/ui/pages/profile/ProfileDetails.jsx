@@ -7,8 +7,11 @@ import {Meteor} from "meteor/meteor";
 import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/userProfiles/enums/publication.js";
 import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository.js";
 import {profileUpdate} from "../../../../imports/modules/userProfiles/userProfile.methods.js";
+import {useTranslator} from "../../providers/i18n";
 
 export const ProfileDetails = () => {
+  const t = useTranslator();
+
   const [formData, setFormData] = useState({
     email: '',
     firstname: '',
@@ -58,24 +61,24 @@ export const ProfileDetails = () => {
         <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
           <div className="mb-2">
             <div className="mb-2 block">
-              <Label htmlFor="email" value="Your email"/>
+              <Label htmlFor="email" value={t('Your email')}/>
             </div>
             <TextInput id="email" type="text" value={formData.email} disabled/>
           </div>
           <div className="mb-2">
             <div className="mb-2 block">
-              <Label htmlFor="firstname" value="Firstname"/>
+              <Label htmlFor="firstname" value={t('Firstname')}/>
             </div>
             <TextInput id="firstname" type="text" value={formData.firstname} onChange={handleInputChange}/>
           </div>
           <div className="mb-2">
             <div className="mb-2 block">
-              <Label htmlFor="lastname" value="Lastname"/>
+              <Label htmlFor="lastname" value={t('Lastname')}/>
             </div>
             <TextInput id="lastname" type="text" value={formData.lastname} onChange={handleInputChange}/>
           </div>
           <div>
-            <Button type="submit" color="primary">Save</Button>
+            <Button type="submit" color="primary">{t('Save')}</Button>
           </div>
         </form>
       </div>

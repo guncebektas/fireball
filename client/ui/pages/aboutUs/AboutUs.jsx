@@ -1,8 +1,10 @@
 import React from 'react';
 import { Carousel } from 'flowbite-react';
 import {H2} from "../../components/heading/Headings";
+import {useTranslator} from "../../providers/i18n";
 
 export const AboutUs = () => {
+  const t = useTranslator();
   const { title, paragraphs, carousel } = Meteor.settings.public.pages.aboutUs;
 
   return (
@@ -25,7 +27,7 @@ export const AboutUs = () => {
                 className="object-cover w-full h-full"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3 text-center">
-                {slide.caption}
+                {t(slide.caption)}
               </div>
             </div>
           ))}
@@ -34,7 +36,7 @@ export const AboutUs = () => {
 
       <div className="text-lg text-gray-500 space-y-6">
         {paragraphs.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
+          <p key={index}>{t(paragraph)}</p>
         ))}
       </div>
     </>

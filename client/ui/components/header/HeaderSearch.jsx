@@ -1,14 +1,17 @@
 import React from "react";
 import {isSearchEnabled} from "../../../../imports/modules/shared/functions/isSearchEnabled";
+import {useTranslator} from "../../providers/i18n";
 
 export const HeaderSearch = () => {
+  const t = useTranslator();
+
   if (!isSearchEnabled()) {
     return null;
   }
 
   return (
     <form action="#" method="GET" className="hidden md:block md:pl-2">
-      <label htmlFor="topbar-search" className="sr-only">Search</label>
+      <label htmlFor="topbar-search" className="sr-only">{t('Search')}</label>
       <div className="relative md:w-64 md:w-96">
         <div
           className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
@@ -28,10 +31,10 @@ export const HeaderSearch = () => {
         </div>
         <input
           type="text"
-          name="email"
+          name="search"
           id="topbar-search"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-          placeholder="Search"
+          placeholder={t('Search')}
         />
       </div>
     </form>);

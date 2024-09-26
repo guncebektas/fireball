@@ -4,8 +4,11 @@ import {rssFeedFetch} from '../../../../imports/modules/rss/rss.methods';
 import {ToastSuccess, ToastWarning} from '../../components/alert/Toast';
 import {H2} from "../../components/heading/Headings";
 import Skeleton from "react-loading-skeleton";
+import {useTranslator} from "../../providers/i18n";
 
 export const RssFeedList = () => {
+  const t = useTranslator();
+
   const [rssItems, setRssItems] = useState(null);
   const [error, setError] = useState(null);
   const url = Meteor.settings.public.rssUrl;
@@ -28,9 +31,8 @@ export const RssFeedList = () => {
         setRssItems(parsedItems);
         ToastSuccess('RSS Feed loaded successfully');
       } catch (err) {
-        setError('Failed to fetch RSS feed');
-        console.error(err);
-        ToastWarning('RSS Feed failed to load');
+        setError(t('Failed to fetch RSS feed'));
+        ToastWarning('Failed to fetch RSS feed');
       }
     };
 
@@ -80,7 +82,7 @@ export const RssFeedList = () => {
                     rel="noopener noreferrer"
                     className="text-blue-500 hover:underline"
                   >
-                    Read more
+                    {t('Read more')}
                   </a>
                 </Table.Cell>
               </Table.Row>

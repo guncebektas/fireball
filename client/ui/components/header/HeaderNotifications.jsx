@@ -1,8 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dropdown, Avatar } from "flowbite-react";
+import {useTranslator} from "../../providers/i18n";
 
 export const HeaderNotifications = () => {
+  const t = useTranslator();
+
   return (
     <Dropdown
       label={<FontAwesomeIcon icon="bell" className="header-dropdown-wrapper"/>}
@@ -11,7 +14,7 @@ export const HeaderNotifications = () => {
     >
       <Dropdown.Header>
         <span className="block text-sm">
-          Notifications
+          {t('Notifications')}
         </span>
       </Dropdown.Header>
       <Dropdown.Item>
@@ -71,7 +74,7 @@ export const HeaderNotifications = () => {
       <Dropdown.Divider/>
       <Dropdown.Item>
         <div className="text-center text-primary-600 dark:text-primary-500 hover:underline">
-          View all
+          {t('View all')}
         </div>
       </Dropdown.Item>
     </Dropdown>

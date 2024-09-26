@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCog, faSuitcase, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "flowbite-react";
 import { isOrganizationEnabled } from "../../../../imports/modules/shared/functions/isOrganizationEnabled";
+import {useTranslator} from "../../providers/i18n";
 
 const DropdownItem = ({ icon, label }) => (
   <a
@@ -18,6 +19,8 @@ const DropdownItem = ({ icon, label }) => (
 );
 
 export const HeaderOrganization = () => {
+  const t = useTranslator();
+
   if (!isOrganizationEnabled()) {
     return null;
   }
@@ -34,9 +37,9 @@ export const HeaderOrganization = () => {
         </span>
       </Dropdown.Header>
       <div className="grid grid-cols-3 gap-4 p-4">
-        <DropdownItem icon={faBell} label="Notifications"/>
-        <DropdownItem icon={faUsers} label="Users"/>
-        <DropdownItem icon={faCog} label="Settings"/>
+        <DropdownItem icon={faBell} label={t('Notifications')}/>
+        <DropdownItem icon={faUsers} label={t('Users')}/>
+        <DropdownItem icon={faCog} label={t('Settings')}/>
       </div>
     </Dropdown>
   );

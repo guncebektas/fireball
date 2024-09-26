@@ -7,8 +7,11 @@ import {useUserId} from 'meteor/react-meteor-accounts';
 import {ROLE_SCOPE} from "../../../../imports/modules/shared/enums/roleScope";
 import {Roles} from 'meteor/alanning:roles';
 import {useTracker} from 'meteor/react-meteor-data';
+import {useTranslator} from "../../providers/i18n";
 
 export const NavFooter = () => {
+  const t = useTranslator();
+
   const userId = useUserId();
   const [roles, setRoles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +37,7 @@ export const NavFooter = () => {
     {
       to: ROUTE.SETTINGS,
       icon: "cog",
-      tooltip: "Settings",
+      tooltip: 'Settings',
       tooltipId: "tooltip-settings",
     }
   ];
@@ -49,7 +52,7 @@ export const NavFooter = () => {
           className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
         >
           <FontAwesomeIcon icon={icon} />
-          <Tooltip content={tooltip} placement="top" id={tooltipId} />
+          <Tooltip content={t(tooltip)} placement="top" id={tooltipId} />
         </Link>
       ))}
     </div>
