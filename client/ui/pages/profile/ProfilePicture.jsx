@@ -1,11 +1,22 @@
 import React, {useState} from 'react';
 import {Button} from 'flowbite-react';
 import {H2} from '../../components/heading/Headings';
-import {profileUploadProfilePicture} from "../../../../imports/modules/userProfiles/userProfile.methods";
 import {DropZone} from "../../components/dropZone/DropZone";
+import {Images} from "../../../../imports/modules/files/images/database/images";
+import {ToastWarning} from "../../components/alert/Toast";
+import {imageGet} from "../../../../imports/modules/files/images/image.methods";
+import {useTranslator} from "../../providers/i18n";
+import {Log} from "meteor/logging";
 
 export const ProfilePicture = () => {
+  const t = useTranslator();
+
   const [file, setFile] = useState(null);
+
+  imageGet({_id: 'BsFTsWZWWsZKpDY5b'}, (err, res) => {
+    console.log(err);
+    console.log(res);
+  })
 
   const handleFileSelect = (selectedFile) => {
     setFile(selectedFile);
@@ -14,53 +25,39 @@ export const ProfilePicture = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(file);
-
     if (!file) {
-      alert('Please select a file.');
+      await ToastWarning('Please select a file.');
       return;
     }
 
-    // Convert the file to a format that can be sent via a method
-    const reader = new FileReader();
-    reader.onloadend = async () => {
-      const fileData = new Uint8Array(reader.result);
-      const fileId = await profileUploadProfilePicture({
-        fileData,
-        name: file.name,
-        type: file.type
-      });
+    const uploadInstance = Images.insert({
+      file: file,
+      chunkSize: 'dynamic'
+    }, false);
 
-      console.log(fileId);
-    };
+    uploadInstance.on('end', function(error, fileObj) {
+      if (error) {
+        Log.error(`Error during upload: ${error.reason}`);
+      } else {
+        Log.info(`File ${fileObj.name} successfully uploaded`);
+      }
+    });
 
-    /**
-     * , (error, result) => {
-     *         if (error) {
-     *           console.error('Upload error:', error.reason);
-     *         } else {
-     *           console.log('File uploaded successfully, ID:', result);
-     *         }
-     */
+    uploadInstance.start();
 
-    reader.readAsArrayBuffer(file);
+    const fileId = uploadInstance.config.fileId;
   };
 
   return (
     <>
-      <H2 text="Upload Profile Picture" />
+      <H2 text="Upload profile picture" />
       <div className="grid grid-flow-col justify-stretch space-x-4">
         <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
           <div className="mb-2">
             <DropZone onFileSelect={handleFileSelect} />
           </div>
           <div>
-            <Button
-              type="submit"
-              className="w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
-            >
-              Save
-            </Button>
+            <Button type="submit" color="primary">{t('Upload')}</Button>
           </div>
         </form>
       </div>
