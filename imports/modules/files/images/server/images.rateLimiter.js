@@ -1,7 +1,8 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
+import {imageGet} from "../image.methods";
 
 const LISTS_METHODS = [
-
+  imageGet
 ].map(method => method.name);
 
 DDPRateLimiter.addRule({
