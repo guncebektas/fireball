@@ -10,11 +10,11 @@ class UserProfileService extends BaseService {
    * @return {Promise<string>}
    */
   async create(_id) {
-    return userProfileRepository.insertAsync({_id});
+    return this.repository.insertAsync({_id});
   }
 
   async edit(userId, firstname, lastname) {
-    return userProfileRepository.updateAsync({
+    return this.repository.updateAsync({
       _id: userId
     }, {
       $set: {
@@ -25,11 +25,21 @@ class UserProfileService extends BaseService {
   }
 
   async saveOtp(userId, otp) {
-    return userProfileRepository.updateAsync({
+    return this.repository.updateAsync({
       _id: userId
     }, {
       $set: {
         otp
+      }
+    });
+  }
+
+  async saveProfilePictureId(fileId) {
+    return this.repository.updateAsync({
+      _id: userId
+    }, {
+      $set: {
+        profilePictureId: fileId
       }
     });
   }
