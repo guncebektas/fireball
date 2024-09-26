@@ -109,6 +109,9 @@
   "RSS Feed loaded successfully": "RSS başarıyla yüklenmiştir",
   "Failed to fetch RSS feed": "RSS yüklenirken hata oluştu",
 
+  "FAQs": "Sık sorulan sorular",
+
   "Wallet": "Cüzdan",
+  "Free": "Ücretsiz",
   "Stores": "Mağazalar"
 }
