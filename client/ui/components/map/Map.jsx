@@ -30,7 +30,7 @@ const Map = ({ markers = [], zoom = 14, zoomControls = true  }) => {
 
     // Define a custom marker icon
     const markerIcon = L.icon({
-      iconUrl: Meteor.settings.public.app.logo,
+      iconUrl: Meteor.settings.public.app.icon,
       iconSize: [48, 48], // Size of the icon
       iconAnchor: [24, 0], // Point that corresponds to marker's location
       popupAnchor: [0, -5], // Point from which the popup opens relative to iconAnchor
