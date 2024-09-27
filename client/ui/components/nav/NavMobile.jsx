@@ -5,14 +5,30 @@ import {faHouse, faQrcode, faStar, faStore, faUser} from '@fortawesome/free-soli
 import {Meteor} from 'meteor/meteor';
 import {QRCodeModal} from "../modals/QRCodeModal";
 import {ROUTE} from "../../../routes/enums/route";
+import {useNavigate} from "react-router-dom";
 
 export const NavMobile = () => {
   const { showMobileNavigation } = Meteor.settings.public.app;
   const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
 
+  const navigate = useNavigate();
+
+  const whatsappNumber = '1234567890';
+
+  const handleNavigate = (route) => {
+    navigate(route);
+  };
+
   const navLinks = [
-    { href: ROUTE.HOME, icon: faHouse },
-    { href: ROUTE.WALLET, icon: faStar },
+    { href: '#',
+      icon: faHouse,
+      onClick: () => handleNavigate(ROUTE.HOME),
+    },
+    {
+      href: '#',
+      icon: faStar,
+      onClick: () => handleNavigate(ROUTE.WALLET),
+    },
     {
       href: "#",
       icon: faQrcode,
@@ -20,8 +36,16 @@ export const NavMobile = () => {
         "bg-blue-700 hover:bg-red-900 focus:ring-blue-300 active:bg-blue-300 dark:bg-blue-600 dark:hover:bg-red-900 dark:focus:ring-blue-800 dark:active:bg-blue-800 text-white rounded-full p-2 transform scale-125",
       onClick: () => setIsQRCodeModalOpen(true),
     },
-    { href: ROUTE.STORES, icon: faStore },
-    { href: ROUTE.PROFILE, icon: faUser },
+    {
+      href: '#',
+      icon: faStore,
+      onClick: () => handleNavigate(ROUTE.STORES),
+    },
+    {
+      href: '#',
+      icon: faUser,
+      onClick: () => handleNavigate(ROUTE.PROFILE),
+    },
   ];
 
   if (!showMobileNavigation) {
