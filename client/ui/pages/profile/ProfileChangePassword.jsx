@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
-import { Button, Label, TextInput, Alert } from 'flowbite-react';
-import { H2 } from '../../components/heading/Headings.jsx';
-import { Accounts } from 'meteor/accounts-base';
+import {Button, Label, TextInput, Alert} from 'flowbite-react';
+import {H2} from '../../components/heading/Headings.jsx';
+import {Accounts} from 'meteor/accounts-base';
 import PasswordInput from "../../components/form/PasswordInput";
 import {useTranslator} from "../../providers/i18n";
 
@@ -16,7 +16,7 @@ export const ProfileChangePassword = () => {
   const [success, setSuccess] = useState('');
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target;
+    const {id, value} = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [id]: value,
@@ -45,25 +45,28 @@ export const ProfileChangePassword = () => {
       if (err) {
         setError(err.reason || `${t('Failed to change password')}!`);
       } else {
-        setSuccess( `${t('Password updated successfully')}!`);
+        setSuccess(`${t('Password updated successfully')}!`);
       }
     });
   };
 
   return (
     <>
-      <H2 text="Change password" />
+      <div className="my-3">
+        <H2 text="Change password"/>
+      </div>
+
       <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
         <div className="mb-2">
-          <Label htmlFor="currentPassword" value={t('Current password')} />
+          <Label htmlFor="currentPassword" value={t('Current password')}/>
           <PasswordInput ref={currentPasswordRef} required/>
         </div>
         <div className="mb-2">
-          <Label htmlFor="newPassword1" value={t('New password')} />
+          <Label htmlFor="newPassword1" value={t('New password')}/>
           <PasswordInput ref={password1Ref} required/>
         </div>
         <div className="mb-2">
-          <Label htmlFor="newPassword2" value={t('Confirm new password')} />
+          <Label htmlFor="newPassword2" value={t('Confirm new password')}/>
           <PasswordInput ref={password2Ref} required/>
         </div>
 

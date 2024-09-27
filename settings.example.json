@@ -45,6 +45,7 @@
     "isPasswordlessLoginEnabled": false,
     "isSearchEnabled": false,
     "isOrganizationEnabled": false,
+    "isShowDevTools": true,
     "rssUrl": "https://sports.yahoo.com/rss/"
   },
   "private": {

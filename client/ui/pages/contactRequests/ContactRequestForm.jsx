@@ -5,6 +5,7 @@ import {contactBridge} from "../../../../imports/modules/contactRequests/schemas
 import {contactRequestUpsert} from "../../../../imports/modules/contactRequests/contact.methods";
 import Map from "../../components/map/Map";
 import {ToastSuccess} from "../../components/alert/Toast";
+import {BackButton} from "../../components/buttons/BackButton";
 
 export const ContactRequestForm = () => {
   const {name} = Meteor.settings.public.app;
@@ -27,7 +28,7 @@ export const ContactRequestForm = () => {
 
   return (
     <>
-      <H2 text="Contact us" />
+      <H2 text="Contact us"  showBackButton={true}/>
       <div className="grid grid-cols-2 gap-4"> {/* Two-column layout */}
         <div className="flex flex-col">
           <AutoForm schema={contactBridge} onSubmit={handleSubmit} />

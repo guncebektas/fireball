@@ -72,7 +72,10 @@ export const Profile2fa = () => {
     <>
       {enabled2fa ? (
         <>
-          <H2 text="2FA enabled"/>
+          <div className="my-3">
+            <H2 text="2FA enabled"/>
+          </div>
+
           <p>{t('Your account is using 2FA')}</p>
           <Button
             onClick={disable2fa}
@@ -84,7 +87,10 @@ export const Profile2fa = () => {
         </>
       ) : (
         <>
-          <H2 text="Secure with 2FA"/>
+          <div className="my-3">
+            <H2 text="Secure with 2FA"/>
+          </div>
+
           <p>{t('Scan the code to enable 2FA')}</p>
           <div className="flex max-w-md flex-col gap-4">
             <img
@@ -97,7 +103,8 @@ export const Profile2fa = () => {
           <div className="block mb-4">
             <Button
               onClick={generate2faActivationQrCode}
-              outline gradientDuoTone="greenToBlue"  size="xs"
+              outline gradientDuoTone="greenToBlue"
+              size="xs"
             >
               {t('Generate a new code')}
             </Button>

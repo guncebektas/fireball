@@ -42,6 +42,8 @@
   "Submit": "Gönder",
   "Request": "İste",
   "Close": "Kapat",
+  "Back": "Geri",
+  "Next": "İleri",
   "Add": "Ekle",
   "Edit": "Düzenle",
   "Delete": "Sil",
@@ -56,9 +58,19 @@
   "Homepage": "Anasayfa",
   "Dashboard": "Anasayfa",
   "Prices": "Ücretler",
+  "Designed for business teams like yours": "Sizin gibi ekipler için tasarlandı",
+  "We focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth": "Teknolojinin, inovasyonun ve sermayenin uzun vadeli değer yaratabileceği ve ekonomik büyümeyi teşvik edebileceği pazarlara odaklanıyoruz",
+  "Starter": "Başlangıç",
+  "The best option for personal use & your next project": "Kişisel kullanım ve bir sonraki projeniz için en iyi seçenek",
+  "Professional": "Profesyonel",
+  "Relevant for multiple users, extended & premium support": "Birden fazla kullanıcı için geçerli, genişletilmiş ve premium destek",
+  "Enterprise": "Girişim",
+  "Best for large scale uses and extended redistribution rights": "Büyük ölçekli kullanımlar ve genişletilmiş yeniden dağıtım hakları için en iyisi",
+  "Individual configuration": "Bireysel yapılandırma",
+  "No setup, or hidden fees": "Kurulum veya gizli ücret yok",
   "Contact": "İletişim",
   "Contact us": "İletişime geçin",
-  "Contact request": "İletişim talepleri",
+  "Contact requests": "İletişim talepleri",
   "Documents": "Dokümanlar",
   "About": "Hakkında",
   "About us": "Hakkımızda",
@@ -73,6 +85,7 @@
   "Your email": "Email adresiniz",
   "Firstname": "Adınız",
   "Lastname": "Soyadınız",
+  "Phone number": "Telefon numarası",
   "Picture": "Resim",
   "Upload profile picture": "Profil resmi yükle",
   "Change password": "Şifre değiştir",
@@ -109,9 +122,14 @@
   "RSS Feed loaded successfully": "RSS başarıyla yüklenmiştir",
   "Failed to fetch RSS feed": "RSS yüklenirken hata oluştu",
 
+  "Help": "Yardım",
+  "Help & Support": "Yardım & Destek",
   "FAQs": "Sık sorulan sorular",
+  "Chat with us on WhatsApp": "Whatsapp üzerinden iletişime geçin",
+
+  "My favorites": "Favorilerim",
 
   "Wallet": "Cüzdan",
   "Free": "Ücretsiz",
-  "Stores": "Mağazalar"
+  "Stores": "Şubeler"
 }

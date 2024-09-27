@@ -51,7 +51,7 @@ export const Stores = () => {
         {storesData.map(store => (
           <div key={store.id} className="border rounded-lg p-4 shadow-md flex items-start space-x-4">
             <div className="w-full">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{store.title}</h3>
+              <h3 className="text-xl font-semibold text">{store.title}</h3>
               <p className="text-gray-500 mb-4">{store.description}</p>
 
               <div className="mb-2">

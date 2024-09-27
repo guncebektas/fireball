@@ -15,6 +15,10 @@
     @apply tracking-tight font-extrabold text-gray-900 dark:text-white
   }
 
+  .text {
+    @apply text-gray-900 dark:text-white
+  }
+
   .header-dropdown-wrapper {
     @apply p-2 mr-1 text-gray-500 rounded-lg
     hover:text-gray-900 hover:bg-gray-100
@@ -27,4 +31,43 @@
 /** overwrite */
 .focus\:ring-cyan-300:focus {
   --tw-ring-opacity: 0 !important;
+}
+
+/* Apply this only for mobile screens */
+@media (max-width: 768px) {
+  .mobile-glimpse {
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Trigger the sliding animation on page load */
+  .mobile-glimpse::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 15px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    z-index: 10;
+  }
+
+  #tab-list {
+    animation: slideGlimpse 4s ease-in-out forwards;
+  }
+
+  @keyframes slideGlimpse {
+    0% {
+      transform: translateX(0);
+    }
+    30% {
+      transform: translateX(-40px); /* Adjust to show hidden part of tabs */
+    }
+    60% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 }

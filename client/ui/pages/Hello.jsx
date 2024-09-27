@@ -2,11 +2,14 @@ import React, {useState} from 'react';
 import {Button} from "flowbite-react";
 import {H2} from "../components/heading/Headings.jsx";
 import {useTranslator} from "../providers/i18n";
+import {Slider} from "../components/slider/Slider";
 
 export const Hello = () => {
   const t = useTranslator();
 
   const {name, logo} = Meteor.settings.public.app;
+  const { carousel } = Meteor.settings.public.pages.aboutUs;
+
   const welcomeMessage = `${t('Welcome to {$name}', {name: name})}!`
 
   const [counter, setCounter] = useState(0);
@@ -36,6 +39,10 @@ export const Hello = () => {
             </Button>
           </div>
         </div>
+      </div>
+
+      <div className="mb-3">
+        <Slider carousel={carousel} showCaption={false}/>
       </div>
     </>
   );

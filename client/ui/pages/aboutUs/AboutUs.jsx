@@ -1,7 +1,7 @@
 import React from 'react';
-import { Carousel } from 'flowbite-react';
 import {H2} from "../../components/heading/Headings";
 import {useTranslator} from "../../providers/i18n";
+import {Slider} from "../../components/slider/Slider";
 
 export const AboutUs = () => {
   const t = useTranslator();
@@ -18,20 +18,7 @@ export const AboutUs = () => {
       </div>
 
       <div className="mb-10">
-        <Carousel className="h-64 lg:h-96 rounded-lg overflow-hidden shadow-lg" indicators={false}>
-          {carousel.map((slide, index) => (
-            <div key={index} className="relative w-full h-full">
-              <img
-                src={slide.image}
-                alt={`Slide ${index + 1}`}
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3 text-center">
-                {t(slide.caption)}
-              </div>
-            </div>
-          ))}
-        </Carousel>
+        <Slider carousel={carousel} />
       </div>
 
       <div className="text-lg text-gray-500 space-y-6">

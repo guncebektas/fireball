@@ -27,7 +27,7 @@ export const HeaderNotifications = () => {
           <div className="pl-3 w-full">
             <div className="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
               New message from
-              <span className="font-semibold text-gray-900 dark:text-white"> Bonnie Green</span>: "Hey, what's up? All set for the presentation?"
+              <span className="font-semibold text"> Bonnie Green</span>: "Hey, what's up? All set for the presentation?"
             </div>
             <div className="text-xs font-medium text-primary-600 dark:text-primary-500">
               a few moments ago
@@ -44,8 +44,8 @@ export const HeaderNotifications = () => {
           />
           <div className="pl-3 w-full">
             <div className="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
-              <span className="font-semibold text-gray-900 dark:text-white"> Jese Leos</span> and{" "}
-              <span className="font-medium text-gray-900 dark:text-white">5 others</span> started following you.
+              <span className="font-semibold text"> Jese Leos</span> and{" "}
+              <span className="font-medium text">5 others</span> started following you.
             </div>
             <div className="text-xs font-medium text-primary-600 dark:text-primary-500">
               10 minutes ago
@@ -62,8 +62,8 @@ export const HeaderNotifications = () => {
           />
           <div className="pl-3 w-full">
             <div className="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
-              <span className="font-semibold text-gray-900 dark:text-white">Joseph McFall</span> and{" "}
-              <span className="font-medium text-gray-900 dark:text-white">141 others</span> love your story. See it and view more stories.
+              <span className="font-semibold text">Joseph McFall</span> and{" "}
+              <span className="font-medium text">141 others</span> love your story. See it and view more stories.
             </div>
             <div className="text-xs font-medium text-primary-600 dark:text-primary-500">
               44 minutes ago

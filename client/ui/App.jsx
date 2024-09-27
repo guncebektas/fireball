@@ -3,7 +3,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {Flowbite} from "flowbite-react";
 import {ConditionalLayout} from "./layouts/ConditionalLayout.jsx";
 import * as fontawesome from "@fortawesome/fontawesome-svg-core";
-import {faBell, faCheck, faClipboard, faClipboardList, faCodeMerge, faCoffee, faCog, faDashboard, faEnvelope, faEnvelopesBulk, faFile, faHeart, faMeteor, faMoneyBillWave, faPenRuler, faRightFromBracket, faRss, faStar, faStore, faSuitcase, faUser, faUserTie} from "@fortawesome/free-solid-svg-icons";
+import {faBell, faCheck, faCircleInfo, faClipboard, faClipboardList, faCodeMerge, faCoffee, faCog, faDashboard, faEnvelope, faEnvelopesBulk, faFile, faHeart, faHouse, faLifeRing, faMeteor, faMoneyBillWave, faPenRuler, faRightFromBracket, faRss, faStar, faStore, faSuitcase, faUser, faUserTie} from "@fortawesome/free-solid-svg-icons";
 import {LocaleProvider} from "./providers/i18n";
 import {faGithub} from "@fortawesome/free-brands-svg-icons/faGithub";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons";
@@ -14,26 +14,29 @@ fontawesome.library.add(
   faCheck,
   faClipboard,
   faClipboardList,
+  faCircleInfo,
   faCodeMerge,
   faCoffee,
   faCog,
   faDashboard,
+  faEnvelope,
+  faEnvelopesBulk,
   faFile,
-  faMoneyBillWave,
-  faMeteor,
+  faGithub,
+  faGoogle,
   faHeart,
+  faHouse,
+  faMeteor,
+  faMoneyBillWave,
+  faLifeRing,
   faPenRuler,
+  faRightFromBracket,
   faRss,
+  faStar,
+  faStore,
   faSuitcase,
   faUser,
   faUserTie,
-  faEnvelope,
-  faEnvelopesBulk,
-  faStar,
-  faStore,
-  faRightFromBracket,
-  faGithub,
-  faGoogle,
 );
 
 const customTheme = {

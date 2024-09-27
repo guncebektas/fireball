@@ -6,6 +6,7 @@ import {CONTACT_REQUESTS_PUBLICATION} from "../../../../imports/modules/contactR
 import {contactRequestRepository} from "../../../../imports/modules/contactRequests/contactRequestRepository";
 import {contactRequestRemove} from "../../../../imports/modules/contactRequests/contact.methods";
 import {useTranslator} from "../../providers/i18n";
+import {BackButton} from "../../components/buttons/BackButton";
 
 export const ContactRequests = () => {
   const t = useTranslator();
@@ -26,13 +27,8 @@ export const ContactRequests = () => {
 
   return (
     <>
-      <div className="sm:flex sm:items-start sm:justify-between">
-        <div>
-          <div className="flex items-center">
-            <H2 text="Contact requests"></H2>
-          </div>
-        </div>
-      </div>
+      <H2 text="Contact requests" showBackButton={true}></H2>
+
       <div className="mt-2 w-full text-gray-500 text-lg">
         <Table striped hoverable className="w-full">
           <Table.Body>

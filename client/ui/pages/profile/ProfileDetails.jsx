@@ -16,6 +16,7 @@ export const ProfileDetails = () => {
     email: '',
     firstname: '',
     lastname: '',
+    phoneNumber: ''
   });
 
   const user = useTracker(() => Meteor.user(), []);
@@ -25,12 +26,13 @@ export const ProfileDetails = () => {
 
     if (handle.ready()) {
       const me = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
-      let email  = user?.emails?.length > 0 ? user?.emails[0]?.address : '';
+      let email = user?.emails?.length > 0 ? user?.emails[0]?.address : '';
 
       setFormData({
         email,
         firstname: me.firstname || '',
-        lastname: me.lastname || ''
+        lastname: me.lastname || '',
+        phoneNumber: me.phoneNumber
       });
     }
   }, [user]);
@@ -38,7 +40,11 @@ export const ProfileDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await profileUpdate({firstname: formData.firstname, lastname: formData.lastname})
+    await profileUpdate({
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      phoneNumber: formData.phoneNumber
+    })
       .then(response => {
         ToastSuccess();
       })
@@ -56,7 +62,10 @@ export const ProfileDetails = () => {
 
   return (
     <>
-      <H2 text="Profile"></H2>
+      <div className="my-3">
+        <H2 text="Profile"></H2>
+      </div>
+
       <div className="grid grid-flow-col justify-stretch space-x-4">
         <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
           <div className="mb-2">
@@ -76,6 +85,12 @@ export const ProfileDetails = () => {
               <Label htmlFor="lastname" value={t('Lastname')}/>
             </div>
             <TextInput id="lastname" type="text" value={formData.lastname} onChange={handleInputChange}/>
+          </div>
+          <div className="mb-2">
+            <div className="mb-2 block">
+              <Label htmlFor="phoneNumber" value={t('Phone number')}/>
+            </div>
+            <TextInput id="phoneNumber" type="number" value={formData.phoneNumber} onChange={handleInputChange}/>
           </div>
           <div>
             <Button type="submit" color="primary">{t('Save')}</Button>

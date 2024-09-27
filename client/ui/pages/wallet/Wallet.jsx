@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { useTranslator } from "../../providers/i18n";
-import {Modal, Accordion, Button} from 'flowbite-react'; // Import Modal and Accordion from Flowbite
+import {Modal, Accordion, Button, Carousel} from 'flowbite-react';
+import {H4} from "../../components/heading/Headings";
+import {Slider} from "../../components/slider/Slider"; // Import Modal and Accordion from Flowbite
 
 const FAQs = [
   { question: 'Bu uygulama nasıl çalışıyor?', answer: 'Uygulama, kullanıcıların belirli hedeflere ulaşmalarına yardımcı olur.' },
@@ -21,22 +23,22 @@ const ProgressBar = ({ target, current, reward }) => {
   return (
     <div className="flex items-center space-x-4">
       <div className="flex items-center">
-        <span className="font-bold">{current}/{target}</span>
+        <span className="text font-bold">{current}/{target}</span>
       </div>
 
-      <div className="relative w-full h-4 bg-gray-200 rounded">
+      <div className="relative w-full h-4 bg-gray-200 dark:bg-gray-700 rounded">
         <div
-          className="absolute h-full bg-green-300 rounded"
+          className="absolute h-full bg-green-700 rounded"
           style={{ width: `${progressPercentage}%` }}
         />
       </div>
 
       <div className="flex items-center ml-2">
-        <FontAwesomeIcon icon={faCoffee} className="text-brown-500 text-xl mr-1" />
-        <div className="w-6 h-6 flex items-center justify-center rounded-full bg-green-300 mr-1">
-          <span className="text-sm font-bold">{reward}</span>
+        <FontAwesomeIcon icon={faCoffee} className="text text-xl mr-1" />
+        <div className="w-6 h-6 flex items-center justify-center rounded-full bg-green-700 mr-1">
+          <span className="text-white text-sm font-bold">{reward}</span>
         </div>
-        <span className="ml-1 text-xs">{t('Free')}</span>
+        <span className="text text-xs ml-1">{t('Free')}</span>
       </div>
       <button
         className="text-blue-500 hover:underline"
@@ -87,9 +89,8 @@ const WalletBalance = ({ balance, onAddMoney }) => {
 
   return (
     <div className="w-full">
-      <p className="text-lg font-bold">
-        {t('Wallet')}: {formatCurrency(balance.toFixed(2))}
-      </p>
+      <H4 text={`${t('Wallet')}: ${formatCurrency(balance.toFixed(2))}`} />
+
       <div className="mt-2 grid grid-cols-3 gap-2"> {/* Change to grid layout */}
         {amounts.map((amount) => (
           <Button
@@ -106,6 +107,10 @@ const WalletBalance = ({ balance, onAddMoney }) => {
 };
 
 export const Wallet = () => {
+  const t = useTranslator();
+
+  const { carousel } = Meteor.settings.public.pages.aboutUs;
+
   const [balance, setBalance] = useState(100.00); // Initial wallet balance
 
   const addMoney = (amount) => {
@@ -114,8 +119,12 @@ export const Wallet = () => {
 
   return (
     <div className="flex flex-col space-y-4">
-      <ProgressBar target={10} current={3} reward={5} />
-      <WalletBalance balance={balance} onAddMoney={addMoney} />
+      <div className="mb-3">
+        <Slider carousel={carousel} showCaption={false} />
+      </div>
+
+      <ProgressBar target={10} current={3} reward={5}/>
+      <WalletBalance balance={balance} onAddMoney={addMoney}/>
     </div>
   );
 };
