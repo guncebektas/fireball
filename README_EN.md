@@ -89,7 +89,8 @@ Monti
 - [ ] Complex form components written with tailwind
 - [x] RSS Fetcher
 - [x] AWS s3 integration
-- [ ] Job module
+- [x] Job module
+- [x] Migration module
 - [x] Performance monitoring with MontiAPM
 - [x] Axios implementation
 - [ ] Swagger implementation

@@ -86,7 +86,8 @@ Monti
 - [ ] Headless CMS entegrasyonu
 - [x] RSS gösterimi
 - [x] AWS s3 entegrasyonu
-- [ ] Zamanlanmış görevler
+- [x] Zamanlanmış görevler
+- [x] Migration modülü
 - [x] MontiAPM ile performans takibi
 - [x] Axios kullanımı
 - [ ] Swagger implementation
