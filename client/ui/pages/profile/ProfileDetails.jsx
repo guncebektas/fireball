@@ -1,102 +1,91 @@
-import React, {useState} from 'react';
-import {Button, Label, TextInput} from "flowbite-react";
-import {H2} from "../../components/heading/Headings.jsx";
-import {ToastSuccess, ToastWarning} from "../../components/alert/Toast";
-import {useTracker} from "meteor/react-meteor-data";
-import {Meteor} from "meteor/meteor";
-import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/userProfiles/enums/publication.js";
-import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository.js";
-import {profileUpdate} from "../../../../imports/modules/userProfiles/userProfile.methods.js";
-import {useTranslator} from "../../providers/i18n";
+import React, { useState } from 'react';
+import { Button, Label, TextInput } from 'flowbite-react';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
+import { ToastSuccess, ToastWarning } from '../../components/alert/Toast';
+import { profileUpdate } from '../../../../imports/modules/userProfiles/userProfile.methods';
+import { userProfileRepository } from '../../../../imports/modules/userProfiles/userProfileRepository';
+import { USER_PROFILE_PUBLICATION } from '../../../../imports/modules/userProfiles/enums/publication';
+import { useTranslator } from "../../providers/i18n";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import SubmitButton from "../../components/buttons/SubmitButton"; // Import spinner icon
 
 export const ProfileDetails = () => {
   const t = useTranslator();
-
   const [formData, setFormData] = useState({
     email: '',
     firstname: '',
     lastname: '',
-    phoneNumber: ''
+    phoneNumber: '',
   });
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const user = useTracker(() => Meteor.user(), []);
 
   useTracker(() => {
-    const handle = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
-
-    if (handle.ready()) {
-      const me = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
-      let email = user?.emails?.length > 0 ? user?.emails[0]?.address : '';
-
+    const subscription = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
+    if (subscription.ready()) {
+      const userProfile = userProfileRepository.findOne({ _id: Meteor.userId() }) || {};
+      const email = user?.emails?.[0]?.address || '';
       setFormData({
         email,
-        firstname: me.firstname || '',
-        lastname: me.lastname || '',
-        phoneNumber: me.phoneNumber
+        firstname: userProfile.firstname || '',
+        lastname: userProfile.lastname || '',
+        phoneNumber: userProfile.phoneNumber || '',
       });
     }
   }, [user]);
 
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [id]: value }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading state to true
 
     await profileUpdate({
       firstname: formData.firstname,
       lastname: formData.lastname,
-      phoneNumber: formData.phoneNumber
+      phoneNumber: Number(formData.phoneNumber)
     })
       .then(response => {
-        ToastSuccess();
+        console.log(response);
+        // ToastSuccess();
       })
       .catch(error => {
-        ToastWarning();
+        console.log(error);
+        // ToastWarning();
       })
-  };
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
+      .finally(() => {
+        setLoading(false); // Reset loading state
+      });
   };
 
   return (
-    <>
-      <div className="my-3">
-        <H2 text="Profile"></H2>
+    <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
+      <div>
+        <Label htmlFor="email" value={t('Email')}/>
+        <TextInput id="email" type="text" value={formData.email} disabled/>
       </div>
-
-      <div className="grid grid-flow-col justify-stretch space-x-4">
-        <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
-          <div className="mb-2">
-            <div className="mb-2 block">
-              <Label htmlFor="email" value={t('Your email')}/>
-            </div>
-            <TextInput id="email" type="text" value={formData.email} disabled/>
-          </div>
-          <div className="mb-2">
-            <div className="mb-2 block">
-              <Label htmlFor="firstname" value={t('Firstname')}/>
-            </div>
-            <TextInput id="firstname" type="text" value={formData.firstname} onChange={handleInputChange}/>
-          </div>
-          <div className="mb-2">
-            <div className="mb-2 block">
-              <Label htmlFor="lastname" value={t('Lastname')}/>
-            </div>
-            <TextInput id="lastname" type="text" value={formData.lastname} onChange={handleInputChange}/>
-          </div>
-          <div className="mb-2">
-            <div className="mb-2 block">
-              <Label htmlFor="phoneNumber" value={t('Phone number')}/>
-            </div>
-            <TextInput id="phoneNumber" type="number" value={formData.phoneNumber} onChange={handleInputChange}/>
-          </div>
-          <div>
-            <Button type="submit" color="primary">{t('Save')}</Button>
-          </div>
-        </form>
+      <div>
+        <Label htmlFor="firstname" value={t('Firstname')}/>
+        <TextInput id="firstname" type="text" value={formData.firstname} onChange={handleChange}/>
       </div>
-    </>
+      <div>
+        <Label htmlFor="lastname" value={t('Lastname')}/>
+        <TextInput id="lastname" type="text" value={formData.lastname} onChange={handleChange}/>
+      </div>
+      <div>
+        <Label htmlFor="phoneNumber" value={t('Phone number')}/>
+        <TextInput id="phoneNumber" type="number" value={formData.phoneNumber} onChange={handleChange}/>
+      </div>
+      <SubmitButton
+        isLoading={loading}
+        text={{ default: t('Save'), loading: t('Loading...') }} // Pass loading and default text
+      />
+    </form>
   );
 };

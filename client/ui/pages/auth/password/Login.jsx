@@ -34,8 +34,6 @@ export const Login = ({onStateChange}) => {
 
     Meteor.loginWithPassword(formData.email, formData.password, (error, response) => {
       if (error) {
-        console.error(error);
-
         if (error.error === "no-2fa-code") {
           setOpenModal(true)
         } else {

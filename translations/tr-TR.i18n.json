@@ -24,10 +24,12 @@
   "Register": "Kayıt",
   "I accept the terms and conditions": "Kullanım koşullarını onaylıyorum",
   "Terms and conditions": "Kullanım sözleşmesi",
-  "Your terms and conditions content goes here": "Kullanım sözleşmesi ile ilgili metin buraya gelecek",
-  "I accept the privacy policy": "Gizlilik sözleşmesini onaylıyorum",
-  "Privacy policy": "Gizlilik sözleşmesi",
-  "Your GDPR policy content goes here": "KVKK metni buraya gelecek",
+  "Terms and conditions content goes here": "Kullanım sözleşmesi ile ilgili metin buraya gelecek",
+  "I accept the privacy policy": "Gizlilik politikasını onaylıyorum",
+  "Privacy policy": "Gizlilik politikası",
+  "Privacy policy content goes here": "Gizlilik politikasının metni buraya gelecek",
+  "Passwords should be same": "Kayıt olmak için kulandığınız şifreler aynı olmalıdır",
+  "You must accept the terms and privacy policy to register": "Kayıt olmak için kullanım sözleşmesi ve gizlilik politikasını kabul etmelisiniz",
   "Already have an account": "Hesabınız var mı",
   "Request token": "Jeton iste",
   "Your token": "Jeton",
@@ -40,6 +42,7 @@
   "Connect": "Bağlan",
   "Dismiss": "Kapat",
   "Submit": "Gönder",
+  "Save": "Kaydet",
   "Request": "İste",
   "Close": "Kapat",
   "Back": "Geri",
@@ -130,6 +133,7 @@
   "My favorites": "Favorilerim",
 
   "Wallet": "Cüzdan",
+  "Earn one coffee with {$target} stars": "{$target} yıldıza 1 kahve ücretsiz",
   "Free": "Ücretsiz",
   "Stores": "Şubeler"
 }

@@ -7,8 +7,8 @@ import {profileOtp} from "./schemas/profileOtp";
 export const profileUpdate = createMethod({
   name: 'profile.update',
   schema: profileDetails,
-  async run({firstname, lastname}) {
-    return userProfileService.edit(this.userId, firstname, lastname);
+  async run({firstname, lastname, phoneNumber}) {
+    return userProfileService.edit(this.userId, firstname, lastname, phoneNumber);
   }
 });
 

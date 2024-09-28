@@ -3,8 +3,10 @@ import Map from '../../components/map/Map';
 import {Title} from "../../components/title/Title";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faMapMarkerAlt, faPhone} from '@fortawesome/free-solid-svg-icons';
-import {Button, Modal} from 'flowbite-react';
+import {Button} from 'flowbite-react';
 import {useTranslator} from "../../providers/i18n";
+import {StoreDetailsModal} from "./StoreDetailsModal";
+import {StoreMenuModal} from "./StoreMenuModal"; // Import the new component
 
 const storesData = [{
   id: 1,
@@ -34,13 +36,18 @@ const storesData = [{
 
 export const Stores = () => {
   const t = useTranslator();
-
-  const [openModal, setOpenModal] = useState(false);
+  const [openDetailsModal, setOpenDetailsModal] = useState(false);
+  const [openMenuModal, setOpenMenuModal] = useState(false);
   const [selectedStore, setSelectedStore] = useState(null);
 
-  const handleOpenModal = (store) => {
+  const handleOpenDetailsModal = (store) => {
     setSelectedStore(store);
-    setOpenModal(true);
+    setOpenDetailsModal(true);
+  };
+
+  const handleOpenMenuModal = (store) => {
+    setSelectedStore(store);
+    setOpenMenuModal(true);
   };
 
   return (
@@ -49,9 +56,9 @@ export const Stores = () => {
 
       <div className="space-y-6">
         {storesData.map(store => (
-          <div key={store.id} className="border rounded-lg p-4 shadow-md flex items-start space-x-4">
+          <div key={store.id} className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
             <div className="w-full">
-              <h3 className="text-xl font-semibold text">{store.title}</h3>
+              <h3 className="m-title text-xl font-semibold">{store.title}</h3>
               <p className="text-gray-500 mb-4">{store.description}</p>
 
               <div className="mb-2">
@@ -63,7 +70,10 @@ export const Stores = () => {
                 <span className={"text-gray-500"}>{store.phone}</span>
               </div>
 
-              <Button color={"blue"} onClick={() => handleOpenModal(store)}>{t('More')}</Button>
+              <div className="flex">
+                <Button color={"blue"} onClick={() => handleOpenDetailsModal(store)} className="mr-1">{t('More')}</Button>
+                <Button color={"blue"} onClick={() => handleOpenMenuModal(store)}>{t('Menu')}</Button>
+              </div>
             </div>
 
             {/* Map Component */}
@@ -74,30 +84,8 @@ export const Stores = () => {
         ))}
       </div>
 
-      {/* Modal Component */}
-      {selectedStore && (
-        <Modal show={openModal} onClose={() => setOpenModal(false)}>
-          <Modal.Header>
-            {selectedStore.title}
-          </Modal.Header>
-          <Modal.Body>
-            <p className="text-gray-500">{selectedStore.info}</p>
-            <div className="mt-4">
-              <FontAwesomeIcon icon={faMapMarkerAlt} className="text-blue-500 mr-2"/>
-              <span className="text-gray-500">{selectedStore.address}</span>
-            </div>
-            <div className="mt-2">
-              <FontAwesomeIcon icon={faPhone} className="text-blue-500 mr-2"/>
-              <span className="text-gray-500">{selectedStore.phone}</span>
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button color={"gray"} onClick={() => setOpenModal(false)}>
-              {t('Close')}
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
+      <StoreDetailsModal store={selectedStore} isOpen={openDetailsModal} onClose={() => setOpenDetailsModal(false)}/>
+      <StoreMenuModal store={selectedStore} isOpen={openMenuModal} onClose={() => setOpenMenuModal(false)}/>
     </>
   );
 };

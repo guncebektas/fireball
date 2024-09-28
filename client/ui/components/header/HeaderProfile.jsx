@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Meteor} from "meteor/meteor";
 import {useTracker} from "meteor/react-meteor-data";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Dropdown} from "flowbite-react";
 import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/userProfiles/enums/publication.js";
 import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository.js";
@@ -10,8 +10,10 @@ import {ROUTE} from "../../../routes/enums/route.js";
 import {useTranslator} from "../../providers/i18n";
 
 export const HeaderProfile = () => {
+  const navigate = useNavigate();
   const t = useTranslator();
-  const isShowDevTools = Meteor.settings.public.isShowDevTools;
+
+  const showDevTools = Meteor.settings.public.showDevTools;
 
   const [formData, setFormData] = useState({
     email: '',
@@ -38,6 +40,8 @@ export const HeaderProfile = () => {
 
   const handleLogout = () => {
     Meteor.logout();
+    navigate(ROUTE.HOME);
+    location.reload();
   };
 
   return (
@@ -70,7 +74,7 @@ export const HeaderProfile = () => {
       </Dropdown.Item>
 
       {
-        isShowDevTools ?
+        showDevTools ?
           <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
             <a href="https://github.com" className="flex items-center">
               <FontAwesomeIcon icon="code-merge" className="mr-2"/>
@@ -80,7 +84,7 @@ export const HeaderProfile = () => {
       }
 
       {
-        isShowDevTools ?
+        showDevTools ?
           <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
             <a href="https://meteor.com/" target="_blank" className="flex items-center">
               <FontAwesomeIcon icon="meteor" className="mr-2"/>
@@ -90,7 +94,7 @@ export const HeaderProfile = () => {
       }
 
       {
-        isShowDevTools ?
+        showDevTools ?
           <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
             <a href="https://flowbite.com/" target="_blank" className="flex items-center">
               <FontAwesomeIcon icon="pen-ruler" className="mr-2"/>

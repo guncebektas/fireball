@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2'
 import {useTranslator} from "../../providers/i18n";
+import {Log} from "meteor/logging";
 
 export const ToastWarning = async (text = 'An error occurred, please try again', object = {}) => {
   const t = useTranslator();
@@ -47,7 +48,7 @@ export const ToastError = async (text = 'An error occurred, please try again', o
   await Swal.fire(options);
 }
 
-export const ToastSuccess = async (text = 'Completed successfully', object = {}) => {
+export const ToastSuccess = (text = 'Completed successfully', object = {}) => {
   const t = useTranslator();
 
   let options = {
@@ -67,5 +68,5 @@ export const ToastSuccess = async (text = 'Completed successfully', object = {})
 
   options = {...options, ...object};
 
-  await Swal.fire(options);
+  Swal.fire(options).then(response => Log.debug(response));
 }

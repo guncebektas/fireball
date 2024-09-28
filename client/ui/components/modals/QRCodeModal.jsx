@@ -21,7 +21,8 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     profileSaveOtp({otp});
   };
 
-  const {icon} = Meteor.settings.public.app;
+  const {id, icon} = Meteor.settings.public.app;
+  const qrValue = `${id}:${otp}`;
 
   return (
     <Modal show={isOpen} size="md" onClose={onClose}>
@@ -29,7 +30,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
       <Modal.Body>
         <div className="flex justify-center">
           <QRCodeCanvas
-            value={otp}
+            value={qrValue}
             size={200}
             imageSettings={{
               src: icon, // Path to your logo

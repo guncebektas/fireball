@@ -16,7 +16,6 @@ export const Profile = () => {
 
   return (
     <div className="gap-3 mx-auto max-w-screen-xl dark:text-white relative">
-      {/* Scrollable tab header */}
       <div className="overflow-x-auto relative">
         <ul id="tab-list" className="flex border-b space-x-4 w-full min-w-max mobile-glimpse">
           <li className="cursor-pointer">

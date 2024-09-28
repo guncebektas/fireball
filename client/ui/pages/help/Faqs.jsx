@@ -2,7 +2,6 @@ import React from "react";
 import {Accordion} from 'flowbite-react';
 import {H2} from "../../components/heading/Headings";
 import {useTranslator} from "../../providers/i18n";
-import {BackButton} from "../../components/buttons/BackButton";
 
 export const Faqs = () => {
   const t = useTranslator();
@@ -16,14 +15,14 @@ export const Faqs = () => {
   return (
     <>
       <H2 text={t('FAQs')} showBackButton={true}/>
-      <Accordion alwaysOpen={true}>
+      <Accordion>
         {faqs.map((faq, index) => (
           <Accordion.Panel key={index}>
             <Accordion.Title>
               {faq.question}
             </Accordion.Title>
             <Accordion.Content>
-              <p>{faq.answer}</p>
+              <p className="m-text">{faq.answer}</p>
             </Accordion.Content>
           </Accordion.Panel>
         ))}

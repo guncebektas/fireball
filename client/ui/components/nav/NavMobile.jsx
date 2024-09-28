@@ -33,7 +33,7 @@ export const NavMobile = () => {
       href: "#",
       icon: faQrcode,
       specialClass:
-        "bg-blue-700 hover:bg-red-900 focus:ring-blue-300 active:bg-blue-300 dark:bg-blue-600 dark:hover:bg-red-900 dark:focus:ring-blue-800 dark:active:bg-blue-800 text-white rounded-full p-2 transform scale-125",
+        "bg-blue-700 hover:bg-red-900 focus:ring-blue-300 active:bg-blue-300 dark:bg-blue-600 dark:hover:bg-red-900 dark:focus:ring-blue-800 dark:active:bg-blue-800 text-white dark:text-white rounded-full p-2 transform scale-125",
       onClick: () => setIsQRCodeModalOpen(true),
     },
     {

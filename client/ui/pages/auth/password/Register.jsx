@@ -31,7 +31,7 @@ export const Register = ({ onStateChange }) => {
 
     if (!termsAccepted || !gdprAccepted) {
       setOpenAlert(true);
-      setErrorMessage('You must accept the Terms and GDPR to register.');
+      setErrorMessage('You must accept the terms and privacy policy to register');
       return;
     }
 
@@ -43,7 +43,7 @@ export const Register = ({ onStateChange }) => {
 
     if (formData.password !== formData.passwordAgain) {
       setOpenAlert(true);
-      setErrorMessage(`Passwords should be same.`);
+      setErrorMessage(`Passwords should be same`);
       return;
     }
 
@@ -89,7 +89,7 @@ export const Register = ({ onStateChange }) => {
       <div className="bg-white dark:bg-gray-900 py-8 px-4 mt-8 shadow sm:rounded-lg sm:px-10">
         <div>
           <Alert show={openAlert} color="failure" iconName="warning">
-            <span className="font-medium">Error:</span> {errorMessage}
+            <span className="font-medium">Error:</span> {t(errorMessage)}.
           </Alert>
 
           <form className="space-y-6" onSubmit={handleSubmit}>
@@ -112,7 +112,6 @@ export const Register = ({ onStateChange }) => {
               <PasswordInput ref={passwordAgainRef} required />
             </div>
 
-            {/* Terms Switch */}
             <div className="mb-2 flex items-center">
               <ToggleSwitch
                 checked={termsAccepted}
@@ -125,7 +124,6 @@ export const Register = ({ onStateChange }) => {
               </Button>
             </div>
 
-            {/* GDPR Switch */}
             <div className="mb-2 flex items-center">
               <ToggleSwitch
                 checked={gdprAccepted}

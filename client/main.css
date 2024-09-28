@@ -11,12 +11,16 @@
 }
 
 @layer components {
-  .title {
-    @apply tracking-tight font-extrabold text-gray-900 dark:text-white
+  .m-title {
+    @apply font-extrabold text-gray-900 dark:text-white tracking-tight
   }
 
-  .text {
+  .m-text {
     @apply text-gray-900 dark:text-white
+  }
+
+  .m-border {
+    @apply border border-gray-300 dark:border-gray-600
   }
 
   .header-dropdown-wrapper {
