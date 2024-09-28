@@ -1,3 +1,6 @@
 .idea/
 node_modules/
+jsconfig.json
+launch.json
+
 settings.json
