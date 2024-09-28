@@ -12,7 +12,7 @@ Meteor.startup(() => {
     schedule: (parser) => parser.text('every 30 seconds'),
     job: () => {
       // eslint-disable-next-line no-console
-      Log.info(`Cron job is running in every 5 seconds`);
+      Log.info(`Cron job is running in every 30 seconds`);
     },
   });
   SyncedCron.start();
