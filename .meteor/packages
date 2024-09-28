@@ -29,7 +29,9 @@ email@3.1.0
 
 universe:i18n
 
-percolate:migrations
+quave:synced-cron
+quave:migrations
+
 reywood:publish-composite
 
 accounts-base@3.0.2
@@ -47,10 +49,10 @@ alanning:roles@4.0.0
 
 # wildhart:partitioner
 
+ostrio:files
 jam:method
 # jam:soft-delete
 # jam:offline
 ddp-rate-limiter@1.2.2
 
 montiapm:agent
-ostrio:files

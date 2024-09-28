@@ -71,8 +71,9 @@ oauth2@1.3.3
 ordered-dict@1.2.0
 ostrio:cookies@2.8.1
 ostrio:files@3.0.0-beta.6
-percolate:migrations@2.0.0
 promise@1.0.0
+quave:migrations@2.0.2
+quave:synced-cron@2.0.8
 random@1.2.2
 rate-limit@1.1.2
 react-fast-refresh@0.2.9
