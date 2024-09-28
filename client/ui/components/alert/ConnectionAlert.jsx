@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Button } from 'flowbite-react'; // Import Button from Flowbite
+import { Alert, Button } from 'flowbite-react';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +9,7 @@ import {useTranslator} from "../../providers/i18n";
 export const ConnectionAlert = () => {
   const t = useTranslator();
 
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState(true);
   const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
