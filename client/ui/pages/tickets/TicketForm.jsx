@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {H2} from "../../components/heading/Headings.jsx";
 import {AutoForm} from '../../../../imports/modules/shared/uniforms-tailwind/src';
 import {ticketUpsert} from "../../../../imports/modules/tickets/ticket.methods.js";
@@ -8,9 +8,10 @@ import {useTracker} from "meteor/react-meteor-data";
 import {TICKET_PUBLICATION} from "../../../../imports/modules/tickets/enums/publication.js";
 import {ticketRepository} from "../../../../imports/modules/tickets/ticketRepository.js";
 import {FORM_TYPE} from "../../../shared/enums/formType.js";
-import {ToastSuccess} from "../../components/alert/Toast";
+import {ToastSuccess, ToastWarning} from "../../components/alert/Toast";
 
 export const TicketForm = () => {
+  const formRef = useRef();
   const {_id} = useParams();
 
   let ticket = {};
@@ -29,20 +30,24 @@ export const TicketForm = () => {
 
   const handleSubmit = async function (formData) {
     ticketUpsert(formData)
-    .then(response => {
-      console.log(response);
-      ToastSuccess()
-    })
-    .catch(error => {
-      console.log(error);
-    });
+      .then(response => {
+        ToastSuccess();
+      })
+      .catch(error => {
+        ToastWarning();
+      });
   };
 
   return (
     <>
       <H2 text="Ticket"></H2>
       <div className="grid grid-flow-col justify-stretch space-x-4">
-        <AutoForm schema={ticketBridge} model={ticket} onSubmit={handleSubmit}/>
+        <AutoForm
+          ref={formRef}
+          schema={ticketBridge}
+          model={ticket}
+          onSubmit={handleSubmit}
+        />
       </div>
     </>
   );
