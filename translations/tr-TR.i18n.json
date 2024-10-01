@@ -135,5 +135,13 @@
   "Wallet": "Cüzdan",
   "Earn one coffee with {$target} stars": "{$target} yıldıza 1 kahve ücretsiz",
   "Free": "Ücretsiz",
-  "Stores": "Şubeler"
+  "Stores": "Şubeler",
+
+  "Level": "Seviye",
+  "High": "Yüksek",
+  "Medium": "Orta",
+  "Low": "Düşük",
+
+  "Message": "Mesaj",
+  "Response": "Cevap"
 }
