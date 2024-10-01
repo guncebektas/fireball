@@ -4,6 +4,7 @@ import React, {HTMLProps, ReactNode} from 'react';
 import {Override, filterDOMProps} from 'uniforms';
 
 import gridClassName from './gridClassName';
+import {useTranslator} from "../../../../../client/ui/providers/i18n";
 
 type WrapperProps = Override<Omit<HTMLProps<HTMLDivElement>, 'onChange'>, {
   changed?: boolean;
@@ -39,6 +40,8 @@ export default function wrapField(
   }: WrapperProps,
   children: ReactNode,
 ) {
+  const t = useTranslator();
+
   const hasWrap = !!(grid || wrapClassName);
   const blockError = !!(error && showInlineError) && (
     <span className="form-text text-red-500">{errorMessage}</span>
@@ -86,7 +89,7 @@ export default function wrapField(
               labelClassName,
             )}
           >
-            {label}
+            {t(label)}
           </label>
         </div>
       )}

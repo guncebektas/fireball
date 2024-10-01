@@ -5,6 +5,7 @@ import {filterDOMProps, Override, useForm} from 'uniforms';
 
 import gridClassName from './gridClassName';
 import {baseButtonClasses} from "./baseFormClasses";
+import {useTranslator} from "../../../../../client/ui/providers/i18n";
 
 export type SubmitFieldProps = Override<
   HTMLProps<HTMLInputElement>,
@@ -25,6 +26,9 @@ function SubmitField({
                        wrapClassName,
                        ...props
                      }: SubmitFieldProps) {
+
+  const t = useTranslator();
+
   const {error, state: anyState} = useForm();
   const state = anyState as unknown as { disabled: boolean; grid: any };
   const hasWrap = !!(state.grid || wrapClassName);
@@ -45,7 +49,7 @@ function SubmitField({
       readOnly={readOnly}
       ref={inputRef}
       type="submit"
-      {...(value ? {value} : {})}
+      value={t('Submit')}
     />
   );
 

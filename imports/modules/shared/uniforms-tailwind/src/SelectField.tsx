@@ -3,10 +3,10 @@ import classnames from 'classnames';
 import xor from 'lodash/xor';
 import React, {Ref} from 'react';
 import {connectField, HTMLFieldProps} from 'uniforms';
-
 import type {Option} from './types';
 import wrapField from './wrapField';
 import {baseInputClasses} from "./baseFormClasses";
+import {useTranslator} from "../../../../../client/ui/providers/i18n";
 
 const base64: (string: string) => string =
   typeof btoa === 'undefined'
@@ -45,6 +45,9 @@ function Select({
                   value,
                   ...props
                 }: SelectFieldProps) {
+
+  const t = useTranslator();
+
   const multiple = fieldType === Array;
 
   return wrapField(
@@ -87,7 +90,7 @@ function Select({
               htmlFor={`${id}-${item.key ?? escape(item.value)}`}
               className="select-label"
             >
-              {item.label ?? item.value}
+              {t(item.label) ?? t(item.value)}
             </label>
           </div>
         ))}
@@ -132,7 +135,7 @@ function Select({
             key={option.key ?? option.value}
             value={option.value}
           >
-            {option.label ?? option.value}
+            {t(option.label ?? option.value)}
           </option>
         ))}
       </select>
