@@ -6,7 +6,8 @@ import {faMapMarkerAlt, faPhone} from '@fortawesome/free-solid-svg-icons';
 import {Button} from 'flowbite-react';
 import {useTranslator} from "../../providers/i18n";
 import {StoreDetailsModal} from "./StoreDetailsModal";
-import {StoreMenuModal} from "./StoreMenuModal"; // Import the new component
+import {StoreMenuModal} from "./StoreMenuModal";
+import {Link} from "react-router-dom"; // Import the new component
 
 const storesData = [{
   id: 1,
@@ -50,11 +51,22 @@ export const Stores = () => {
     setOpenMenuModal(true);
   };
 
+  const {links} = Meteor.settings.public.app;
+
   return (
     <>
       <Title text="Stores" centered={true}/>
 
       <div className="space-y-6">
+        <Link to={links.ecommerce} target="_blank">
+          <div key="ecommerce" className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
+            <div className="w-full">
+              <h3 className="m-title text-xl font-semibold">{t('Click for e-commerce site')}!</h3>
+              <p className="text-gray-500">{t('Check our e-commerce now')}.</p>
+            </div>
+          </div>
+        </Link>
+
         {storesData.map(store => (
           <div key={store.id} className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
             <div className="w-full">
