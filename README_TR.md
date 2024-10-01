@@ -62,33 +62,54 @@ npm run deploy
 ### APM
 Monti
 
-### Roadmap
-- [x] Giriş
-- [x] Kayıt
-- [x] Roller
-- [x] Log
-- [ ] Şifre kurtarma
-- [x] Hesap yönetimi
-- [x] Şifre değiştirme
-- [x] 2AD
-- [x] Karanlık tema
-- [x] Sayfalar arası geçiş
-- [x] Zod köprülü uniform
-- [x] Tailwind ile yazılmış basit form elemanları
-- [x] Fiyatlar sayfası
-- [ ] Ödeme sayfası
-- [ ] Lisans yönetimi
-- [ ] Multi-tenant database partitioning
-- [x] Soft-remove
-- [ ] Organizasyon yönetimi
-- [ ] Kullanıcı yönetimi
-- [ ] Destek sayfası
-- [ ] Headless CMS entegrasyonu
-- [x] RSS gösterimi
-- [x] AWS s3 entegrasyonu
-- [x] Zamanlanmış görevler
-- [x] Migration modülü
-- [x] MontiAPM ile performans takibi
-- [x] Axios kullanımı
-- [ ] Swagger implementation
-- [x] PWA
+
+### Özellikler & Yol haritası
+- [ ] Kullanıcı doğrulama
+    - [x] Giriş
+    - [x] Kayıt
+    - [x] Roller
+    - [ ] Şifremi unuttum
+    - [x] Şifre değiştirme
+    - [x] 2AD
+- [x] Log kaydı
+- [x] UI/UX
+    - [x] Tailwind
+    - [x] Flowbite react
+    - [x] Mobil-öncelikli
+    - [x] Responsive
+    - [x] Karanlık tema
+- [ ] Formlar
+    - [x] Zod bridge ile çalışan Uniform
+    - [x] Tailwind ile yazılmış temel form (uniform) elemanları 
+    - [x] Uniform'un temel form elemanlarına dil desteği
+    - [ ] Complex form components written with Tailwind
+- [ ] Sayfalar
+    - [x] Sayfa yönlendirme
+    - [x] Anasayfa
+    - [ ] Ödeme sayfası
+    - [x] Profil sayfası
+    - [x] Fiyatlar sayfası
+    - [x] Yardım / destek sayfası
+- [ ] Yönetim
+    - [ ] Kullanıcı yönetimi
+    - [x] Rol yönetimi
+    - [ ] Lisans yönetimi
+    - [ ] Organizasyon yönetimi
+    - [ ] Headless CMS entegrasyonu
+    - [x] RSS Okuyucu
+- [ ] Database
+    - [x] Tamamen soft-remove
+    - [ ] Multi-tenant database partitioning
+- [ ] Altyapı
+    - [x] Decoupled modül yapısı
+    - [x] Axios entegrasyonu
+    - [ ] Swagger entegrasyonu
+    - [x] Cron job modülü
+    - [x] Migration modülü
+    - [x] MontiAPM ile performans takibi
+    - [x] AWS s3 entegrasyonu
+    - [x] PWA
+    - [x] Çok dil desteği
+- [ ] Methodlar
+    - [x] Zod şemalarıyla valide edilmiş methodlar
+    - [ ] CQRS (Command ve Query buses)

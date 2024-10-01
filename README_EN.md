@@ -64,34 +64,53 @@ npm run deploy
 ### APM
 Monti
 
-### Roadmap
-- [x] Login
-- [x] Register
-- [x] Roles
+### Features & Roadmap
+- [ ] Authentication
+  - [x] Login
+  - [x] Register
+  - [x] Roles
+  - [ ] Forgotten password
+  - [x] Change password
+  - [x] 2FA
 - [x] Logging
-- [ ] Forgotten password
-- [x] Profile page
-- [x] Change password
-- [x] 2FA
-- [x] Dark mode
-- [x] Page routing
-- [x] Uniform with zod bridge
-- [x] Basic form components written with tailwind
-- [x] Price page
-- [ ] Payment page
-- [ ] License management 
-- [x] Completely soft-remove
-- [ ] Multi-tenant database partitioning
-- [ ] Organization management
-- [ ] User management
-- [ ] Support page
-- [ ] Headless CMS integration
-- [ ] Complex form components written with tailwind
-- [x] RSS Fetcher
-- [x] AWS s3 integration
-- [x] Job module
-- [x] Migration module
-- [x] Performance monitoring with MontiAPM
-- [x] Axios implementation
-- [ ] Swagger implementation
-- [x] PWA
+- [x] UI/UX
+  - [x] Tailwind
+  - [x] Flowbite react
+  - [x] Mobile-first
+  - [x] Responsive
+  - [x] Dark mode
+- [ ] Forms
+  - [x] Uniform with zod bridge
+  - [x] Basic form (uniform) components written with Tailwind
+  - [x] Basic forms of uniform with translation support
+  - [ ] Complex form components written with Tailwind
+- [ ] Pages
+  - [x] Page routing
+  - [x] Home page
+  - [ ] Payment page 
+  - [x] Profile page
+  - [x] Price page
+  - [x] Support page
+- [ ] Management
+  - [ ] User management
+  - [x] Role management
+  - [ ] License management 
+  - [ ] Organization management
+  - [ ] Headless CMS integration
+  - [x] RSS Reader
+- [ ] Database
+  - [x] Completely soft-remove
+  - [ ] Multi-tenant database partitioning
+- [ ] Infrastructure
+  - [x] Decoupled module structure
+  - [x] Axios implementation
+  - [ ] Swagger implementation
+  - [x] Cron job module
+  - [x] Migration module
+  - [x] Performance monitoring with MontiAPM
+  - [x] AWS s3 integration
+  - [x] PWA
+  - [x] Multi-lingual
+- [ ] Methods
+  - [x] Validated by zod schemas
+  - [ ] CQRS (Command and Query buses)
