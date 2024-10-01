@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import { Button, Label, TextInput } from 'flowbite-react';
-import { Meteor } from 'meteor/meteor';
-import { useTracker } from 'meteor/react-meteor-data';
-import { ToastSuccess, ToastWarning } from '../../components/alert/Toast';
-import { profileUpdate } from '../../../../imports/modules/userProfiles/userProfile.methods';
-import { userProfileRepository } from '../../../../imports/modules/userProfiles/userProfileRepository';
-import { USER_PROFILE_PUBLICATION } from '../../../../imports/modules/userProfiles/enums/publication';
-import { useTranslator } from "../../providers/i18n";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import React, {useState} from 'react';
+import {Label, TextInput} from 'flowbite-react';
+import {Meteor} from 'meteor/meteor';
+import {useTracker} from 'meteor/react-meteor-data';
+import {profileUpdate} from '../../../../imports/modules/userProfiles/userProfile.methods';
+import {userProfileRepository} from '../../../../imports/modules/userProfiles/userProfileRepository';
+import {USER_PROFILE_PUBLICATION} from '../../../../imports/modules/userProfiles/enums/publication';
+import {useTranslator} from "../../providers/i18n";
 import SubmitButton from "../../components/buttons/SubmitButton"; // Import spinner icon
 
 export const ProfileDetails = () => {
