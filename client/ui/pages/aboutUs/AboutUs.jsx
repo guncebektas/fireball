@@ -2,6 +2,7 @@ import React from 'react';
 import {H2} from "../../components/heading/Headings";
 import {useTranslator} from "../../providers/i18n";
 import {Slider} from "../../components/slider/Slider";
+import {SocialMediaIcons} from "../../components/buttons/SocialMediaIcons";
 
 export const AboutUs = () => {
   const t = useTranslator();
@@ -26,6 +27,8 @@ export const AboutUs = () => {
           <p key={index}>{t(paragraph)}</p>
         ))}
       </div>
+
+      <SocialMediaIcons />
     </>
   );
 };

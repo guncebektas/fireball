@@ -3,7 +3,17 @@
     "app": {
       "_id": "zvmXwvXe5P2dHkQDY",
       "name": "Saas Boilerplate",
+      "icon": "/online/brand/icons/icon.png",
       "logo": "/online/brand/logo.svg",
+      "links": {
+        "website": "https://ritapos.com",
+        "ecommerce": "https://app.ritapos.com",
+        "facebook": "https://www.facebook.com/ritaposcom",
+        "instagram": "https://www.instagram.com/ritapos_tr/",
+        "x": "https://x.com/ritapos_tr",
+        "linkedin": "https://www.linkedin.com/company/10869368/admin/dashboard/",
+        "youtube": "https://www.youtube.com/@ritapos"
+      },
       "defaultLanguage": "en-US",
       "supportedLanguages": [{
         "languageCode": "en-US",
