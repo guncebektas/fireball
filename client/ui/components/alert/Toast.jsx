@@ -1,10 +1,6 @@
 import Swal from 'sweetalert2'
-import {useTranslator} from "../../providers/i18n";
-import {Log} from "meteor/logging";
 
-export const ToastWarning = async (text = 'An error occurred, please try again', object = {}) => {
-  const t = useTranslator();
-
+export const ToastWarning = (text = 'An error occurred, please try again', object = {}) => {
   let options = {
     toast: true,
     timer: 3000,
@@ -15,19 +11,17 @@ export const ToastWarning = async (text = 'An error occurred, please try again',
     },
     position: 'top-end',
     icon: 'warning',
-    text: t(text),
+    text: i18n.__(text),
     showCloseButton: true,
     showConfirmButton: false
   };
 
   options = {...options, ...object};
 
-  await Swal.fire(options);
+  Swal.fire(options);
 }
 
-export const ToastError = async (text = 'An error occurred, please try again', object = {}) => {
-  const t = useTranslator();
-
+export const ToastError = (text = 'An error occurred, please try again', object = {}) => {
   let options = {
     toast: true,
     timer: 3000,
@@ -38,19 +32,17 @@ export const ToastError = async (text = 'An error occurred, please try again', o
     },
     position: 'top-end',
     icon: 'error',
-    text: t(text),
+    text: i18n.__(text),
     showCloseButton: true,
     showConfirmButton: false
   };
 
   options = {...options, ...object};
 
-  await Swal.fire(options);
+  Swal.fire(options);
 }
 
 export const ToastSuccess = (text = 'Completed successfully', object = {}) => {
-  const t = useTranslator();
-
   let options = {
     toast: true,
     timer: 3000,
@@ -61,12 +53,12 @@ export const ToastSuccess = (text = 'Completed successfully', object = {}) => {
     },
     position: 'top-end',
     icon: 'success',
-    text: t(text),
+    text: i18n.__(text),
     showCloseButton: true,
     showConfirmButton: false
   };
 
-  options = {...options, ...object};
+  options = { ...options, ...object };
 
-  Swal.fire(options).then(response => Log.debug(response));
-}
+  Swal.fire(options);
+};
