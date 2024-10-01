@@ -6,7 +6,6 @@ import {CONTACT_REQUESTS_PUBLICATION} from "../../../../imports/modules/contactR
 import {contactRequestRepository} from "../../../../imports/modules/contactRequests/contactRequestRepository";
 import {contactRequestRemove} from "../../../../imports/modules/contactRequests/contact.methods";
 import {useTranslator} from "../../providers/i18n";
-import {BackButton} from "../../components/buttons/BackButton";
 
 export const ContactRequests = () => {
   const t = useTranslator();
