@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import {Label, TextInput} from 'flowbite-react';
-import {Meteor} from 'meteor/meteor';
-import {useTracker} from 'meteor/react-meteor-data';
-import {profileUpdate} from '../../../../imports/modules/userProfiles/userProfile.methods';
-import {userProfileRepository} from '../../../../imports/modules/userProfiles/userProfileRepository';
-import {USER_PROFILE_PUBLICATION} from '../../../../imports/modules/userProfiles/enums/publication';
-import {useTranslator} from "../../providers/i18n";
+import React, { useState } from 'react';
+import { Label, TextInput, Select } from 'flowbite-react';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
+import { profileUpdate } from '../../../../imports/modules/userProfiles/userProfile.methods';
+import { userProfileRepository } from '../../../../imports/modules/userProfiles/userProfileRepository';
+import { USER_PROFILE_PUBLICATION } from '../../../../imports/modules/userProfiles/enums/publication';
+import { useTranslator } from "../../providers/i18n";
 import SubmitButton from "../../components/buttons/SubmitButton"; // Import spinner icon
 
 export const ProfileDetails = () => {
@@ -14,6 +14,7 @@ export const ProfileDetails = () => {
     email: '',
     firstname: '',
     lastname: '',
+    gender: '',
     phoneNumber: '',
   });
   const [loading, setLoading] = useState(false); // Add loading state
@@ -29,6 +30,7 @@ export const ProfileDetails = () => {
         email,
         firstname: userProfile.firstname || '',
         lastname: userProfile.lastname || '',
+        gender: userProfile.gender || '',
         phoneNumber: userProfile.phoneNumber || '',
       });
     }
@@ -46,7 +48,8 @@ export const ProfileDetails = () => {
     await profileUpdate({
       firstname: formData.firstname,
       lastname: formData.lastname,
-      phoneNumber: Number(formData.phoneNumber)
+      gender: formData.gender,
+      phoneNumber: Number(formData.phoneNumber),
     })
       .then(response => {
         console.log(response);
@@ -76,12 +79,21 @@ export const ProfileDetails = () => {
         <TextInput id="lastname" type="text" value={formData.lastname} onChange={handleChange}/>
       </div>
       <div>
+        <Label htmlFor="gender" value={t('Gender')}/>
+        <Select id="gender" value={formData.gender} onChange={handleChange}>
+          <option value="">{t('Select gender')}</option>
+          <option value="male">{t('Male')}</option>
+          <option value="female">{t('Female')}</option>
+          <option value="other">{t('Other')}</option>
+        </Select>
+      </div>
+      <div>
         <Label htmlFor="phoneNumber" value={t('Phone number')}/>
         <TextInput id="phoneNumber" type="number" value={formData.phoneNumber} onChange={handleChange}/>
       </div>
       <SubmitButton
         isLoading={loading}
-        text={{ default: t('Save'), loading: t('Loading...') }} // Pass loading and default text
+        text={{default: t('Save'), loading: t('Loading...')}} // Pass loading and default text
       />
     </form>
   );

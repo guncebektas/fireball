@@ -19,21 +19,23 @@ export const UserProfiles = () => {
     return userProfileRepository.find().fetch();
   });
 
+  console.log(items);
+
   const handleRemove = async (_id) => {
     // await contactRequestRemove(_id);
   };
 
   return (
     <>
-      <H2 text="Contact requests" showBackButton={true}></H2>
+      <H2 text="User profiles" showBackButton={true}></H2>
 
       <div className="mt-2 w-full text-gray-500 text-lg">
         <Table striped hoverable className="w-full">
           <Table.Body>
             {items.map((item) => (
               <Table.Row key={item._id}>
-                <Table.Cell>{item.name}</Table.Cell>
-                <Table.Cell>{item.surname}</Table.Cell>
+                <Table.Cell>{item.firstname}</Table.Cell>
+                <Table.Cell>{item.lastname}</Table.Cell>
                 <Table.Cell>{item.gender}</Table.Cell>
                 <Table.Cell>{item.email}</Table.Cell>
                 <Table.Cell>{item.phone}</Table.Cell>

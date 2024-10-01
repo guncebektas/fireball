@@ -81,6 +81,7 @@
 
   "Organization": "Organizasyon",
   "Users": "Kullanıcılar",
+  "User profiles": "Kullanıcı profilleri",
 
   "Profile": "Profil",
   "My profile": "Profilim",
@@ -88,6 +89,11 @@
   "Your email": "Email adresiniz",
   "Firstname": "Adınız",
   "Lastname": "Soyadınız",
+  "Gender": "Cinsiyet",
+  "Select gender": "Cinsiyetinizi seçin",
+  "Male": "Erkek",
+  "Female": "Kadın",
+  "Other": "Diğer",
   "Phone number": "Telefon numarası",
   "Picture": "Resim",
   "Upload profile picture": "Profil resmi yükle",

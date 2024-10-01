@@ -13,13 +13,14 @@ class UserProfileService extends BaseService {
     return this.repository.insertAsync({_id});
   }
 
-  async edit(userId, firstname, lastname, phoneNumber) {
+  async edit(userId, firstname, lastname, gender, phoneNumber) {
     return this.repository.updateAsync({
       _id: userId
     }, {
       $set: {
         firstname,
         lastname,
+        gender,
         phoneNumber
       }
     });
