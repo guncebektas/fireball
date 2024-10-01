@@ -11,3 +11,11 @@ Meteor.publish(USER_PROFILE_PUBLICATION.ME, function () {
     _id: this.userId
   });
 });
+
+Meteor.publish(USER_PROFILE_PUBLICATION.PROFILES, function () {
+  if (!this.userId) {
+    return this.ready();
+  }
+
+  return userProfileRepository.find();
+});
