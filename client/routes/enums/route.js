@@ -17,5 +17,6 @@ export const ROUTE = {
   STORES: '/stores',
   TICKETS: '/ticket/list',
   TICKET: '/ticket/form/:_id',
+  USER_PROFILES: '/user-profiles',
   WALLET: '/wallet'
 };

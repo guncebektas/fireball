@@ -17,6 +17,7 @@ import {Settings} from "../ui/pages/settings/Settings.jsx";
 import {Stores} from "../ui/pages/stores/Stores";
 import {Wallet} from "../ui/pages/wallet/Wallet";
 import {Help} from "../ui/pages/help/Help";
+import {UserProfiles} from "../ui/pages/userProfiles/UserProfiles";
 
 export const Router = () => (
   <Routes>
@@ -35,6 +36,7 @@ export const Router = () => (
     <Route path={ROUTE.STORES} element={<Stores/>}/>
     <Route path={ROUTE.TICKETS} element={<Tickets/>}/>
     <Route path={ROUTE.TICKET} element={<TicketForm/>}/>
+    <Route path={ROUTE.USER_PROFILES} element={<UserProfiles/>}/>
     <Route path={ROUTE.WALLET} element={<Wallet/>}/>
   </Routes>
 );
