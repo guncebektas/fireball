@@ -28,17 +28,22 @@ export const ContactRequestForm = () => {
 
   return (
     <>
-      <H2 text="Contact us" showBackButton={true}/>
-      <div className="grid grid-cols-2 gap-4"> {/* Two-column layout */}
+      <H2 text="Contact us" showBackButton={true} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Single column on mobile, two columns on medium screens and up */}
         <div className="flex flex-col">
-          <AutoForm ref={formRef}
-                    schema={contactBridge}
-                    onSubmit={handleSubmit}
+          <AutoForm
+            ref={formRef}
+            schema={contactBridge}
+            onSubmit={handleSubmit}
           />
         </div>
 
-        <Map markers={locations} zoom={14}/>
+        {/* Map will take full width on mobile and stay next to the form on larger screens */}
+        <div className="md:col-span-1 col-span-2 order-last md:order-none"> {/* Ensures the map is below the form on mobile */}
+          <Map markers={locations} zoom={14} />
+        </div>
       </div>
     </>
   );
+
 };
