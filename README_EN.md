@@ -10,6 +10,7 @@ enough to contribute.
 ### Requirements
 - Install NVM
 - Install Node.js
+- Install NPM
 - Install [Meteor.js](https://www.meteor.com/developers/install)
 - Make sure you have [Docker](https://docs.docker.com/install) and [Docker Compose](https://docs.docker.com/compose/install/) installed and operational.
 

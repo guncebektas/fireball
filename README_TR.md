@@ -8,7 +8,8 @@ Meteor.js 'e yaklaşımımızda bazı küçük farklılıklar var. Ancak Meteor.
 
 ### Gereklilikler
 - NVM'i kurun.
-- Node.js'i kurun ( versiyon 14.x'den yüksek versiyonlar desteklenmemektedir.).
+- Node.js'i kurun
+- NPM'i kurun
 - [Meteor.js](https://www.meteor.com/developers/install)'i kurun.
 - [Docker](https://docs.docker.com/install) ve [Docker Compose](https://docs.docker.com/compose/install/) kurulmuş ve çalışır olması gerekir.
 
