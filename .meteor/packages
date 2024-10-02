@@ -51,8 +51,9 @@ alanning:roles@4.0.0
 
 ostrio:files
 jam:method
-# jam:soft-delete
-# jam:offline
+jam:soft-delete
+jam:offline
+
 ddp-rate-limiter@1.2.2
 
 montiapm:agent
