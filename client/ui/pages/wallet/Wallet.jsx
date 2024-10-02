@@ -4,7 +4,11 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {useTranslator} from "../../providers/i18n";
 import {Accordion, Button, Modal} from 'flowbite-react';
 import {H4, H5} from "../../components/heading/Headings";
-import {Slider} from "../../components/slider/Slider"; // Import Modal and Accordion from Flowbite
+import {Slider} from "../../components/slider/Slider";
+import {useTracker} from "meteor/react-meteor-data";
+import {Meteor} from "meteor/meteor";
+import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/userProfiles/enums/publication";
+import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository"; // Import Modal and Accordion from Flowbite
 
 const faqs = [
   {question: 'Bu uygulama nasıl çalışıyor?', answer: 'Uygulama, kullanıcıların belirli hedeflere ulaşmalarına yardımcı olur.'},
@@ -13,12 +17,17 @@ const faqs = [
   {question: 'Destek alabilir miyim?', answer: 'Destek almak için lütfen müşteri hizmetleri ile iletişime geçin.'},
 ];
 
-const ProgressBar = ({target, current, reward}) => {
+const ProgressBar = ({target, current}) => {
   const t = useTranslator();
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const progressPercentage = (current / target) * 100;
+  let progressPercentage = (current % target / target) * 100;
+  if (progressPercentage > 100) {
+    progressPercentage = 100;
+  }
+
+  const reward = Math.floor(current / target);
 
   return (
     <div className="mb-3">
@@ -27,7 +36,7 @@ const ProgressBar = ({target, current, reward}) => {
       </div>
       <div className="flex items-center space-x-4">
         <div className="flex items-center">
-          <span className="m-text font-bold">{current}/{target}</span>
+          <span className="m-text font-bold">{current % target}/{target}</span>
         </div>
 
         <div className="relative w-full h-4 bg-gray-200 dark:bg-gray-700 rounded">
@@ -114,8 +123,21 @@ export const Wallet = () => {
   const t = useTranslator();
 
   const {carousel} = Meteor.settings.public.pages.aboutUs;
+  const wallet = true;
 
-  const [balance, setBalance] = useState(100.00); // Initial wallet balance
+  const [currentStamp, setCurrentStamp] = useState(0);
+  const [currentBalance, setBalance] = useState(0);
+
+  const user = useTracker(() => Meteor.user(), []);
+
+  useTracker(() => {
+    const subscription = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
+    if (subscription.ready()) {
+      const userProfile = userProfileRepository.findOne({ _id: Meteor.userId() }) || {};
+      setCurrentStamp(userProfile.stamp);
+      setBalance(userProfile.balance);
+    }
+  }, [user])
 
   const addMoney = (amount) => {
     setBalance((prevBalance) => prevBalance + amount);
@@ -124,11 +146,12 @@ export const Wallet = () => {
   return (
     <div className="flex flex-col space-y-4">
       <div className="mb-3">
-        <Slider carousel={carousel} showCaption={false}/>
+        <Slider carousel={carousel} showCaption={false} indicators={false}/>
       </div>
 
-      <ProgressBar target={10} current={3} reward={5}/>
-      <WalletBalance balance={balance} onAddMoney={addMoney}/>
+      <ProgressBar target={10} current={currentStamp}/>
+
+      {wallet ? <WalletBalance balance={currentBalance} onAddMoney={addMoney}/> : ''}
     </div>
   );
 };
