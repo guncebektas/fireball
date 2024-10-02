@@ -5,6 +5,7 @@ class UserProfileService extends BaseService {
   constructor({repository}) {
     super({repository});
   }
+
   /**
    * @param _id {string}
    * @return {Promise<string>}
@@ -31,7 +32,20 @@ class UserProfileService extends BaseService {
       _id: userId
     }, {
       $set: {
-        otp
+        otp,
+        otpAt: new Date()
+      }
+    });
+  }
+
+  async getByOtp(otp) {
+    const date = new Date();
+    date.setMinutes(date.getMinutes() - 1);
+
+    return this.repository.findOneAsync({
+      otp,
+      otpAt: {
+        $gte: date
       }
     });
   }
@@ -43,6 +57,14 @@ class UserProfileService extends BaseService {
       $set: {
         profilePictureId: fileId
       }
+    });
+  }
+
+  async updatePayload(userId, payload) {
+    return this.repository.updateAsync({
+      _id: userId
+    }, {
+      $set: payload
     });
   }
 }
