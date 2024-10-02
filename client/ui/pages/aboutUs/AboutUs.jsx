@@ -1,22 +1,24 @@
 import React from 'react';
-import {H2} from "../../components/heading/Headings";
-import {useTranslator} from "../../providers/i18n";
-import {Slider} from "../../components/slider/Slider";
-import {SocialMediaIcons} from "../../components/buttons/SocialMediaIcons";
+import { H2 } from "../../components/heading/Headings";
+import { useTranslator } from "../../providers/i18n";
+import { Slider } from "../../components/slider/Slider";
+import { SocialMediaIcons } from "../../components/buttons/SocialMediaIcons";
 
-export const AboutUs = () => {
+export const AboutUs = ({ fullPage = true }) => {
   const t = useTranslator();
   const { title, paragraphs, carousel } = Meteor.settings.public.pages.aboutUs;
 
   return (
     <>
-      <div className="sm:flex sm:items-start sm:justify-between">
-        <div>
-          <div className="flex items-center">
-            <H2 text={title}></H2>
+      {fullPage && (
+        <div className="sm:flex sm:items-start sm:justify-between">
+          <div>
+            <div className="flex items-center">
+              <H2 text={title} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="mb-10">
         <Slider carousel={carousel} />
@@ -28,7 +30,7 @@ export const AboutUs = () => {
         ))}
       </div>
 
-      <SocialMediaIcons />
+      {fullPage && <SocialMediaIcons />}
     </>
   );
 };

@@ -5,14 +5,24 @@ import {Router} from "../../routes/Router.js";
 import {Auth} from "../pages/auth/Auth.jsx";
 import {useTracker} from "meteor/react-meteor-data";
 import {NavMobile} from "../components/nav/NavMobile";
-import {Navbar} from "flowbite-react";
+import {Button, Modal, Navbar} from "flowbite-react";
 import {LanguageSelector} from "../components/languageSelector/LanguageSelector";
 import {Link} from "react-router-dom";
 import {Credits} from "../components/credits/Credits";
 import {useTranslator} from "../providers/i18n";
+import {AboutUs} from "../pages/aboutUs/AboutUs";
 
 const InnerLayout = () => {
   const t = useTranslator();
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+
+  const handleOpenAboutModal = () => {
+    setIsAboutModalOpen(true);
+  };
+
+  const handleCloseAboutModal = () => {
+    setIsAboutModalOpen(false);
+  };
 
   const {name, logo, icon} = Meteor.settings.public.app;
 
@@ -29,7 +39,7 @@ const InnerLayout = () => {
         <Header onToggleSidebar={handleToggleSidebar}/>
         <Nav isOpen={isSidebarOpen}/>
 
-        <main className="px-4 md:ml-64 h-auto py-20">
+        <main className="px-4 md:ml-64 h-auto pt-20">
           <section className="bg-white px-4 py-5 sm:p-6 dark:bg-gray-900">
             <Router/>
           </section>
@@ -51,8 +61,9 @@ const InnerLayout = () => {
         </Navbar.Brand>
         <Navbar.Toggle/>
         <Navbar.Collapse>
-          <Navbar.Link href="#">{t('About')}</Navbar.Link>
-          <Navbar.Link href="#">{t('Contact')}</Navbar.Link>
+          <Navbar.Link href="#" onClick={handleOpenAboutModal}>
+            {t('About')}
+          </Navbar.Link>
           <Navbar.Link>
             <LanguageSelector/>
           </Navbar.Link>
@@ -63,6 +74,16 @@ const InnerLayout = () => {
           <Auth/>
         </div>
       </main>
+
+      <Modal show={isAboutModalOpen} onClose={handleCloseAboutModal}>
+        <Modal.Header>{t('About')}</Modal.Header>
+        <Modal.Body>
+          <AboutUs fullPage={false}/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="gray" onClick={handleCloseAboutModal}>{t('Close')}</Button>
+        </Modal.Footer>
+      </Modal>
     </section>
   );
 };
