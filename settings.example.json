@@ -81,7 +81,7 @@
       "key": "",
       "secret": "",
       "bucket": "",
-      "region": ""
+      "region": "eu-central-1"
     }
   },
   "redisOplog": {
