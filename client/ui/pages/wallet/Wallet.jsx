@@ -17,7 +17,7 @@ const faqs = [
   {question: 'Destek alabilir miyim?', answer: 'Destek almak için lütfen müşteri hizmetleri ile iletişime geçin.'},
 ];
 
-const ProgressBar = ({target, current}) => {
+const ProgressBar = ({target, current = 0}) => {
   const t = useTranslator();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -87,7 +87,7 @@ const ProgressBar = ({target, current}) => {
   );
 };
 
-const WalletBalance = ({balance, onAddMoney}) => {
+const WalletBalance = ({balance = 0, onAddMoney}) => {
   const t = useTranslator();
 
   const currency = 'TRY';
