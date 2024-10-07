@@ -44,6 +44,10 @@ export const Hello = () => {
       <div className="mb-3">
         <Slider carousel={carousel} showCaption={false}/>
       </div>
+
+      <div className="mb-3">
+        <Slider carousel={carousel} showCaption={false}/>
+      </div>
     </>
   );
 };
