@@ -10,7 +10,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
   const t = useTranslator();
 
   const [otp, setOtp] = useState(generateOTP());
-  profileSaveOtp({otp});
+  // profileSaveOtp({otp});
 
   function generateOTP() {
     return Math.floor(100000 + Math.random() * 900000).toString();
@@ -46,10 +46,15 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
         <Countdown initialSeconds={60} onExpire={handleExpire}/>
       </Modal.Body>
       <Modal.Footer>
-        <Button color="gray" onClick={onClose}>
-          {t('Close')}
-        </Button>
+        <div className="flex justify-between w-full">
+          <Button color="gray" onClick={onClose}>
+            {t('Close')}
+          </Button>
+          <Button color="gray" onClick={handleExpire}>
+            {t('Reload')}
+          </Button>
+        </div>
       </Modal.Footer>
     </Modal>
-  );
+);
 };
