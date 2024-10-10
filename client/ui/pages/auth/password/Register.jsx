@@ -1,20 +1,22 @@
-import React, { useRef, useState } from 'react';
-import { Button, Label, TextInput, ToggleSwitch, Modal } from 'flowbite-react';
-import { STATE_AUTH_PASSWORD_FORM } from "./enums/state.js";
-import { Accounts } from "meteor/accounts-base";
+import React, {useRef, useState} from 'react';
+import {Button, Label, TextInput, ToggleSwitch, Modal} from 'flowbite-react';
+import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
+import {Accounts} from "meteor/accounts-base";
 import PasswordInput from "../../../components/form/PasswordInput";
-import { Alert } from "../../../components/alert/Alert";
-import { useTranslator } from "../../../providers/i18n";
+import {Alert} from "../../../components/alert/Alert";
+import {useTranslator} from "../../../providers/i18n";
+import {H4} from "../../../components/heading/Headings";
 
-export const Register = ({ onStateChange }) => {
+export const Register = ({onStateChange}) => {
   const t = useTranslator();
 
+  const {isUsernameLoginEnabled, isRegistrationEnabled} = Meteor.settings.public;
   const [openAlert, setOpenAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [gdprAccepted, setGdprAccepted] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({ title: '', content: '' });
+  const [modalContent, setModalContent] = useState({title: '', content: ''});
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -88,62 +90,82 @@ export const Register = ({ onStateChange }) => {
 
       <div className="bg-white dark:bg-gray-900 py-8 px-4 mt-8 shadow sm:rounded-lg sm:px-10">
         <div>
-          <Alert show={openAlert} color="failure" iconName="warning">
-            <span className="font-medium">Error:</span> {t(errorMessage)}.
-          </Alert>
+          {isRegistrationEnabled === false ?
+            <>
+              <H4 text={`${t('Registration is currently disabled')}!`}/>
+            </>
+            :
+            <>
+              <Alert show={openAlert} color="failure" iconName="warning">
+                <span className="font-medium">{t('Error')}:</span> {t(errorMessage)}.
+              </Alert>
 
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="mb-2">
-              <div className="mb-2 block">
-                <Label htmlFor="email" value="Email Address" />
-              </div>
-              <TextInput id="email" type="email" ref={emailRef} placeholder={t('Type your email')} required />
-            </div>
-            <div className="mb-2">
-              <div className="mb-2 block">
-                <Label htmlFor="password" value={t('Password')} />
-              </div>
-              <PasswordInput ref={passwordRef} required />
-            </div>
-            <div className="mb-2">
-              <div className="mb-2 block">
-                <Label htmlFor="passwordAgain" value={t('Password again')} />
-              </div>
-              <PasswordInput ref={passwordAgainRef} required />
-            </div>
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="mb-2">
+                  {
+                    isUsernameLoginEnabled ?
+                      <>
+                        <div className="mb-2 block">
+                          <Label htmlFor="username" value={t('Username')}/>
+                        </div>
+                        <TextInput id="email" type="text" ref={emailRef} placeholder={t('Type your username')} required/>
+                      </>
+                      :
+                      <>
+                        <div className="mb-2 block">
+                          <Label htmlFor="email" value="Email Address"/>
+                        </div>
+                        <TextInput id="email" type="email" ref={emailRef} placeholder={t('Type your email')} required/>
+                      </>
+                  }
+                </div>
+                <div className="mb-2">
+                  <div className="mb-2 block">
+                    <Label htmlFor="password" value={t('Password')}/>
+                  </div>
+                  <PasswordInput ref={passwordRef} required/>
+                </div>
+                <div className="mb-2">
+                  <div className="mb-2 block">
+                    <Label htmlFor="passwordAgain" value={t('Password again')}/>
+                  </div>
+                  <PasswordInput ref={passwordAgainRef} required/>
+                </div>
 
-            <div className="mb-2 flex items-center">
-              <ToggleSwitch
-                checked={termsAccepted}
-                color="success"
-                label={t('I accept the terms and conditions')}
-                onChange={setTermsAccepted}
-              />
-              <Button onClick={openTermsModal} size="xs" color="gray" className="ml-2">
-                {t('Read')}
-              </Button>
-            </div>
+                <div className="mb-2 flex items-center">
+                  <ToggleSwitch
+                    checked={termsAccepted}
+                    color="success"
+                    label={t('I accept the terms and conditions')}
+                    onChange={setTermsAccepted}
+                  />
+                  <Button onClick={openTermsModal} size="xs" color="gray" className="ml-2">
+                    {t('Read')}
+                  </Button>
+                </div>
 
-            <div className="mb-2 flex items-center">
-              <ToggleSwitch
-                checked={gdprAccepted}
-                color="success"
-                label={t('I accept the privacy policy')}
-                onChange={setGdprAccepted}
-              />
-              <Button onClick={openPrivacyModal} size="xs" color="gray" className="ml-2">
-                {t('Read')}
-              </Button>
-            </div>
+                <div className="mb-2 flex items-center">
+                  <ToggleSwitch
+                    checked={gdprAccepted}
+                    color="success"
+                    label={t('I accept the privacy policy')}
+                    onChange={setGdprAccepted}
+                  />
+                  <Button onClick={openPrivacyModal} size="xs" color="gray" className="ml-2">
+                    {t('Read')}
+                  </Button>
+                </div>
 
-            <div>
-              <Button type="submit" color="primary">{t('Register')}</Button>
-            </div>
+                <div>
+                  <Button type="submit" color="primary">{t('Register')}</Button>
+                </div>
 
-            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-              {t('Already have an account')}? <button className="font-medium text-primary-600 hover:underline dark:text-primary-500" onClick={handleState}>{t('Login')}</button>
-            </p>
-          </form>
+                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                  {t('Already have an account')}? <button className="font-medium text-primary-600 hover:underline dark:text-primary-500" onClick={handleState}>{t('Login')}</button>
+                </p>
+              </form>
+            </>
+          }
         </div>
       </div>
 

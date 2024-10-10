@@ -8,6 +8,8 @@ import {LoginWithGoogle} from "../services/LoginWithGoogle";
 import {LoginWithGithub} from "../services/LoginWithGithub";
 
 export const Login = ({onStateChange}) => {
+  const {isUsernameLoginEnabled} = Meteor.settings.public;
+
   const [openModal, setOpenModal] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
@@ -101,11 +103,24 @@ export const Login = ({onStateChange}) => {
 
             <form className="space-y-6 mb-5" onSubmit={handleLogin}>
               <div className="mb-1">
-                <div className="mb-2 block">
-                  <Label htmlFor="email" value={t('Email address')}/>
-                </div>
-                <TextInput id="email" type="email" placeholder={t('Type your email')} ref={emailRef} required/>
+                {
+                  isUsernameLoginEnabled ?
+                    <>
+                      <div className="mb-2 block">
+                        <Label htmlFor="username" value={t('Username')}/>
+                      </div>
+                      <TextInput id="email" type="text" ref={emailRef} placeholder={t('Type your username')} required/>
+                    </>
+                    :
+                    <>
+                      <div className="mb-2 block">
+                        <Label htmlFor="email" value={t('Email address')}/>
+                      </div>
+                      <TextInput id="email" type="email" placeholder={t('Type your email')} ref={emailRef} required/>
+                    </>
+                }
               </div>
+
               <div className="mb-1">
                 <div className="mb-2 block">
                   <Label htmlFor="password" value={t('Password')}/>
@@ -125,7 +140,7 @@ export const Login = ({onStateChange}) => {
                 <button type="button" className="font-medium text-gray-500 dark:text-gray-400 hover:underline" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.FORGOTTEN_PASSWORD)}>{t('Forgotten password')}</button>
               </div>
               <div>
-                <Button type="submit"  color="primary">{t('Login')}</Button>
+                <Button type="submit" color="primary">{t('Login')}</Button>
               </div>
 
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
