@@ -5,6 +5,7 @@ import fs from 'fs';
 import {Random} from 'meteor/random';
 import {imageRepository} from "../imageRepository";
 import {Log} from "meteor/logging";
+import {profileSaveProfilePicture} from "../../../userProfiles/userProfile.methods";
 
 //
 // Start moving files to AWS:S3, after fully received by the Meteor server
@@ -53,6 +54,8 @@ Images.on('afterUpload', function (fileRef) {
       }).catch(error => {
         Log.error(error);
       })
+
+      await profileSaveProfilePicture({fileId: fileRef._id});
     }).catch(error => {
       Log.error(error);
     });

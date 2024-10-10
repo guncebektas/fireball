@@ -2,20 +2,16 @@ import React, { useState } from 'react';
 import { Label, TextInput, Select } from 'flowbite-react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { profileUpdateDetails } from '../../../../imports/modules/userProfiles/userProfile.methods';
+import {profileUpdateDetails, profileUpdatePreferences} from '../../../../imports/modules/userProfiles/userProfile.methods';
 import { userProfileRepository } from '../../../../imports/modules/userProfiles/userProfileRepository';
 import { USER_PROFILE_PUBLICATION } from '../../../../imports/modules/userProfiles/enums/publication';
 import { useTranslator } from "../../providers/i18n";
 import SubmitButton from "../../components/buttons/SubmitButton"; // Import spinner icon
 
-export const ProfileDetails = () => {
+export const ProfilePreferences = () => {
   const t = useTranslator();
   const [formData, setFormData] = useState({
-    email: '',
-    firstname: '',
-    lastname: '',
-    gender: '',
-    phoneNumber: '',
+    theme: 'light',
   });
   const [loading, setLoading] = useState(false); // Add loading state
 
@@ -25,13 +21,9 @@ export const ProfileDetails = () => {
     const subscription = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
     if (subscription.ready()) {
       const userProfile = userProfileRepository.findOne({ _id: Meteor.userId() }) || {};
-      const email = user?.emails?.[0]?.address || '';
+      const theme = userProfile?.theme || 'light';
       setFormData({
-        email,
-        firstname: userProfile.firstname || '',
-        lastname: userProfile.lastname || '',
-        gender: userProfile.gender || '',
-        phoneNumber: userProfile.phoneNumber || '',
+        theme
       });
     }
   }, [user]);
@@ -45,11 +37,8 @@ export const ProfileDetails = () => {
     e.preventDefault();
     setLoading(true); // Set loading state to true
 
-    await profileUpdateDetails({
-      firstname: formData.firstname,
-      lastname: formData.lastname,
-      gender: formData.gender,
-      phoneNumber: Number(formData.phoneNumber),
+    await profileUpdatePreferences({
+      theme: formData.theme,
     })
       .then(response => {
         console.log(response);
@@ -67,29 +56,11 @@ export const ProfileDetails = () => {
   return (
     <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
       <div>
-        <Label htmlFor="email" value={t('Email')}/>
-        <TextInput id="email" type="text" value={formData.email} disabled/>
-      </div>
-      <div>
-        <Label htmlFor="firstname" value={t('Firstname')}/>
-        <TextInput id="firstname" type="text" value={formData.firstname} onChange={handleChange}/>
-      </div>
-      <div>
-        <Label htmlFor="lastname" value={t('Lastname')}/>
-        <TextInput id="lastname" type="text" value={formData.lastname} onChange={handleChange}/>
-      </div>
-      <div>
-        <Label htmlFor="gender" value={t('Gender')}/>
-        <Select id="gender" value={formData.gender} onChange={handleChange}>
-          <option value="">{t('Select gender')}</option>
-          <option value="male">{t('Male')}</option>
-          <option value="female">{t('Female')}</option>
-          <option value="other">{t('Other')}</option>
+        <Label htmlFor="theme" value={t('Theme')}/>
+        <Select id="theme" value={formData.theme} onChange={handleChange}>
+          <option value="light">{t('Light')}</option>
+          <option value="dark">{t('Dark')}</option>
         </Select>
-      </div>
-      <div>
-        <Label htmlFor="phoneNumber" value={t('Phone number')}/>
-        <TextInput id="phoneNumber" type="number" value={formData.phoneNumber} onChange={handleChange}/>
       </div>
       <SubmitButton
         isLoading={loading}

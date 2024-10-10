@@ -7,7 +7,7 @@ class ImageService extends BaseService{
   }
 
   async get(_id) {
-    return this.repository.findOneAsync(_id);
+    return this.repository.findOne(_id);
   }
 }
 

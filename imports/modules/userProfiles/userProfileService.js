@@ -1,9 +1,13 @@
 import {BaseService} from "../shared/service/baseService.js";
 import {userProfileRepository} from "./userProfileRepository.js";
+import {imageRepository} from "../files/images/imageRepository";
+import {imageGet} from "../files/images/image.methods";
+import {Images} from "../files/images/database/images";
 
 class UserProfileService extends BaseService {
-  constructor({repository}) {
+  constructor({repository, imageRepository}) {
     super({repository});
+    this.imageRepository = imageRepository;
   }
 
   /**
@@ -14,16 +18,11 @@ class UserProfileService extends BaseService {
     return this.repository.insertAsync({_id});
   }
 
-  async edit(userId, firstname, lastname, gender, phoneNumber) {
+  async edit(userId, object) {
     return this.repository.updateAsync({
       _id: userId
     }, {
-      $set: {
-        firstname,
-        lastname,
-        gender,
-        phoneNumber
-      }
+      $set: object
     });
   }
 
@@ -51,11 +50,18 @@ class UserProfileService extends BaseService {
   }
 
   async saveProfilePictureId(fileId) {
+    const image = await this.imageRepository.findOneAsync({_id: fileId});
+    const userId = image.userId;
+
+    const pictureUrl = image.versions.original.meta.pipePath;
+    console.log(pictureUrl);
+
     return this.repository.updateAsync({
       _id: userId
     }, {
       $set: {
-        profilePictureId: fileId
+        pictureId: fileId,
+        pictureUrl: pictureUrl
       }
     });
   }
@@ -70,5 +76,6 @@ class UserProfileService extends BaseService {
 }
 
 export const userProfileService = new UserProfileService({
-  repository: userProfileRepository
+  repository: userProfileRepository,
+  imageRepository: Images.collection
 });
