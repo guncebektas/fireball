@@ -16,5 +16,9 @@ module.exports = {
     extend: {},
   },
   darkMode: 'class',
-  plugins: [require("flowbite/plugin")],
+  plugins: [
+    require('flowbite/plugin')({
+      datatables: true,
+    }),
+  ],
 };
