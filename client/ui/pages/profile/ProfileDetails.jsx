@@ -71,11 +71,11 @@ export const ProfileDetails = () => {
         <TextInput id="email" type="text" value={formData.email} disabled/>
       </div>
       <div>
-        <Label htmlFor="firstname" value={t('Firstname')}/>
+        <Label htmlFor="firstname" value={t('First name')}/>
         <TextInput id="firstname" type="text" value={formData.firstname} onChange={handleChange}/>
       </div>
       <div>
-        <Label htmlFor="lastname" value={t('Lastname')}/>
+        <Label htmlFor="lastname" value={t('Last name')}/>
         <TextInput id="lastname" type="text" value={formData.lastname} onChange={handleChange}/>
       </div>
       <div>

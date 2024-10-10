@@ -75,3 +75,35 @@
     }
   }
 }
+
+.datatable-wrapper .datatable-input, .datatable-wrapper .datatable-search .datatable-input {
+  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: .5rem;
+  color: #111827;
+  font-size: .875rem;
+  min-width: 16rem;
+}
+
+.datatable-wrapper .datatable-top .datatable-dropdown {
+  color: #6b7280;
+  font-size: .875rem;
+}
+
+table thead th {
+  position: relative;
+  cursor: pointer;
+}
+
+table thead th::after {
+  margin-left: 10px;
+  color: #6b7280; /* Adjust the color as per your design */
+}
+
+table thead th.datatable-ascending::after {
+  content: '▲'; /* Ascending */
+}
+
+table thead th.datatable-descending::after {
+  content: '▼'; /* Descending */
+}

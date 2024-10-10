@@ -47,7 +47,8 @@
   "Close": "Kapat",
   "Reload": "Yenile",
   "Back": "Geri",
-  "Next": "İleri",
+  "Next": "Sonraki",
+  "Previous": "Önceki",
   "Add": "Ekle",
   "Edit": "Düzenle",
   "Delete": "Sil",
@@ -56,6 +57,20 @@
   "Click": "Tıkla",
   "View": "Göster",
   "View all": "Tümünü göster",
+  "entries": "girdi",
+  "Nothing found": "Hiçbir şey bulunamadı",
+  "Rows": "Satır",
+  "Info": "Bilgi",
+  "Showing {start} to {end} of {rows} entries": "{rows} satırdan {start} ile {end} arası gösteriliyor", // the plurization in here is different as its simple-datatables
+  "Page": "Sayfa",
+  "of": "için",
+  "First": "İlk",
+  "Last": "Son",
+  "Select": "Seç",
+  "Select all": "Tümünü Seç",
+  "Deselect all": "Tüm Seçimleri Kaldır",
+  "Show entries": "Girişleri Göster",
+  "Actions": "İşlemler",
   "Admin": "Yönetim",
   "Welcome to {$name}": "{$name}'ya hoşgeldiniz",
   "You've pressed the button {$counter} times": "Butona {$counter} kez bastınız",
@@ -79,17 +94,15 @@
   "About": "Hakkında",
   "About us": "Hakkımızda",
   "Settings": "Ayarlar",
-
   "Organization": "Organizasyon",
   "Users": "Kullanıcılar",
   "User profiles": "Kullanıcı profilleri",
-
   "Profile": "Profil",
   "My profile": "Profilim",
   "Details": "Detaylar",
   "Your email": "Email adresiniz",
-  "Firstname": "Adınız",
-  "Lastname": "Soyadınız",
+  "First name": "Adınız",
+  "Last name": "Soyadınız",
   "Gender": "Cinsiyet",
   "Select gender": "Cinsiyetinizi seçin",
   "Male": "Erkek",
@@ -114,45 +127,35 @@
   "Get location": "Konum bul",
   "Your location": "Konumunuz",
   "Click the button to get your location": "Konumunuzu bulmak için tıklayın",
-
   "Notifications": "Bildirimler",
-
   "Code": "Kod",
   "Qr code": "QR kod",
   "Your qr code": "QR kodunuz",
   "Generate a new code": "Yeni kod üret",
   "QR code will refresh in {$secondsLeft} seconds": "QR kod {$secondsLeft} saniye sonra yenilenecektir",
-
   "Upload": "Yükle",
   "Click to upload": "Dosya seçmek için tıklayın",
   "drag and drop": "sürükle ve bırak",
   "Remove image": "Resmi kaldır",
-
   "RSS Feed": "RSS Akışı",
   "RSS Feed loaded successfully": "RSS başarıyla yüklenmiştir",
   "Failed to fetch RSS feed": "RSS yüklenirken hata oluştu",
-
   "Help": "Yardım",
   "Help & Support": "Yardım & Destek",
   "FAQs": "Sık sorulan sorular",
   "Chat with us on WhatsApp": "Whatsapp üzerinden iletişime geçin",
-
   "My favorites": "Favorilerim",
-
   "Wallet": "Cüzdan",
   "Earn one coffee with {$target} stars": "{$target} yıldıza 1 kahve ücretsiz",
   "Free": "Ücretsiz",
-
   "Click for e-commerce site": "Online mağazamız için tıklayın",
   "Check our e-commerce now": "Online alışveriş için web sitemizi ziyaret edebilirsiniz",
   "Stores": "Şubeler",
-
   "Subject": "Konu",
   "Level": "Seviye",
   "High": "Yüksek",
   "Medium": "Orta",
   "Low": "Düşük",
-
   "Message": "Mesaj",
   "Response": "Cevap"
 }
