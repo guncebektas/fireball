@@ -69,7 +69,6 @@ export const NavMobile = () => {
         </ul>
       </Navbar>
 
-      {/* Render the QRCodeModal */}
       <QRCodeModal
         isOpen={isQRCodeModalOpen}
         onClose={() => setIsQRCodeModalOpen(false)}
