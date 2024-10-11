@@ -76,7 +76,6 @@
   "Actions": "İşlemler",
   "Admin": "Yönetim",
   "Welcome to {$name}": "{$name}'ya hoşgeldiniz",
-  "You've pressed the button {$counter} times": "Butona {$counter} kez bastınız",
   "Homepage": "Anasayfa",
   "Dashboard": "Anasayfa",
   "Prices": "Ücretler",
