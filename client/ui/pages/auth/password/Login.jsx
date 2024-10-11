@@ -6,6 +6,7 @@ import PasswordInput from "../../../components/form/PasswordInput";
 import {Alert} from "../../../components/alert/Alert"
 import {LoginWithGoogle} from "../services/LoginWithGoogle";
 import {LoginWithGithub} from "../services/LoginWithGithub";
+import {Log} from "meteor/logging";
 
 export const Login = ({onStateChange}) => {
   const {isUsernameLoginEnabled} = Meteor.settings.public;
@@ -61,7 +62,7 @@ export const Login = ({onStateChange}) => {
 
     Meteor.loginWithPasswordAnd2faCode(formData.email, formData.password, formData.code, error => {
       if (error) {
-        console.error("Error trying to log in (user with 2fa)", error);
+        Log.error("Error trying to log in (user with 2fa)", error);
         return;
       }
 

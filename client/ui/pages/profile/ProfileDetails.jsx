@@ -9,6 +9,7 @@ import { useTranslator } from "../../providers/i18n";
 import SubmitButton from "../../components/buttons/SubmitButton"; // Import spinner icon
 
 export const ProfileDetails = () => {
+  const {isUsernameLoginEnabled} = Meteor.settings.public;
   const t = useTranslator();
   const [formData, setFormData] = useState({
     email: '',
@@ -67,7 +68,7 @@ export const ProfileDetails = () => {
   return (
     <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
       <div>
-        <Label htmlFor="email" value={t('Email')}/>
+        <Label htmlFor="email" value={isUsernameLoginEnabled ? t('Username') : t('Email')}/>
         <TextInput id="email" type="text" value={formData.email} disabled/>
       </div>
       <div>

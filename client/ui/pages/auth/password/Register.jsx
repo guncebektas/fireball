@@ -6,6 +6,7 @@ import PasswordInput from "../../../components/form/PasswordInput";
 import {Alert} from "../../../components/alert/Alert";
 import {useTranslator} from "../../../providers/i18n";
 import {H4} from "../../../components/heading/Headings";
+import {Log} from "meteor/logging";
 
 export const Register = ({onStateChange}) => {
   const t = useTranslator();
@@ -49,16 +50,23 @@ export const Register = ({onStateChange}) => {
       return;
     }
 
-    await Accounts.createUserAsync({
-      email: formData.email,
+    let userObject = {
       password: formData.password,
-      passwordAgain: formData.passwordAgain,
-    })
+      passwordAgain: formData.passwordAgain
+    }
+
+    if (isUsernameLoginEnabled) {
+      userObject = {...{email: formData.email}, ...userObject};
+    } else {
+      userObject = {...{username: formData.email}, ...userObject};
+    }
+
+    await Accounts.createUserAsync(userObject)
       .then(response => {
         window.location.reload();
       })
       .catch(error => {
-        console.error(error);
+        Log.error(error);
         setOpenAlert(true);
         setErrorMessage(error.reason);
       });

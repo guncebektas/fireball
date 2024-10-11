@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import {Button, Label, TextInput} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
+import {Log} from "meteor/logging";
 
 export const ForgottenPassword = ({onStateChange}) => {
   const emailRef = useRef();
@@ -19,8 +20,7 @@ export const ForgottenPassword = ({onStateChange}) => {
     Accounts.forgotPassword({
       email: formData.email
     }, (error, response) => {
-      console.log(error);
-      console.log(response);
+      Log.error(error);
     });
   };
 
