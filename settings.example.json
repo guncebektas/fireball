@@ -52,11 +52,14 @@
         }]
       }
     },
-    "showDummyPages": true,
+    "showDummyPages": false,
+    "isRegistrationEnabled": true,
+    "isUsernameLoginEnabled": false,
     "isPasswordlessLoginEnabled": false,
     "isSearchEnabled": false,
+    "isNotificationEnabled": false,
     "isOrganizationEnabled": false,
-    "showDevTools": true,
+    "showDevTools": false,
     "rssUrl": "https://sports.yahoo.com/rss/"
   },
   "private": {
