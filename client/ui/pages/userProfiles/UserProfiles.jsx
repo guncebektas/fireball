@@ -6,15 +6,7 @@ import { useTranslator } from "../../providers/i18n";
 import { USER_PROFILE_PUBLICATION } from "../../../../imports/modules/userProfiles/enums/publication";
 import { userProfileRepository } from "../../../../imports/modules/userProfiles/userProfileRepository";
 import { DataTable } from "simple-datatables";
-
-const mockUserProfiles = Array.from({ length: 20 }, (v, i) => ({
-  _id: `user${i + 1}`,
-  firstname: `First${i + 1}`,
-  lastname: `Last${i + 1}`,
-  gender: i % 2 === 0 ? 'Male' : 'Female',
-  email: `user${i + 1}@example.com`,
-  phone: `123-456-789${i}`,
-}));
+import {TableSkeleton} from "../../components/skeletons/TableSkeleton";
 
 export const UserProfiles = () => {
   const t = useTranslator();
@@ -32,9 +24,6 @@ export const UserProfiles = () => {
       // items: mockUserProfiles
     };
   });
-
-  // Log items (for debugging)
-  console.log(items);
 
   const handleRemove = async (_id) => {
     // await contactRequestRemove(_id);
@@ -85,7 +74,7 @@ export const UserProfiles = () => {
   }, [items, loading, dataTableInstance]);
 
   if (isLoading) {
-    return <div>{t('Loading...')}</div>; // Show loading message while data is being fetched
+    return <TableSkeleton/>; // Show loading message while data is being fetched
   }
 
   return (
