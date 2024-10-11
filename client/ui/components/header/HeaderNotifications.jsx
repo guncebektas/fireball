@@ -1,10 +1,16 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dropdown, Avatar } from "flowbite-react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Dropdown, Avatar} from "flowbite-react";
 import {useTranslator} from "../../providers/i18n";
 
 export const HeaderNotifications = () => {
   const t = useTranslator();
+
+  const {isNotificationEnabled} = Meteor.settings.public;
+
+  if (!isNotificationEnabled) {
+    return ''
+  }
 
   return (
     <Dropdown
