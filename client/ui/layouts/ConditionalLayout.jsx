@@ -39,7 +39,7 @@ const InnerLayout = () => {
         <Header onToggleSidebar={handleToggleSidebar}/>
         <Nav isOpen={isSidebarOpen}/>
 
-        <main className="px-4 md:ml-64 h-auto pt-20">
+        <main className="px-4 md:ml-64 h-auto py-20">
           <section className="bg-white px-4 py-5 sm:p-6 dark:bg-gray-900">
             <Router/>
           </section>
