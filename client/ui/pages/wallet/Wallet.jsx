@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {useTranslator} from "../../providers/i18n";
 import {Accordion, Button, Modal} from 'flowbite-react';
 import {H4, H5} from "../../components/heading/Headings";
@@ -8,7 +6,8 @@ import {Slider} from "../../components/slider/Slider";
 import {useTracker} from "meteor/react-meteor-data";
 import {Meteor} from "meteor/meteor";
 import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/userProfiles/enums/publication";
-import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository"; // Import Modal and Accordion from Flowbite
+import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository";
+import {WalletIcon} from "./WalletIcon"; // Import Modal and Accordion from Flowbite
 
 const faqs = [
   {question: 'Bu uygulama nasıl çalışıyor?', answer: 'Uygulama, kullanıcıların belirli hedeflere ulaşmalarına yardımcı olur.'},
@@ -47,7 +46,7 @@ const ProgressBar = ({target, current = 0}) => {
         </div>
 
         <div className="flex items-center ml-2">
-          <FontAwesomeIcon icon={faStar} className="m-text text-xl mr-1"/>
+          <WalletIcon/>
           <div className="w-6 h-6 flex items-center justify-center rounded-full bg-green-700 mr-1">
             <span className="text-white text-sm font-bold">{reward}</span>
           </div>
