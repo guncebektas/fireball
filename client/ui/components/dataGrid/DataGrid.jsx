@@ -56,7 +56,7 @@ const DataGrid = ({ columns, data, loading, actions }) => {
           {columns.map((col, index) => (
             <th key={index}>{t(col.label)}</th>
           ))}
-          {actions && <th>{t('Actions')}</th>} {/* Only show if actions are provided */}
+          {actions && <th>{t('Actions')}</th>}
         </tr>
         </thead>
         <tbody className="text-xs">
@@ -68,15 +68,15 @@ const DataGrid = ({ columns, data, loading, actions }) => {
             {actions && (
               <td className="px-6 py-4">
                 <div className="flex flex-wrap gap-2">
-                  {actions.map((action, idx) => (
+                  {actions.map((action, index) => (
                     <Button
-                      key={idx}
+                      key={index}
                       color={action.color}
                       className={action.classes}
-                      onClick={() => action.onClick(item._id)}
+                      onClick={() => action.onClick(item._id)} // Pass row's _id
                       size="xs"
                     >
-                      {action.icon && <action.icon />} {t(action.label)}
+                      {action.icon && action.icon()} {t(action.label)}
                     </Button>
                   ))}
                 </div>
