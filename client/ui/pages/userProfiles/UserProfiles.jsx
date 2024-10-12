@@ -1,15 +1,18 @@
-import React from 'react';
-import { H2 } from "../../components/heading/Headings.jsx";
-import { useTracker } from "meteor/react-meteor-data";
-import { useTranslator } from "../../providers/i18n";
-import { USER_PROFILE_PUBLICATION } from "../../../../imports/modules/userProfiles/enums/publication";
-import { userProfileRepository } from "../../../../imports/modules/userProfiles/userProfileRepository";
+import React, {useState} from 'react';
+import {H2} from "../../components/heading/Headings.jsx";
+import {useTracker} from "meteor/react-meteor-data";
+import {useTranslator} from "../../providers/i18n";
+import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/userProfiles/enums/publication";
+import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository";
 import DataGrid from '../../components/dataGrid/DataGrid'; // Import the new DataGrid component
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'; // FontAwesome icons
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import {ChangePasswordModal} from "./ChangePasswordModal";
 
 export const UserProfiles = () => {
   const t = useTranslator();
+  const [openChangePasswordModalModal, setOpenChangePasswordModal] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
   // Track items and loading state
   const { items, loading } = useTracker(() => {
@@ -21,28 +24,20 @@ export const UserProfiles = () => {
     };
   });
 
-  const handleEdit = (_id) => {
-    // Handle edit action
-  };
-
-  const handleRemove = async (_id) => {
-    // Handle remove action
+  const handleEdit = async (_id) => {
+    setSelectedUserId(_id);
+    setOpenChangePasswordModal(true);
+    alert(_id);
+    // await contactRequestRemove({_id});
   };
 
   const actions = [
     {
-      label: 'Edit',
+      label: 'Password',
       icon: () => <FontAwesomeIcon icon={faEdit} />,
       classes: 'bg-blue-500 hover:bg-blue-600',
       onClick: handleEdit,
-    },
-    {
-      label: 'Delete',
-      icon: () => <FontAwesomeIcon icon={faTrash} />,
-      color: 'failure',
-      classes: 'bg-red-500 hover:bg-red-600',
-      onClick: handleRemove,
-    },
+    }
   ];
 
   return (
@@ -60,6 +55,8 @@ export const UserProfiles = () => {
         loading={loading}
         actions={actions}
       />
+
+      <ChangePasswordModal userId={selectedUserId} isOpen={openChangePasswordModalModal} onClose={() => setOpenChangePasswordModal(false)}/>
     </>
   );
 };
