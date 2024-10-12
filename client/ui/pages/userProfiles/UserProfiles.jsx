@@ -1,18 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { H2 } from "../../components/heading/Headings.jsx";
 import { useTracker } from "meteor/react-meteor-data";
-import { Button } from "flowbite-react";
 import { useTranslator } from "../../providers/i18n";
 import { USER_PROFILE_PUBLICATION } from "../../../../imports/modules/userProfiles/enums/publication";
 import { userProfileRepository } from "../../../../imports/modules/userProfiles/userProfileRepository";
-import { DataTable } from "simple-datatables";
-import {TableSkeleton} from "../../components/skeletons/TableSkeleton";
+import DataGrid from '../../components/dataGrid/DataGrid'; // Import the new DataGrid component
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'; // FontAwesome icons
 
 export const UserProfiles = () => {
   const t = useTranslator();
-  const tableRef = useRef(null); // Ref for table DOM element
-  const [dataTableInstance, setDataTableInstance] = useState(null); // Hold DataTable instance
-  const [isLoading, setIsLoading] = useState(true); // Loading state
 
   // Track items and loading state
   const { items, loading } = useTracker(() => {
@@ -21,96 +18,48 @@ export const UserProfiles = () => {
     return {
       loading: !handle.ready(),
       items: handle.ready() ? userProfileRepository.find().fetch() : []
-      // items: mockUserProfiles
     };
   });
 
   const handleRemove = async (_id) => {
-    // await contactRequestRemove(_id);
+    // Handle remove action
   };
 
-  useEffect(() => {
-    if (loading) {
-      setIsLoading(true);
-      return; // Do not initialize DataTable if data is still loading
-    }
+  const handleEdit = (_id) => {
+    // Handle edit action
+  };
 
-    setIsLoading(false); // Data has finished loading
-
-    if (tableRef.current) {
-      if (!dataTableInstance) {
-        // Initialize DataTable if it hasn't been initialized yet
-        const dtInstance = new DataTable(tableRef.current, {
-          paging: true,
-          perPage: 3,
-          perPageSelect: [3, 5, 10, 15, 20, 25, 50, 100, 250, 500],
-          searchable: true,
-          sortable: true,
-          labels: {
-            placeholder: t("Search"),
-            perPage: t("Rows"),
-            noRows: t("Nothing found"),
-            info: t("Showing {start} to {end} of {rows} entries"),
-            // Pagination labels
-            page: t("Page"),
-            of: t("of"),
-            next: t("Next"),
-            previous: t("Previous"),
-            first: t("First"),
-            last: t("Last"),
-            select: t("Select"),
-            selectAll: t("Select all"),
-            deselectAll: t("Deselect all"),
-            showEntries: t("Show entries"),
-          },
-        });
-
-        setDataTableInstance(dtInstance);
-      } else {
-        // Re-render or refresh DataTable when new data arrives
-        dataTableInstance.update();
-      }
-    }
-  }, [items, loading, dataTableInstance]);
-
-  if (isLoading) {
-    return <TableSkeleton/>; // Show loading message while data is being fetched
-  }
+  const actions = [
+    {
+      label: 'Edit',
+      icon: () => <FontAwesomeIcon icon={faEdit} />,
+      classes: 'bg-blue-500 hover:bg-blue-600',
+      onClick: handleEdit,
+    },
+    {
+      label: 'Delete',
+      icon: () => <FontAwesomeIcon icon={faTrash} />,
+      color: 'failure',
+      classes: 'bg-red-500 hover:bg-red-600',
+      onClick: handleRemove,
+    },
+  ];
 
   return (
     <>
       <H2 text="User profiles" showBackButton={true}></H2>
-
-      <div className="mt-2 w-full text-gray-500">
-        <table id="sorting-table" ref={tableRef} className="min-w-full">
-          <thead>
-          <tr>
-            <th>{t('First name')}</th>
-            <th>{t('Last name')}</th>
-            <th>{t('Gender')}</th>
-            <th>{t('Email')}</th>
-            <th>{t('Phone number')}</th>
-            <th>{t('Actions')}</th>
-          </tr>
-          </thead>
-          <tbody className="text-xs">
-          {items.map((item) => (
-            <tr key={item._id} className="border-b">
-              <td className="px-6 py-4">{item.firstname}</td>
-              <td className="px-6 py-4">{item.lastname}</td>
-              <td className="px-6 py-4">{item.gender}</td>
-              <td className="px-6 py-4">{item.email}</td>
-              <td className="px-6 py-4">{item.phone}</td>
-              <td className="px-6 py-4">
-                <div className="flex flex-wrap gap-2">
-                  <Button color="failure" onClick={() => handleRemove(item._id)}>{t('Delete')}</Button>
-                </div>
-              </td>
-            </tr>
-          ))}
-          </tbody>
-        </table>
-      </div>
+      <DataGrid
+        columns={[
+          { key: 'firstname', label: 'First name' },
+          { key: 'lastname', label: 'Last name' },
+          { key: 'gender', label: 'Gender' },
+          { key: 'email', label: 'Email' },
+          { key: 'phone', label: 'Phone number' },
+        ]}
+        data={items}
+        loading={loading}
+        actions={actions}
+      />
     </>
   );
 };
