@@ -39,7 +39,7 @@ export const ContactRequestForm = () => {
         </div>
 
         {/* Map will take full width on mobile and stay next to the form on larger screens */}
-        <div className="md:col-span-1 col-span-2 order-last md:order-none"> {/* Ensures the map is below the form on mobile */}
+        <div className="md:col-span-1 order-last md:order-none"> {/* Ensures the map is below the form on mobile */}
           <Map markers={locations} zoom={14} />
         </div>
       </div>
