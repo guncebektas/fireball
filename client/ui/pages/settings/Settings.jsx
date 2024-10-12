@@ -2,7 +2,7 @@ import React from "react";
 import {H2} from "../../components/heading/Headings";
 import {useTranslator} from "../../providers/i18n";
 import {Button} from 'flowbite-react';
-import {FaHome, FaStar, FaInfoCircle} from 'react-icons/fa';
+import {FaHome, FaQuestionCircle, FaStar, FaInfoCircle} from 'react-icons/fa';
 import {ROUTE} from "../../../routes/enums/route";
 import {useNavigate} from "react-router-dom";
 
@@ -13,7 +13,13 @@ export const Settings = () => {
   const buttons = [
     {
       icon: <FaHome className="text-xl mr-1"/>,
-      text: t('Home'),
+      text: t('Homepage'),
+      color: 'blue',
+      onClick: () => navigate(ROUTE.FAQS),
+    },
+    {
+      icon: <FaQuestionCircle className="text-xl mr-1"/>,
+      text: t('FAQs'),
       color: 'blue',
       onClick: () => navigate(ROUTE.FAQS),
     },
