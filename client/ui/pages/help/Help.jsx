@@ -34,10 +34,8 @@ export const Help = () => {
 
   return (
     <>
-      {/* Heading */}
       <H2 text={t('Help & Support')}/>
 
-      {/* Buttons */}
       {buttons.map((button, index) => (
         <div key={index} className="my-6">
           <Button
