@@ -21,12 +21,12 @@ export const UserProfiles = () => {
     };
   });
 
-  const handleRemove = async (_id) => {
-    // Handle remove action
-  };
-
   const handleEdit = (_id) => {
     // Handle edit action
+  };
+
+  const handleRemove = async (_id) => {
+    // Handle remove action
   };
 
   const actions = [
