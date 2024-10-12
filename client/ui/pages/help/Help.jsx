@@ -9,51 +9,48 @@ import {useNavigate} from "react-router-dom";
 export const Help = () => {
   const t = useTranslator();
   const navigate = useNavigate();
-
   const whatsappNumber = '1234567890';
 
-  const handleNavigate = (route) => {
-    navigate(route);
-  };
+  const buttons = [
+    {
+      icon: <FaQuestionCircle className="text-xl mr-1"/>,
+      text: t('FAQs'),
+      color: 'success',
+      onClick: () => navigate(ROUTE.FAQS),
+    },
+    {
+      icon: <FaEnvelope className="text-xl mr-1"/>,
+      text: t('Contact us'),
+      color: 'success',
+      onClick: () => navigate(ROUTE.CONTACT_FORM),
+    },
+    {
+      icon: <FaWhatsapp className="text-xl mr-1"/>,
+      text: t('Chat with us on WhatsApp'),
+      gradient: 'greenToBlue',
+      onClick: () => window.open(`https://wa.me/${whatsappNumber}`, '_blank'),
+    },
+  ];
 
   return (
     <>
       {/* Heading */}
       <H2 text={t('Help & Support')}/>
 
-      {/* FAQs Button */}
-      <div className="my-6">
-        <Button
-          onClick={() => handleNavigate(ROUTE.FAQS)}
-          color="success"
-          className="w-full flex justify-start items-center"
-        >
-          <FaQuestionCircle className="text-xl mr-1"/>
-          <span>{t('FAQs')}</span>
-        </Button>
-      </div>
-
-      <div className="my-6">
-        <Button
-          onClick={() => handleNavigate(ROUTE.CONTACT_FORM)}
-          color="success"
-          className="w-full flex justify-start items-center"
-        >
-          <FaEnvelope className="text-xl mr-1"/>
-          <span>{t('Contact us')}</span>
-        </Button>
-      </div>
-
-      <div className="my-6">
-        <Button
-          onClick={() => window.open(`https://wa.me/${whatsappNumber}`, '_blank')}
-          gradientDuoTone="greenToBlue"
-          className="w-full flex justify-start items-center"
-        >
-          <FaWhatsapp className="text-xl mr-1"/>
-          <span>{t('Chat with us on WhatsApp')}</span>
-        </Button>
-      </div>
+      {/* Buttons */}
+      {buttons.map((button, index) => (
+        <div key={index} className="my-6">
+          <Button
+            onClick={button.onClick}
+            color={button.color}
+            gradientDuoTone={button.gradient || undefined}
+            className="w-full flex justify-start items-center"
+          >
+            {button.icon}
+            <span>{button.text}</span>
+          </Button>
+        </div>
+      ))}
     </>
   );
 };
