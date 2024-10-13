@@ -1,6 +1,9 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
+import {userResetPassword} from "../user.methods";
 
-const LISTS_METHODS = [].map(method => method.name);
+const LISTS_METHODS = [
+  userResetPassword
+].map(method => method.name);
 
 DDPRateLimiter.addRule({
   name(name) {
