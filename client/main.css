@@ -33,6 +33,10 @@
 }
 
 /** overwrite */
+.h-modal.bg-gray-900 {
+  --tw-bg-opacity: .5 !important;
+}
+
 .focus\:ring-cyan-300:focus {
   --tw-ring-opacity: 0 !important;
 }
