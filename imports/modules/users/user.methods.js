@@ -1,10 +1,12 @@
 import {createMethod} from "meteor/jam:method";
-import {userProfileService} from "../userProfiles/userProfileService";
+import {userResetPasswordSchema} from "./schemas/userResetPassword";
+import {userService} from "./userService";
 
 export const userResetPassword = createMethod({
   name: 'users.resetPassword',
-  schema: userResetPassword,
-  async run({firstname, lastname, gender, phoneNumber}) {
-    return userProfileService.edit(this.userId, {firstname, lastname, gender, phoneNumber});
+  schema: userResetPasswordSchema,
+  serverOnly: true,
+  async run({userId, password}) {
+    return userService.resetPassword(userId, password);
   }
 });
