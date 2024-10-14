@@ -44,10 +44,10 @@ export const UserProfiles = () => {
       <H2 text="User profiles" showBackButton={true}></H2>
       <DataGrid
         columns={[
+          { key: 'email', label: 'Email' },
           { key: 'firstname', label: 'First name' },
           { key: 'lastname', label: 'Last name' },
           { key: 'gender', label: 'Gender' },
-          { key: 'email', label: 'Email' },
           { key: 'phone', label: 'Phone number' },
         ]}
         data={items}
