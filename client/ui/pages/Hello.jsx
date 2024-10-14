@@ -31,7 +31,7 @@ export const Hello = () => {
       </div>
 
       <div className="mb-3">
-        <Slider carousel={carousel} showCaption={false}/>
+        <Slider carousel={carousel} interval={5000} showCaption={false}/>
       </div>
     </>
   );

@@ -2,11 +2,11 @@ import React from 'react';
 import {useTranslator} from "../../providers/i18n";
 import {Carousel} from "flowbite-react";
 
-export const Slider = ({carousel, showCaption = false, indicators = false}) => {
+export const Slider = ({carousel, showCaption = false, indicators = false, interval = 3000}) => {
   const t = useTranslator();
 
   return (
-    <Carousel className="h-64 lg:h-96 rounded-lg overflow-hidden shadow-lg" indicators={indicators}>
+    <Carousel className="h-64 lg:h-96 rounded-lg overflow-hidden shadow-lg" indicators={indicators} slideInterval={interval}>
       {carousel.map((slide, index) => (
           <div key={index} className="relative w-full h-full">
             <img
