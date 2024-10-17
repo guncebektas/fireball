@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import {H2} from "../../components/heading/Headings.jsx";
 import {AutoForm} from '../../../../imports/modules/shared/uniforms-tailwind/src';
 import {ticketUpsert} from "../../../../imports/modules/tickets/ticket.methods.js";
@@ -12,19 +12,19 @@ import {ToastSuccess, ToastWarning} from "../../components/alert/Toast";
 
 export const TicketForm = () => {
   const formRef = useRef();
-  const {_id} = useParams();
+  const {id} = useParams();
 
   let ticket = {};
 
-  if (_id !== FORM_TYPE.INSERT) {
+  if (id !== FORM_TYPE.INSERT) {
     ticket = useTracker(() => {
-      const handle = Meteor.subscribe(TICKET_PUBLICATION.ONE, _id);
+      const handle = Meteor.subscribe(TICKET_PUBLICATION.ONE, id);
 
       if (!handle.ready()) {
         return [];
       }
 
-      return ticketRepository.findOne(_id);
+      return ticketRepository.findOne(id);
     });
   }
 
