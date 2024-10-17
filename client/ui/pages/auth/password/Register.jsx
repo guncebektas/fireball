@@ -56,9 +56,9 @@ export const Register = ({onStateChange}) => {
     }
 
     if (isUsernameLoginEnabled) {
-      userObject = {...{email: formData.email}, ...userObject};
-    } else {
       userObject = {...{username: formData.email}, ...userObject};
+    } else {
+      userObject = {...{email: formData.email}, ...userObject};
     }
 
     await Accounts.createUserAsync(userObject)

@@ -1,6 +1,6 @@
 import {z} from "zod";
 
-export const userResetPasswordSchema = z.object({
+export const userSetPasswordSchema = z.object({
   userId: z.string(),
   password: z.string()
-})
+});

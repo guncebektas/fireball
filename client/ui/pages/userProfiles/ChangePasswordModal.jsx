@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {Button, Label, Modal, TextInput} from 'flowbite-react';
 import {useTranslator} from "../../providers/i18n";
-import {userResetPassword} from "../../../../imports/modules/users/user.methods";
+import {userSetPassword} from "../../../../imports/modules/users/user.methods";
 import PasswordInput from "../../components/form/PasswordInput";
 
 export const ChangePasswordModal = ({userId, isOpen, onClose}) => {
@@ -23,7 +23,7 @@ export const ChangePasswordModal = ({userId, isOpen, onClose}) => {
       return;
     }
 
-    await userResetPassword({
+    await userSetPassword({
       userId: userId,
       password: formData.newPassword
     }).then(response => {

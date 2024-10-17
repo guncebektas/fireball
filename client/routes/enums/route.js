@@ -11,12 +11,13 @@ export const ROUTE = {
   LOGOUT: '/logout',
   PRICE: '/price',
   PROFILE: '/profile',
+  RESET_PASSWORD: '/reset-password/:id',
   RSS_FEED_DETAIL: '/rss-feed/:id',
   RSS_FEED_LIST: '/rss-feed/list',
   SETTINGS: '/settings',
   STORES: '/stores',
   TICKETS: '/ticket/list',
-  TICKET: '/ticket/form/:_id',
+  TICKET: '/ticket/form/:id',
   USER_PROFILES: '/user-profiles',
   WALLET: '/wallet'
 };

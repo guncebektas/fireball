@@ -1,11 +1,8 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
-import {userSetPassword, userSendResetPasswordEmail} from "../user.methods";
-import {userResetPasswordSchema} from "../schemas/userResetPasswordSchema";
+import {sendSimpleEmail} from "../email.methods";
 
 const LISTS_METHODS = [
-  userSendResetPasswordEmail,
-  userResetPasswordSchema,
-  userSetPassword
+  sendSimpleEmail
 ].map(method => method.name);
 
 DDPRateLimiter.addRule({

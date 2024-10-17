@@ -3,6 +3,7 @@ import {Button, Label, TextInput} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 import {userSendResetPasswordEmail} from "../../../../../imports/modules/users/user.methods";
 import {useTranslator} from "../../../providers/i18n";
+import {ToastSuccess} from "../../../components/alert/Toast";
 
 export const ForgottenPassword = ({onStateChange}) => {
   const t = useTranslator();
@@ -21,6 +22,9 @@ export const ForgottenPassword = ({onStateChange}) => {
     };
 
     await userSendResetPasswordEmail({email: formData.email})
+      .then(response => {
+        ToastSuccess();
+      })
   };
 
   return (
@@ -34,7 +38,7 @@ export const ForgottenPassword = ({onStateChange}) => {
               <div className="mb-2 block">
                 <Label htmlFor="email" value={t('Email address')}/>
               </div>
-              <TextInput id="email" type="email" ref={emailRef} required/>
+              <TextInput id="email" type="email" placeholder={t('Type your email')} ref={emailRef} required/>
             </div>
             <div>
               <Button type="submit" color="primary">{t('Submit')}</Button>

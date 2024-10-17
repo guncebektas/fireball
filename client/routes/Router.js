@@ -18,19 +18,21 @@ import {Stores} from "../ui/pages/stores/Stores";
 import {Wallet} from "../ui/pages/wallet/Wallet";
 import {Help} from "../ui/pages/help/Help";
 import {UserProfiles} from "../ui/pages/userProfiles/UserProfiles";
+import {ResetPassword} from "../ui/pages/auth/password/ResetPassword";
 
 export const Router = () => (
   <Routes>
     <Route path={ROUTE.ABOUT_US} element={<AboutUs/>}/>
     <Route path={ROUTE.ADMIN} element={<Admin/>}/>
-    <Route path={ROUTE.CONTACT_FORM} element={<ContactRequestForm />} />
-    <Route path={ROUTE.CONTACT_REQUESTS} element={<ContactRequests />} />
+    <Route path={ROUTE.CONTACT_FORM} element={<ContactRequestForm/>}/>
+    <Route path={ROUTE.CONTACT_REQUESTS} element={<ContactRequests/>}/>
     <Route path={ROUTE.DOCS} element={<Docs/>}/>
     <Route path={ROUTE.FAQS} element={<Faqs/>}/>
     <Route path={ROUTE.HOME} element={<Hello/>}/>
     <Route path={ROUTE.HELP} element={<Help/>}/>
     <Route path={ROUTE.PRICE} element={<Prices/>}/>
     <Route path={ROUTE.PROFILE} element={<Profile/>}/>
+    <Route path={ROUTE.RESET_PASSWORD} element={<ResetPassword/>}/>
     <Route path={ROUTE.RSS_FEED_LIST} element={<RssFeedList/>}/>
     <Route path={ROUTE.SETTINGS} element={<Settings/>}/>
     <Route path={ROUTE.STORES} element={<Stores/>}/>

@@ -2,6 +2,7 @@ import '../imports/modules/axios/server';
 import '../imports/modules/contactRequests/server'
 import '../imports/modules/cronJobs/server';
 import '../imports/modules/dummy/server';
+import '../imports/modules/email/server';
 import '../imports/modules/files/images/server';
 import '../imports/modules/links/server';
 import '../imports/modules/migrations/server';

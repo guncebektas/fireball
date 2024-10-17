@@ -9,13 +9,12 @@ import {LoginWithGithub} from "../services/LoginWithGithub";
 import {Log} from "meteor/logging";
 
 export const Login = ({onStateChange}) => {
+  const t = useTranslator();
   const {isUsernameLoginEnabled} = Meteor.settings.public;
 
   const [openModal, setOpenModal] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
-
-  const t = useTranslator();
 
   const emailRef = useRef();
   const passwordRef = useRef();
