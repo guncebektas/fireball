@@ -70,7 +70,7 @@ Monti
   - [x] Login
   - [x] Register
   - [x] Roles
-  - [ ] Forgotten password
+  - [x] Forgotten password reset
   - [x] Change password
   - [x] 2FA
 - [x] Logging
@@ -107,6 +107,7 @@ Monti
   - [x] Axios implementation
   - [ ] Swagger implementation
   - [x] Cron job module
+  - [x] Email sending
   - [x] Migration module
   - [x] Performance monitoring with MontiAPM
   - [x] AWS s3 integration

@@ -69,7 +69,7 @@ Monti
     - [x] Giriş
     - [x] Kayıt
     - [x] Roller
-    - [ ] Şifremi unuttum
+    - [x] Şifremi unuttum ile şifre yenileme
     - [x] Şifre değiştirme
     - [x] 2AD
 - [x] Log kaydı
@@ -106,6 +106,7 @@ Monti
     - [x] Axios entegrasyonu
     - [ ] Swagger entegrasyonu
     - [x] Cron job modülü
+    - [x] Eposta modülü
     - [x] Migration modülü
     - [x] MontiAPM ile performans takibi
     - [x] AWS s3 entegrasyonu
