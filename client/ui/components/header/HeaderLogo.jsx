@@ -1,11 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {ROUTE} from "../../../routes/enums/route";
 
 export const HeaderLogo = () => {
   const {name, logo, icon} = Meteor.settings.public.app;
 
   return (
-    <Link to="/" className="flex items-center justify-between mr-4">
+    <Link to={ROUTE.HOME} className="flex items-center justify-between mr-4">
       <div>
         <img src={icon} alt={name} className="mr-3" width={32}/>
       </div>
