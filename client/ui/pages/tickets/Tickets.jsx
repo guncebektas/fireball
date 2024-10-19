@@ -1,13 +1,13 @@
 import React from 'react';
 import {H2} from "../../components/heading/Headings.jsx";
 import {useTracker} from "meteor/react-meteor-data";
-import {ticketRepository} from "../../../../imports/modules/tickets/ticketRepository.js";
-import {TICKET_PUBLICATION} from "../../../../imports/modules/tickets/enums/publication.js";
+import {ticketRepository} from "../../../../imports/modules/app/tickets/ticketRepository.js";
+import {TICKET_PUBLICATION} from "../../../../imports/modules/app/tickets/enums/publication.js";
 import {Link} from "react-router-dom";
 import {ROUTE} from "../../../routes/enums/route.js";
 import {Button, Table} from "flowbite-react";
 import {setParam} from "../../../../imports/modules/shared/functions/setParam.js";
-import {ticketRemove} from "../../../../imports/modules/tickets/ticket.methods.js";
+import {ticketRemove} from "../../../../imports/modules/app/tickets/ticket.methods.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {useTranslator} from "../../providers/i18n";

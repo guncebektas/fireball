@@ -3,7 +3,6 @@ import {Button, Label} from 'flowbite-react';
 import {useTranslator} from "../../../providers/i18n";
 import PasswordInput from "../../../components/form/PasswordInput";
 import {useLocation} from "react-router-dom";
-import {userResetPassword} from "../../../../../imports/modules/users/user.methods";
 import {Accounts} from "meteor/accounts-base";
 
 export const ResetPassword = () => {

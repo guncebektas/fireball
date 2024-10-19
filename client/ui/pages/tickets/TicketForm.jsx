@@ -1,12 +1,12 @@
 import React, {useRef} from 'react';
 import {H2} from "../../components/heading/Headings.jsx";
 import {AutoForm} from '../../../../imports/modules/shared/uniforms-tailwind/src';
-import {ticketUpsert} from "../../../../imports/modules/tickets/ticket.methods.js";
-import {ticketBridge} from "../../../../imports/modules/tickets/schemas/ticketSchema.js";
+import {ticketUpsert} from "../../../../imports/modules/app/tickets/ticket.methods.js";
+import {ticketBridge} from "../../../../imports/modules/app/tickets/schemas/ticketSchema.js";
 import {useParams} from "react-router-dom";
 import {useTracker} from "meteor/react-meteor-data";
-import {TICKET_PUBLICATION} from "../../../../imports/modules/tickets/enums/publication.js";
-import {ticketRepository} from "../../../../imports/modules/tickets/ticketRepository.js";
+import {TICKET_PUBLICATION} from "../../../../imports/modules/app/tickets/enums/publication.js";
+import {ticketRepository} from "../../../../imports/modules/app/tickets/ticketRepository.js";
 import {FORM_TYPE} from "../../../shared/enums/formType.js";
 import {ToastSuccess, ToastWarning} from "../../components/alert/Toast";
 

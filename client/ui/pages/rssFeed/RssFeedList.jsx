@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Table} from 'flowbite-react';
-import {rssFeedFetch} from '../../../../imports/modules/rss/rss.methods';
+import {rssFeedFetch} from '../../../../imports/modules/app/rss/rss.methods';
 import {ToastSuccess, ToastWarning} from '../../components/alert/Toast';
 import {H2} from "../../components/heading/Headings";
 import Skeleton from "react-loading-skeleton";

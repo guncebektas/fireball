@@ -5,9 +5,9 @@ import {H4, H5} from "../../components/heading/Headings";
 import {Slider} from "../../components/slider/Slider";
 import {useTracker} from "meteor/react-meteor-data";
 import {Meteor} from "meteor/meteor";
-import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/userProfiles/enums/publication";
-import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository";
-import {WalletIcon} from "./WalletIcon"; // Import Modal and Accordion from Flowbite
+import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/userProfiles/enums/publication";
+import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository";
+import {WalletIcon} from "./WalletIcon";
 
 const faqs = [
   {question: 'Bu uygulama nasıl çalışıyor?', answer: 'Uygulama, kullanıcıların belirli hedeflere ulaşmalarına yardımcı olur.'},

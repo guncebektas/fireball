@@ -3,7 +3,7 @@ import { Button, Modal } from 'flowbite-react';
 import { QRCodeCanvas } from 'qrcode.react';
 import { Meteor } from 'meteor/meteor';
 import Countdown from "../countDown/CountDown";
-import {profileSaveOtp} from "../../../../imports/modules/userProfiles/userProfile.methods";
+import {profileSaveOtp} from "../../../../imports/modules/app/user/userProfiles/userProfile.methods";
 import {useTranslator} from "../../providers/i18n";
 
 export const QRCodeModal = ({ isOpen, onClose }) => {

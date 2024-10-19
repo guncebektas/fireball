@@ -1,7 +1,7 @@
 import React from "react";
 import {useFind, useSubscribe} from "meteor/react-meteor-data";
-import {PUBLISH} from "../../../../imports/modules/links/enums/publish";
-import {linkRepository} from "../../../../imports/modules/links/linkRepository";
+import {PUBLISH} from "../../../../imports/modules/app/links/enums/publish";
+import {linkRepository} from "../../../../imports/modules/app/links/linkRepository";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

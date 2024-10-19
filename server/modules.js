@@ -1,17 +1,20 @@
-import '../imports/modules/axios/server';
-import '../imports/modules/contactRequests/server'
-import '../imports/modules/cronJobs/server';
-import '../imports/modules/dummy/server';
-import '../imports/modules/email/server';
-import '../imports/modules/files/images/server';
-import '../imports/modules/links/server';
-import '../imports/modules/migrations/server';
-import '../imports/modules/notifications/server';
-import '../imports/modules/organizations/server';
-import '../imports/modules/userProfiles/server';
-import '../imports/modules/rss/server';
-import '../imports/modules/swagger/server';
-import '../imports/modules/userPartition/server';
-import '../imports/modules/userRoles/server';
-import '../imports/modules/users/server';
-import '../imports/modules/tickets/server';
+import '../imports/modules/infrastructure/axios/server';
+import '../imports/modules/infrastructure/cronJobs/server';
+import '../imports/modules/infrastructure/dummy/server';
+import '../imports/modules/infrastructure/email/server';
+import '../imports/modules/infrastructure/migrations/server';
+import '../imports/modules/infrastructure/swagger/server';
+
+import '../imports/modules/app/contactRequests/server'
+import '../imports/modules/app/files/images/server';
+import '../imports/modules/app/links/server';
+import '../imports/modules/app/notifications/server';
+import '../imports/modules/app/organizations/server';
+import '../imports/modules/app/rss/server';
+
+import '../imports/modules/app/user/userPartition/server';
+import '../imports/modules/app/user/userPassword/server';
+import '../imports/modules/app/user/userProfiles/server';
+import '../imports/modules/app/user/userRoles/server';
+
+import '../imports/modules/app/tickets/server';

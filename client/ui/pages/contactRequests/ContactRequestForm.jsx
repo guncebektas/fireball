@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { H2 } from "../../components/heading/Headings";
 import { AutoForm } from "../../../../imports/modules/shared/uniforms-tailwind/src";
-import { contactBridge } from "../../../../imports/modules/contactRequests/schemas/contactSchema";
-import { contactRequestUpsert } from "../../../../imports/modules/contactRequests/contact.methods";
 import Map from "../../components/map/Map";
 import { ToastSuccess } from "../../components/alert/Toast";
+import {contactRequestUpsert} from "../../../../imports/modules/app/contactRequests/contact.methods";
+import {contactBridge} from "../../../../imports/modules/app/contactRequests/schemas/contactSchema";
 
 export const ContactRequestForm = () => {
   const formRef = useRef();

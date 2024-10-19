@@ -1,9 +1,9 @@
 import React, {useRef} from 'react';
 import {Button, Label, TextInput} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
-import {userSendResetPasswordEmail} from "../../../../../imports/modules/users/user.methods";
 import {useTranslator} from "../../../providers/i18n";
 import {ToastSuccess} from "../../../components/alert/Toast";
+import {userSendResetPasswordEmail} from "../../../../../imports/modules/app/user/userPassword/user.methods";
 
 export const ForgottenPassword = ({onStateChange}) => {
   const t = useTranslator();

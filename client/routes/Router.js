@@ -8,16 +8,16 @@ import {ContactRequests} from "../ui/pages/contactRequests/ContactRequests";
 import {Docs} from "../ui/pages/docs/Docs.jsx";
 import {Faqs} from "../ui/pages/help/Faqs";
 import {Hello} from "../ui/pages/Hello.jsx";
-import {Profile} from "../ui/pages/profile/Profile.jsx";
+import {Profile} from "../ui/pages/userProfile/Profile.jsx";
 import {Prices} from "../ui/pages/prices/Prices.jsx";
 import {RssFeedList} from "../ui/pages/rssFeed/RssFeedList";
 import {Tickets} from "../ui/pages/tickets/Tickets.jsx";
 import {TicketForm} from "../ui/pages/tickets/TicketForm.jsx";
-import {Settings} from "../ui/pages/settings/Settings.jsx";
+import {Settings} from "../ui/pages/admin/settings/Settings.jsx";
 import {Stores} from "../ui/pages/stores/Stores";
 import {Wallet} from "../ui/pages/wallet/Wallet";
 import {Help} from "../ui/pages/help/Help";
-import {UserProfiles} from "../ui/pages/userProfiles/UserProfiles";
+import {UserProfiles} from "../ui/pages/admin/userProfiles/UserProfiles";
 import {ResetPassword} from "../ui/pages/auth/password/ResetPassword";
 
 export const Router = () => (

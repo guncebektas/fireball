@@ -5,7 +5,7 @@ import {Button} from "flowbite-react";
 import {FaUser, FaEnvelope, FaBug} from 'react-icons/fa';
 import {ROUTE} from "../../../routes/enums/route";
 import {useNavigate} from "react-router-dom";
-import {sendSimpleEmail} from "../../../../imports/modules/email/email.methods";
+import {sendSimpleEmail} from "../../../../imports/modules/infrastructure/email/email.methods";
 
 export const Admin = () => {
   const t = useTranslator();

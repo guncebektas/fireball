@@ -4,8 +4,8 @@ import {Meteor} from "meteor/meteor";
 import {useTracker} from "meteor/react-meteor-data";
 import {Link, useNavigate} from "react-router-dom";
 import {Dropdown} from "flowbite-react";
-import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/userProfiles/enums/publication.js";
-import {userProfileRepository} from "../../../../imports/modules/userProfiles/userProfileRepository.js";
+import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/userProfiles/enums/publication.js";
+import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository.js";
 import {ROUTE} from "../../../routes/enums/route.js";
 import {useTranslator} from "../../providers/i18n";
 
