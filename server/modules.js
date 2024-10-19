@@ -1,11 +1,11 @@
 import '../imports/modules/infrastructure/axios/server';
 import '../imports/modules/infrastructure/cronJobs/server';
-import '../imports/modules/infrastructure/dummy/server';
 import '../imports/modules/infrastructure/email/server';
 import '../imports/modules/infrastructure/migrations/server';
 import '../imports/modules/infrastructure/swagger/server';
 
 import '../imports/modules/app/contactRequests/server'
+import '../imports/modules/app/dummy/server';
 import '../imports/modules/app/files/images/server';
 import '../imports/modules/app/links/server';
 import '../imports/modules/app/notifications/server';

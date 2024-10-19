@@ -1,6 +1,6 @@
 import {BaseService} from "../../shared/service/baseService";
-import {linkRepository} from "../../app/links/linkRepository";
-import {linkService} from "../../app/links/linkService";
+import {linkRepository} from "../links/linkRepository";
+import {linkService} from "../links/linkService";
 import {DUMMY_LINKS} from "./enums/links";
 
 class DummyService extends BaseService {

@@ -5,7 +5,7 @@ import {ServiceConfiguration} from "meteor/service-configuration";
 import {Roles} from 'meteor/alanning:roles'
 import {ROLE} from "../imports/modules/shared/enums/role";
 import {ROLE_SCOPE} from "../imports/modules/shared/enums/roleScope";
-import {dummyLinkService} from "../imports/modules/infrastructure/dummy/dummyService";
+import {dummyLinkService} from "../imports/modules/app/dummy/dummyService";
 
 Meteor.startup(async () => {
   // Dummy data
