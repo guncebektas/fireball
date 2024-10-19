@@ -111,3 +111,7 @@ table thead th.datatable-ascending::after {
 table thead th.datatable-descending::after {
   content: '▼'; /* Descending */
 }
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+}

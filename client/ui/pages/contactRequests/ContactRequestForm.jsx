@@ -1,29 +1,54 @@
-import React, {useRef} from 'react';
-import {H2} from "../../components/heading/Headings";
-import {AutoForm} from "../../../../imports/modules/shared/uniforms-tailwind/src";
-import {contactBridge} from "../../../../imports/modules/contactRequests/schemas/contactSchema";
-import {contactRequestUpsert} from "../../../../imports/modules/contactRequests/contact.methods";
+import React, { useEffect, useRef } from 'react';
+import { H2 } from "../../components/heading/Headings";
+import { AutoForm } from "../../../../imports/modules/shared/uniforms-tailwind/src";
+import { contactBridge } from "../../../../imports/modules/contactRequests/schemas/contactSchema";
+import { contactRequestUpsert } from "../../../../imports/modules/contactRequests/contact.methods";
 import Map from "../../components/map/Map";
-import {ToastSuccess} from "../../components/alert/Toast";
+import { ToastSuccess } from "../../components/alert/Toast";
 
 export const ContactRequestForm = () => {
   const formRef = useRef();
+  const siteKey = Meteor.settings.public.app.recaptcha.siteKey;
+
+  // Dynamically load the reCAPTCHA script when the component mounts
+  useEffect(() => {
+    const loadRecaptcha = () => {
+      if (!window.grecaptcha) {
+        const script = document.createElement('script');
+        script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+      }
+    };
+
+    loadRecaptcha();
+  }, [siteKey]);
 
   const handleSubmit = async function (formData) {
-    contactRequestUpsert(formData)
-      .then(response => {
-        ToastSuccess();
-        formRef.reset();
-      })
-      .catch(error => {
-        console.log(error);
+    // Request reCAPTCHA token
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute(siteKey, { action: 'submit' }).then((token) => {
+        // Include the token in the form data
+        formData.recaptchaToken = token;
+
+        // Submit form data with reCAPTCHA token
+        contactRequestUpsert(formData)
+          .then(response => {
+            ToastSuccess();
+            formRef.current.reset(); // Call the formRef properly
+          })
+          .catch(error => {
+            console.log(error);
+          });
       });
+    });
   };
 
   const locations = [
-    {title: 'Location 1', latitude: 41.0434, longitude: 29.0091},
-    {title: 'Location 2', latitude: 40.7306, longitude: -73.9352},
-    {title: 'Location 3', latitude: 48.8566, longitude: 2.3522},
+    { title: 'Location 1', latitude: 41.0434, longitude: 29.0091 },
+    { title: 'Location 2', latitude: 40.7306, longitude: -73.9352 },
+    { title: 'Location 3', latitude: 48.8566, longitude: 2.3522 },
   ];
 
   return (
@@ -45,5 +70,4 @@ export const ContactRequestForm = () => {
       </div>
     </>
   );
-
 };
