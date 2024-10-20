@@ -112,6 +112,30 @@ table thead th.datatable-descending::after {
   content: '▼'; /* Descending */
 }
 
+.scratch-card {
+  background-image: url("/online/images/scratch-card.svg");
+  background-size: contain;
+  min-height: 200px;
+}
+
+.scratch-card-content {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+}
+
+.scratch-card-reward-table {
+  position: absolute;
+  bottom: 0;
+}
+
+.scratch-card-wait-to-play {
+  position: absolute;
+  right: 25px;
+  bottom: 55px;
+  width: 180px;
+}
+
 .grecaptcha-badge {
   visibility: hidden !important;
 }

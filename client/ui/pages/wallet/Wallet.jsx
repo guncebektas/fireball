@@ -8,6 +8,7 @@ import {Meteor} from "meteor/meteor";
 import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/userProfiles/enums/publication";
 import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository";
 import {WalletIcon} from "./WalletIcon";
+import ScratchCardModal, {ScratchToWin} from "./ScratchCardModal";
 
 const faqs = [
   {question: 'Bu uygulama nasıl çalışıyor?', answer: 'Uygulama, kullanıcıların belirli hedeflere ulaşmalarına yardımcı olur.'},
@@ -32,6 +33,7 @@ const ProgressBar = ({target, current = 0}) => {
     <div className="mb-3">
       <div className="flex items-center space-x-4">
         <H5 text={t(`Earn one coffee with {$target} stars`, {target: target})}/>
+        <ScratchCardModal/>
       </div>
       <div className="flex items-center space-x-4">
         <div className="flex items-center">
