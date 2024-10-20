@@ -14,7 +14,7 @@ Accounts.onCreateUser(async function (options, user) {
     event.emit(EVENT.SET_USER_ROLE, {userId: user._id});
   }
 
-  event.emit(EVENT.SET_USER_PROFILE, {userId: user._id});
+  event.emit(EVENT.SET_USER_PROFILE, {user: user});
   event.emit(EVENT.SET_ORGANIZATION, {userId: user._id});
 
   return user;

@@ -1,6 +1,7 @@
 import {BaseService} from "../../../shared/service/baseService";
 import {userProfileRepository} from "./userProfileRepository.js";
 import {Images} from "../../files/images/database/images";
+import {Meteor} from "meteor/meteor";
 
 class UserProfileService extends BaseService {
   constructor({repository, imageRepository}) {
@@ -9,11 +10,14 @@ class UserProfileService extends BaseService {
   }
 
   /**
-   * @param _id {string}
+   * @param user {object}
    * @return {Promise<string>}
    */
-  async create(_id) {
-    return this.repository.insertAsync({_id});
+  async create(user) {
+    return this.repository.insertAsync({
+      _id: user._id,
+      email: user.emails[0].address
+    });
   }
 
   async edit(userId, object) {
