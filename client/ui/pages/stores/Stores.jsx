@@ -14,7 +14,6 @@ const storesData = [{
   title: "Store 1",
   description: "This is a description of Store 1. We offer a wide range of products and services.",
   info: "This is a description of Store 1. We offer a wide range of products and services.",
-  location: {latitude: 40.7128, longitude: -74.0060},
   phone: "+1 (555) 123-4567",
   address: "123 Main St, New York, NY",
 }, {
@@ -90,7 +89,9 @@ export const Stores = () => {
 
             {/* Map Component */}
             <div className="sm:w-1/3 w-full h-48 rounded-lg overflow-hidden border">
-              <Map markers={[{title: store.title, latitude: store.location.latitude, longitude: store.location.longitude}]} zoomControls={false}/>
+              {store.location?.latitude !== undefined && store.location?.longitude !== undefined && (
+                <Map markers={[{title: store.title, latitude: store.location.latitude, longitude: store.location.longitude}]} zoomControls={false}/>
+              )}
             </div>
           </div>
         ))}
