@@ -14,6 +14,9 @@
         "linkedin": "https://www.linkedin.com/company/10869368/admin/dashboard/",
         "youtube": "https://www.youtube.com/@ritapos"
       },
+      "recaptcha": {
+        "siteKey": ""
+      },
       "defaultLanguage": "en-US",
       "supportedLanguages": [{
         "languageCode": "en-US",
