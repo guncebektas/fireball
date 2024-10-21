@@ -84,6 +84,9 @@ Monti
     - [x] Tailwind ile yazılmış temel form (uniform) elemanları 
     - [x] Uniform'un temel form elemanlarına dil desteği
     - [ ] Complex form components written with Tailwind
+- [ ] Data grid (simple-datatables) component
+  - [x] Client taraflı component
+  - [ ] Server taraflı component
 - [ ] Sayfalar
     - [x] Sayfa yönlendirme
     - [x] Anasayfa
@@ -92,7 +95,7 @@ Monti
     - [x] Fiyatlar sayfası
     - [x] Yardım / destek sayfası
 - [ ] Yönetim
-    - [ ] Kullanıcı yönetimi
+    - [x] Kullanıcı yönetimi
     - [x] Rol yönetimi
     - [ ] Lisans yönetimi
     - [ ] Organizasyon yönetimi

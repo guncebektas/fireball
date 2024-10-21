@@ -85,6 +85,9 @@ Monti
   - [x] Basic form (uniform) components written with Tailwind
   - [x] Basic forms of uniform with translation support
   - [ ] Complex form components written with Tailwind
+- [ ] Data grid (simple-datatables) component
+  - [x] Client side component
+  - [ ] Server side component
 - [ ] Pages
   - [x] Page routing
   - [x] Home page
@@ -93,7 +96,7 @@ Monti
   - [x] Price page
   - [x] Support page
 - [ ] Management
-  - [ ] User management
+  - [x] User management
   - [x] Role management
   - [ ] License management 
   - [ ] Organization management
