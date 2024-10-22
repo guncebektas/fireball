@@ -5,7 +5,7 @@ import fs from 'fs';
 import {Random} from 'meteor/random';
 import {imageRepository} from "../imageRepository";
 import {Log} from "meteor/logging";
-import {profileSaveProfilePicture} from "../../../user/userProfiles/userProfile.methods";
+import {profileSaveProfilePicture} from "../../userProfiles/userProfile.methods";
 
 //
 // Start moving files to AWS:S3, after fully received by the Meteor server

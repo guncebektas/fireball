@@ -1,7 +1,6 @@
 import {BaseService} from "../../../shared/service/baseService";
 import {userProfileRepository} from "./userProfileRepository.js";
-import {Images} from "../../files/images/database/images";
-import {Meteor} from "meteor/meteor";
+import {Images} from "../userProfilePicture/database/images";
 
 class UserProfileService extends BaseService {
   constructor({repository, imageRepository}) {

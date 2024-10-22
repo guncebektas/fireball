@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {H2} from "../../components/heading/Headings.jsx";
 import {AutoForm} from '../../../../imports/modules/shared/uniforms-tailwind/src';
-import {ticketUpsert} from "../../../../imports/modules/app/tickets/ticket.methods.js";
+import {ticketsMethods} from "../../../../imports/modules/app/tickets/ticket.methods.js";
 import {ticketBridge} from "../../../../imports/modules/app/tickets/schemas/ticketSchema.js";
 import {useParams} from "react-router-dom";
 import {useTracker} from "meteor/react-meteor-data";
@@ -9,31 +9,33 @@ import {TICKET_PUBLICATION} from "../../../../imports/modules/app/tickets/enums/
 import {ticketRepository} from "../../../../imports/modules/app/tickets/ticketRepository.js";
 import {FORM_TYPE} from "../../../shared/enums/formType.js";
 import {ToastSuccess, ToastWarning} from "../../components/alert/Toast";
+import {Log} from "meteor/logging";
 
 export const TicketForm = () => {
   const formRef = useRef();
-  const {id} = useParams();
+  const {_id} = useParams();
 
   let ticket = {};
 
-  if (id !== FORM_TYPE.INSERT) {
+  if (_id !== FORM_TYPE.INSERT) {
     ticket = useTracker(() => {
-      const handle = Meteor.subscribe(TICKET_PUBLICATION.ONE, id);
+      const handle = Meteor.subscribe(TICKET_PUBLICATION.ONE, _id);
 
       if (!handle.ready()) {
         return [];
       }
 
-      return ticketRepository.findOne(id);
+      return ticketRepository.findOne(_id);
     });
   }
 
   const handleSubmit = async function (formData) {
-    ticketUpsert(formData)
+    ticketsMethods.upsert(formData)
       .then(response => {
         ToastSuccess();
       })
       .catch(error => {
+        Log.error(error);
         ToastWarning();
       });
   };

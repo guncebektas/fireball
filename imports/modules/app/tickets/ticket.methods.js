@@ -1,25 +1,22 @@
 import {createMethod} from 'meteor/jam:method';
-import {z} from 'zod';
 import {ticketService} from "./ticketService.js";
-import {ticketFormSchema} from "./schemas/ticketSchema.js";
+import {ticketSchema} from "./schemas/ticketSchema.js";
+import {oneRowSchema} from "../../shared/schemas/oneRowSchema";
 
-export const ticketUpsert = createMethod({
-  name: 'ticket.upsert',
-  schema: z.object({
-    ...{_id: z.string().optional()},
-    ...ticketFormSchema
+export const ticketsMethods = {
+  upsert: createMethod({
+    name: 'tickets.upsert',
+    schema: ticketSchema,
+    async run(object) {
+      return ticketService.upsert(object);
+    }
   }),
-  async run(object) {
-    return ticketService.upsert(object);
-  }
-});
 
-export const ticketRemove = createMethod({
-  name: 'ticket.remove',
-  schema: z.object({
-    ...{_id: z.string()}
+  delete: createMethod({
+    name: 'tickets.delete',
+    schema: oneRowSchema,
+    async run({_id}) {
+      return ticketService.remove(_id);
+    }
   }),
-  async run({_id}) {
-    return ticketService.remove(_id);
-  }
-});
+}

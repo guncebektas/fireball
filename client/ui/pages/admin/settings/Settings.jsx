@@ -2,7 +2,7 @@ import React from "react";
 import {H2} from "../../../components/heading/Headings";
 import {useTranslator} from "../../../providers/i18n";
 import {Button} from 'flowbite-react';
-import {FaHome, FaQuestionCircle, FaStar, FaInfoCircle} from 'react-icons/fa';
+import {FaHome, FaQuestionCircle, FaStar, FaInfoCircle, FaEnvelope} from 'react-icons/fa';
 import {ROUTE} from "../../../../routes/enums/route";
 import {useNavigate} from "react-router-dom";
 
@@ -21,19 +21,19 @@ export const Settings = () => {
       icon: <FaQuestionCircle className="text-xl mr-1"/>,
       text: t('FAQs'),
       color: 'blue',
-      onClick: () => navigate(ROUTE.FAQS),
+      onClick: () => navigate(ROUTE.SETTINGS_FAQS_LIST),
     },
     {
-      icon: <FaStar className="text-xl mr-1"/>,
-      text: t('Wallet'),
+      icon: <FaEnvelope className="text-xl mr-1"/>,
+      text: t('Contact requests'),
       color: 'blue',
-      onClick: () => navigate(ROUTE.CONTACT_FORM),
+      onClick: () => navigate(ROUTE.SETTINGS_CONTACT_REQUESTS_LIST),
     },
     {
       icon: <FaInfoCircle className="text-xl mr-1"/>,
       text: t('About'),
       color: 'blue',
-      onClick: () => navigate(ROUTE.CONTACT_FORM),
+      onClick: () => navigate(ROUTE.SETTINGS_ABOUT_US),
     }
   ];
 

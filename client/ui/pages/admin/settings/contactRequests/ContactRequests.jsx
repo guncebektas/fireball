@@ -1,12 +1,12 @@
 import React from 'react';
-import {H2} from "../../components/heading/Headings.jsx";
+import {H2} from "../../../../components/heading/Headings.jsx";
 import {useTracker} from "meteor/react-meteor-data";
-import DataGrid from '../../components/dataGrid/DataGrid'; // Import the new DataGrid component
+import DataGrid from '../../../../components/dataGrid/DataGrid'; // Import the new DataGrid component
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
-import {CONTACT_REQUESTS_PUBLICATION} from "../../../../imports/modules/app/contactRequests/enums/publication"; // FontAwesome icons
-import {contactRequestRepository} from "../../../../imports/modules/app/contactRequests/contactRequestRepository";
-import {contactRequestRemove} from "../../../../imports/modules/app/contactRequests/contact.methods";
+import {CONTACT_REQUESTS_PUBLICATION} from "../../../../../../imports/modules/app/contactRequests/enums/publication"; // FontAwesome icons
+import {contactRequestRepository} from "../../../../../../imports/modules/app/contactRequests/contactRequestRepository";
+import {contactRequestRemove} from "../../../../../../imports/modules/app/contactRequests/contact.methods";
 
 export const ContactRequests = () => {
   // Track items and loading state

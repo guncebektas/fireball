@@ -5,7 +5,7 @@ import {COLLECTION_NAME} from "../../../../shared/enums/collectionNames";
 
 export const Images = new FilesCollection({
   // debug: true,
-  collectionName: COLLECTION_NAME.FILES,
+  collectionName: COLLECTION_NAME.USER_PROFILE_PICTURE,
   allowClientCode: true, // Required to let you remove uploaded file
   onBeforeUpload(file) {
     Log.info('onBeforeUpload');

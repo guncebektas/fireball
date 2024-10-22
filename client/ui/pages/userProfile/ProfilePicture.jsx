@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Button} from 'flowbite-react';
 import {H2} from '../../components/heading/Headings';
 import {DropZone} from "../../components/dropZone/DropZone";
-import {Images} from "../../../../imports/modules/app/files/images/database/images";
+import {Images} from "../../../../imports/modules/app/user/userProfilePicture/database/images";
 import {ToastWarning} from "../../components/alert/Toast";
 import {useTranslator} from "../../providers/i18n";
 import {Log} from "meteor/logging";
