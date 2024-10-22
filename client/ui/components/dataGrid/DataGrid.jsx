@@ -73,6 +73,7 @@ const DataGrid = ({ columns, data, loading, actions }) => {
                       key={index}
                       color={action.color}
                       className={action.classes}
+                      data-id={item._id}
                       onClick={() => action.onClick(item._id)} // Pass row's _id
                       size="xs"
                     >
