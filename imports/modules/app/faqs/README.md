@@ -20,7 +20,7 @@ The `faqs.methods` file acts as the controller. Each method has a namespace and 
 
 Since we're using React, we aim to minimize code duplication. While nothing particularly unique is here, let’s look at a few key parts.
 
-You’ll notice definitions like `_self` and columns. The `_self` object contains the definitions we use in list components.
+You’ll notice definitions like `_self` and `columns`. The `_self` object contains the definitions we use in list components.
 
 ```js
 const _self = {
