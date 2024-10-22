@@ -1,28 +1,26 @@
-# Example Module for (pub/sub)
-You can find many examples for different cases in the project. 
-However, FAQs module is the one we will give instructions for further developers.
+# Example Module for Pub/Sub
 
-It's a simple module, but it covers mostly used features such as form and data-table.
+This project contains several examples for various use cases, but the FAQs module serves as the primary guide for future developers.
 
-The back-end code can be found in `/imports/modules/faqs/`. 
+It’s a straightforward module that demonstrates key features like forms and data tables, which are commonly used across the project.
 
-The front-end code is in `/imports/help/Faqs.jsx` and `/imports/ui/pages/admin/faqs`
+The back-end code is located in `/imports/modules/faqs/`, while the front-end code can be found in `/imports/help/Faqs.jsx` and `/imports/ui/pages/admin/faqs`.
 
-## Back-end code
-It also includes isomorphic codes but we can call it back-end as it's the place of both business logic and database operations.
-You will notice it has a `server` folder. This is the *private area* which is not shared with the client and the entry point of server.
+## Back-end Code
 
-> All modules should be imported in `/server/modules.js`
+While some parts of the code are isomorphic, we’ll refer to this section as the back-end, as it handles both business logic and database operations. Inside, you'll find a `server` folder—this is the *private area* that isn't shared with the client and acts as the entry point for server-side code.
 
-You will see `faqRepository` and `faqService`. These are classic layers and both of them extend base classes. The business logic and algorithms should be placed into these files.
+> All modules must be imported in `/server/modules.js`.
 
-`faqs.methods` is the controller of our design. You will notice all methods have a namespace and all methods are imported in `imports/faqs/server/faqs.rateLimiter.js`. It's not only rate-limiting all methods but also define them in the server side.
+You'll come across `faqRepository` and `faqService`, which follow a classic layered architecture. Both extend base classes, and this is where all business logic and algorithms should be implemented.
 
-## Front-end code
-As we are using react we are trying to minimize code duplication. There is nothing special in there but let's dig some parts.
+The `faqs.methods` file acts as the controller. Each method has a namespace and is imported into `imports/faqs/server/faqs.rateLimiter.js`. This file not only rate-limits the methods but also registers them on the server.
 
-You will see _self and columns definitions. 
-The _self includes the definition that we are using in list components. 
+## Front-end Code
+
+Since we're using React, we aim to minimize code duplication. While nothing particularly unique is here, let’s look at a few key parts.
+
+You’ll notice definitions like `_self` and columns. The `_self` object contains the definitions we use in list components.
 
 ```js
 const _self = {
@@ -33,8 +31,7 @@ const _self = {
 }
 ```
 
-And the columns array is for data-grid. It also limits the publish function to return only provided methods. 
-Passing columns into a publish function ***can create a security risk*** so use it wisely.
+The `columns` array is used for the data grid and restricts the publish function to return only the specified fields. However, **passing columns into a publish function can pose a security risk**, so it must be done cautiously.
 
 ```js
 const columns = [
