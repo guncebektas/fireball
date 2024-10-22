@@ -33,7 +33,6 @@ export const UserProfiles = () => {
   const handleEdit = async (_id) => {
     setSelectedUserId(_id);
     setOpenChangePasswordModal(true);
-    // await contactRequestRemove({_id});
   };
 
   const actions = [
