@@ -3,7 +3,6 @@ import {userProfileService} from "./userProfileService.js";
 import {fileIdSchema} from "./schemas/fileId";
 import {profileDetails} from "./schemas/profileDetails";
 import {profileOtp} from "./schemas/profileOtp";
-import {Log} from "meteor/logging";
 import {profilePreferences} from "./schemas/profilePreferences";
 
 export const userProfilesMethods = {
@@ -37,7 +36,6 @@ export const userProfilesMethods = {
     serverOnly: true,
     open: true,
     async run({ fileId }) {
-      Log.info('userProfiles.saveProfilePicture');
       return userProfileService.saveProfilePictureId(fileId);
     }
   })
