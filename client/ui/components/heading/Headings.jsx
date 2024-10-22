@@ -7,7 +7,7 @@ export const H2 = ({text, showBackButton = false}) => {
 
   return (
     <>
-      <h2 className="m-title text-3xl mb-3">{showBackButton ? <BackButton /> : ''} {t(text)}</h2>
+      <h2 className="m-title text-3xl mb-1">{showBackButton ? <BackButton /> : ''} {t(text)}</h2>
     </>
   )
 };
