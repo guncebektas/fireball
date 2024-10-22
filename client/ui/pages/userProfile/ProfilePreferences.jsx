@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Label, Select} from 'flowbite-react';
 import {Meteor} from 'meteor/meteor';
 import {useTracker} from 'meteor/react-meteor-data';
-import {profileUpdatePreferences} from '../../../../imports/modules/app/user/userProfiles/userProfile.methods';
+import {userProfilesMethods} from '../../../../imports/modules/app/user/userProfiles/userProfile.methods';
 import {userProfileRepository} from '../../../../imports/modules/app/user/userProfiles/userProfileRepository';
 import {USER_PROFILE_PUBLICATION} from '../../../../imports/modules/app/user/userProfiles/enums/publication';
 import {useTranslator} from "../../providers/i18n";
@@ -37,7 +37,7 @@ export const ProfilePreferences = () => {
     e.preventDefault();
     setLoading(true); // Set loading state to true
 
-    await profileUpdatePreferences({
+    await userProfilesMethods.updatePreferences({
       theme: formData.theme,
     })
       .then(response => {

@@ -1,11 +1,8 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
-import {profileSaveOtp, profileSaveProfilePicture, profileUpdateDetails, profileUpdatePreferences} from "../userProfile.methods.js";
+import {userProfilesMethods} from "../userProfile.methods.js";
 
 const LISTS_METHODS = [
-  profileUpdateDetails,
-  profileUpdatePreferences,
-  profileSaveOtp,
-  profileSaveProfilePicture
+  Object.keys(userProfilesMethods)
 ].map(method => method.name);
 
 DDPRateLimiter.addRule({

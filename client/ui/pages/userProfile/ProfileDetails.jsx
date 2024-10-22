@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Label, TextInput, Select } from 'flowbite-react';
-import { Meteor } from 'meteor/meteor';
-import { useTracker } from 'meteor/react-meteor-data';
-import { profileUpdateDetails } from '../../../../imports/modules/app/user/userProfiles/userProfile.methods';
-import { userProfileRepository } from '../../../../imports/modules/app/user/userProfiles/userProfileRepository';
-import { USER_PROFILE_PUBLICATION } from '../../../../imports/modules/app/user/userProfiles/enums/publication';
-import { useTranslator } from "../../providers/i18n";
+import React, {useState} from 'react';
+import {Label, Select, TextInput} from 'flowbite-react';
+import {Meteor} from 'meteor/meteor';
+import {useTracker} from 'meteor/react-meteor-data';
+import {userProfilesMethods} from '../../../../imports/modules/app/user/userProfiles/userProfile.methods';
+import {userProfileRepository} from '../../../../imports/modules/app/user/userProfiles/userProfileRepository';
+import {USER_PROFILE_PUBLICATION} from '../../../../imports/modules/app/user/userProfiles/enums/publication';
+import {useTranslator} from "../../providers/i18n";
 import SubmitButton from "../../components/buttons/SubmitButton"; // Import spinner icon
 
 export const ProfileDetails = () => {
@@ -46,7 +46,7 @@ export const ProfileDetails = () => {
     e.preventDefault();
     setLoading(true); // Set loading state to true
 
-    await profileUpdateDetails({
+    await userProfilesMethods.updateDetails({
       firstname: formData.firstname,
       lastname: formData.lastname,
       gender: formData.gender,

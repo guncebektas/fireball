@@ -25,16 +25,6 @@ export const userSendResetPasswordEmail = createMethod({
       subject: 'Reset password',
       message: url
     });
-
-    /* XXX: Not working
-    await Accounts.sendResetPasswordEmail({
-      email
-    }).then(response => {
-      Log.info(response);
-    }).catch(error => {
-      Log.error(error);
-    });
-    */
   }
 });
 
