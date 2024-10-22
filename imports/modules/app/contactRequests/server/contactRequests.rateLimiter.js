@@ -1,9 +1,9 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
-import {contactRequestRemove, contactRequestUpsert} from "../contact.methods";
+import {contactRequestDelete, contactRequestUpsert} from "../contact.methods";
 
 const LISTS_METHODS = [
   contactRequestUpsert,
-  contactRequestRemove
+  contactRequestDelete
 ].map(method => method.name);
 
 DDPRateLimiter.addRule({

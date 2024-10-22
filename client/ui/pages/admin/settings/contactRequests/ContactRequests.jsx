@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {CONTACT_REQUESTS_PUBLICATION} from "../../../../../../imports/modules/app/contactRequests/enums/publication"; // FontAwesome icons
 import {contactRequestRepository} from "../../../../../../imports/modules/app/contactRequests/contactRequestRepository";
-import {contactRequestRemove} from "../../../../../../imports/modules/app/contactRequests/contact.methods";
+import {contactRequestDelete} from "../../../../../../imports/modules/app/contactRequests/contact.methods";
 
 export const ContactRequests = () => {
   // Track items and loading state
@@ -20,7 +20,7 @@ export const ContactRequests = () => {
   });
 
   const handleRemove = async (_id) => {
-    await contactRequestRemove({_id});
+    await contactRequestDelete({_id});
   };
 
   const actions = [

@@ -3,5 +3,7 @@ import {PUBLISH} from "../enums/publish";
 import {notificationRepository} from "../notificationRepository";
 
 Meteor.publish(PUBLISH.NOTIFICATIONS, function () {
-  return notificationRepository.find();
+  return notificationRepository.find({
+    organizationId: Meteor.settings.public.app._id
+  });
 });

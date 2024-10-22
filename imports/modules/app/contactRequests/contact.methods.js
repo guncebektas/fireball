@@ -14,8 +14,8 @@ export const contactRequestUpsert = createMethod({
   }
 });
 
-export const contactRequestRemove = createMethod({
-  name: 'contactRequest.remove',
+export const contactRequestDelete = createMethod({
+  name: 'contactRequest.delete',
   schema: z.object({
     ...{_id: z.string()}
   }),
