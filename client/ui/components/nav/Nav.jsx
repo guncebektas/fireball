@@ -62,9 +62,6 @@ export const Nav = ({isOpen}) => {
                 <NavItem link={ROUTE.PRICE} icon="money-bill-wave" text={t('Prices')}/>
               </li>
               <li>
-                <NavItem link={ROUTE.SETTINGS_TICKETS_LIST} icon="clipboard-list" text={t('Ticket')}/>
-              </li>
-              <li>
                 <NavItem link={ROUTE.RSS_FEED_LIST} icon="rss" text="RSS"/>
               </li>
             </ul>

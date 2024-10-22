@@ -21,6 +21,7 @@ import {UserProfiles} from "../ui/pages/admin/userProfiles/UserProfiles";
 import {ResetPassword} from "../ui/pages/auth/password/ResetPassword";
 import {FaqForm} from "../ui/pages/admin/settings/faqs/FaqForm";
 import {FaqsList} from "../ui/pages/admin/settings/faqs/FaqsList";
+import {ticketAddBridge, ticketEditBridge} from "../../imports/modules/app/tickets/schemas/ticketSchema";
 
 export const Router = () => (
   <Routes>
@@ -36,14 +37,14 @@ export const Router = () => (
     <Route path={ROUTE.RESET_PASSWORD} element={<ResetPassword/>}/>
     <Route path={ROUTE.RSS_FEED_LIST} element={<RssFeedList/>}/>
     <Route path={ROUTE.SETTINGS} element={<Settings/>}/>
-    <Route path={ROUTE.SETTINGS_ABOUT_US} element={<ContactRequests/>}/>
+    <Route path={ROUTE.SETTINGS_ABOUT_US} element={<AboutUs/>}/>
     <Route path={ROUTE.SETTINGS_CONTACT_REQUESTS_LIST} element={<ContactRequests/>}/>
     <Route path={ROUTE.SETTINGS_FAQS_FORM} element={<FaqForm/>}/>
     <Route path={ROUTE.SETTINGS_FAQS_LIST} element={<FaqsList/>}/>
-
-    <Route path={ROUTE.STORES} element={<Stores/>}/>
+    <Route path={ROUTE.SETTINGS_TICKETS_FORM} element={<TicketForm schema={ticketEditBridge}/>}/>
     <Route path={ROUTE.SETTINGS_TICKETS_LIST} element={<TicketList/>}/>
-    <Route path={ROUTE.TICKETS_FORM} element={<TicketForm/>}/>
+    <Route path={ROUTE.STORES} element={<Stores/>}/>
+    <Route path={ROUTE.TICKETS_FORM} element={<TicketForm schema={ticketAddBridge}/>}/>
     <Route path={ROUTE.USER_PROFILES} element={<UserProfiles/>}/>
     <Route path={ROUTE.WALLET} element={<Wallet/>}/>
   </Routes>

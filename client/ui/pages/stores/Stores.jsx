@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import Map from '../../components/map/Map';
-import {Title} from "../../components/title/Title";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faMapMarkerAlt, faPhone} from '@fortawesome/free-solid-svg-icons';
 import {Button} from 'flowbite-react';
 import {useTranslator} from "../../providers/i18n";
 import {StoreDetailsModal} from "./StoreDetailsModal";
 import {StoreMenuModal} from "./StoreMenuModal";
-import {Link} from "react-router-dom"; // Import the new component
+import {Link} from "react-router-dom";
+import {H2} from "../../components/heading/Headings"; // Import the new component
 
 const storesData = [{
   id: 1,
@@ -54,9 +54,9 @@ export const Stores = () => {
 
   return (
     <>
-      <Title text="Stores" centered={true}/>
+      <H2 text="Stores" />
 
-      <div className="space-y-6">
+      <div className="mt-6 space-y-6">
         <Link to={links.ecommerce} target="_blank">
           <div key="ecommerce" className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
             <div className="w-full">

@@ -19,8 +19,9 @@ export const ROUTE = {
   SETTINGS_FAQS_LIST: '/settings/faqs',
   SETTINGS_FAQS_FORM: '/settings/faqs/form/:_id',
   SETTINGS_TICKETS_LIST: '/settings/tickets',
+  SETTINGS_TICKETS_FORM: '/settings/tickets/form/:_id',
   STORES: '/stores',
-  TICKETS_FORM: '/tickets/form/:_id',
+  TICKETS_FORM: '/tickets/form/new',
   USER_PROFILES: '/user-profiles',
   WALLET: '/wallet'
 };

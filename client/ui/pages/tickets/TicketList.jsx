@@ -10,7 +10,6 @@ import {ticketsMethods} from "../../../../imports/modules/app/tickets/ticket.met
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 import DataGrid from '../../components/dataGrid/DataGrid'; // Import the new DataGrid component
-import {AddNewButton} from "../../components/buttons/AddNewButton";
 
 export const TicketList = () => {
   const navigate = useNavigate();
@@ -19,11 +18,12 @@ export const TicketList = () => {
     publisher: TICKET_PUBLICATION.ALL,
     repository: ticketRepository,
     methods: ticketsMethods,
-    formRoute: ROUTE.TICKETS_FORM,
+    formRoute: ROUTE.SETTINGS_TICKETS_FORM,
   }
 
   const columns = [
-    {key: 'message', label: 'Message'}
+    {key: 'message', label: 'Message'},
+    {key: 'response', label: 'Answer'}
   ];
 
   // Track items and loading state
@@ -60,7 +60,6 @@ export const TicketList = () => {
     <>
       <div className="flex items-center">
         <H2 text="Tickets" showBackButton={true}/>
-        <AddNewButton route={_self.formRoute}/>
       </div>
 
       <DataGrid

@@ -11,16 +11,10 @@ export const AboutUs = ({ fullPage = true }) => {
   return (
     <>
       {fullPage && (
-        <div className="sm:flex sm:items-start sm:justify-between">
-          <div>
-            <div className="flex items-center">
-              <H2 text={title} />
-            </div>
-          </div>
-        </div>
+        <H2 text={title} />
       )}
 
-      <div className="mb-10">
+      <div className="mt-6 mb-10">
         <Slider carousel={carousel} />
       </div>
 

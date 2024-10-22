@@ -2,7 +2,6 @@ import React, {useRef} from 'react';
 import {H2} from "../../components/heading/Headings.jsx";
 import {AutoForm} from '../../../../imports/modules/shared/uniforms-tailwind/src';
 import {ticketsMethods} from "../../../../imports/modules/app/tickets/ticket.methods.js";
-import {ticketBridge} from "../../../../imports/modules/app/tickets/schemas/ticketSchema.js";
 import {useParams} from "react-router-dom";
 import {useTracker} from "meteor/react-meteor-data";
 import {TICKET_PUBLICATION} from "../../../../imports/modules/app/tickets/enums/publication.js";
@@ -10,8 +9,9 @@ import {ticketRepository} from "../../../../imports/modules/app/tickets/ticketRe
 import {FORM_TYPE} from "../../../shared/enums/formType.js";
 import {ToastSuccess, ToastWarning} from "../../components/alert/Toast";
 import {Log} from "meteor/logging";
+import {ticketAddBridge} from "../../../../imports/modules/app/tickets/schemas/ticketSchema";
 
-export const TicketForm = () => {
+export const TicketForm = ({schema}) => {
   const formRef = useRef();
   const {_id} = useParams();
 
@@ -42,11 +42,11 @@ export const TicketForm = () => {
 
   return (
     <>
-      <H2 text="Ticket"></H2>
+      <H2 text="Ticket" showBackButton={true} />
       <div className="grid grid-flow-col justify-stretch space-x-4">
         <AutoForm
           ref={formRef}
-          schema={ticketBridge}
+          schema={schema}
           model={ticket}
           onSubmit={handleSubmit}
         />
