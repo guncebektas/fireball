@@ -1,7 +1,7 @@
 export const COLLECTION_NAME = {
   CONTACT_REQUESTS: 'contactRequests',
+  DOCS: 'docs',
   FAQS: 'faqs',
-  LINKS: 'links',
   NOTIFICATIONS: 'notifications',
   ORGANIZATIONS: 'organizations',
   USER_PROFILES: 'userProfiles',

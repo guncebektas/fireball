@@ -1,4 +1,4 @@
-export const DUMMY_LINKS = [{
+export const DUMMY_DOCS = [{
   title: 'Do the Tutorial',
   url: 'https://www.meteor.com/tutorials/react/creating-an-app',
 }, {

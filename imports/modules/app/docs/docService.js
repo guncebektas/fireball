@@ -1,7 +1,7 @@
 import {BaseService} from "../../shared/service/baseService";
-import {linkRepository} from "./linkRepository";
+import {docRepository} from "./docRepository";
 
-class LinkService extends BaseService {
+class DocService extends BaseService {
   constructor({repository}) {
     super({repository});
   }
@@ -13,6 +13,6 @@ class LinkService extends BaseService {
   }
 }
 
-export const linkService = new LinkService({
-  repository: linkRepository
+export const docService = new DocService({
+  repository: docRepository
 });

@@ -18,7 +18,7 @@ export const AboutUs = ({ fullPage = true }) => {
         <Slider carousel={carousel} />
       </div>
 
-      <div className="text-lg text-gray-500 space-y-6">
+      <div className="text-lg text-gray-500 space-y-6 mb-8">
         {paragraphs.map((paragraph, index) => (
           <p key={index}>{t(paragraph)}</p>
         ))}

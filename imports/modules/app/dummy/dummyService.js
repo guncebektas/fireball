@@ -1,7 +1,7 @@
 import {BaseService} from "../../shared/service/baseService";
-import {linkRepository} from "../links/linkRepository";
-import {linkService} from "../links/linkService";
-import {DUMMY_LINKS} from "./enums/links";
+import {docRepository} from "../docs/docRepository";
+import {docService} from "../docs/docService";
+import {DUMMY_DOCS} from "./enums/docs";
 
 class DummyService extends BaseService {
   constructor({repository, service, data}) {
@@ -20,15 +20,15 @@ class DummyService extends BaseService {
     }
 
     if (await this.repository.find().countAsync() === 0) {
-      for (const link of this.data) {
-        await this.service.add(link.title, link.url);
+      for (const doc of this.data) {
+        await this.service.add(doc.title, doc.url);
       }
     }
   }
 }
 
 export const dummyLinkService = new DummyService({
-  repository: linkRepository,
-  service: linkService,
-  data: DUMMY_LINKS
+  repository: docRepository,
+  service: docService,
+  data: DUMMY_DOCS
 })

@@ -5,9 +5,9 @@ import '../imports/modules/infrastructure/migrations/server';
 import '../imports/modules/infrastructure/swagger/server';
 
 import '../imports/modules/app/contactRequests/server'
+import '../imports/modules/app/docs/server';
 import '../imports/modules/app/dummy/server';
 import '../imports/modules/app/faqs/server';
-import '../imports/modules/app/links/server';
 import '../imports/modules/app/notifications/server';
 import '../imports/modules/app/organizations/server';
 import '../imports/modules/app/rss/server';

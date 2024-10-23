@@ -32,7 +32,7 @@ export const Settings = () => {
     onClick: () => navigate(ROUTE.SETTINGS_TICKETS_LIST),
   }, {
     icon: <FaInfoCircle className="text-xl mr-1"/>,
-    text: t('About'),
+    text: t('About us'),
     color: 'blue',
     onClick: () => navigate(ROUTE.SETTINGS_ABOUT_US),
   }];
