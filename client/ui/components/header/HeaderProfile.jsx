@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Meteor} from "meteor/meteor";
 import {useTracker} from "meteor/react-meteor-data";
 import {Link, useNavigate} from "react-router-dom";
-import {Dropdown} from "flowbite-react";
+import {Avatar, Dropdown} from "flowbite-react";
 import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/userProfiles/enums/publication.js";
 import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository.js";
 import {ROUTE} from "../../../routes/enums/route.js";
@@ -15,11 +15,11 @@ export const HeaderProfile = () => {
 
   const showDevTools = Meteor.settings.public.showDevTools;
 
-  const [formData, setFormData] = useState({
-    email: '',
+  const [me, setMe] = useState({
     firstname: '',
     lastname: '',
   });
+  const [profilePicture, setProfilePicture] = useState('')
 
   const user = useTracker(() => Meteor.user(), []);
 
@@ -28,12 +28,11 @@ export const HeaderProfile = () => {
 
     if (handle.ready()) {
       const me = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
-      let email = user?.emails?.length > 0 ? user?.emails[0]?.address : '';
 
-      setFormData({
-        email: email,
+      setMe({
         firstname: me.firstname || '',
         lastname: me.lastname || '',
+        pictureUrl: me.pictureUrl || ''
       });
     }
   }, [user]);
@@ -51,25 +50,18 @@ export const HeaderProfile = () => {
       label={<FontAwesomeIcon icon="user" className="header-dropdown-wrapper"/>}
     >
       <Dropdown.Header>
-        <span className="block text-sm">
-          {formData.firstname} {formData.lastname}
-        </span>
-        <span className="block text-sm font-medium truncate">
-          {formData.email}
-        </span>
+        <div className="flex items-center">
+          <Avatar img={`https://ritapos-files.s3.eu-central-1.amazonaws.com/${me.pictureUrl}`} alt="Avatar" className="mr-3" rounded/>
+          <span className="block text-sm">
+            {me.firstname} {me.lastname}
+          </span>
+        </div>
       </Dropdown.Header>
 
       <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
-        <Link to={ROUTE.PROFILE}>
+      <Link to={ROUTE.PROFILE}>
           <FontAwesomeIcon icon="user" className="mr-2"/>
           {t('My profile')}
-        </Link>
-      </Dropdown.Item>
-
-      <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
-        <Link to={ROUTE.PROFILE}>
-          <FontAwesomeIcon icon="heart" className="mr-2"/>
-          {t('My favorites')}
         </Link>
       </Dropdown.Item>
 
