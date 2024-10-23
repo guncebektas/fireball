@@ -52,10 +52,8 @@ export const RssFeedList = () => {
   return (
     <>
       <div className="sm:flex sm:items-start sm:justify-between">
-        <div>
-          <div className="flex items-center">
-            <H2 text="RSS Feed"/>
-          </div>
+        <div className="flex items-center">
+          <H2 text="RSS Feed"/>
         </div>
       </div>
       <div className="mt-2 w-full text-gray-500 text-lg">

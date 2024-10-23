@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import 'flowbite/dist/flowbite.min.css';
-import { Button } from 'flowbite-react';
-import { useTranslator } from "../../providers/i18n"; // Ensure Flowbite styles are imported
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {Button} from 'flowbite-react';
+import {useTranslator} from "../../providers/i18n"; // Ensure Flowbite styles are imported
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSpinner} from '@fortawesome/free-solid-svg-icons';
+import {H2} from "../../components/heading/Headings";
 
 export const ProfileLocation = () => {
   const t = useTranslator();
 
-  const [location, setLocation] = useState({ latitude: null, longitude: null });
+  const [location, setLocation] = useState({latitude: null, longitude: null});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false); // Add a loading state
 
@@ -37,6 +38,10 @@ export const ProfileLocation = () => {
 
   return (
     <>
+      <div className="flex items-center">
+        <H2 text="Location"/>
+      </div>
+
       <Button
         type="button"
         onClick={getLocation}
@@ -44,7 +49,7 @@ export const ProfileLocation = () => {
         disabled={loading} // Disable button while loading
       >
         {loading ? (
-          <FontAwesomeIcon icon={faSpinner} spin className="h-5 w-5 text-white mr-2" />
+          <FontAwesomeIcon icon={faSpinner} spin className="h-5 w-5 text-white mr-2"/>
         ) : (
           t('Get location')
         )}

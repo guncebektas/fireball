@@ -6,7 +6,8 @@ import {userProfilesMethods} from '../../../../imports/modules/app/user/userProf
 import {userProfileRepository} from '../../../../imports/modules/app/user/userProfiles/userProfileRepository';
 import {USER_PROFILE_PUBLICATION} from '../../../../imports/modules/app/user/userProfiles/enums/publication';
 import {useTranslator} from "../../providers/i18n";
-import SubmitButton from "../../components/buttons/SubmitButton"; // Import spinner icon
+import SubmitButton from "../../components/buttons/SubmitButton";
+import {H2} from "../../components/heading/Headings"; // Import spinner icon
 
 export const ProfilePreferences = () => {
   const t = useTranslator();
@@ -20,7 +21,7 @@ export const ProfilePreferences = () => {
   useTracker(() => {
     const subscription = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
     if (subscription.ready()) {
-      const userProfile = userProfileRepository.findOne({ _id: Meteor.userId() }) || {};
+      const userProfile = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
       const theme = userProfile?.theme || 'light';
       setFormData({
         theme
@@ -29,8 +30,8 @@ export const ProfilePreferences = () => {
   }, [user]);
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [id]: value }));
+    const {id, value} = e.target;
+    setFormData((prevData) => ({...prevData, [id]: value}));
   };
 
   const handleSubmit = async (e) => {
@@ -54,18 +55,23 @@ export const ProfilePreferences = () => {
   };
 
   return (
-    <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
-      <div>
-        <Label htmlFor="theme" value={t('Theme')}/>
-        <Select id="theme" value={formData.theme} onChange={handleChange}>
-          <option value="light">{t('Light')}</option>
-          <option value="dark">{t('Dark')}</option>
-        </Select>
+    <>
+      <div className="flex items-center">
+        <H2 text="Preferences"/>
       </div>
-      <SubmitButton
-        isLoading={loading}
-        text={{default: t('Save'), loading: t('Loading...')}} // Pass loading and default text
-      />
-    </form>
+      <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
+        <div>
+          <Label htmlFor="theme" value={t('Theme')}/>
+          <Select id="theme" value={formData.theme} onChange={handleChange}>
+            <option value="light">{t('Light')}</option>
+            <option value="dark">{t('Dark')}</option>
+          </Select>
+        </div>
+        <SubmitButton
+          isLoading={loading}
+          text={{default: t('Save'), loading: t('Loading...')}} // Pass loading and default text
+        />
+      </form>
+    </>
   );
 };

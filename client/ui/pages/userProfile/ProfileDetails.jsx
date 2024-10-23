@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import {Label, Select, TextInput} from 'flowbite-react';
+import {Avatar, Label, Select, TextInput} from 'flowbite-react';
 import {Meteor} from 'meteor/meteor';
 import {useTracker} from 'meteor/react-meteor-data';
 import {userProfilesMethods} from '../../../../imports/modules/app/user/userProfiles/userProfile.methods';
 import {userProfileRepository} from '../../../../imports/modules/app/user/userProfiles/userProfileRepository';
 import {USER_PROFILE_PUBLICATION} from '../../../../imports/modules/app/user/userProfiles/enums/publication';
 import {useTranslator} from "../../providers/i18n";
-import SubmitButton from "../../components/buttons/SubmitButton"; // Import spinner icon
+import SubmitButton from "../../components/buttons/SubmitButton";
+import {H2} from "../../components/heading/Headings"; // Import spinner icon
 
 export const ProfileDetails = () => {
   const {isUsernameLoginEnabled} = Meteor.settings.public;
@@ -25,7 +26,7 @@ export const ProfileDetails = () => {
   useTracker(() => {
     const subscription = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
     if (subscription.ready()) {
-      const userProfile = userProfileRepository.findOne({ _id: Meteor.userId() }) || {};
+      const userProfile = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
       const email = user?.emails?.[0]?.address || '';
       setFormData({
         email,
@@ -38,8 +39,8 @@ export const ProfileDetails = () => {
   }, [user]);
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [id]: value }));
+    const {id, value} = e.target;
+    setFormData((prevData) => ({...prevData, [id]: value}));
   };
 
   const handleSubmit = async (e) => {
@@ -66,36 +67,41 @@ export const ProfileDetails = () => {
   };
 
   return (
-    <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
-      <div>
-        <Label htmlFor="email" value={isUsernameLoginEnabled ? t('Username') : t('Email')}/>
-        <TextInput id="email" type="text" value={formData.email} disabled/>
+    <>
+      <div className="flex items-center">
+        <H2 text="Details"/>
       </div>
-      <div>
-        <Label htmlFor="firstname" value={t('First name')}/>
-        <TextInput id="firstname" type="text" value={formData.firstname} onChange={handleChange}/>
-      </div>
-      <div>
-        <Label htmlFor="lastname" value={t('Last name')}/>
-        <TextInput id="lastname" type="text" value={formData.lastname} onChange={handleChange}/>
-      </div>
-      <div>
-        <Label htmlFor="gender" value={t('Gender')}/>
-        <Select id="gender" value={formData.gender} onChange={handleChange}>
-          <option value="">{t('Select gender')}</option>
-          <option value="male">{t('Male')}</option>
-          <option value="female">{t('Female')}</option>
-          <option value="other">{t('Other')}</option>
-        </Select>
-      </div>
-      <div>
-        <Label htmlFor="phoneNumber" value={t('Phone number')}/>
-        <TextInput id="phoneNumber" type="number" value={formData.phoneNumber} onChange={handleChange}/>
-      </div>
-      <SubmitButton
-        isLoading={loading}
-        text={{default: t('Save'), loading: t('Loading...')}} // Pass loading and default text
-      />
-    </form>
+      <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
+        <div>
+          <Label htmlFor="email" value={isUsernameLoginEnabled ? t('Username') : t('Email')}/>
+          <TextInput id="email" type="text" value={formData.email} disabled/>
+        </div>
+        <div>
+          <Label htmlFor="firstname" value={t('First name')}/>
+          <TextInput id="firstname" type="text" value={formData.firstname} onChange={handleChange}/>
+        </div>
+        <div>
+          <Label htmlFor="lastname" value={t('Last name')}/>
+          <TextInput id="lastname" type="text" value={formData.lastname} onChange={handleChange}/>
+        </div>
+        <div>
+          <Label htmlFor="gender" value={t('Gender')}/>
+          <Select id="gender" value={formData.gender} onChange={handleChange}>
+            <option value="">{t('Select gender')}</option>
+            <option value="male">{t('Male')}</option>
+            <option value="female">{t('Female')}</option>
+            <option value="other">{t('Other')}</option>
+          </Select>
+        </div>
+        <div>
+          <Label htmlFor="phoneNumber" value={t('Phone number')}/>
+          <TextInput id="phoneNumber" type="number" value={formData.phoneNumber} onChange={handleChange}/>
+        </div>
+        <SubmitButton
+          isLoading={loading}
+          text={{default: t('Save'), loading: t('Loading...')}} // Pass loading and default text
+        />
+      </form>
+    </>
   );
 };
