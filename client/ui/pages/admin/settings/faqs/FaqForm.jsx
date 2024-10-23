@@ -5,31 +5,31 @@ import {useParams} from "react-router-dom";
 import {useTracker} from "meteor/react-meteor-data";
 import {FORM_TYPE} from "../../../../../shared/enums/formType.js";
 import {ToastSuccess, ToastWarning} from "../../../../components/alert/Toast";
-import {faqsMethod} from "../../../../../../imports/modules/app/faqs/faqs.methods";
 import {faqsBridge} from "../../../../../../imports/modules/app/faqs/schemas/faqsSchema";
-import {FAQS_PUBLICATION} from "../../../../../../imports/modules/app/faqs/enums/publication";
-import {faqRepository} from "../../../../../../imports/modules/app/faqs/faqRepository";
+import {faqModule} from "../../../../../../imports/modules/app/faqs/faqModule";
 
 export const FaqForm = () => {
   const formRef = useRef();
   const {_id} = useParams();
 
+  const _self = faqModule;
+
   let data = {};
 
   if (_id !== FORM_TYPE.INSERT) {
     data = useTracker(() => {
-      const handle = Meteor.subscribe(FAQS_PUBLICATION.ONE, _id);
+      const handle = Meteor.subscribe(_self.publisher.ONE, _id);
 
       if (!handle.ready()) {
         return [];
       }
 
-      return faqRepository.findOne(_id);
+      return _self.repository.findOne(_id);
     });
   }
 
   const handleSubmit = async function (formData) {
-    faqsMethod.upsert(formData)
+    _self.methods.upsert(formData)
       .then(response => {
         ToastSuccess();
       })

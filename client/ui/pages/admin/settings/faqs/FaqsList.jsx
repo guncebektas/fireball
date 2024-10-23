@@ -4,23 +4,15 @@ import {useTracker} from "meteor/react-meteor-data";
 import DataGrid from '../../../../components/dataGrid/DataGrid';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEdit, faTrash} from '@fortawesome/free-solid-svg-icons';
-import {FAQS_PUBLICATION} from "../../../../../../imports/modules/app/faqs/enums/publication";
 import {AddNewButton} from "../../../../components/buttons/AddNewButton";
-import {ROUTE} from "../../../../../routes/enums/route";
-import {faqRepository} from "../../../../../../imports/modules/app/faqs/faqRepository";
 import {useNavigate} from "react-router-dom";
-import {faqsMethod} from "../../../../../../imports/modules/app/faqs/faqs.methods";
 import {setParam} from "../../../../../../imports/modules/shared/functions/setParam";
+import {faqModule} from "../../../../../../imports/modules/app/faqs/faqModule";
 
 export const FaqsList = () => {
   const navigate = useNavigate();
 
-  const _self = {
-    publisher: FAQS_PUBLICATION.ALL,
-    repository: faqRepository,
-    methods: faqsMethod,
-    formRoute: ROUTE.SETTINGS_FAQS_FORM,
-  }
+  const _self = faqModule;
 
   const columns = [
     {key: 'question', label: 'Question'},
@@ -29,7 +21,7 @@ export const FaqsList = () => {
 
   // Track items and loading state
   const {items, loading} = useTracker(() => {
-    const handle = Meteor.subscribe(_self.publisher, columns);
+    const handle = Meteor.subscribe(_self.publisher.ALL, columns);
 
     return {
       loading: !handle.ready(),
