@@ -20,15 +20,10 @@ The `faqs.methods` file acts as the controller. Each method has a namespace and 
 
 Since we're using React, we aim to minimize code duplication. While nothing particularly unique is here, let’s look at a few key parts.
 
-You’ll notice definitions like `_self` and `columns`. The `_self` object contains the definitions we use in list components.
+You’ll notice definitions like `_self` and `columns`. The `_self` object contains the definitions we use in module.
 
 ```js
-const _self = {
-    publisher: FAQS_PUBLICATION.ALL,
-    repository: faqRepository,
-    methods: faqsMethod,
-    formRoute: ROUTE.SETTINGS_FAQS_FORM,
-}
+const _self = faqModule;
 ```
 
 The `columns` array is used for the data grid and restricts the publish function to return only the specified fields. However, **passing columns into a publish function can pose a security risk**, so it must be done cautiously.
