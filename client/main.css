@@ -114,6 +114,7 @@ table thead th.datatable-descending::after {
 
 .scratch-card {
   background-image: url("/online/images/scratch-card.svg");
+  background-repeat: no-repeat;
   background-size: contain;
   min-height: 200px;
 }
