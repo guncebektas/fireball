@@ -5,3 +5,8 @@ backups/
 cypress/
 tests/cypress/
 cypress.config.js
+Makefile
+LICENSE
+README.md
+README_EN.md
+README_TR.md
