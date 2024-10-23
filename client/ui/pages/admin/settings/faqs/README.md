@@ -14,12 +14,7 @@ We have two components in faqs module. One for editing and one for listing. The 
 You’ll notice definitions like `_self` and `columns`. The `_self` object contains the definitions we use in list components.
 
 ```js
-const _self = {
-    publisher: FAQS_PUBLICATION.ALL,
-    repository: faqRepository,
-    methods: faqsMethod,
-    formRoute: ROUTE.SETTINGS_FAQS_FORM,
-}
+const _module = faqModule;
 ```
 
 The `columns` array is used for the data grid and restricts the publish function to return only the specified fields. However, **passing columns into a publish function can pose a security risk**, so it must be done cautiously.

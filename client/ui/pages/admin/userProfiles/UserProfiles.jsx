@@ -1,21 +1,17 @@
 import React, {useState} from 'react';
 import {H2} from "../../../components/heading/Headings.jsx";
 import {useTracker} from "meteor/react-meteor-data";
-import {USER_PROFILE_PUBLICATION} from "../../../../../imports/modules/app/user/userProfiles/enums/publication";
 import DataGrid from '../../../components/dataGrid/DataGrid'; // Import the new DataGrid component
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEdit} from '@fortawesome/free-solid-svg-icons';
 import {ChangePasswordModal} from "./ChangePasswordModal";
-import {faqRepository} from "../../../../../imports/modules/app/faqs/faqRepository";
+import {userProfileModule} from "../../../../../imports/modules/app/user/userProfiles/userProfileModule";
 
 export const UserProfiles = () => {
   const [openChangePasswordModalModal, setOpenChangePasswordModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
 
-  const _self = {
-    publisher: USER_PROFILE_PUBLICATION.PROFILES,
-    repository: faqRepository
-  }
+  const _module = userProfileModule;
 
   const columns = [
     {key: 'email', label: 'Email'},
@@ -27,11 +23,11 @@ export const UserProfiles = () => {
 
   // Track items and loading state
   const {items, loading} = useTracker(() => {
-    const handle = Meteor.subscribe(_self.publisher, columns);
+    const handle = Meteor.subscribe(_module.publisher.ALL, columns);
 
     return {
       loading: !handle.ready(),
-      items: handle.ready() ? _self.repository.find().fetch() : []
+      items: handle.ready() ? _module.repository.find().fetch() : []
     };
   });
 

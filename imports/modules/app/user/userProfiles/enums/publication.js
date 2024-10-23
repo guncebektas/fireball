@@ -4,6 +4,5 @@
  */
 export const USER_PROFILE_PUBLICATION = {
   ME: 'myProfile',
-  PROFILE: 'userProfile',
-  PROFILES: 'usersProfiles',
+  ALL: 'usersProfiles',
 };

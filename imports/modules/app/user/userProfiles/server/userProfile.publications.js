@@ -14,7 +14,7 @@ Meteor.publish(USER_PROFILE_PUBLICATION.ME, function () {
   });
 });
 
-publishComposite(USER_PROFILE_PUBLICATION.PROFILES, function (columns) {
+publishComposite(USER_PROFILE_PUBLICATION.ALL, function (columns) {
   if (!this.userId) {
     return this.ready();
   }

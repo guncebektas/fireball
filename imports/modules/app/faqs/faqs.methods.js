@@ -8,8 +8,8 @@ export const faqsMethod = {
   upsert: createMethod({
     name: 'faqs.upsert',
     schema: faqsSchema,
-    async run({_id, question, answer}) {
-      return faqService.upsert(_id, question, answer);
+    async run(object) {
+      return faqService.upsert(object);
     }
   }),
 

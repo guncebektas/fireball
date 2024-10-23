@@ -1,25 +1,17 @@
 import React from 'react';
 import {H2} from "../../components/heading/Headings.jsx";
 import {useTracker} from "meteor/react-meteor-data";
-import {ticketRepository} from "../../../../imports/modules/app/tickets/ticketRepository.js";
-import {TICKET_PUBLICATION} from "../../../../imports/modules/app/tickets/enums/publication.js";
 import {useNavigate} from "react-router-dom";
-import {ROUTE} from "../../../routes/enums/route.js";
 import {setParam} from "../../../../imports/modules/shared/functions/setParam.js";
-import {ticketsMethods} from "../../../../imports/modules/app/tickets/ticket.methods.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
-import DataGrid from '../../components/dataGrid/DataGrid'; // Import the new DataGrid component
+import DataGrid from '../../components/dataGrid/DataGrid';
+import {ticketModule} from "../../../../imports/modules/app/tickets/ticketModule";
 
 export const TicketList = () => {
   const navigate = useNavigate();
 
-  const _self = {
-    publisher: TICKET_PUBLICATION.ALL,
-    repository: ticketRepository,
-    methods: ticketsMethods,
-    formRoute: ROUTE.SETTINGS_TICKETS_FORM,
-  }
+  const _module = ticketModule;
 
   const columns = [
     {key: 'message', label: 'Message'},
@@ -28,20 +20,20 @@ export const TicketList = () => {
 
   // Track items and loading state
   const {items, loading} = useTracker(() => {
-    const handle = Meteor.subscribe(_self.publisher, columns);
+    const handle = Meteor.subscribe(_module.publisher.ALL, columns);
 
     return {
       loading: !handle.ready(),
-      items: handle.ready() ? _self.repository.find().fetch() : []
+      items: handle.ready() ? _module.repository.find().fetch() : []
     };
   });
 
   const handleEdit = async (_id) => {
-    navigate(setParam(_self.formRoute, {key: '_id', value: _id}));
+    navigate(setParam(_module.formRoute, {key: '_id', value: _id}));
   };
 
   const handleDelete = async (_id) => {
-    await _self.methods.delete({_id});
+    await _module.methods.delete({_id});
   };
 
   const actions = [{

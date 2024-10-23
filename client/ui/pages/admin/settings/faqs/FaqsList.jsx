@@ -12,7 +12,7 @@ import {faqModule} from "../../../../../../imports/modules/app/faqs/faqModule";
 export const FaqsList = () => {
   const navigate = useNavigate();
 
-  const _self = faqModule;
+  const _module = faqModule;
 
   const columns = [
     {key: 'question', label: 'Question'},
@@ -21,20 +21,20 @@ export const FaqsList = () => {
 
   // Track items and loading state
   const {items, loading} = useTracker(() => {
-    const handle = Meteor.subscribe(_self.publisher.ALL, columns);
+    const handle = Meteor.subscribe(_module.publisher.ALL, columns);
 
     return {
       loading: !handle.ready(),
-      items: handle.ready() ? _self.repository.find().fetch() : []
+      items: handle.ready() ? _module.repository.find().fetch() : []
     };
   });
 
   const handleEdit = async (_id) => {
-    navigate(setParam(_self.formRoute, {key: '_id', value: _id}));
+    navigate(setParam(_module.formRoute, {key: '_id', value: _id}));
   };
 
   const handleDelete = async (_id) => {
-    await _self.methods.delete({_id});
+    await _module.methods.delete({_id});
   };
 
   const actions = [{
@@ -53,7 +53,7 @@ export const FaqsList = () => {
     <>
       <div className="flex items-center">
         <H2 text="FAQs" showBackButton={true}/>
-        <AddNewButton route={_self.formRoute}/>
+        <AddNewButton route={_module.formRoute}/>
       </div>
 
       <DataGrid

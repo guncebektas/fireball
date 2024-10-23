@@ -36,7 +36,12 @@ export class BaseService {
     return this.repository.upsertAsync({
       _id: object?._id
     }, {
-      $set: object
+      $set: {
+        ...object,
+        ...{
+          organizationId: Meteor.settings.public.app._id
+        }
+      }
     });
   }
 
