@@ -52,7 +52,7 @@ export function App() {
     <Flowbite theme={{ theme: customTheme }}>
       <BrowserRouter>
         <div className="antialiased bg-indigo-50 dark:bg-gray-800">
-          <div className="min-h-screen mx-auto">
+          <div className="min-h-screen mx-auto font-sans">
             <LocaleProvider>
               <ConnectionAlert/>
               <ConditionalLayout/>

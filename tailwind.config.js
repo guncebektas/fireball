@@ -13,7 +13,11 @@ module.exports = {
       red: colors.rose,
       pink: colors.fuchsia,
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+      },
+    },
   },
   darkMode: 'class',
   plugins: [
