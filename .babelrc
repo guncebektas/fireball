@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "@client": "./client",
+        "@components": "./client/ui/components",
+        "@pages": "./client/ui/pages",
+        "@appModule": "./imports/module/app",
+        "@infrastructureModule": "./imports/module/infrastructure",
+        "@server": "./server"
+      }
+    }]
+  ]
+}
