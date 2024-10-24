@@ -12,24 +12,24 @@ export const FaqForm = () => {
   const formRef = useRef();
   const {_id} = useParams();
 
-  const _self = faqModule;
+  const _module = faqModule;
 
   let data = {};
 
   if (_id !== FORM_TYPE.INSERT) {
     data = useTracker(() => {
-      const handle = Meteor.subscribe(_self.publisher.ONE, _id);
+      const handle = Meteor.subscribe(_module.publisher.ONE, _id);
 
       if (!handle.ready()) {
         return [];
       }
 
-      return _self.repository.findOne(_id);
+      return _module.repository.findOne(_id);
     });
   }
 
   const handleSubmit = async function (formData) {
-    _self.methods.upsert(formData)
+    _module.methods.upsert(formData)
       .then(response => {
         ToastSuccess();
       })
