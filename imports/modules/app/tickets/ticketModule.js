@@ -7,6 +7,12 @@ export const ticketModule = {
   publisher: TICKET_PUBLICATION,
   repository: ticketRepository,
   methods: ticketsMethods,
-  listRoute: ROUTE.SETTINGS_TICKETS_LIST,
-  formRoute: ROUTE.SETTINGS_TICKETS_FORM,
+  list: {
+    title: 'Tickets',
+    route: ROUTE.SETTINGS_TICKETS_LIST,
+  },
+  form: {
+    title: 'Ticket',
+    route: ROUTE.SETTINGS_TICKETS_FORM,
+  }
 }

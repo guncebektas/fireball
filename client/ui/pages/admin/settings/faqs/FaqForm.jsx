@@ -40,7 +40,7 @@ export const FaqForm = () => {
 
   return (
     <>
-      <H2 text="FAQ" showBackButton={true}/>
+      <H2 text={_module.form.title} showBackButton={true}/>
       <div className="grid grid-flow-col justify-stretch space-x-4">
         <AutoForm
           ref={formRef}

@@ -7,6 +7,12 @@ export const faqModule = {
   publisher: FAQS_PUBLICATION,
   repository: faqRepository,
   methods: faqsMethod,
-  listRoute: ROUTE.SETTINGS_FAQS_LIST,
-  formRoute: ROUTE.SETTINGS_FAQS_FORM,
+  list: {
+    title: 'FAQs',
+    route: ROUTE.SETTINGS_FAQS_LIST,
+  },
+  form: {
+    title: 'FAQ',
+    route: ROUTE.SETTINGS_FAQS_FORM,
+  }
 }

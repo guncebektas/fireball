@@ -11,7 +11,7 @@ We have two components in faqs module. One for editing and one for listing. The 
 `_id` param has a special meaning when it's value is *NOT* `new`. It means we need to fill the form with data.
 
 ## List
-You’ll notice definitions like `_module` and `columns`. The `_self` object contains the definitions we use in list components.
+You’ll notice definitions like `_module` and `columns`. The `_module` object contains the definitions we use in list components.
 
 ```js
 const _module = faqModule;

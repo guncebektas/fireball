@@ -29,7 +29,7 @@ export const TicketList = () => {
   });
 
   const handleEdit = async (_id) => {
-    navigate(setParam(_module.formRoute, {key: '_id', value: _id}));
+    navigate(setParam(_module.form.route, {key: '_id', value: _id}));
   };
 
   const handleDelete = async (_id) => {
@@ -51,7 +51,7 @@ export const TicketList = () => {
   return (
     <>
       <div className="flex items-center">
-        <H2 text="Tickets" showBackButton={true}/>
+        <H2 text={_module.list.title} showBackButton={true}/>
       </div>
 
       <DataGrid

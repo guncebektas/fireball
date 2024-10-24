@@ -30,7 +30,7 @@ export const FaqsList = () => {
   });
 
   const handleEdit = async (_id) => {
-    navigate(setParam(_module.formRoute, {key: '_id', value: _id}));
+    navigate(setParam(_module.form.route, {key: '_id', value: _id}));
   };
 
   const handleDelete = async (_id) => {
@@ -52,8 +52,8 @@ export const FaqsList = () => {
   return (
     <>
       <div className="flex items-center">
-        <H2 text="FAQs" showBackButton={true}/>
-        <AddNewButton route={_module.formRoute}/>
+        <H2 text={_module.list.title} showBackButton={true}/>
+        <AddNewButton route={_module.form.route}/>
       </div>
 
       <DataGrid

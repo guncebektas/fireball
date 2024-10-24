@@ -1,14 +1,17 @@
-import React, { useEffect, useRef } from 'react';
-import { H2 } from "../../components/heading/Headings";
-import { AutoForm } from "../../../../imports/modules/shared/uniforms-tailwind/src";
+import React, {useEffect, useRef} from 'react';
+import {H2} from "../../components/heading/Headings";
+import {AutoForm} from "../../../../imports/modules/shared/uniforms-tailwind/src";
 import Map from "../../components/map/Map";
-import { ToastSuccess } from "../../components/alert/Toast";
-import {contactRequestUpsert} from "../../../../imports/modules/app/contactRequests/contact.methods";
+import {ToastSuccess} from "../../components/alert/Toast";
+import {contactRequestMethods, contactRequestUpsert} from "../../../../imports/modules/app/contactRequests/contact.methods";
 import {contactBridge} from "../../../../imports/modules/app/contactRequests/schemas/contactSchema";
+import {contactRequestModule} from "../../../../imports/modules/app/contactRequests/contactRequestModule";
 
 export const ContactRequestForm = () => {
   const formRef = useRef();
   const siteKey = Meteor.settings.public.app.recaptcha.siteKey;
+
+  const _module = contactRequestModule;
 
   // Dynamically load the reCAPTCHA script when the component mounts
   useEffect(() => {
@@ -28,12 +31,12 @@ export const ContactRequestForm = () => {
   const handleSubmit = async function (formData) {
     // Request reCAPTCHA token
     window.grecaptcha.ready(() => {
-      window.grecaptcha.execute(siteKey, { action: 'submit' }).then((token) => {
+      window.grecaptcha.execute(siteKey, {action: 'submit'}).then((token) => {
         // Include the token in the form data
         formData.recaptchaToken = token;
 
         // Submit form data with reCAPTCHA token
-        contactRequestUpsert(formData)
+        _module.methods.upsert(formData)
           .then(response => {
             ToastSuccess();
             formRef.current.reset(); // Call the formRef properly
@@ -46,14 +49,14 @@ export const ContactRequestForm = () => {
   };
 
   const locations = [
-    { title: 'Location 1', latitude: 41.0434, longitude: 29.0091 },
-    { title: 'Location 2', latitude: 40.7306, longitude: -73.9352 },
-    { title: 'Location 3', latitude: 48.8566, longitude: 2.3522 },
+    {title: 'Location 1', latitude: 41.0434, longitude: 29.0091},
+    {title: 'Location 2', latitude: 40.7306, longitude: -73.9352},
+    {title: 'Location 3', latitude: 48.8566, longitude: 2.3522},
   ];
 
   return (
     <>
-      <H2 text="Contact us" showBackButton={true} />
+      <H2 text="Contact us" showBackButton={true}/>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Single column on mobile, two columns on medium screens and up */}
         <div className="flex flex-col">
           <AutoForm
@@ -65,7 +68,7 @@ export const ContactRequestForm = () => {
 
         {/* Map will take full width on mobile and stay next to the form on larger screens */}
         <div className="md:col-span-1 order-last md:order-none"> {/* Ensures the map is below the form on mobile */}
-          <Map markers={locations} zoom={14} />
+          <Map markers={locations} zoom={14}/>
         </div>
       </div>
     </>

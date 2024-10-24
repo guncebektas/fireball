@@ -1,25 +1,24 @@
 import {createMethod} from 'meteor/jam:method';
 import {z} from 'zod';
-import {contactFormSchema} from "./schemas/contactSchema";
+import {contactFormSchema, contactSchema} from "./schemas/contactSchema";
 import {contactRequestService} from "./contactRequestService";
+import {faqsSchema} from "../faqs/schemas/faqsSchema";
+import {faqService} from "../faqs/faqService";
+import {oneRowSchema} from "../../shared/schemas/oneRowSchema";
 
-export const contactRequestUpsert = createMethod({
-  name: 'contactRequest.upsert',
-  schema: z.object({
-    ...{_id: z.string().optional()},
-    ...contactFormSchema
+export const contactRequestMethods = {
+  upsert: createMethod({
+    name: 'contactRequest.upsert',
+    schema: contactSchema,
+    async run(object) {
+      return contactRequestService.upsert(object);
+    }
   }),
-  async run(object) {
-    return contactRequestService.upsert(object);
-  }
-});
-
-export const contactRequestDelete = createMethod({
-  name: 'contactRequest.delete',
-  schema: z.object({
-    ...{_id: z.string()}
-  }),
-  async run({_id}) {
-    return contactRequestService.remove(_id);
-  }
-});
+  delete: createMethod({
+    name: 'contactRequest.delete',
+    schema: oneRowSchema,
+    async run({_id}) {
+      return contactRequestService.remove(_id);
+    }
+  })
+}

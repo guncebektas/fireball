@@ -36,14 +36,12 @@ export const UserProfiles = () => {
     setOpenChangePasswordModal(true);
   };
 
-  const actions = [
-    {
-      label: 'Password',
-      icon: () => <FontAwesomeIcon icon={faEdit}/>,
-      classes: 'bg-blue-500 hover:bg-blue-600',
-      onClick: handleEdit,
-    }
-  ];
+  const actions = [{
+    label: 'Password',
+    icon: () => <FontAwesomeIcon icon={faEdit}/>,
+    classes: 'bg-blue-500 hover:bg-blue-600',
+    onClick: handleEdit,
+  }];
 
   return (
     <>

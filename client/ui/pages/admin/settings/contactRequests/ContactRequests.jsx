@@ -6,27 +6,37 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {CONTACT_REQUESTS_PUBLICATION} from "../../../../../../imports/modules/app/contactRequests/enums/publication"; // FontAwesome icons
 import {contactRequestRepository} from "../../../../../../imports/modules/app/contactRequests/contactRequestRepository";
-import {contactRequestDelete} from "../../../../../../imports/modules/app/contactRequests/contact.methods";
+import {contactRequestDelete, contactRequestMethods} from "../../../../../../imports/modules/app/contactRequests/contact.methods";
+import {contactRequestModule} from "../../../../../../imports/modules/app/contactRequests/contactRequestModule";
 
 export const ContactRequests = () => {
+  const _module = contactRequestModule;
+  const columns = [
+    {key: 'name', label: 'First name'},
+    {key: 'phoneNumber', label: 'Phone number'},
+    {key: 'email', label: 'Email'},
+    {key: 'subject', label: 'Subject'},
+    {key: 'message', label: 'Message'},
+  ];
+
   // Track items and loading state
-  const { items, loading } = useTracker(() => {
-    const handle = Meteor.subscribe(CONTACT_REQUESTS_PUBLICATION.ALL);
+  const {items, loading} = useTracker(() => {
+    const handle = Meteor.subscribe(_module.publisher.ALL, columns);
 
     return {
       loading: !handle.ready(),
-      items: handle.ready() ? contactRequestRepository.find().fetch() : []
+      items: handle.ready() ? _module.repository.find().fetch() : []
     };
   });
 
   const handleRemove = async (_id) => {
-    await contactRequestDelete({_id});
+    await _module.methods.delete({_id});
   };
 
   const actions = [
     {
       label: 'Delete',
-      icon: () => <FontAwesomeIcon icon={faTrash} />,
+      icon: () => <FontAwesomeIcon icon={faTrash}/>,
       color: 'failure',
       classes: 'bg-red-500 hover:bg-red-600',
       onClick: handleRemove,
@@ -35,15 +45,9 @@ export const ContactRequests = () => {
 
   return (
     <>
-      <H2 text="Contact requests" showBackButton={true}></H2>
+      <H2 text={_module.list.title} showBackButton={true}></H2>
       <DataGrid
-        columns={[
-          { key: 'name', label: 'First name' },
-          { key: 'phoneNumber', label: 'Phone number' },
-          { key: 'email', label: 'Email' },
-          { key: 'subject', label: 'Subject' },
-          { key: 'message', label: 'Message' },
-        ]}
+        columns={columns}
         data={items}
         loading={loading}
         actions={actions}
