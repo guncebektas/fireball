@@ -3,7 +3,7 @@ import {CONTACT_REQUESTS_PUBLICATION} from "../enums/publication.js";
 import {contactRequestRepository} from "../contactRequestRepository";
 import {createProjection} from "../../../shared/functions/createProjection";
 
-Meteor.publish(CONTACT_REQUESTS_PUBLICATION.ALL, function (columns) {
+Meteor.publish.stream(CONTACT_REQUESTS_PUBLICATION.ALL, function (columns) {
   if (!this.userId) {
     return this.ready();
   }
