@@ -51,6 +51,7 @@ alanning:roles@4.0.0
 
 ostrio:files
 jam:method
+jam:pub-sub
 #jam:soft-delete
 #jam:offline
 
