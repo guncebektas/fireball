@@ -49,7 +49,7 @@ const DataGrid = ({ columns, data, loading, actions }) => {
   }
 
   return (
-    <div className="mt-2 w-full text-gray-500">
+    <div className="mt-2 w-full text-gray-500 bg-white dark:bg-gray-900">
       <table ref={tableRef} className="min-w-full">
         <thead>
         <tr>
