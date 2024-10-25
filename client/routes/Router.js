@@ -39,7 +39,6 @@ export const Router = () => (
     <Route path={ROUTE.SETTINGS} element={<Settings/>}/>
     <Route path={ROUTE.SETTINGS_ABOUT_US} element={<AboutUs/>}/>
     <Route path={ROUTE.SETTINGS_CONTACT_REQUESTS_LIST} element={<ContactRequests/>}/>
-    <Route path={ROUTE.SETTINGS_FAQS_FORM} element={<FaqForm/>}/>
     <Route path={ROUTE.SETTINGS_FAQS_LIST} element={<FaqsList/>}/>
     <Route path={ROUTE.SETTINGS_TICKETS_FORM} element={<TicketForm schema={ticketEditBridge}/>}/>
     <Route path={ROUTE.SETTINGS_TICKETS_LIST} element={<TicketList/>}/>
