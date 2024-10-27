@@ -17,5 +17,6 @@ import '../imports/modules/app/user/userPassword/server';
 import '../imports/modules/app/user/userProfilePicture/server';
 import '../imports/modules/app/user/userProfiles/server';
 import '../imports/modules/app/user/userRoles/server';
+import '../imports/modules/app/user/userWallet/server';
 
 import '../imports/modules/app/tickets/server';

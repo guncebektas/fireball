@@ -37,6 +37,11 @@ export class BaseRepository {
    * @returns {Mongo.Cursor}
    */
   find(selector = {}, options = {}) {
+    // XXX: limit data with organizationId for publications
+    if (Meteor.isServer) {
+      selector = {...selector, ...{organizationId: Meteor.settings.public.app._id}}
+    }
+
     return this._collection.find(selector, options);
   }
 
@@ -48,6 +53,11 @@ export class BaseRepository {
    * @returns {object}
    */
   findOne(selector = {}, options = {}) {
+    // XXX: limit data with organizationId for publications
+    if (Meteor.isServer) {
+      selector = {...selector, ...{organizationId: Meteor.settings.public.app._id}}
+    }
+
     return this._collection.findOne(selector, options);
   }
 
@@ -58,6 +68,11 @@ export class BaseRepository {
    * @return {Promise<*>}
    */
   async findOneAsync(selector = {}, options = {}) {
+    // XXX: limit data with organizationId for publications
+    if (Meteor.isServer) {
+      selector = {...selector, ...{organizationId: Meteor.settings.public.app._id}}
+    }
+
     return this._collection.findOneAsync(selector, options);
   }
 
@@ -68,8 +83,13 @@ export class BaseRepository {
    * @return {Mongo.Cursor<unknown, Mongo.DispatchTransform<{}["transform"], unknown, unknown>>}
    */
   findRemoved(selector = {}, options = {}) {
-    log.debug(`find: ${this._collectionName}`);
     selector = {...selector, ...{removed: {$exists: true}}};
+
+    // XXX: limit data with organizationId for publications
+    if (Meteor.isServer) {
+      selector = {...selector, ...{organizationId: Meteor.settings.public.app._id}}
+    }
+
     return this._collection.find(selector, options);
   }
 
@@ -80,8 +100,13 @@ export class BaseRepository {
    * @return {Mongo.Cursor<unknown, Mongo.DispatchTransform<{}["transform"], unknown, unknown>>}
    */
   findNotRemoved(selector = {}, options = {}) {
-    log.debug(`find: ${this._collectionName}`);
     selector = {...selector, ...{removed: {$exists: false}}};
+
+    // XXX: limit data with organizationId for publications
+    if (Meteor.isServer) {
+      selector = {...selector, ...{organizationId: Meteor.settings.public.app._id}}
+    }
+
     return this._collection.find(selector, options);
   }
 
@@ -91,7 +116,11 @@ export class BaseRepository {
    * @returns {*}
    */
   aggregate(selector) {
-    log.debug(`find: ${this._collectionName}`);
+    // XXX: limit data with organizationId for publications
+    if (Meteor.isServer) {
+      selector = {...selector, ...{organizationId: Meteor.settings.public.app._id}}
+    }
+
     return this._collection.aggregate(selector);
   }
 
@@ -104,8 +133,8 @@ export class BaseRepository {
    * @param document {object}
    * @returns {string}
    */
-  insert(document) {
-    log.debug(`find: ${this._collectionName}`);
+  insert(document) {;
+    document = {...document, ...{organizationId: Meteor.settings.public.app._id}}
     return this._collection.insert(document);
   }
 
@@ -114,6 +143,7 @@ export class BaseRepository {
    * @return {Promise<string>}
    */
   async insertAsync(document) {
+    document = {...document, ...{organizationId: Meteor.settings.public.app._id}}
     return await this._collection.insertAsync(document);
   }
 
@@ -128,7 +158,7 @@ export class BaseRepository {
    * @param options {object}
    */
   upsert(selector, updateObject, options = null) {
-    log.debug(`find: ${this._collectionName}`);
+    updateObject.$set = {...updateObject.$set, ...{organizationId: Meteor.settings.public.app._id}}
     this._collection.upsert(selector, updateObject, options);
   }
 
@@ -139,6 +169,7 @@ export class BaseRepository {
    * @return {Promise<void>}
    */
   async upsertAsync(selector, updateObject, options = null) {
+    updateObject.$set = {...updateObject.$set, ...{organizationId: Meteor.settings.public.app._id}}
     await this._collection.upsertAsync(selector, updateObject, options);
   }
 
@@ -154,7 +185,6 @@ export class BaseRepository {
    * @returns {number}
    */
   update(selector, updateObject, options = null) {
-    log.debug(`find: ${this._collectionName}`);
     return this._collection.update(selector, updateObject, options);
   }
 
@@ -176,7 +206,6 @@ export class BaseRepository {
    * @returns {number}
    */
   updateMany(selector, updateObject) {
-    log.debug(`find: ${this._collectionName}`);
     return this._collection.update(selector, updateObject, {multi: true});
   }
 
@@ -213,7 +242,6 @@ export class BaseRepository {
    * @returns {number} affected row count
    */
   remove(selector) {
-    log.debug(`find: ${this._collectionName}`);
     return this._collection.remove(selector);
   }
 
@@ -234,7 +262,6 @@ export class BaseRepository {
    * @returns {number}
    */
   count(selector = {}, options = {}) {
-    log.debug(`find: ${this._collectionName}`);
     return this.find(selector, options).count();
   }
 
@@ -245,7 +272,6 @@ export class BaseRepository {
    * @private
    */
   _createBulkOperation() {
-    log.debug(`find: ${this._collectionName}`);
     return this._collection.rawCollection().initializeOrderedBulkOp();
   }
 
@@ -256,7 +282,6 @@ export class BaseRepository {
    * @private
    */
   _createUnorderedBulkOperation() {
-    log.debug(`find: ${this._collectionName}`);
     return this._collection.rawCollection().initializeUnorderedBulkOp();
   }
 

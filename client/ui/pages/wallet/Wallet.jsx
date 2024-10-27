@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTranslator} from "../../providers/i18n";
 import {Accordion, Button, Modal} from 'flowbite-react';
 import {H4, H5} from "../../components/heading/Headings";
@@ -8,7 +8,10 @@ import {Meteor} from "meteor/meteor";
 import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/userProfiles/enums/publication";
 import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository";
 import {WalletIcon} from "./WalletIcon";
-import ScratchCardModal, {ScratchToWin} from "./ScratchCardModal";
+import ScratchCardModal from "./ScratchCardModal";
+import {userWalletMethods} from "../../../../imports/modules/app/user/userWallet/userWallet.methods";
+import {rssFeedFetch} from "../../../../imports/modules/app/rss/rss.methods";
+import {ToastSuccess, ToastWarning} from "../../components/alert/Toast";
 
 const faqs = [
   {question: 'Bu uygulama nasıl çalışıyor?', answer: 'Uygulama, kullanıcıların belirli hedeflere ulaşmalarına yardımcı olur.'},
@@ -134,11 +137,36 @@ export const Wallet = () => {
   useTracker(() => {
     const subscription = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
     if (subscription.ready()) {
-      const userProfile = userProfileRepository.findOne({ _id: Meteor.userId() }) || {};
+      const userProfile = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
       setCurrentStamp(userProfile.stamp);
       setBalance(userProfile.balance);
     }
   }, [user])
+
+  useEffect(() => {
+    const fetchCustomer = async () => {
+      try {
+        const response = await userWalletMethods.getCustomer(); // Changed to use await rssFeedFetch
+
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(response, 'text/xml');
+
+        const items = Array.from(xmlDoc.getElementsByTagName('item'));
+        const parsedItems = items.map(item => ({
+          title: item.getElementsByTagName('title')[0].textContent,
+          link: item.getElementsByTagName('link')[0].textContent,
+          pubDate: item.getElementsByTagName('pubDate')[0].textContent,
+          description: item.getElementsByTagName('description')[0]?.textContent,
+        }));
+
+        ToastSuccess('RSS Feed loaded successfully');
+      } catch (err) {
+        ToastWarning('Failed to fetch RSS feed');
+      }
+    };
+
+    fetchCustomer();
+  }, []);
 
   const addMoney = (amount) => {
     setBalance((prevBalance) => prevBalance + amount);

@@ -40,7 +40,7 @@ class UserProfileService extends BaseService {
 
   async getByOtp(otp) {
     const date = new Date();
-    date.setMinutes(date.getMinutes() - 1);
+    date.setMinutes(date.getMinutes() - 2);
 
     return this.repository.findOneAsync({
       otp,

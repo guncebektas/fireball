@@ -17,6 +17,7 @@ Meteor.js 'e yaklaşımımızda bazı küçük farklılıklar var. Ancak Meteor.
 Proje içerisinde kullanılan önemli paketler
 - alanning:roles
 - jam:methods
+- jam:pub-sub
 - jam:offline
 - uniforms
 - universe:i18n

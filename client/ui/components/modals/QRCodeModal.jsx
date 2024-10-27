@@ -5,12 +5,14 @@ import {Meteor} from 'meteor/meteor';
 import Countdown from "../countDown/CountDown";
 import {userProfilesMethods} from "../../../../imports/modules/app/user/userProfiles/userProfile.methods";
 import {useTranslator} from "../../providers/i18n";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faRotate} from "@fortawesome/free-solid-svg-icons";
 
 export const QRCodeModal = ({ isOpen, onClose }) => {
   const t = useTranslator();
 
   const [otp, setOtp] = useState(generateOTP());
-  // userProfilesMethods.saveOtp({otp})
+  userProfilesMethods.saveOtp({otp})
 
   function generateOTP() {
     return Math.floor(100000 + Math.random() * 900000).toString();
@@ -21,8 +23,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     userProfilesMethods.saveOtp({otp});
   };
 
-  const {id, icon} = Meteor.settings.public.app;
-  const qrValue = `${id}:${otp}`;
+  const {icon} = Meteor.settings.public.app;
 
   return (
     <Modal show={isOpen} size="md" onClose={onClose}>
@@ -30,7 +31,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
       <Modal.Body>
         <div className="flex justify-center">
           <QRCodeCanvas
-            value={qrValue}
+            value={otp}
             size={200}
             imageSettings={{
               src: icon, // Path to your logo
@@ -47,10 +48,11 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
       </Modal.Body>
       <Modal.Footer>
         <div className="flex justify-between w-full">
-          <Button color="gray" onClick={onClose}>
+          <Button color="default" onClick={onClose}>
             {t('Close')}
           </Button>
-          <Button color="gray" onClick={handleExpire}>
+          <Button color="blue" onClick={handleExpire}>
+            <FontAwesomeIcon icon={faRotate}/>
             {t('Reload')}
           </Button>
         </div>

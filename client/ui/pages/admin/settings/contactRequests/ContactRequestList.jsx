@@ -4,12 +4,9 @@ import {useTracker} from "meteor/react-meteor-data";
 import DataGrid from '../../../../components/dataGrid/DataGrid'; // Import the new DataGrid component
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
-import {CONTACT_REQUESTS_PUBLICATION} from "../../../../../../imports/modules/app/contactRequests/enums/publication"; // FontAwesome icons
-import {contactRequestRepository} from "../../../../../../imports/modules/app/contactRequests/contactRequestRepository";
-import {contactRequestDelete, contactRequestMethods} from "../../../../../../imports/modules/app/contactRequests/contact.methods";
 import {contactRequestModule} from "../../../../../../imports/modules/app/contactRequests/contactRequestModule";
 
-export const ContactRequests = () => {
+export const ContactRequestList = () => {
   const _module = contactRequestModule;
   const columns = [
     {key: 'name', label: 'First name'},
