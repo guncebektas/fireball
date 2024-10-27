@@ -7,7 +7,7 @@ import {faqRepository} from "../../../../imports/modules/app/faqs/faqRepository"
 import {FAQS_PUBLICATION} from "../../../../imports/modules/app/faqs/enums/publication";
 import {faqModule} from "../../../../imports/modules/app/faqs/faqModule";
 
-export const Faqs = () => {
+export const Faqs = ({showTitle = true}) => {
   const t = useTranslator();
 
   const _module = faqModule;
@@ -24,11 +24,9 @@ export const Faqs = () => {
     };
   });
 
-  console.log(items);
-
   return (
     <>
-      <H2 text={t('FAQs')} showBackButton={true}/>
+      {showTitle ? `<H2 text={t('FAQs')} showBackButton={true}/>` : ''}
       <Accordion>
         {items.map((faq, index) => (
           <Accordion.Panel key={index}>

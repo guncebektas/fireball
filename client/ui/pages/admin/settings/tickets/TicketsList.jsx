@@ -37,7 +37,6 @@ export const TicketsList = () => {
   };
 
   const handleAddNew = () => {
-    console.log('sss')
     setEditId('new');
     setDrawerOpen(true);
   };
