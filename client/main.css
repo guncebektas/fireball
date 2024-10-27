@@ -8,8 +8,13 @@
   z-index: 100;
 }
 
-.svg-inline--fa {
+button .svg-inline--fa {
   min-width: 24px;
+  padding-top: 3px
+}
+
+td button .svg-inline--fa {
+  padding-top: 1px
 }
 
 @layer components {
@@ -35,7 +40,7 @@
 }
 
 /** overwrite */
-.h-modal.bg-gray-900 {
+.h-screen.bg-gray-900 {
   --tw-bg-opacity: .5 !important;
 }
 

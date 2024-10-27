@@ -5,18 +5,18 @@ import DataGrid from '../../../../components/dataGrid/DataGrid';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEdit, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {AddNewButton} from "../../../../components/buttons/AddNewButton";
-import {faqModule} from "../../../../../../imports/modules/app/faqs/faqModule";
-import {FaqFormModal} from './FaqFormModal';
 import {FaTimes} from "react-icons/fa";
+import {ticketModule} from "../../../../../../imports/modules/app/tickets/ticketModule";
+import {TicketFormModal} from "./TicketFormModal";
 
-export const FaqsList = () => {
+export const TicketsList = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editId, setEditId] = useState(null);
 
-  const _module = faqModule;
+  const _module = ticketModule;
   const columns = [
-    {key: 'question', label: 'Question'},
-    {key: 'answer', label: 'Answer'},
+    {key: 'message', label: 'Message'},
+    {key: 'response', label: 'Answer'}
   ];
 
   const {items, loading} = useTracker(() => {
@@ -37,7 +37,6 @@ export const FaqsList = () => {
   };
 
   const handleAddNew = () => {
-    console.log('sss')
     setEditId('new');
     setDrawerOpen(true);
   };
@@ -77,7 +76,7 @@ export const FaqsList = () => {
             <FaTimes/>
           </button>
           <section className="p-5">
-            <FaqFormModal _id={editId} closeDrawer={closeDrawer}/>
+            <TicketFormModal _id={editId} closeDrawer={closeDrawer}/>
           </section>
         </div>
       )}

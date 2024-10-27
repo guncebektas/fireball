@@ -1,26 +1,25 @@
-import React, {useState} from 'react';
-import {Navbar} from 'flowbite-react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faHouse, faQrcode, faStar, faStore, faUser} from '@fortawesome/free-solid-svg-icons';
-import {Meteor} from 'meteor/meteor';
-import {QRCodeModal} from "../modals/QRCodeModal";
-import {ROUTE} from "../../../routes/enums/route";
-import {useNavigate} from "react-router-dom";
+import React from 'react';
+import { Navbar } from 'flowbite-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faQrcode, faStar, faStore, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Meteor } from 'meteor/meteor';
+import { QRCodeModal } from "../modals/QRCodeModal";
+import { ROUTE } from "../../../routes/enums/route";
+import { useNavigate } from "react-router-dom";
+import {useQRCodeStore} from "../../stores/useQRCodeStore";
 
 export const NavMobile = () => {
   const { showMobileNavigation } = Meteor.settings.public.app;
-  const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
-
+  const openQRCodeModal = useQRCodeStore((state) => state.openQRCodeModal);
   const navigate = useNavigate();
-
-  const whatsappNumber = '1234567890';
 
   const handleNavigate = (route) => {
     navigate(route);
   };
 
   const navLinks = [
-    { href: '#',
+    {
+      href: '#',
       icon: faHouse,
       onClick: () => handleNavigate(ROUTE.HOME),
     },
@@ -34,7 +33,7 @@ export const NavMobile = () => {
       icon: faQrcode,
       specialClass:
         "bg-blue-700 hover:bg-red-900 focus:ring-blue-300 active:bg-blue-300 dark:bg-blue-600 dark:hover:bg-red-900 dark:focus:ring-blue-800 dark:active:bg-blue-800 text-white dark:text-white rounded-full p-2 transform scale-125",
-      onClick: () => setIsQRCodeModalOpen(true),
+      onClick: openQRCodeModal, // Open QR Code modal
     },
     {
       href: '#',
@@ -49,7 +48,7 @@ export const NavMobile = () => {
   ];
 
   if (!showMobileNavigation) {
-    return null; // Don't render if navigation is hidden
+    return null;
   }
 
   return (
@@ -69,10 +68,7 @@ export const NavMobile = () => {
         </ul>
       </Navbar>
 
-      <QRCodeModal
-        isOpen={isQRCodeModalOpen}
-        onClose={() => setIsQRCodeModalOpen(false)}
-      />
+      <QRCodeModal />
     </>
   );
 };

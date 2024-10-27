@@ -21,7 +21,7 @@ export const ROUTE = {
   SETTINGS_TICKETS_LIST: '/settings/tickets',
   SETTINGS_TICKETS_FORM: '/settings/tickets/form/:_id',
   STORES: '/stores',
-  TICKETS_FORM: '/tickets/form/new',
+  TICKETS_FORM: '/tickets/form/:_id',
   USER_PROFILES: '/user-profiles',
   WALLET: '/wallet'
 };

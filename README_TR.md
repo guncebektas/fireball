@@ -3,7 +3,7 @@
 </h1>
 
 ### Giriş
-Meteor.js, MongoDB, Redis, React, Axios, Zod, Monti APM, Uniform, i18n, Tailwind and FlowBite UI kullanıyoruz.
+Meteor.js, MongoDB, Redis, React, Zustand, Axios, Zod, Monti APM, Uniform, i18n, Tailwind and FlowBite UI kullanıyoruz.
 Meteor.js 'e yaklaşımımızda bazı küçük farklılıklar var. Ancak Meteor.js'i kendi dökümantasyonundan öğrenmek katkıda bulunmaya mani değildir.
 
 ### Gereklilikler
@@ -17,6 +17,7 @@ Meteor.js 'e yaklaşımımızda bazı küçük farklılıklar var. Ancak Meteor.
 Proje içerisinde kullanılan önemli paketler
 - alanning:roles
 - jam:methods
+- jam:pub-sub
 - jam:offline
 - uniforms
 - universe:i18n
