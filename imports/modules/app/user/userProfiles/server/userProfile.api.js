@@ -13,12 +13,7 @@ WebApp.connectHandlers.get("/api/v1/user-profile/otp/:otp", async (req, res) => 
   const userProfile = await userProfileService.getByOtp(otp);
 
   if (userProfile) {
-    const object = {
-      ...{organizationId: Meteor.settings.public.app._id},
-      ...userProfile
-    }
-
-    res.json(api.ok(object));
+    res.json(api.ok(userProfile));
   } else {
     res.json(api.fail());
   }

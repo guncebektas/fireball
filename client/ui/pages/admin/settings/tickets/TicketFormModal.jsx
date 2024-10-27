@@ -1,15 +1,15 @@
-import React, { useRef } from 'react';
-import { H2 } from "../../../../components/heading/Headings.jsx";
-import { AutoForm } from '../../../../../../imports/modules/shared/uniforms-tailwind/src';
-import { useTracker } from "meteor/react-meteor-data";
-import { FORM_TYPE } from "../../../../../shared/enums/formType.js";
-import { ToastSuccess, ToastWarning } from "../../../../components/alert/Toast";
-import { faqsBridge } from "../../../../../../imports/modules/app/faqs/schemas/faqsSchema";
-import { faqModule } from "../../../../../../imports/modules/app/faqs/faqModule";
+import React, {useRef} from 'react';
+import {H2} from "../../../../components/heading/Headings.jsx";
+import {AutoForm} from '../../../../../../imports/modules/shared/uniforms-tailwind/src';
+import {useTracker} from "meteor/react-meteor-data";
+import {FORM_TYPE} from "../../../../../shared/enums/formType.js";
+import {ToastSuccess, ToastWarning} from "../../../../components/alert/Toast";
+import {ticketEditBridge} from "../../../../../../imports/modules/app/tickets/schemas/ticketSchema";
+import {ticketModule} from "../../../../../../imports/modules/app/tickets/ticketModule";
 
-export const FaqForm = ({ _id, closeDrawer }) => {
+export const TicketFormModal = ({ _id, closeDrawer }) => {
   const formRef = useRef();
-  const _module = faqModule;
+  const _module = ticketModule;
 
   let data = {};
 
@@ -37,7 +37,7 @@ export const FaqForm = ({ _id, closeDrawer }) => {
       <div className="grid grid-flow-col justify-stretch space-x-4">
         <AutoForm
           ref={formRef}
-          schema={faqsBridge}
+          schema={ticketEditBridge}
           model={data}
           onSubmit={handleSubmit}
         />

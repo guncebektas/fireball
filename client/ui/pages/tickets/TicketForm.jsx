@@ -17,6 +17,7 @@ export const TicketForm = ({schema}) => {
 
   let ticket = {};
 
+  console.log(_id);
   if (_id !== FORM_TYPE.INSERT) {
     ticket = useTracker(() => {
       const handle = Meteor.subscribe(TICKET_PUBLICATION.ONE, _id);
@@ -46,7 +47,7 @@ export const TicketForm = ({schema}) => {
       <div className="grid grid-flow-col justify-stretch space-x-4">
         <AutoForm
           ref={formRef}
-          schema={schema}
+          schema={ticketAddBridge}
           model={ticket}
           onSubmit={handleSubmit}
         />

@@ -2,21 +2,33 @@ import React from "react";
 import {Accordion} from 'flowbite-react';
 import {H2} from "../../components/heading/Headings";
 import {useTranslator} from "../../providers/i18n";
+import {useTracker} from "meteor/react-meteor-data";
+import {faqRepository} from "../../../../imports/modules/app/faqs/faqRepository";
+import {FAQS_PUBLICATION} from "../../../../imports/modules/app/faqs/enums/publication";
+import {faqModule} from "../../../../imports/modules/app/faqs/faqModule";
 
-export const Faqs = () => {
+export const Faqs = ({showTitle = true}) => {
   const t = useTranslator();
 
-  const faqs = [
-    { question: 'What is your return policy?', answer: 'Our return policy lasts 30 days...' },
-    { question: 'How long does shipping take?', answer: 'Shipping usually takes 5-7 business days...' },
-    { question: 'Where are you located?', answer: 'We are located in New York City...' },
+  const _module = faqModule;
+  const columns = [
+    {key: 'question'},
+    {key: 'answer'}
   ];
+
+  const {items, loading} = useTracker(() => {
+    const handle = Meteor.subscribe(_module.publisher.ALL_ONCE, columns);
+    return {
+      loading: !handle.ready(),
+      items: handle.ready() ? _module.repository.find().fetch() : []
+    };
+  });
 
   return (
     <>
-      <H2 text={t('FAQs')} showBackButton={true}/>
+      {showTitle ? `<H2 text={t('FAQs')} showBackButton={true}/>` : ''}
       <Accordion>
-        {faqs.map((faq, index) => (
+        {items.map((faq, index) => (
           <Accordion.Panel key={index}>
             <Accordion.Title>
               {faq.question}

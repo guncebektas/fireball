@@ -18,9 +18,7 @@ Meteor.publish.stream(FAQS_PUBLICATION.ALL, function (columns) {
 
   const projection = createProjection(columns);
 
-  return faqRepository.find({
-    organizationId: Meteor.settings.public.app._id
-  }, projection);
+  return faqRepository.find({}, {...projection, ...{ sort: { order: 1 } }});
 });
 
 Meteor.publish.once(FAQS_PUBLICATION.ALL_ONCE, function (columns) {
@@ -30,7 +28,6 @@ Meteor.publish.once(FAQS_PUBLICATION.ALL_ONCE, function (columns) {
 
   const projection = createProjection(columns);
 
-  return faqRepository.find({
-    organizationId: Meteor.settings.public.app._id
-  }, projection);
+  console.log(FAQS_PUBLICATION.ALL_ONCE);
+  return faqRepository.find({}, {...projection, ...{ sort: { order: 1 } }});
 });

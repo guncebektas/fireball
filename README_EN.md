@@ -18,6 +18,7 @@ enough to contribute.
 Soma of the important packages used in the project.
 - alanning:roles
 - jam:methods
+- jam:pub-sub
 - jam:offline
 - uniforms
 - universe:i18n
