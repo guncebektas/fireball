@@ -92,7 +92,7 @@ export const Register = ({onStateChange}) => {
 
   return (
     <div className="sm:mx-auto sm:w-full sm:max-w-md">
-      <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
+      <h2 className="m-title text-center text-3xl md:text-4xl">
         {t('Register')}
       </h2>
 

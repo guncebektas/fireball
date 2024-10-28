@@ -90,8 +90,8 @@ export const Login = ({onStateChange}) => {
         </form>
       </Modal>
 
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md" >
+        <h2 className="m-title text-center text-3xl md:text-4xl">
           {t('Login')}
         </h2>
 

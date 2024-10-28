@@ -24,5 +24,6 @@ Meteor.startup(async () => {
 
   // Set user roles
   await Roles.createRoleAsync(ROLE.ADMIN, ROLE_SCOPE.USER);
+  await Roles.createRoleAsync(ROLE.MANAGER, ROLE_SCOPE.USER);
   await Roles.createRoleAsync(ROLE.USER, ROLE_SCOPE.USER);
 });

@@ -29,7 +29,9 @@ export const ForgottenPassword = ({onStateChange}) => {
 
   return (
     <div className="sm:mx-auto sm:w-full sm:max-w-md">
-      <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">{t('Forgotten password')}</h2>
+      <h2 className="m-title text-center text-3xl md:text-4xl">
+        {t('Forgotten password')}
+      </h2>
 
       <div className="bg-white dark:bg-gray-900 py-8 px-4 mt-8 shadow sm:rounded-lg sm:px-10">
         <div>

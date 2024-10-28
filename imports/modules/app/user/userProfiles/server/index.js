@@ -1,4 +1,4 @@
-import './event';
-import './userProfile.api';
-import './userProfile.publications.js';
-import './userProfile.rateLimiter.js';
+import './events';
+import './apis';
+import './publications.js';
+import './rateLimiter.js';

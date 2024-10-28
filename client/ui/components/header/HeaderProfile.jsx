@@ -8,6 +8,7 @@ import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/use
 import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository.js";
 import {ROUTE} from "../../../routes/enums/route.js";
 import {useTranslator} from "../../providers/i18n";
+import {ProfileAvatar} from "../profileAvatar/profileAvatar";
 
 export const HeaderProfile = () => {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ export const HeaderProfile = () => {
     >
       <Dropdown.Header>
         <div className="flex items-center">
-          <Avatar img={`https://ritapos-files.s3.eu-central-1.amazonaws.com/${me.pictureUrl}`} alt="Avatar" className="mr-3" rounded/>
+          <ProfileAvatar path={me.pictureUrl}/>
           <span className="block text-sm">
             {me.firstname} {me.lastname}
           </span>

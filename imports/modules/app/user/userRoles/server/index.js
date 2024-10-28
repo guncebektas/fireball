@@ -1,3 +1,4 @@
-import './event.js';
+import './events.js';
 import './init.js';
-import './publication.js';
+import './publications.js';
+import './rateLimiter';
