@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useTranslator} from "../../providers/i18n";
-import {Accordion, Button, Modal} from 'flowbite-react';
+import {Button, Modal} from 'flowbite-react';
 import {H4, H5} from "../../components/heading/Headings";
 import {Slider} from "../../components/slider/Slider";
 import {useTracker} from "meteor/react-meteor-data";
@@ -17,6 +17,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faQrcode, faTicket} from "@fortawesome/free-solid-svg-icons";
 import {useScratchCardStore} from "../../stores/useScratchCardStore";
 import {Faqs} from "../help/Faqs";
+import {Log} from "meteor/logging";
 
 const ProgressBar = ({target, current = 0}) => {
   const t = useTranslator();
@@ -115,7 +116,7 @@ export const Wallet = () => {
   const t = useTranslator();
 
   const {carousel} = Meteor.settings.public.pages.aboutUs;
-  const wallet = true;
+  const wallet = false;
 
   const [currentStamp, setCurrentStamp] = useState(0);
   const [currentBalance, setBalance] = useState(0);
@@ -134,22 +135,9 @@ export const Wallet = () => {
   useEffect(() => {
     const fetchCustomer = async () => {
       try {
-        const response = await userWalletMethods.getCustomer(); // Changed to use await rssFeedFetch
-
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(response, 'text/xml');
-
-        const items = Array.from(xmlDoc.getElementsByTagName('item'));
-        const parsedItems = items.map(item => ({
-          title: item.getElementsByTagName('title')[0].textContent,
-          link: item.getElementsByTagName('link')[0].textContent,
-          pubDate: item.getElementsByTagName('pubDate')[0].textContent,
-          description: item.getElementsByTagName('description')[0]?.textContent,
-        }));
-
-        ToastSuccess('RSS Feed loaded successfully');
+        const response = await userWalletMethods.getCustomer();
       } catch (err) {
-        ToastWarning('Failed to fetch RSS feed');
+        Log.error(err);
       }
     };
 
@@ -170,10 +158,10 @@ export const Wallet = () => {
         <ProgressBar target={10} current={currentStamp}/>
 
         <Button.Group>
-          <Button color="purple" size="xs" onClick={openScratchCardModal}>
+          <Button color="purple" onClick={openScratchCardModal} className="mr-3">
             <FontAwesomeIcon icon={faTicket}/> {t('Scratch to win')}
           </Button>
-          <Button color="blue" size="xs" onClick={openQRCodeModal}>
+          <Button color="blue" onClick={openQRCodeModal}>
             <FontAwesomeIcon icon={faQrcode}/> {t('Your qr code')}
           </Button>
         </Button.Group>

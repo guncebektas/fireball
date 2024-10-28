@@ -1,5 +1,5 @@
 import {createMethod} from 'meteor/jam:method';
-import {userWalletService} from "./userWalletService"; // can import { Methods } from 'meteor/jam:method' instead and use Methods.create if you prefer
+import {userWalletService} from "./userWalletService";
 
 export const userWalletMethods = {
   getCustomer: createMethod({
