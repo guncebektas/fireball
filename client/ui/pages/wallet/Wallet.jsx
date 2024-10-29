@@ -48,10 +48,15 @@ export const Wallet = () => {
       }
     };
 
-    fetchCustomer()
-      .then(response => {
-        setStampCount(response.data.stampCount);
-      });
+    const intervalId = setInterval(() => {
+      fetchCustomer()
+        .then(response => {
+          setStampCount(response.data.stampCount);
+        });
+    }, 5000);
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, []);
 
   const addMoney = (amount) => {
