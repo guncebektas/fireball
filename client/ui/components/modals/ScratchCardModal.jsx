@@ -75,7 +75,7 @@ const ScratchCardModal = () => {
       alert(`No luck. Try again next time!`);
     } else {
       userWalletMethods.increaseCustomerStamp({amount: reward});
-      increaseStampCount(reward);
+      // increaseStampCount(reward); // because of week once condition we can't increase state
       closeQRCodeModal();
 
       openConfetti();
