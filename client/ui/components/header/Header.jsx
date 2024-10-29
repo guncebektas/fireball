@@ -73,8 +73,10 @@ export const Header = ({ onToggleSidebar }) => {
           <DarkThemeToggle />
           <HeaderNotifications />
           <HeaderOrganization />
-          <HeaderProfile />
-          <div className="header-dropdown-wrapper">
+          <div className="header-dropdown-wrapper p-2.5">
+            <HeaderProfile />
+          </div>
+          <div className="header-dropdown-wrapper p-2.5">
             <LanguageSelector />
           </div>
         </div>

@@ -12,8 +12,10 @@ export const LanguageSelector = (onlyIcon = false) => {
 
   const label = onlyIcon ? (<img src={`/online/images/flags/${currentLanguage}.svg`} alt={t("Language")} className="w-5 mr-1"/>) : (t("Language"));
 
-  return (<Dropdown label={label} inline className="mr-3">
-      {supportedLanguages.map(({languageCode, languageLabel}) => (<Dropdown.Item key={languageCode} onClick={() => onChangeLocale(languageCode)}>
+  return (
+    <Dropdown label={label} inline className="mr-3">
+      {supportedLanguages.map(({languageCode, languageLabel}) => (
+        <Dropdown.Item key={languageCode} onClick={() => onChangeLocale(languageCode)}>
           <img src={`/online/images/flags/${languageCode}.svg`} alt={languageLabel} className="w-5 mr-1"/>
           {languageLabel}
         </Dropdown.Item>))}

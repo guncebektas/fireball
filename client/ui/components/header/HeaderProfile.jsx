@@ -48,7 +48,7 @@ export const HeaderProfile = () => {
     <Dropdown
       arrowIcon={false}
       inline={true}
-      label={<FontAwesomeIcon icon="user" className="header-dropdown-wrapper pt-4"/>}
+      label={<FontAwesomeIcon icon="user"/>}
     >
       <Dropdown.Header>
         <div className="flex items-center">
