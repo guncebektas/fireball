@@ -48,7 +48,7 @@ export const HeaderProfile = () => {
     <Dropdown
       arrowIcon={false}
       inline={true}
-      label={<FontAwesomeIcon icon="user" className="header-dropdown-wrapper"/>}
+      label={<FontAwesomeIcon icon="user" className="header-dropdown-wrapper pt-4"/>}
     >
       <Dropdown.Header>
         <div className="flex items-center">
@@ -59,8 +59,8 @@ export const HeaderProfile = () => {
         </div>
       </Dropdown.Header>
 
-      <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
-      <Link to={ROUTE.PROFILE}>
+      <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white py-1">
+        <Link to={ROUTE.PROFILE}>
           <FontAwesomeIcon icon="user" className="mr-2"/>
           {t('My profile')}
         </Link>

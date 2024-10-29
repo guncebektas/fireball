@@ -10,6 +10,6 @@ Move tar file into this folder where Dockerfile exists.
 # Build and Run the image
 ```bash
 docker build -t app .
-docker run --name saas -e ROOT_URL='http://localhost:3000' -e MONGO_URL='mongodb://localhost:27017/saas' -e METEOR_SETTINGS='$(cat settings.json)' app
-docker run -e ROOT_URL='http://localhost:3000' -e MONGO_URL='mongodb://localhost:27017/saas' -e METEOR_SETTINGS='$(cat ./settings.json)' app
+docker run --name saas -e ROOT_URL='http://localhost:3001' -e MONGO_URL='mongodb://localhost:27017/saas' -e METEOR_SETTINGS='$(cat settings.json)' app
+docker run -e ROOT_URL='http://localhost:3001' -e MONGO_URL='mongodb://localhost:27017/saas' -e METEOR_SETTINGS='$(cat ./settings.json)' app
 ```

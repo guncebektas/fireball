@@ -32,10 +32,10 @@ td button .svg-inline--fa {
 
   .header-dropdown-wrapper {
     @apply p-2 mr-1 text-gray-500 rounded-lg
+    cursor-pointer
+    dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700
     hover:text-gray-900 hover:bg-gray-100
-    dark:text-gray-400 dark:hover:text-white
-    dark:hover:bg-gray-700 focus:ring-4
-    focus:ring-gray-300 dark:focus:ring-gray-600;
+    focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700
   }
 }
 
@@ -117,6 +117,10 @@ table thead th.datatable-ascending::after {
 
 table thead th.datatable-descending::after {
   content: '▼'; /* Descending */
+}
+
+.mt--20 {
+  margin-top: -20px;
 }
 
 .scratch-card {

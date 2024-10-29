@@ -6,6 +6,6 @@ export const WalletIcon = () => {
   const {name, logo} = Meteor.settings.public.app;
 
   return (
-    <FontAwesomeIcon icon={faStar} className="m-text text-xl mr-1"/>
+    <FontAwesomeIcon icon={faStar} className="m-text mr-1"/>
   );
 };
