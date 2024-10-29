@@ -21,7 +21,7 @@ export const Wallet = () => {
   const {carousel} = Meteor.settings.public.pages.aboutUs;
   const wallet = false;
 
-  const targetStampCount = 15;
+  const targetStampCount = 10;
   const {stampCount, setStampCount, increaseStampCount} = useStampCount();
   const [currentBalance, setBalance] = useState(0);
 
@@ -48,14 +48,23 @@ export const Wallet = () => {
       }
     };
 
-    const intervalId = setInterval(() => {
+    function fetchAndSetStampCount() {
       fetchCustomer()
         .then(response => {
+          console.log(response);
           setStampCount(response.data.stampCount);
+        })
+        .catch(error => {
+          console.error("Error fetching customer data:", error);
         });
-    }, 5000);
+    }
 
-    // Clear the interval when the component unmounts
+    // Call the function immediately
+    fetchAndSetStampCount();
+
+    // Set up an interval to call it every 5 seconds
+    const intervalId = setInterval(fetchAndSetStampCount, 5000);
+
     return () => clearInterval(intervalId);
   }, []);
 

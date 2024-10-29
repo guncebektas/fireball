@@ -6,6 +6,7 @@ import {WalletIcon} from "../../pages/wallet/WalletIcon";
 import {useScratchCardStore} from "../../stores/useScratchCardStore";
 import {useStampCount} from "../../stores/useStampCount";
 import {useConfettiStore} from "../../stores/useConfettiStore";
+import {userWalletMethods} from "../../../../imports/modules/app/user/userWallet/userWallet.methods";
 
 const ScratchCardModal = () => {
   const t = useTranslator();
@@ -14,19 +15,19 @@ const ScratchCardModal = () => {
   const closeQRCodeModal = useScratchCardStore((state) => state.closeScratchCardModal);
 
   const [canPlay, setCanPlay] = useState(true);
-  const { stampCount, increaseStampCount } = useStampCount();
+  const {stampCount, increaseStampCount} = useStampCount();
 
   const openConfetti = useConfettiStore((state) => state.openConfetti);
   const closeConfetti = useConfettiStore((state) => state.closeConfetti);
 
   const getWeightedReward = () => {
     const weightedOptions = [
-      { value: 0, weight: 10 },
-      { value: 1, weight: 40 },
-      { value: 2, weight: 40 },
-      { value: 3, weight: 7 },
-      { value: 4, weight: 2 },
-      { value: 5, weight: 1 },
+      {value: 0, weight: 10},
+      {value: 1, weight: 40},
+      {value: 2, weight: 40},
+      {value: 3, weight: 7},
+      {value: 4, weight: 2},
+      {value: 5, weight: 1},
     ];
     const totalWeight = weightedOptions.reduce((acc, option) => acc + option.weight, 0);
     const randomWeight = Math.random() * totalWeight;
@@ -73,6 +74,7 @@ const ScratchCardModal = () => {
     if (reward === 0) {
       alert(`No luck. Try again next time!`);
     } else {
+      userWalletMethods.increaseCustomerStamp({amount: reward});
       increaseStampCount(reward);
       closeQRCodeModal();
 
@@ -105,16 +107,16 @@ const ScratchCardModal = () => {
                 <Table className="w-full scratch-card-reward-table">
                   <Table.Body>
                     <Table.Row>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[0]} <WalletIcon /></Table.Cell>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[1]} <WalletIcon /></Table.Cell>
+                      <Table.Cell className="py-2 px-4">{shuffledNumbers[0]} <WalletIcon/></Table.Cell>
+                      <Table.Cell className="py-2 px-4">{shuffledNumbers[1]} <WalletIcon/></Table.Cell>
                     </Table.Row>
                     <Table.Row>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[2]} <WalletIcon /></Table.Cell>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[3]} <WalletIcon /></Table.Cell>
+                      <Table.Cell className="py-2 px-4">{shuffledNumbers[2]} <WalletIcon/></Table.Cell>
+                      <Table.Cell className="py-2 px-4">{shuffledNumbers[3]} <WalletIcon/></Table.Cell>
                     </Table.Row>
                     <Table.Row>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[4]} <WalletIcon /></Table.Cell>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[5]} <WalletIcon /></Table.Cell>
+                      <Table.Cell className="py-2 px-4">{shuffledNumbers[4]} <WalletIcon/></Table.Cell>
+                      <Table.Cell className="py-2 px-4">{shuffledNumbers[5]} <WalletIcon/></Table.Cell>
                     </Table.Row>
                   </Table.Body>
                 </Table>

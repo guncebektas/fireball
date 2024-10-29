@@ -7,7 +7,6 @@ export class ApiService {
     this.contractRegistry = contractRegistry;
   }
 
-  // Public method to perform a GET request
   async get(url, params = {}, config = {}) {
     try {
       const response = await axios.get(url, { params, ...config });
@@ -16,11 +15,18 @@ export class ApiService {
       this._handleError(error);
     }
   }
-
-  // Public method to perform a POST request
   async post(url, data = {}, config = {}) {
     try {
       const response = await axios.post(url, data, config);
+      return this._validateResponse(url, response);
+    } catch (error) {
+      this._handleError(error);
+    }
+  }
+
+  async put(url, data = {}, config = {}) {
+    try {
+      const response = await axios.put(url, data, config);
       return this._validateResponse(url, response);
     } catch (error) {
       this._handleError(error);
