@@ -1,5 +1,4 @@
-// QRCodeModal.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'flowbite-react';
 import { QRCodeCanvas } from 'qrcode.react';
 import { Meteor } from 'meteor/meteor';
@@ -8,7 +7,7 @@ import { userProfilesMethods } from '../../../../imports/modules/app/user/userPr
 import { useTranslator } from '../../providers/i18n';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotate } from '@fortawesome/free-solid-svg-icons';
-import {useQRCodeStore} from "../../stores/useQRCodeStore";
+import { useQRCodeStore } from '../../stores/useQRCodeStore';
 
 export const QRCodeModal = () => {
   const t = useTranslator();
@@ -16,6 +15,7 @@ export const QRCodeModal = () => {
 
   const isQRCodeModalOpen = useQRCodeStore((state) => state.isQRCodeModalOpen);
   const closeQRCodeModal = useQRCodeStore((state) => state.closeQRCodeModal);
+  const resetCountdown = useQRCodeStore((state) => state.resetCountdown);
 
   // Generate OTP
   const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
@@ -26,18 +26,22 @@ export const QRCodeModal = () => {
   };
 
   useEffect(() => {
-    if (isQRCodeModalOpen) saveOtp(otp);
-  }, [isQRCodeModalOpen, otp]);
+    if (isQRCodeModalOpen) {
+      saveOtp(otp);
+      resetCountdown(); // Reset countdown each time modal opens
+    }
+  }, [isQRCodeModalOpen, otp, resetCountdown]);
 
   const handleExpire = () => {
     const newOtp = generateOTP();
     setOtp(newOtp);
     saveOtp(newOtp);
+    resetCountdown(); // Reset countdown when OTP is refreshed
   };
 
   return (
     <Modal show={isQRCodeModalOpen} onClose={closeQRCodeModal} size="md">
-      <Modal.Header>{t('Your qr code')}</Modal.Header>
+      <Modal.Header>{t('Your QR code')}</Modal.Header>
       <Modal.Body>
         <div className="flex justify-center">
           <QRCodeCanvas
@@ -54,7 +58,7 @@ export const QRCodeModal = () => {
         <div className="flex justify-center">
           <p className="scale-150 font-extrabold text-center py-3">{otp}</p>
         </div>
-        <Countdown initialSeconds={60} onExpire={handleExpire} />
+        <Countdown onExpire={handleExpire} />
       </Modal.Body>
       <Modal.Footer>
         <div className="flex justify-between w-full">
