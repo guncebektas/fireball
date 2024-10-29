@@ -31,8 +31,7 @@ export const NavMobile = () => {
     {
       href: "#",
       icon: faQrcode,
-      specialClass:
-        "bg-blue-700 hover:bg-red-900 focus:ring-blue-300 active:bg-blue-300 dark:bg-blue-600 dark:hover:bg-red-900 dark:focus:ring-blue-800 dark:active:bg-blue-800 text-white dark:text-white rounded-full p-2 transform scale-125",
+      specialClass: "bg-blue-700 hover:bg-red-900 focus:ring-blue-300 active:bg-blue-300 dark:bg-blue-600 dark:hover:bg-red-900 dark:focus:ring-blue-800 dark:active:bg-blue-800 text-white dark:text-white rounded-full p-2 w-12 h-12 flex items-center justify-center transform scale-125 mt--20",
       onClick: openQRCodeModal, // Open QR Code modal
     },
     {
