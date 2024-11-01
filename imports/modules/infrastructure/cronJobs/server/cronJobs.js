@@ -8,11 +8,11 @@ SyncedCron.config({
 
 Meteor.startup(() => {
   SyncedCron.add({
-    name: 'A cron job which runs in every 30 seconds',
-    schedule: (parser) => parser.text('every 30 seconds'),
+    name: 'A cron job which runs in every 5 minutes',
+    schedule: (parser) => parser.text('every 5 minutes'),
     job: () => {
       // eslint-disable-next-line no-console
-      Log.info(`Cron job is running in every 30 seconds`);
+      Log.info(`Cron job is running in every 5 minutes`);
     },
   });
   SyncedCron.start();
