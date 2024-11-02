@@ -4,9 +4,9 @@ import {Modal, Table} from 'flowbite-react';
 import {useTranslator} from "../../providers/i18n";
 import {WalletIcon} from "../../pages/wallet/WalletIcon";
 import {useScratchCardStore} from "../../stores/useScratchCardStore";
-import {useStampCount} from "../../stores/useStampCount";
+import {useStampCountStore} from "../../stores/useStampCountStore";
 import {useConfettiStore} from "../../stores/useConfettiStore";
-import {userWalletMethods} from "../../../../imports/modules/app/user/userWallet/userWallet.methods";
+import {H2} from "../heading/Headings";
 
 const ScratchCardModal = () => {
   const t = useTranslator();
@@ -15,7 +15,9 @@ const ScratchCardModal = () => {
   const closeQRCodeModal = useScratchCardStore((state) => state.closeScratchCardModal);
 
   const [canPlay, setCanPlay] = useState(true);
-  const {stampCount, increaseStampCount} = useStampCount();
+  const [gameOverMessage, setGameOverMessage] = useState('');
+
+  const {stampCount, increaseStampCount} = useStampCountStore();
 
   const openConfetti = useConfettiStore((state) => state.openConfetti);
   const closeConfetti = useConfettiStore((state) => state.closeConfetti);
@@ -72,14 +74,17 @@ const ScratchCardModal = () => {
 
   const handleComplete = () => {
     if (reward === 0) {
-      alert(`No luck. Try again next time!`);
+      setGameOverMessage(t('No luck. Try again next time'))
     } else {
-      userWalletMethods.increaseCustomerStamp({amount: reward});
+      // userWalletMethods.increaseCustomerStamp({amount: reward});
       // increaseStampCount(reward); // because of week once condition we can't increase state
-      closeQRCodeModal();
+      // closeQRCodeModal();
 
-      openConfetti();
+      // openConfetti();
+      setGameOverMessage(t('Great. Try your luck again after a week'))
     }
+
+    setCanPlay(false);
   };
 
   return (
@@ -87,47 +92,51 @@ const ScratchCardModal = () => {
       <Modal.Header>
         {t('Scratch to win')}
       </Modal.Header>
-      <Modal.Body className="p-2">
-        <div className="scratch-card">
-          <span className="scratch-card-content">
-            {canPlay ? (
-              <ScratchCard
-                width={150}
-                height={150}
-                finishPercent={70}
-                brushSize={35}
-                onComplete={handleComplete}
-              >
-                <img
+      <Modal.Body>
+        {canPlay ? (
+          <div className="scratch-card p-2">
+            <span className="scratch-card-content">
+                <ScratchCard
                   width={150}
                   height={150}
-                  src={`https://via.placeholder.com/150x150`}
-                  alt="Background"
-                />
-                <Table className="w-full scratch-card-reward-table">
-                  <Table.Body>
-                    <Table.Row>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[0]} <WalletIcon/></Table.Cell>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[1]} <WalletIcon/></Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[2]} <WalletIcon/></Table.Cell>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[3]} <WalletIcon/></Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[4]} <WalletIcon/></Table.Cell>
-                      <Table.Cell className="py-2 px-4">{shuffledNumbers[5]} <WalletIcon/></Table.Cell>
-                    </Table.Row>
-                  </Table.Body>
-                </Table>
-              </ScratchCard>
-            ) : (
-              <div className="scratch-card-wait-to-play">
-                <p>{t('You can try your luck again on Friday')}.</p>
-              </div>
-            )}
-          </span>
-        </div>
+                  finishPercent={70}
+                  brushSize={35}
+                  onComplete={handleComplete}
+                >
+                  <img
+                    width={150}
+                    height={150}
+                    src={`https://via.placeholder.com/150x150`}
+                    alt="Background"
+                  />
+                  <Table className="w-full scratch-card-reward-table">
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell className="py-2 px-4">{shuffledNumbers[0]} <WalletIcon/></Table.Cell>
+                        <Table.Cell className="py-2 px-4">{shuffledNumbers[1]} <WalletIcon/></Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell className="py-2 px-4">{shuffledNumbers[2]} <WalletIcon/></Table.Cell>
+                        <Table.Cell className="py-2 px-4">{shuffledNumbers[3]} <WalletIcon/></Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell className="py-2 px-4">{shuffledNumbers[4]} <WalletIcon/></Table.Cell>
+                        <Table.Cell className="py-2 px-4">{shuffledNumbers[5]} <WalletIcon/></Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
+                  </Table>
+                </ScratchCard>
+            </span>
+          </div>
+        ) : (
+          <div className="scratch-card-wait-to-play">
+            {gameOverMessage ?
+              <H2 text={gameOverMessage}/>
+              :
+              <H2 text={'You can try your luck once in every week'}/>
+            }
+          </div>
+        )}
       </Modal.Body>
     </Modal>
   );
