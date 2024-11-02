@@ -39,6 +39,11 @@ td button .svg-inline--fa {
   }
 }
 
+.m-modal-body {
+  max-height: calc(100vh - 225px);
+  overflow: scroll;
+}
+
 /** overwrite */
 .h-screen.bg-gray-900 {
   --tw-bg-opacity: .5 !important;
