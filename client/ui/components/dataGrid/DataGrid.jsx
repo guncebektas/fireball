@@ -6,6 +6,7 @@ import { Button } from 'flowbite-react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
+import {Log} from 'meteor/logging';
 
 const ItemType = 'ROW';
 
@@ -82,14 +83,11 @@ const DataGrid = ({ columns, data, loading, actions, orderable = false }) => {
       order: index + 1 // Update order based on the new index
     }));
 
-    console.log('Updated Data:', updatedData);
-
     // Call the Meteor method to save the order to the database
     try {
       await Meteor.call('faqs.updateOrder', updatedData); // Save the reordered array
     } catch (error) {
-      console.error('Error updating order:', error);
-      // Handle error accordingly
+      Log.error(error);
     }
   };
 
