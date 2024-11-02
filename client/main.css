@@ -132,20 +132,13 @@ table thead th.datatable-descending::after {
 
 .scratch-card-content {
   position: absolute;
-  right: 30px;
-  bottom: 30px;
+  right: 40px;
+  bottom: 55px
 }
 
 .scratch-card-reward-table {
   position: absolute;
   bottom: 0;
-}
-
-.scratch-card-wait-to-play {
-  position: absolute;
-  right: 25px;
-  bottom: 55px;
-  width: 180px;
 }
 
 .grecaptcha-badge {
