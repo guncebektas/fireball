@@ -28,6 +28,5 @@ Meteor.publish.once(FAQS_PUBLICATION.ALL_ONCE, function (columns) {
 
   const projection = createProjection(columns);
 
-  console.log(FAQS_PUBLICATION.ALL_ONCE);
   return faqRepository.find({}, {...projection, ...{ sort: { order: 1 } }});
 });
