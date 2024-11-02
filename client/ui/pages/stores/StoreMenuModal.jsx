@@ -26,7 +26,7 @@ export const StoreMenuModal = ({store, isOpen, onClose}) => {
 
   return (
     <Modal show={isOpen} onClose={onClose}>
-      <Modal.Header>{store.title}</Modal.Header>
+      <Modal.Header>{store.name}</Modal.Header>
       <Modal.Body>
         <div className="gap-3 mx-auto max-w-screen-xl dark:text-white relative">
           <div className="overflow-x-auto relative">
