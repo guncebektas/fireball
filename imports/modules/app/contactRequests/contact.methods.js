@@ -1,9 +1,6 @@
 import {createMethod} from 'meteor/jam:method';
-import {z} from 'zod';
-import {contactFormSchema, contactSchema} from "./schemas/contactSchema";
+import {contactSchema} from "./schemas/contactSchema";
 import {contactRequestService} from "./contactRequestService";
-import {faqsSchema} from "../faqs/schemas/faqsSchema";
-import {faqService} from "../faqs/faqService";
 import {oneRowSchema} from "../../shared/schemas/oneRowSchema";
 
 export const contactRequestMethods = {
