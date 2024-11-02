@@ -33,7 +33,7 @@ export class ApiService {
     }
   }
 
-  // Additional methods (PUT, DELETE, etc.) would be similarly structured
+  // XXX: Additional methods (PUT, DELETE, etc.) would be similarly structured
 
   // Private method to validate the response based on the contract for the given URL
   _validateResponse(url, response) {
@@ -41,7 +41,7 @@ export class ApiService {
 
     // If no contract is found, return the raw response data without validation
     if (!contract) {
-      Log.info(`The response has no contract so will return data directly`)
+      Log.debug(`The response has no contract so will return data directly`)
       return response.data;
     }
 
@@ -68,10 +68,10 @@ export class ApiService {
         return contract;
       }
     }
+
     return null; // Return null if no matching contract is found
   }
 
-  // Private method for handling errors
   _handleError(error) {
     if (error.code === 'ECONNABORTED') {
       console.error('Request timeout:', error.message);
@@ -80,6 +80,7 @@ export class ApiService {
     } else {
       console.error('Network error:', error.message);
     }
-    throw error; // Re-throw the error for further handling if necessary
+
+    throw error;
   }
 }
