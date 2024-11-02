@@ -5,6 +5,7 @@ import {ToastSuccess, ToastWarning} from '../../components/alert/Toast';
 import {H2} from "../../components/heading/Headings";
 import Skeleton from "react-loading-skeleton";
 import {useTranslator} from "../../providers/i18n";
+import {Log} from 'meteor/logging';
 
 export const RssFeedList = () => {
   const t = useTranslator();
@@ -16,7 +17,7 @@ export const RssFeedList = () => {
   useEffect(() => {
     const fetchRSSFeed = async () => {
       try {
-        const response = await rssFeedFetch({ url }); // Changed to use await rssFeedFetch
+        const response = await rssFeedFetch({url});
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(response, 'text/xml');
 
@@ -30,13 +31,16 @@ export const RssFeedList = () => {
 
         setRssItems(parsedItems);
         ToastSuccess('RSS Feed loaded successfully');
-      } catch (err) {
+      } catch (error) {
         setError(t('Failed to fetch RSS feed'));
         ToastWarning('Failed to fetch RSS feed');
       }
     };
 
-    fetchRSSFeed();
+    fetchRSSFeed()
+      .catch(error => {
+        Log.error(error);
+      });
   }, []);
 
   if (error) {
@@ -45,7 +49,7 @@ export const RssFeedList = () => {
 
   if (!rssItems) {
     return (
-      <Skeleton count={3} />
+      <Skeleton count={3}/>
     )
   }
 
