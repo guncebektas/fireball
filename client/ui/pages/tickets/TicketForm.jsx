@@ -17,7 +17,6 @@ export const TicketForm = ({schema}) => {
 
   let ticket = {};
 
-  console.log(_id);
   if (_id !== FORM_TYPE.INSERT) {
     ticket = useTracker(() => {
       const handle = Meteor.subscribe(TICKET_PUBLICATION.ONE, _id);
