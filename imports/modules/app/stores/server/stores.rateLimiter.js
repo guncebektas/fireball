@@ -1,8 +1,8 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
-import {rssFeedFetch} from "../stores.methods";
+import {storesMethods} from "../stores.methods";
 
 const LISTS_METHODS = [
-  rssFeedFetch
+  Object.keys(storesMethods)
 ].map(method => method.name);
 
 DDPRateLimiter.addRule({
