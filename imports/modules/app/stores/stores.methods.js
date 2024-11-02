@@ -1,17 +1,17 @@
 import {createMethod} from 'meteor/jam:method'; // can import { Methods } from 'meteor/jam:method' instead and use Methods.create if you prefer
-import {z} from "zod";
-import apiServiceInstance from "../../infrastructure/axios/apiServiceInstance";
+import {ERROR_CODE} from "../../shared/enums/errorCodes";
+import {franchiseService} from "./franchiseService";
 
 export const storesMethods = {
-  getStores: createMethod({
-    name: 'storesMethods.getStores',
-    schema: z.object({url: z.string()}),
+  getFranchiseMembers: createMethod({
+    name: 'storesMethods.getFranchiseMembers',
     serverOnly: true,
-    async run({url}) {
+    async run() {
       try {
-        return apiServiceInstance.get(url);
+        const {_id} = Meteor.settings.public.app;
+        return franchiseService.getMembers(_id);
       } catch (error) {
-        throw new Meteor.Error('rss-fetch-failed', 'Failed to fetch RSS feed');
+        throw new Meteor.Error(ERROR_CODE["500"].LABEL, ERROR_CODE["500"].DESCRIPTION);
       }
     }
   })
