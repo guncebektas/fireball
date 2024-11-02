@@ -1,22 +1,20 @@
-import apiServiceInstance from "../../../infrastructure/axios/apiServiceInstance";
+import ApiServiceInstance from "../../../infrastructure/axios/apiServiceInstance";
 
-class UserWalletService {
+class UserWalletService extends ApiServiceInstance{
   constructor() {
-    if (Meteor.isDevelopment) {
-      this.url = 'http://localhost:3000/api/v1/customers/';
-    } else {
-      this.url = 'https://app.ritapos.com/api/v1/customers/';
-    }
+    super();
+
+    this.url = `${this.baseUrl}api/v1/customers/`;
   }
 
   async getCustomer(userId) {
     const endpoint = `${this.url}${userId}`
-    return apiServiceInstance.get(endpoint);
+    return this.get(endpoint);
   }
 
   async increaseStampCount(userId, amount) {
     const endpoint = `${this.url}${userId}/increase-stamp-count`
-    return apiServiceInstance.put(endpoint, {amount});
+    return this.put(endpoint, {amount});
   }
 }
 
