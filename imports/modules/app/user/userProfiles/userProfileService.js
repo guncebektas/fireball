@@ -55,7 +55,6 @@ class UserProfileService extends BaseService {
     const userId = image.userId;
 
     const pictureUrl = image.versions.original.meta.pipePath;
-    console.log(pictureUrl);
 
     return this.repository.updateAsync({
       _id: userId
