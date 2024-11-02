@@ -1,5 +1,6 @@
 import {createMethod} from 'meteor/jam:method';
-import apiServiceInstance from "./apiServiceInstance";
+import {apiServiceInstance} from "./apiServiceInstance";
+import {ERROR_CODE} from "../../shared/enums/errorCodes";
 
 export const axiosExample = createMethod({
   name: 'axios.example',
@@ -11,8 +12,7 @@ export const axiosExample = createMethod({
       console.log('Data fetched successfully:', response);
       return response;
     } catch (error) {
-      console.error('Error fetching data:', error);
-      throw new Meteor.Error('fetch-failed', 'Failed to fetch data');
+      throw new Meteor.Error(ERROR_CODE["500"].LABEL, ERROR_CODE["500"].DESCRIPTION);
     }
   },
 });
