@@ -12,11 +12,12 @@ import '../imports/modules/app/notifications/server';
 import '../imports/modules/app/organizations/server';
 import '../imports/modules/app/rss/server';
 
+import '../imports/modules/app/stores/server';
+import '../imports/modules/app/tickets/server';
+
 import '../imports/modules/app/user/userPartition/server';
 import '../imports/modules/app/user/userPassword/server';
 import '../imports/modules/app/user/userProfilePicture/server';
 import '../imports/modules/app/user/userProfiles/server';
 import '../imports/modules/app/user/userRoles/server';
 import '../imports/modules/app/user/userWallet/server';
-
-import '../imports/modules/app/tickets/server';
