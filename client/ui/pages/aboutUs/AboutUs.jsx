@@ -3,6 +3,15 @@ import { H2 } from "../../components/heading/Headings";
 import { useTranslator } from "../../providers/i18n";
 import { Slider } from "../../components/slider/Slider";
 import { SocialMediaIcons } from "../../components/buttons/SocialMediaIcons";
+import {faFacebook, faInstagram, faLinkedin, faXTwitter, faYoutube} from "@fortawesome/free-brands-svg-icons";
+
+const socialMediaLinks = [
+  { icon: faFacebook, url: Meteor.settings.public.app.links.facebook, alt: 'Facebook' },
+  { icon: faInstagram, url: Meteor.settings.public.app.links.instagram, alt: 'Instagram' },
+  { icon: faXTwitter, url: Meteor.settings.public.app.links.x, alt: 'X' },
+  { icon: faLinkedin, url: Meteor.settings.public.app.links.linkedin, alt: 'LinkedIn' },
+  { icon: faYoutube, url: Meteor.settings.public.app.links.youtube, alt: 'YouTube' },
+];
 
 export const AboutUs = ({ fullPage = true }) => {
   const t = useTranslator();
@@ -24,7 +33,7 @@ export const AboutUs = ({ fullPage = true }) => {
         ))}
       </div>
 
-      {fullPage && <SocialMediaIcons />}
+      {fullPage && <SocialMediaIcons links={socialMediaLinks}/>}
     </>
   );
 };
