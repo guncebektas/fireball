@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Avatar, Label, Select, TextInput} from 'flowbite-react';
+import {Label, Select, TextInput} from 'flowbite-react';
 import {Meteor} from 'meteor/meteor';
 import {useTracker} from 'meteor/react-meteor-data';
 import {userProfilesMethods} from '../../../../imports/modules/app/user/userProfiles/userProfile.methods';
