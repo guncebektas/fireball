@@ -43,8 +43,8 @@ export const Wallet = () => {
     const fetchCustomer = async () => {
       try {
         return userWalletMethods.getCustomer();
-      } catch (err) {
-        Log.error(err);
+      } catch (error) {
+        Log.error(error);
       }
     };
 
