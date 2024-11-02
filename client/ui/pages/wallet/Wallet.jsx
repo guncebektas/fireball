@@ -12,7 +12,7 @@ import {Log} from "meteor/logging";
 import {ScratchCardButton} from "../../components/buttons/ScratchCardButton";
 import {QRCodeButton} from "../../components/buttons/QRCodeButton";
 import {WalletBalance} from "./WalletBalance";
-import {useStampCount} from '../../stores/useStampCount';
+import {useStampCountStore} from '../../stores/useStampCountStore';
 import ProgressBar from "./ProgressBar";
 import {useConfettiStore} from "../../stores/useConfettiStore";
 import {StarShapedConfetti} from "../../components/confetti/StarShappedConfetti";
@@ -22,7 +22,7 @@ export const Wallet = () => {
   const wallet = false;
 
   const targetStampCount = 10;
-  const {stampCount, setStampCount, increaseStampCount} = useStampCount();
+  const {stampCount, setStampCount, increaseStampCount} = useStampCountStore();
   const [currentBalance, setBalance] = useState(0);
 
   const showConfetti = useConfettiStore((state) => state.showConfetti);
