@@ -8,9 +8,7 @@ class FranchiseService extends ApiServiceInstance {
   }
 
   async getMembers(guid) {
-    const endpoint = `${this.url}${guid}/stores`
-    console.log(endpoint);
-
+    const endpoint = `${this.url}${guid}/stores?isActive=true&isShownInRewarita=true`
     return this.get(endpoint);
   }
 }
