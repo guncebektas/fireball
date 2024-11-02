@@ -5,6 +5,18 @@ class StoreService extends ApiServiceInstance {
     super();
 
     this.url = `${this.baseUrl}api/v1/stores/`;
+    this.productCategoriesUrl = `${this.baseUrl}api/v1/product-categories/`;
+    this.productsUrl = `${this.baseUrl}api/v1/products/`;
+  }
+
+  getProductCategories(storeId) {
+    const endpoint = `${this.productCategoriesUrl}${storeId}/qr-menu`
+    return this.get(endpoint);
+  }
+
+  getProducts(storeId) {
+    const endpoint = `${this.productsUrl}${storeId}/qr-menu`
+    return this.get(endpoint);
   }
 }
 

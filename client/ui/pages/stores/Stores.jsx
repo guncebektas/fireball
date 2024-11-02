@@ -10,8 +10,8 @@ import {Link} from "react-router-dom";
 import {H2} from "../../components/heading/Headings";
 import {useStoreStore} from "../../stores/useStoreStore";
 import {Log} from "meteor/logging";
-import {storesMethods} from "../../../../imports/modules/app/stores/stores.methods";
 import {FaShoppingCart} from "react-icons/fa";
+import {franchisesMethods} from "../../../../imports/modules/app/stores/franchises.methods";
 
 export const Stores = () => {
   const t = useTranslator();
@@ -23,17 +23,19 @@ export const Stores = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const stores = await storesMethods.getFranchiseMembers();
-        return stores.data;
-      } catch (err) {
-        Log.error(err);
+        return franchisesMethods.getMembers();
+      } catch (error) {
+        Log.error(error);
       }
     };
 
     fetchMembers()
       .then(response => {
-        console.log(response);
-        setStores(response)
+        const sortedStores = response.data.sort((a, b) =>
+          a.name.localeCompare(b.name, 'tr', {sensitivity: 'base'})
+        );
+
+        setStores(sortedStores)
       })
       .catch(error => {
         console.error("Error fetching customer data:", error);
@@ -45,8 +47,6 @@ export const Stores = () => {
   const [openMenuModal, setOpenMenuModal] = useState(false);
 
   const handleOpenDetailsModal = (store) => {
-    console.log(store);
-
     setOpenDetailsModal(true);
     setSelectedStore(store);
   };
@@ -76,10 +76,10 @@ export const Stores = () => {
           </div>
         </Link>
 
-        {stores?.map(store => (
+        {stores && stores?.map(store => (
           <div key={store._id} className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
             <div className="w-full">
-              <h3 className="m-title text-xl font-semibold mb-4">{store.name}</h3>
+              <h3 className="m-title text-xl uppercase font-semibold mb-4">{store.name}</h3>
 
               <div className="mb-2">
                 <FontAwesomeIcon icon={faMapMarkerAlt} className="text-blue-500 mr-2"/>
