@@ -1,11 +1,9 @@
 import React from "react";
 import {Accordion} from 'flowbite-react';
-import {H2} from "../../components/heading/Headings";
 import {useTranslator} from "../../providers/i18n";
 import {useTracker} from "meteor/react-meteor-data";
-import {faqRepository} from "../../../../imports/modules/app/faqs/faqRepository";
-import {FAQS_PUBLICATION} from "../../../../imports/modules/app/faqs/enums/publication";
 import {faqModule} from "../../../../imports/modules/app/faqs/faqModule";
+import {H2} from "../../components/heading/Headings";
 
 export const Faqs = ({showTitle = true}) => {
   const t = useTranslator();
@@ -26,7 +24,7 @@ export const Faqs = ({showTitle = true}) => {
 
   return (
     <>
-      {showTitle ? `<H2 text={t('FAQs')} showBackButton={true}/>` : ''}
+      {showTitle ? <div className="mb-3"><H2 text={t('FAQs')} showBackButton={true}/></div> : ''}
       <Accordion>
         {items.map((faq, index) => (
           <Accordion.Panel key={index}>
