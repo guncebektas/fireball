@@ -150,7 +150,6 @@ export const Login = ({onStateChange}) => {
             </form>
 
             <LoginWithGoogle/>
-            <LoginWithGithub/>
           </div>
         </div>
       </div>
