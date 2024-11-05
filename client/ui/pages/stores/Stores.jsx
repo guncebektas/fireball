@@ -62,19 +62,21 @@ export const Stores = () => {
       <H2 text="Stores"/>
 
       <div className="mt-6 space-y-6">
-        <Link to={links.ecommerce} target="_blank">
-          <div key="ecommerce" className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
-            <div className="w-20">
-              <h1 className="m-title max-w-md">
-                <FaShoppingCart/>
-              </h1>
+        {links.ecommerce ?
+          <Link to={links.ecommerce} target="_blank">
+            <div key="ecommerce" className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
+              <div className="w-10">
+                <h1 className="m-title max-w-md">
+                  <FaShoppingCart className="text-5xl"/>
+                </h1>
+              </div>
+              <div className="w-90">
+                <h1 className="m-title text-xl font-semibold">{t('Click for e-commerce site')}!</h1>
+                <h5 className="text-gray-500">{t('Check our e-commerce now')}.</h5>
+              </div>
             </div>
-            <div className="w-90">
-              <h1 className="m-title text-xl font-semibold">{t('Click for e-commerce site')}!</h1>
-              <h5 className="text-gray-500">{t('Check our e-commerce now')}.</h5>
-            </div>
-          </div>
-        </Link>
+          </Link> : ''
+        }
 
         {stores && stores?.map(store => (
           <div key={store._id} className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
