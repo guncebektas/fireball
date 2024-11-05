@@ -14,6 +14,7 @@ base64@1.0.13
 binary-heap@1.0.12
 blaze-tools@2.0.0
 boilerplate-generator@2.0.0
+bozhao:link-accounts@3.0.1
 caching-compiler@2.0.1
 caching-html-compiler@2.0.0
 callback-hook@1.6.0

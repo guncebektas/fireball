@@ -41,6 +41,7 @@ accounts-2fa@3.0.1
 service-configuration@1.3.5
 accounts-github@1.5.1
 accounts-google@1.4.1
+bozhao:link-accounts
 
 react-meteor-accounts
 react-meteor-data@3.0.0-beta300.1
