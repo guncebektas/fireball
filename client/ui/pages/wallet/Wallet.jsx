@@ -16,6 +16,7 @@ import {useStampCountStore} from '../../stores/useStampCountStore';
 import ProgressBar from "./ProgressBar";
 import {useConfettiStore} from "../../stores/useConfettiStore";
 import {StarShapedConfetti} from "../../components/confetti/StarShappedConfetti";
+import {CartButton} from "../../components/buttons/CartButton";
 
 export const Wallet = () => {
   const {carousel} = Meteor.settings.public.pages.aboutUs;
@@ -84,6 +85,8 @@ export const Wallet = () => {
         <Button.Group>
           <ScratchCardButton/>
           <QRCodeButton/>
+
+          <CartButton/>
         </Button.Group>
 
         <ScratchCardModal/>
