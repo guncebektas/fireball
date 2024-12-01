@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslator } from "../../providers/i18n";
-import { Modal } from "flowbite-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useStoreStore } from "../../stores/useStoreStore";
-import { storesMethods } from "../../../../imports/modules/app/stores/stores.methods";
-import { Log } from "meteor/logging";
+import React, {useEffect, useState} from 'react';
+import {useTranslator} from "../../providers/i18n";
+import {Button, Modal} from "flowbite-react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useStoreStore} from "../../stores/useStoreStore";
+import {storesMethods} from "../../../../imports/modules/app/stores/stores.methods";
+import {Log} from "meteor/logging";
 import {WalletIcon} from "../wallet/WalletIcon";
 import CurrencyDisplay from "../../components/currencyDisplay/currencyDiplay";
+import {faCartPlus} from "@fortawesome/free-solid-svg-icons/faCartPlus";
+import {useCartStore} from "../../stores/useCartStore";
+import {CartButton} from "../../components/buttons/CartButton";
 
 export const StoreMenuModal = ({ store, isOpen, onClose }) => {
   if (!isOpen || !store) return null;
@@ -18,6 +21,8 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
     selectedStoreProducts,
     setSelectedStoreProducts
   } = useStoreStore();
+
+  const pushProduct = useCartStore((state) => state.pushProduct);
 
   const [activeTab, setActiveTab] = useState(null);
 
@@ -65,10 +70,23 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
     setActiveTab(categoryId);
   };
 
+  const onPushToCart = (product) => {
+    pushProduct(product); // Add the product to the cart
+    console.log(product);
+
+    console.log(`Product added to cart: ${product._id}`);
+  };
+
   return (
     <Modal show={isOpen} onClose={onClose}>
-      <Modal.Header>{store.name}</Modal.Header>
+      <Modal.Header>
+        {store.name}
+      </Modal.Header>
       <Modal.Body className="m-modal-body">
+        <div className="absolute top-4 right-16 z-10">
+          <CartButton/>
+        </div>
+
         <div className="gap-3 mx-auto max-w-screen-xl dark:text-white relative">
           <div className="overflow-x-auto relative">
             <ul id="tab-list" className="flex border-b space-x-4 w-full min-w-max mobile-glimpse">
@@ -90,11 +108,30 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
             {filteredProducts.map(product => (
               <div key={product._id} className="border p-4 mb-2 flex justify-between items-center">
                 <div>
-                  <h3 className="m-title font-bold uppercase">{product.title}</h3>
-                  <CurrencyDisplay price={product.priceOut} currency="TRY" locale="tr-TR" />
-                  <p className="m-text text-xs">{product.starCount || 1} <WalletIcon/></p>
+                  <h3 className="m-title font-bold uppercase flex items-center">
+                    {product.title}
+                    <Button
+                      color="primary"
+                      onClick={() => {
+                        onPushToCart(product)
+                      }}
+                      size="sm"
+                      className="ml-2 p-2 w-8 h-8 flex justify-center items-center rounded-full"
+                      title="Add to Cart"
+                    >
+                      <FontAwesomeIcon icon={faCartPlus} className="text-white"/>
+                    </Button>
+                  </h3>
+                  <CurrencyDisplay price={product.priceOut} currency="TRY" locale="tr-TR"/>
+                  <p className="m-text text-xs">
+                    {product.starCount || 1} <WalletIcon/>
+                  </p>
                 </div>
-                <img src={product.image || 'https://via.placeholder.com/100'} alt={product.title} className="ml-4 w-24 h-24 object-cover" />
+                <img
+                  src={product.image || 'https://via.placeholder.com/100'}
+                  alt={product.title}
+                  className="ml-4 w-24 h-24 object-cover"
+                />
               </div>
             ))}
           </div>
