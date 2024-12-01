@@ -11,6 +11,7 @@ import {Link} from "react-router-dom";
 import {Credits} from "../components/credits/Credits";
 import {useTranslator} from "../providers/i18n";
 import {AboutUs} from "../pages/aboutUs/AboutUs";
+import {CartModal} from "../components/modals/CartModal";
 
 const InnerLayout = () => {
   const t = useTranslator();
@@ -46,6 +47,7 @@ const InnerLayout = () => {
         </main>
 
         <NavMobile/>
+        <CartModal/>
 
         <Credits/>
       </section>
