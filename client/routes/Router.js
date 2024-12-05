@@ -20,6 +20,7 @@ import { ContactRequestList } from "../ui/pages/admin/settings/contactRequests/C
 import { FaqsList } from "../ui/pages/admin/settings/faqs/FaqsList";
 import { TicketsList } from "../ui/pages/admin/settings/tickets/TicketsList.jsx";
 import { ticketAddBridge, ticketEditBridge } from "../../imports/modules/app/tickets/schemas/ticketSchema";
+import {Checkout} from "../ui/pages/checkout/Checkout";
 
 // Lazy-loaded components
 const RssFeedList = lazy(() => import('../ui/pages/rssFeed/RssFeedList'));
@@ -29,6 +30,7 @@ export const Router = () => (
       <Routes>
           <Route path={ROUTE.ABOUT_US} element={<AboutUs />} />
           <Route path={ROUTE.ADMIN} element={<Admin />} />
+          <Route path={ROUTE.CHECKOUT} element={<Checkout />} />
           <Route path={ROUTE.CONTACT_FORM} element={<ContactRequestForm />} />
           <Route path={ROUTE.DOCS} element={<Docs />} />
           <Route path={ROUTE.FAQS} element={<Faqs />} />
