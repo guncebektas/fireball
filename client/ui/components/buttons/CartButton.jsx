@@ -6,10 +6,10 @@ import {useTranslator} from "../../providers/i18n";
 import {useCartStore} from "../../stores/useCartStore";
 
 export const CartButton = () => {
+  const t = useTranslator();
+
   const openCartModal = useCartStore((state) => state.openCartModal);
   const productCount = useCartStore((state) => state.products.length);
-
-  const t = useTranslator();
 
   if (productCount === 0) {
     return;
