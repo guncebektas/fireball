@@ -23,6 +23,7 @@ export const useCartStore = create(
           ),
         }));
       },
+      clearCart: () => set({ products: [] })
     }),
     {
       name: 'cart-store',
