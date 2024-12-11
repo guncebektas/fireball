@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {NavItem} from "./NavItem.jsx";
 import {ROUTE} from "../../../routes/enums/route.js";
 import {Sidebar} from 'flowbite-react';
