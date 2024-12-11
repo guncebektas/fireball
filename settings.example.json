@@ -28,6 +28,22 @@
       }],
       "showMobileNavigation": true
     },
+    "company": {
+      "name": "Kahvee",
+      "address": "Maslak Mah. Büyükdeve Caddesi No: 225-255 C USO Center Kat: 6, Sarıyer/İstanbul",
+      "phone": "+905325323232",
+      "website": "ritapos.com",
+      "email": {
+        "main": "info@ritapos.com",
+        "contact": "contact@ritapos.com",
+        "kep": "ritapos@hs02.kep.tr"
+      },
+      "registrationOffice": "İstanbul Ticaret Sicili",
+      "registrationId": "741878",
+      "taxOffice": "Maslak Vergi Dairesi",
+      "taxId": "74112397420",
+      "mersis": "0385055520801122"
+    },
     "pages": {
       "termsAndConditions": {
         "title": "Terms and conditions",
