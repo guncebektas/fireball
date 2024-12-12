@@ -47,7 +47,7 @@ export const CartModal = () => {
               <Button.Group>
                 <Button
                   size="sm"
-                  color="green"
+                  outline
                   className={"text-green-300 mr-1"}
                   onClick={() => pushProduct(product)}
                 >
@@ -55,7 +55,7 @@ export const CartModal = () => {
                 </Button>
                 <Button
                   size="sm"
-                  color="red"
+                  outline
                   className={"text-red-300"}
                   onClick={() => pullProduct(product)}
                 >
@@ -70,14 +70,14 @@ export const CartModal = () => {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button color="red" onClick={clearCart}>
+        <Button color="default" className={"m-text"} onClick={clearCart}>
           {t('Clear')}
         </Button>
         <div className="flex justify-between w-full">
-          <Button color="default" onClick={closeCartModal}>
+          <Button color="default" className={"m-text"} onClick={closeCartModal}>
             {t('Close')}
           </Button>
-          <Link to={ROUTE.CHECKOUT} className="btn btn-blue flex items-center">
+          <Link to={ROUTE.CHECKOUT} className="m-button flex items-center" color={"blue"}>
             <FontAwesomeIcon icon={faHeart} className="mr-2" />
             {t('Pay now')}
           </Link>

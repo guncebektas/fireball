@@ -104,9 +104,9 @@ const DataGrid = ({ columns, data, loading, actions, orderable = false }) => {
           <thead>
           <tr>
             {columns.map((col, index) => (
-              <th key={index}>{t(col.label)}</th>
+              <th key={index} className={"text-left"}>{t(col.label)}</th>
             ))}
-            {actions && <th>{t('Actions')}</th>}
+            {actions && <th className={"text-left"}>{t('Actions')}</th>}
           </tr>
           </thead>
           <tbody className="text-xs">

@@ -18,17 +18,20 @@ export const Hello = () => {
 
   return (
     <>
-      <div className={"flex items-center justify-center"}>
-        <H2 text={welcomeMessage}/>
-      </div>
-      <div className={"flex items-center justify-center"}>
-        <H4 text={welcomeSlogan}/>
-      </div>
-      <div className={"flex items-center justify-center opacity-50"}>
-        <H4 text={userGreeting}/>
+      <div className="mb-6">
+        <div className={"flex items-center justify-center"}>
+          <H2 text={welcomeMessage}/>
+        </div>
+        <div className={"flex items-center justify-center opacity-50"}>
+          <H4 text={welcomeSlogan}/>
+        </div>
       </div>
 
-      <div className="mt-6 space-y-6">
+      <div className="space-y-6">
+        <div className={"flex items-center justify-center"}>
+          <H4 text={userGreeting}/>
+        </div>
+
         <div className="mb-3">
           <Slider carousel={carousel} showCaption={false}/>
         </div>

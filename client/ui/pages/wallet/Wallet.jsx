@@ -40,33 +40,28 @@ export const Wallet = () => {
     }
   }, [user]);
 
-  useEffect(() => {
-    const fetchCustomer = async () => {
-      try {
-        return userWalletMethods.getCustomer();
-      } catch (error) {
-        Log.error(error);
-      }
-    };
-
-    function fetchAndSetStampCount() {
-      fetchCustomer()
-        .then(response => {
-          console.log(response);
-          setStampCount(response.data.stampCount);
-        })
-        .catch(error => {
-          console.error("Error fetching customer data:", error);
-        });
+  const fetchCustomer = async () => {
+    try {
+      return userWalletMethods.getCustomer();
+    } catch (error) {
+      Log.error(error);
     }
+  };
 
+  const fetchAndSetStampCount = function() {
+    fetchCustomer()
+      .then(response => {
+        console.log(response);
+        setStampCount(response.data.stampCount);
+      })
+      .catch(error => {
+        console.error("Error fetching customer data:", error);
+      });
+  }
+
+  useEffect(() => {
     // Call the function immediately
     fetchAndSetStampCount();
-
-    // Set up an interval to call it every 5 seconds
-    const intervalId = setInterval(fetchAndSetStampCount, 5000);
-
-    return () => clearInterval(intervalId);
   }, []);
 
   const addMoney = (amount) => {

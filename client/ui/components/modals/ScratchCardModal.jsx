@@ -77,11 +77,11 @@ const ScratchCardModal = () => {
       setGameOverMessage(t('No luck. Try again next time'))
     } else {
       // userWalletMethods.increaseCustomerStamp({amount: reward});
-      // increaseStampCount(reward); // because of week once condition we can't increase state
+      increaseStampCount(reward); // because of week once condition we can't increase state
       // closeQRCodeModal();
 
-      // openConfetti();
-      setGameOverMessage(t('Great. Try your luck again after a week'))
+      openConfetti();
+      setGameOverMessage(`${t('Great. Try your luck again after a week')}!`);
     }
 
     setCanPlay(false);
