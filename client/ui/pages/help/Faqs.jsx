@@ -10,6 +10,7 @@ export const Faqs = ({showTitle = true}) => {
 
   const _module = faqModule;
   const columns = [
+    {key: 'order'},
     {key: 'question'},
     {key: 'answer'}
   ];
@@ -18,7 +19,7 @@ export const Faqs = ({showTitle = true}) => {
     const handle = Meteor.subscribe(_module.publisher.ALL_ONCE, columns);
     return {
       loading: !handle.ready(),
-      items: handle.ready() ? _module.repository.find().fetch() : []
+      items: handle.ready() ? _module.repository.find({}, {sort: {order: 1}}).fetch() : []
     };
   });
 

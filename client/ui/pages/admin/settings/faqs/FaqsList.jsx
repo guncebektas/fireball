@@ -15,6 +15,7 @@ export const FaqsList = () => {
 
   const _module = faqModule;
   const columns = [
+    {key: 'order', label: 'Order no'},
     {key: 'question', label: 'Question'},
     {key: 'answer', label: 'Answer'},
   ];
@@ -23,7 +24,7 @@ export const FaqsList = () => {
     const handle = Meteor.subscribe(_module.publisher.ALL, columns);
     return {
       loading: !handle.ready(),
-      items: handle.ready() ? _module.repository.find().fetch() : []
+      items: handle.ready() ? _module.repository.find({}, {sort: {order: 1}}).fetch() : []
     };
   });
 
