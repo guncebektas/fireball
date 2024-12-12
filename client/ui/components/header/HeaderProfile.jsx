@@ -1,14 +1,15 @@
-import React, {useState} from "react";
+import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Meteor} from "meteor/meteor";
 import {useTracker} from "meteor/react-meteor-data";
 import {Link, useNavigate} from "react-router-dom";
-import {Avatar, Dropdown} from "flowbite-react";
+import {Dropdown} from "flowbite-react";
 import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/userProfiles/enums/publication.js";
 import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository.js";
 import {ROUTE} from "../../../routes/enums/route.js";
 import {useTranslator} from "../../providers/i18n";
 import {ProfileAvatar} from "../profileAvatar/profileAvatar";
+import {useUserStore} from "../../stores/useUserStore";
 
 export const HeaderProfile = () => {
   const navigate = useNavigate();
@@ -16,11 +17,7 @@ export const HeaderProfile = () => {
 
   const showDevTools = Meteor.settings.public.showDevTools;
 
-  const [me, setMe] = useState({
-    firstname: '',
-    lastname: '',
-  });
-  const [profilePicture, setProfilePicture] = useState('')
+  const {me, setMe} = useUserStore();
 
   const user = useTracker(() => Meteor.user(), []);
 

@@ -1,20 +1,32 @@
-import React, {useState} from 'react';
-import {Button} from "flowbite-react";
-import {H2} from "../components/heading/Headings.jsx";
+import React from 'react';
+import {H2, H4} from "../components/heading/Headings.jsx";
 import {useTranslator} from "../providers/i18n";
 import {Slider} from "../components/slider/Slider";
+import {useUserStore} from "../stores/useUserStore";
 
 export const Hello = () => {
   const t = useTranslator();
 
   const {name, logo} = Meteor.settings.public.app;
-  const {carousel} = Meteor.settings.public.pages.aboutUs;
-
   const welcomeMessage = `${t('Welcome to {$name}', {name: name})}!`
+  const welcomeSlogan = `Probably the best coffee in your town`
+
+  const {me} = useUserStore();
+  const userGreeting = `${t('Greeting {$name}', {name: me.firstname})}!`
+
+  const {carousel} = Meteor.settings.public.pages.aboutUs;
 
   return (
     <>
-      <H2 text={welcomeMessage}/>
+      <div className={"flex items-center justify-center"}>
+        <H2 text={welcomeMessage}/>
+      </div>
+      <div className={"flex items-center justify-center"}>
+        <H4 text={welcomeSlogan}/>
+      </div>
+      <div className={"flex items-center justify-center opacity-50"}>
+        <H4 text={userGreeting}/>
+      </div>
 
       <div className="mt-6 space-y-6">
         <div className="mb-3">
