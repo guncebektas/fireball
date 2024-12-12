@@ -88,7 +88,7 @@ const ScratchCardModal = () => {
   };
 
   return (
-    <Modal show={isQRCodeModalOpen} onClose={closeQRCodeModal} size="md">
+    <Modal dismissible show={isQRCodeModalOpen} onClose={closeQRCodeModal} size="md">
       <Modal.Header>
         {t('Scratch to win')}
       </Modal.Header>

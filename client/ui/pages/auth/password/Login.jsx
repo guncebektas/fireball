@@ -71,7 +71,7 @@ export const Login = ({onStateChange}) => {
 
   return (
     <>
-      <Modal show={openModal} onClose={() => setOpenModal(false)} size="md" initialFocus={codeRef}>
+      <Modal dismissible show={openModal} onClose={() => setOpenModal(false)} size="md" initialFocus={codeRef}>
         <Modal.Header>{t('2FA')}</Modal.Header>
         <form className="space-y-6" onSubmit={handleLogin2FA}>
           <Modal.Body>

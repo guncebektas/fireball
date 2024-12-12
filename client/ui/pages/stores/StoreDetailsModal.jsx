@@ -12,7 +12,7 @@ export const StoreDetailsModal = ({store, isOpen, onClose}) => {
   if (!store) return null;
 
   return (
-    <Modal show={isOpen} onClose={onClose}>
+    <Modal dismissible show={isOpen} onClose={onClose}>
       <Modal.Header>{store.name}</Modal.Header>
       <Modal.Body>
         <p className="text-gray-500 mb-2">{store.description}</p>

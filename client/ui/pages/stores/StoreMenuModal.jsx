@@ -78,7 +78,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
   };
 
   return (
-    <Modal show={isOpen} onClose={onClose}>
+    <Modal dismissible show={isOpen} onClose={onClose}>
       <Modal.Header>
         {store.name}
       </Modal.Header>

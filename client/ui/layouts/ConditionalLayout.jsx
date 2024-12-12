@@ -77,7 +77,7 @@ const InnerLayout = () => {
         </div>
       </main>
 
-      <Modal show={isAboutModalOpen} onClose={handleCloseAboutModal}>
+      <Modal dismissible show={isAboutModalOpen} onClose={handleCloseAboutModal}>
         <Modal.Header>{t('About')}</Modal.Header>
         <Modal.Body>
           <AboutUs fullPage={false}/>

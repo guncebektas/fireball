@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Button, Label, TextInput, ToggleSwitch, Modal} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 import {Accounts} from "meteor/accounts-base";
@@ -184,7 +184,7 @@ export const Register = ({onStateChange}) => {
       </div>
 
       {/* Modal for Terms and GDPR */}
-      <Modal show={modalOpen} onClose={() => setModalOpen(false)} size="lg">
+      <Modal dismissible show={modalOpen} onClose={() => setModalOpen(false)} size="lg">
         <Modal.Header>{modalContent.title}</Modal.Header>
         <Modal.Body className="m-modal-body">
           <p>{modalContent.text}</p>

@@ -45,7 +45,7 @@ const ProgressBar = ({ target, current = 0 }) => {
           {t('Details')}
         </button>
 
-        <Modal show={modalOpen} onClose={() => setModalOpen(false)}>
+        <Modal dismissible show={modalOpen} onClose={() => setModalOpen(false)}>
           <Modal.Header>{t('FAQs')}</Modal.Header>
           <Modal.Body>
             <Faqs showTitle={false} />

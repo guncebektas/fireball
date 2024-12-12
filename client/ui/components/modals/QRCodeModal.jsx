@@ -40,7 +40,7 @@ export const QRCodeModal = () => {
   };
 
   return (
-    <Modal show={isQRCodeModalOpen} onClose={closeQRCodeModal} size="md">
+    <Modal dismissible show={isQRCodeModalOpen} onClose={closeQRCodeModal} size="md">
       <Modal.Header>{t('Your qr code')}</Modal.Header>
       <Modal.Body>
         <div className="flex justify-center">

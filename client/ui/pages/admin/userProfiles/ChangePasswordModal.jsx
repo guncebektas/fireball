@@ -36,7 +36,7 @@ export const ChangePasswordModal = ({userId, isOpen, onClose}) => {
   };
 
   return (
-    <Modal show={isOpen} onClose={onClose}>
+    <Modal dismissible show={isOpen} onClose={onClose}>
       <Modal.Header>{t('Reset Password for')} {userId}</Modal.Header>
       <form onSubmit={handlePasswordChange}>
         <Modal.Body>

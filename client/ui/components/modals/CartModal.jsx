@@ -25,7 +25,7 @@ export const CartModal = () => {
     console.log('handleCheckout')
   }
   return (
-    <Modal show={isCartModalOpen} onClose={closeCartModal}>
+    <Modal dismissible show={isCartModalOpen} onClose={closeCartModal}>
       <Modal.Header>
         <FontAwesomeIcon icon={faCartShopping}/>
         <span className={"relative"}>
