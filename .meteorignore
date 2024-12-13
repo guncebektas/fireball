@@ -1,6 +1,7 @@
 .doc/
 .docker/
 .github/
+.generators/
 backups/
 cypress/
 tests/cypress/
