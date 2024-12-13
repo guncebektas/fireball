@@ -7,7 +7,7 @@ import {useUserStore} from "../stores/useUserStore";
 export const Hello = () => {
   const t = useTranslator();
 
-  const {name, logo} = Meteor.settings.public.app;
+  const {name, logo, color} = Meteor.settings.public.app;
   const welcomeMessage = `${t('Welcome to {$name}', {name: name})}!`
   const welcomeSlogan = `Probably the best coffee in your town`
 
@@ -29,7 +29,7 @@ export const Hello = () => {
 
       <div className="space-y-6">
         <div className={"flex items-center justify-center"}>
-          <H4 text={userGreeting}/>
+          <H4 text={userGreeting} style={{color: color.text.accent}}/>
         </div>
 
         <div className="mb-3">
