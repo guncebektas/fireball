@@ -20,16 +20,19 @@ export const AboutUs = ({ fullPage = true }) => {
   return (
     <>
       {fullPage && (
-        <H2 text={title} />
+        <H2 text={title}/>
       )}
 
       <div className="mt-6 mb-10">
-        <Slider carousel={carousel} />
+        <Slider carousel={carousel}/>
       </div>
 
       <div className="text-lg text-gray-500 space-y-6 mb-8">
         {paragraphs.map((paragraph, index) => (
-          <p key={index}>{t(paragraph)}</p>
+          <div key={index}>
+            <h3 className="text-xl font-semibold">{t(paragraph.title)}</h3>
+            <p>{t(paragraph.text)}</p>
+          </div>
         ))}
       </div>
 
