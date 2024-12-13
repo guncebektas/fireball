@@ -4,5 +4,7 @@ jsconfig.json
 launch.json
 
 settings.json
+settings.*.json
+!settings.example.json
 
 .deploy/
