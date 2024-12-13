@@ -6,6 +6,16 @@
       "name": "Saas Boilerplate",
       "icon": "/online/brand/icons/icon.png",
       "logo": "/online/brand/logo.svg",
+      "color": {
+        "text": {
+          "main": "#e50b0b",
+          "accent": "#e50b0b"
+        },
+        "background": {
+          "main": "#e50b0b",
+          "accent": "#e50b0b"
+        }
+      },
       "links": {
         "website": "https://ritapos.com",
         "ecommerce": "https://app.ritapos.com",
@@ -56,20 +66,48 @@
       "aboutUs": {
         "title": "About us",
         "paragraphs": [
-          "We are a team of passionate individuals dedicated to delivering the best services to our clients. Our journey began with a shared vision of innovation and collaboration, and we have been driven by these values ever since.",
-          "Over the years, we’ve expanded our expertise across various industries, helping businesses grow and adapt in an ever-changing digital landscape. Our commitment to excellence is reflected in every project we undertake.",
-          "Our team works closely with each client, understanding their unique needs and challenges to offer tailored solutions. We believe in the power of teamwork and are proud to foster a culture that promotes creativity, integrity, and continuous growth."
+          {
+            "title": "Kahvenin Ötesinde Bir Deneyim",
+            "text": "15 yılı aşkın sektör tecrübesiyle Mert Doğan ve ekibi tarafından hayata geçirilen Pablo Artisan Coffee, kahvenin yalnızca bir içecek değil, bir yaşam tarzı olduğuna inanıyor. Avrupa’nın en gözde kahve şehirlerinden ilham alarak oluşturduğumuz konseptimiz, Düsseldorf’tan Amsterdam’a, Berlin’den Paris’e uzanan bir kahve yolculuğunun izlerini taşır. Her fincan kahvemizde, bu kültürel zenginlikleri harmanlayarak sizlere eşsiz bir deneyim sunuyoruz."
+          },
+          {
+            "title": "Kahve ve Topluluk",
+            "text": "Üçüncü nesil kahvecilik anlayışımızla, kahve çekirdeklerimizi özenle seçiyor ve kavurma sürecini şeffaf bir şekilde sizlerle paylaşıyoruz. Standart çekirdeklerimizin yanı sıra, dünyanın farklı köşelerinden en özel çekirdekleri bularak her gün kendimizi yeniliyoruz. İster kahve atölyemizde kavurma sürecini izleyin, ister baristalarımızla bu tutkulu yolculuğa katılın, Pablo’da her zaman kahveye dair öğrenecek yeni şeyler bulacaksınız."
+          },
+          {
+            "title": "Kahve Kültürünü Yeniden Tanımlıyoruz",
+            "text": "Bizim için kahve, insanları bir araya getiren, sohbeti ve paylaşımı artıran bir araç. Kahve tutkunlarıyla dolu ekibimiz, misafirlerimize sadece iyi bir kahve sunmakla kalmıyor, aynı zamanda onları bir topluluğun parçası haline getiriyor. Düzenlediğimiz workshoplar, tadım etkinlikleri ve sosyal sorumluluk projeleriyle, kahve kültürünü daha geniş kitlelerle buluşturuyor ve bu tutkuyu paylaşarak her geçen gün büyüyen bir topluluk oluşturuyoruz."
+          },
+          {
+            "title": "Tutkuyla Çalışıyoruz",
+            "text": "Pablo Artisan Coffee, her fincanda kaliteyi ve samimiyeti bir araya getiriyor. Kendine özgü kavurma tekniklerimizle, her damak tadına uygun lezzetler sunuyoruz. İzmir’in kalbinde başlayan bu kahve yolculuğu, Avrupa’daki dostlarımızla yaptığımız iş birlikleriyle daha da güçleniyor. Yenilikçi yaklaşımımız ve sınırsız keşif tutkumuzla, kahveyi seven herkesin vazgeçilmezi olmayı hedefliyoruz."
+          },
+          {
+            "title": "Kahve ve Topluluk",
+            "text": "Üçüncü nesil kahvecilik anlayışımızla, kahve çekirdeklerimizi özenle seçiyor ve kavurma sürecini şeffaf bir şekilde sizlerle paylaşıyoruz. Standart çekirdeklerimizin yanı sıra, dünyanın farklı köşelerinden en özel çekirdekleri bularak her gün kendimizi yeniliyoruz. İster kahve atölyemizde kavurma sürecini izleyin, ister baristalarımızla bu tutkulu yolculuğa katılın, Pablo’da her zaman kahveye dair öğrenecek yeni şeyler bulacaksınız."
+          },
+          {
+            "title": "Kahve Kültürünü Yeniden Tanımlıyoruz",
+            "text": "Bizim için kahve, insanları bir araya getiren, sohbeti ve paylaşımı artıran bir araç. Kahve tutkunlarıyla dolu ekibimiz, misafirlerimize sadece iyi bir kahve sunmakla kalmıyor, aynı zamanda onları bir topluluğun parçası haline getiriyor. Düzenlediğimiz workshoplar, tadım etkinlikleri ve sosyal sorumluluk projeleriyle, kahve kültürünü daha geniş kitlelerle buluşturuyor ve bu tutkuyu paylaşarak her geçen gün büyüyen bir topluluk oluşturuyoruz."
+          },
+          {
+            "title": "Gelin, kahveye olan bu tutkumuzu birlikte keşfedelim!"
+          }
         ],
-        "carousel": [{
-          "caption": "Team photo 1",
-          "image": "https://via.placeholder.com/800x400?text=Photo+1"
-        }, {
-          "caption": "Team photo 2",
-          "image": "https://via.placeholder.com/800x400?text=Photo+2"
-        }, {
-          "caption": "Team photo 3",
-          "image": "https://via.placeholder.com/800x400?text=Photo+3"
-        }]
+        "carousel": [
+          {
+            "caption": "Team photo 1",
+            "image": "https://via.placeholder.com/800x400?text=Photo+1"
+          },
+          {
+            "caption": "Team photo 2",
+            "image": "https://via.placeholder.com/800x400?text=Photo+2"
+          },
+          {
+            "caption": "Team photo 3",
+            "image": "https://via.placeholder.com/800x400?text=Photo+3"
+          }
+        ]
       }
     },
     "showDummyPages": false,
