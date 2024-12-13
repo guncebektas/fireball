@@ -15,7 +15,7 @@ const socialMediaLinks = [
 
 export const AboutUs = ({ fullPage = true }) => {
   const t = useTranslator();
-  const { title, paragraphs, carousel } = Meteor.settings.public.pages.aboutUs;
+  const { title, imageUrl, paragraphs, carousel } = Meteor.settings.public.pages.aboutUs;
 
   return (
     <>
@@ -23,8 +23,8 @@ export const AboutUs = ({ fullPage = true }) => {
         <H2 text={title}/>
       )}
 
-      <div className="mt-6 mb-10">
-        <Slider carousel={carousel}/>
+      <div className="mt-6 mb-10 bg-center bg-no-repeat bg-cover h-[33vh] w-full"
+           style={{backgroundImage: `url(${imageUrl})`}}>
       </div>
 
       <div className="text-lg text-gray-500 space-y-6 mb-8">
