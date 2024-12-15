@@ -1,34 +1,44 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Modal} from 'flowbite-react';
 import {H5} from "../../components/heading/Headings";
 import {Faqs} from "../help/Faqs";
 import {useTranslator} from "../../providers/i18n";
+import {useStampCountStore} from "../../stores/useStampCountStore";
 
-const ProgressBar = ({ target, current = 0 }) => {
+const ProgressBar = () => {
   const t = useTranslator();
+  const {stampCount , targetCount} = useStampCountStore();
+
+  let progressPercentage = 0
+  let reward = 0;
+
   const [modalOpen, setModalOpen] = useState(false);
 
-  let progressPercentage = (current % target / target) * 100;
-  if (progressPercentage > 100) {
-    progressPercentage = 100;
-  }
+  useEffect(() => {
+    console.log(stampCount);
 
-  const reward = Math.floor(current / target);
+    progressPercentage = (stampCount % targetCount / targetCount) * 100;
+    if (progressPercentage > 100) {
+      progressPercentage = 100;
+    }
+
+    reward = Math.floor(stampCount / targetCount);
+  }, [stampCount]);
 
   return (
     <div className="mb-3">
       <div className="flex items-center space-x-4">
-        <H5 text={t(`Earn one coffee with {$target} stars`, { target })} />
+        <H5 text={t(`Earn one coffee with {$target} stars`, {target: targetCount})}/>
       </div>
       <div className="flex items-center space-x-4">
         <div className="flex items-center">
-          <span className="m-text font-bold">{current % target}/{target}</span>
+          <span className="m-text font-bold">{stampCount % targetCount}/{targetCount}</span>
         </div>
 
         <div className="relative w-full h-4 bg-gray-200 dark:bg-gray-700 rounded">
           <div
             className="absolute h-full bg-green-700 rounded"
-            style={{ width: `${progressPercentage}%` }}
+            style={{width: `${progressPercentage}%`}}
           />
         </div>
 
@@ -48,10 +58,10 @@ const ProgressBar = ({ target, current = 0 }) => {
         <Modal dismissible show={modalOpen} onClose={() => setModalOpen(false)}>
           <Modal.Header>{t('FAQs')}</Modal.Header>
           <Modal.Body>
-            <Faqs showTitle={false} />
+            <Faqs showTitle={false}/>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => setModalOpen(false)} color="gray">
+            <Button  color="default" onClick={() => setModalOpen(false)}>
               {t('Close')}
             </Button>
           </Modal.Footer>

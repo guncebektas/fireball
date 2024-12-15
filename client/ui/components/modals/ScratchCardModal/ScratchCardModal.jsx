@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {ScratchCard} from 'next-scratchcard';
-import {Modal, Table} from 'flowbite-react';
+import {Modal} from 'flowbite-react';
 import {useTranslator} from "../../../providers/i18n";
-import {WalletIcon} from "../../../pages/wallet/WalletIcon";
 import {useScratchCardStore} from "../../../stores/useScratchCardStore";
 import {useStampCountStore} from "../../../stores/useStampCountStore";
 import {useConfettiStore} from "../../../stores/useConfettiStore";
-import {H2} from "../../heading/Headings";
+import {getWeightedReward, generateOtherNumbers, shuffleArray} from "./rewardUtils";
+import ScratchCardContent from "./ScratchCardContent";
+import GameOverMessage from "./GameOverMessage";
 
 const ScratchCardModal = () => {
   const t = useTranslator();
@@ -17,71 +17,24 @@ const ScratchCardModal = () => {
   const [canPlay, setCanPlay] = useState(true);
   const [gameOverMessage, setGameOverMessage] = useState('');
 
-  const {stampCount, increaseStampCount} = useStampCountStore();
+  const {stampCount= 0, increaseStampCount} = useStampCountStore();
 
   const openConfetti = useConfettiStore((state) => state.openConfetti);
   const closeConfetti = useConfettiStore((state) => state.closeConfetti);
 
-  const getWeightedReward = () => {
-    const weightedOptions = [
-      {value: 0, weight: 10},
-      {value: 1, weight: 40},
-      {value: 2, weight: 40},
-      {value: 3, weight: 7},
-      {value: 4, weight: 2},
-      {value: 5, weight: 1},
-    ];
-    const totalWeight = weightedOptions.reduce((acc, option) => acc + option.weight, 0);
-    const randomWeight = Math.random() * totalWeight;
-
-    let cumulativeWeight = 0;
-    for (const option of weightedOptions) {
-      cumulativeWeight += option.weight;
-      if (randomWeight <= cumulativeWeight) {
-        return option.value;
-      }
-    }
-  };
-
   const [reward, setReward] = useState(getWeightedReward());
-
-  const generateOtherNumbers = (reward) => {
-    const numbers = [];
-    let upper = reward + 2;
-    let lower = Math.max(0, reward - 2);
-
-    while (numbers.length < 2) {
-      const num = Math.floor(Math.random() * (upper - lower + 1)) + lower;
-      if (num !== reward && !numbers.includes(num)) {
-        numbers.push(num);
-      }
-    }
-    return numbers;
-  };
 
   const otherNumbers = generateOtherNumbers(reward);
   const allNumbers = [reward, reward, reward, otherNumbers[0], otherNumbers[0], otherNumbers[1]];
-
-  const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  };
-
   const shuffledNumbers = shuffleArray([...allNumbers]);
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     if (reward === 0) {
-      setGameOverMessage(t('No luck. Try again next time'))
+      setGameOverMessage('No luck. Try again next week')
     } else {
-      // userWalletMethods.increaseCustomerStamp({amount: reward});
-      increaseStampCount(reward); // because of week once condition we can't increase state
-      // closeQRCodeModal();
-
+      await increaseStampCount(reward);
       openConfetti();
-      setGameOverMessage(`${t('Great. Try your luck again after a week')}!`);
+      setGameOverMessage('Great. Try your luck again after a week');
     }
 
     setCanPlay(false);
@@ -94,48 +47,9 @@ const ScratchCardModal = () => {
       </Modal.Header>
       <Modal.Body>
         {canPlay ? (
-          <div className="scratch-card p-2">
-            <span className="scratch-card-content">
-                <ScratchCard
-                  width={150}
-                  height={150}
-                  finishPercent={70}
-                  brushSize={35}
-                  onComplete={handleComplete}
-                >
-                  <img
-                    width={150}
-                    height={150}
-                    src={`https://via.placeholder.com/150x150`}
-                    alt="Background"
-                  />
-                  <Table className="w-full scratch-card-reward-table">
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell className="py-2 px-4">{shuffledNumbers[0]} <WalletIcon/></Table.Cell>
-                        <Table.Cell className="py-2 px-4">{shuffledNumbers[1]} <WalletIcon/></Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell className="py-2 px-4">{shuffledNumbers[2]} <WalletIcon/></Table.Cell>
-                        <Table.Cell className="py-2 px-4">{shuffledNumbers[3]} <WalletIcon/></Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell className="py-2 px-4">{shuffledNumbers[4]} <WalletIcon/></Table.Cell>
-                        <Table.Cell className="py-2 px-4">{shuffledNumbers[5]} <WalletIcon/></Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                  </Table>
-                </ScratchCard>
-            </span>
-          </div>
+          <ScratchCardContent shuffledNumbers={shuffledNumbers} handleComplete={handleComplete}/>
         ) : (
-          <div className="scratch-card-wait-to-play">
-            {gameOverMessage ?
-              <H2 text={gameOverMessage}/>
-              :
-              <H2 text={'You can try your luck once in every week'}/>
-            }
-          </div>
+          <GameOverMessage message={gameOverMessage || 'You can try your luck once in every week'}/>
         )}
       </Modal.Body>
     </Modal>

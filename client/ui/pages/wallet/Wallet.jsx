@@ -1,14 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Button} from 'flowbite-react';
 import {Slider} from "../../components/slider/Slider";
-import {useTracker} from "meteor/react-meteor-data";
 import {Meteor} from "meteor/meteor";
-import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/userProfiles/enums/publication";
-import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository";
 import ScratchCardModal from "../../components/modals/ScratchCardModal/ScratchCardModal";
 import {userWalletMethod} from "../../../../imports/modules/app/user/userWallet/userWalletMethod";
 import {QRCodeModal} from "../../components/modals/QRCodeModal/QRCodeModal";
-import {Log} from "meteor/logging";
 import {ScratchCardButton} from "../../components/buttons/ScratchCardButton";
 import {QRCodeButton} from "../../components/buttons/QRCodeButton";
 import {WalletBalance} from "./WalletBalance";
@@ -22,77 +18,67 @@ export const Wallet = () => {
   const {wallet} = Meteor.settings.public.pages;
   const useWallet = false;
 
-  const targetStampCount = 10;
-  const {stampCount, setStampCount, increaseStampCount} = useStampCountStore();
-  const [currentBalance, setBalance] = useState(0);
+  const {setStampCount} = useStampCountStore();
+  const [balance, setBalance] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const showConfetti = useConfettiStore((state) => state.showConfetti);
 
-  const user = useTracker(() => Meteor.user(), []);
-
-  useTracker(() => {
-    const subscription = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
-    if (subscription.ready()) {
-      const userProfile = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
-
-      // increaseStampCount(userProfile.stamp);
-      setBalance(userProfile.balance);
-    }
-  }, [user]);
-
-  const fetchCustomer = async () => {
-    try {
-      return userWalletMethod.getCustomer();
-    } catch (error) {
-      Log.error(error);
-    }
-  };
-
-  const fetchAndSetStampCount = function() {
-    fetchCustomer()
+  useEffect(() => {
+    userWalletMethod.getCustomer()
       .then(response => {
         console.log(response);
-        setStampCount(response.data.stampCount);
+
+        if (response.data.status) {
+          setStampCount(response.data.stampCount);
+          setBalance(response.data.balance);
+        } else {
+          setStampCount(0);
+          setBalance(0);
+        }
       })
       .catch(error => {
         console.error("Error fetching customer data:", error);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-  }
+  }, [setStampCount]);
 
-  useEffect(() => {
-    // Call the function immediately
-    fetchAndSetStampCount();
+  const addMoney = useCallback((amount) => {
+    setBalance((prevBalance) => prevBalance + amount);
   }, []);
 
-  const addMoney = (amount) => {
-    setBalance((prevBalance) => prevBalance + amount);
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
-    <>
-      <div className="flex flex-col space-y-4">
-        <div className="mb-3">
-          <Slider carousel={wallet.carousel} showCaption={false} indicators={false}/>
-        </div>
-
-        <ProgressBar target={targetStampCount} current={stampCount}/>
-
-        <Button.Group>
-          <ScratchCardButton/>
-          <QRCodeButton/>
-
-          <CartButton/>
-        </Button.Group>
-
-        <ScratchCardModal/>
-        <QRCodeModal/>
-
-        {showConfetti && (
-          <StarShapedConfetti/>
-        )}
-
-        {useWallet ? <WalletBalance balance={currentBalance} onAddMoney={addMoney}/> : ''}
+    <div className="flex flex-col space-y-4">
+      <div className="mb-3">
+        <Slider carousel={wallet.carousel} showCaption={false} indicators={false}/>
       </div>
-    </>
+
+      <ProgressBar/>
+
+      <Button.Group>
+        <ScratchCardButton/>
+        <QRCodeButton/>
+        <CartButton/>
+      </Button.Group>
+
+      <ScratchCardModal/>
+      <QRCodeModal/>
+
+      {showConfetti && <StarShapedConfetti/>}
+
+      {useWallet && <WalletBalance balance={balance} onAddMoney={addMoney}/>}
+    </div>
   );
 };
