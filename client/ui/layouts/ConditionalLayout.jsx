@@ -88,7 +88,7 @@ const InnerLayout = () => {
           <AboutUs fullPage={false}/>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="gray" onClick={handleCloseAboutModal}>{t('Close')}</Button>
+          <Button color="default" onClick={handleCloseAboutModal}>{t('Close')}</Button>
         </Modal.Footer>
       </Modal>
     </>

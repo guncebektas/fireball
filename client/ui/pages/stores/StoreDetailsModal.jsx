@@ -35,7 +35,9 @@ export const StoreDetailsModal = ({store, isOpen, onClose}) => {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button color="gray" onClick={onClose}>{t('Close')}</Button>
+        <Button color="default" onClick={onClose}>
+          {t('Close')}
+        </Button>
       </Modal.Footer>
     </Modal>
   );

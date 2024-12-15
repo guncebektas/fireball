@@ -57,7 +57,7 @@ export const ChangePasswordModal = ({userId, isOpen, onClose}) => {
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </Modal.Body>
         <Modal.Footer>
-          <Button color="gray" onClick={onClose}>{t('Close')}</Button>
+          <Button color="default" onClick={onClose}>{t('Close')}</Button>
           <Button color="blue" onClick={handlePasswordChange}>{t('Reset password')}</Button>
         </Modal.Footer>
       </form>
