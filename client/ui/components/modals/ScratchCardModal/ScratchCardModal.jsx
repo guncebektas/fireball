@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {ScratchCard} from 'next-scratchcard';
 import {Modal, Table} from 'flowbite-react';
-import {useTranslator} from "../../providers/i18n";
-import {WalletIcon} from "../../pages/wallet/WalletIcon";
-import {useScratchCardStore} from "../../stores/useScratchCardStore";
-import {useStampCountStore} from "../../stores/useStampCountStore";
-import {useConfettiStore} from "../../stores/useConfettiStore";
-import {H2} from "../heading/Headings";
+import {useTranslator} from "../../../providers/i18n";
+import {WalletIcon} from "../../../pages/wallet/WalletIcon";
+import {useScratchCardStore} from "../../../stores/useScratchCardStore";
+import {useStampCountStore} from "../../../stores/useStampCountStore";
+import {useConfettiStore} from "../../../stores/useConfettiStore";
+import {H2} from "../../heading/Headings";
 
 const ScratchCardModal = () => {
   const t = useTranslator();

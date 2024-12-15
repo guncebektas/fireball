@@ -5,7 +5,7 @@ import {useTracker} from "meteor/react-meteor-data";
 import {Meteor} from "meteor/meteor";
 import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/userProfiles/enums/publication";
 import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository";
-import ScratchCardModal from "../../components/modals/ScratchCardModal";
+import ScratchCardModal from "../../components/modals/ScratchCardModal/ScratchCardModal";
 import {userWalletMethod} from "../../../../imports/modules/app/user/userWallet/userWalletMethod";
 import {QRCodeModal} from "../../components/modals/QRCodeModal/QRCodeModal";
 import {Log} from "meteor/logging";
