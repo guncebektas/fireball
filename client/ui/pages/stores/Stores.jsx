@@ -62,6 +62,14 @@ export const Stores = () => {
       <H2 text="Stores"/>
 
       <div className="mt-6 space-y-6">
+        {selectedStore ?
+          <div className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4 bg-green-200 border-b-green-500 dark-bg-green-500 dark-border-b-green-900 mb-3">
+            <div className="w-full">
+              <span className="m-text">{t('Selected store')}:</span>
+              <h4 className="m-title text-xl uppercase font-semibold mb-0">{selectedStore.name}</h4>
+            </div>
+          </div> : ''}
+
         {links.ecommerce ?
           <Link to={links.ecommerce} target="_blank">
             <div key="ecommerce" className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
