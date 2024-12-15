@@ -3,7 +3,7 @@ import { Navbar } from 'flowbite-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faQrcode, faStar, faStore, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Meteor } from 'meteor/meteor';
-import { QRCodeModal } from "../modals/QRCodeModal";
+import { QRCodeModal } from "../modals/QRCodeModal/QRCodeModal";
 import { ROUTE } from "../../../routes/enums/route";
 import { useNavigate } from "react-router-dom";
 import {useQRCodeStore} from "../../stores/useQRCodeStore";

@@ -7,7 +7,7 @@ import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/use
 import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository";
 import ScratchCardModal from "../../components/modals/ScratchCardModal";
 import {userWalletMethod} from "../../../../imports/modules/app/user/userWallet/userWalletMethod";
-import {QRCodeModal} from "../../components/modals/QRCodeModal";
+import {QRCodeModal} from "../../components/modals/QRCodeModal/QRCodeModal";
 import {Log} from "meteor/logging";
 import {ScratchCardButton} from "../../components/buttons/ScratchCardButton";
 import {QRCodeButton} from "../../components/buttons/QRCodeButton";
