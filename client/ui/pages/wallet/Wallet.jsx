@@ -6,7 +6,7 @@ import {Meteor} from "meteor/meteor";
 import {USER_PROFILE_PUBLICATION} from "../../../../imports/modules/app/user/userProfiles/enums/publication";
 import {userProfileRepository} from "../../../../imports/modules/app/user/userProfiles/userProfileRepository";
 import ScratchCardModal from "../../components/modals/ScratchCardModal";
-import {userWalletMethods} from "../../../../imports/modules/app/user/userWallet/userWallet.methods";
+import {userWalletMethod} from "../../../../imports/modules/app/user/userWallet/userWalletMethod";
 import {QRCodeModal} from "../../components/modals/QRCodeModal";
 import {Log} from "meteor/logging";
 import {ScratchCardButton} from "../../components/buttons/ScratchCardButton";
@@ -19,8 +19,8 @@ import {StarShapedConfetti} from "../../components/confetti/StarShappedConfetti"
 import {CartButton} from "../../components/buttons/CartButton";
 
 export const Wallet = () => {
-  const {carousel} = Meteor.settings.public.pages.aboutUs;
-  const wallet = false;
+  const {wallet} = Meteor.settings.public.pages;
+  const useWallet = false;
 
   const targetStampCount = 10;
   const {stampCount, setStampCount, increaseStampCount} = useStampCountStore();
@@ -42,7 +42,7 @@ export const Wallet = () => {
 
   const fetchCustomer = async () => {
     try {
-      return userWalletMethods.getCustomer();
+      return userWalletMethod.getCustomer();
     } catch (error) {
       Log.error(error);
     }
@@ -72,7 +72,7 @@ export const Wallet = () => {
     <>
       <div className="flex flex-col space-y-4">
         <div className="mb-3">
-          <Slider carousel={carousel} showCaption={false} indicators={false}/>
+          <Slider carousel={wallet.carousel} showCaption={false} indicators={false}/>
         </div>
 
         <ProgressBar target={targetStampCount} current={stampCount}/>
@@ -91,7 +91,7 @@ export const Wallet = () => {
           <StarShapedConfetti/>
         )}
 
-        {wallet ? <WalletBalance balance={currentBalance} onAddMoney={addMoney}/> : ''}
+        {useWallet ? <WalletBalance balance={currentBalance} onAddMoney={addMoney}/> : ''}
       </div>
     </>
   );

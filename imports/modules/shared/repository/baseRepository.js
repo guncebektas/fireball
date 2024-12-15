@@ -195,6 +195,7 @@ export class BaseRepository {
    * @returns {Promise<number>}
    */
   async updateAsync(selector, updateObject, options = null) {
+    updateObject.$set = {...updateObject.$set, ...{organizationId: Meteor.settings.public.app._id}}
     return this._collection.updateAsync(selector, updateObject, options);
   }
 

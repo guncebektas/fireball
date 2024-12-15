@@ -1,3 +1,4 @@
-import './faqs.createIndexes';
-import './faqs.publications'
-import './faqs.rateLimiter';
+import './createIndexes';
+import './guards';
+import './publications'
+import './rateLimiter';

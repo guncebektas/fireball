@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import {Button, Label, Modal} from 'flowbite-react';
 import {useTranslator} from "../../../providers/i18n";
 import PasswordInput from "../../../components/form/PasswordInput";
-import {userSetPassword} from "../../../../../imports/modules/app/user/userPassword/user.methods";
+import {userSetPassword} from "../../../../../imports/modules/app/user/userPassword/userMethod";
 
 export const ChangePasswordModal = ({userId, isOpen, onClose}) => {
   const t = useTranslator();

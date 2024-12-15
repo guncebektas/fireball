@@ -3,7 +3,7 @@ import {H2} from "../../components/heading/Headings";
 import {AutoForm} from "../../../../imports/modules/shared/uniforms-tailwind/src";
 import Map from "../../components/map/Map";
 import {ToastSuccess} from "../../components/alert/Toast";
-import {contactRequestMethods, contactRequestUpsert} from "../../../../imports/modules/app/contactRequests/contact.methods";
+import {contactRequestMethod, contactRequestUpsert} from "../../../../imports/modules/app/contactRequests/contactRequestMethod";
 import {contactBridge} from "../../../../imports/modules/app/contactRequests/schemas/contactSchema";
 import {contactRequestModule} from "../../../../imports/modules/app/contactRequests/contactRequestModule";
 

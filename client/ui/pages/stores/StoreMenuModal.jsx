@@ -3,7 +3,7 @@ import {useTranslator} from "../../providers/i18n";
 import {Button, Modal} from "flowbite-react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useStoreStore} from "../../stores/useStoreStore";
-import {storesMethods} from "../../../../imports/modules/app/stores/stores.methods";
+import {storesMethod} from "../../../../imports/modules/app/stores/storesMethod";
 import {Log} from "meteor/logging";
 import {WalletIcon} from "../wallet/WalletIcon";
 import CurrencyDisplay from "../../components/currencyDisplay/currencyDiplay";
@@ -32,7 +32,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
         const {_id} = Meteor.settings.public.app;
         const storeId = _id || store.franchiseId || store._id;
 
-        const categories = await storesMethods.getProductCategories({ _id: storeId });
+        const categories = await storesMethod.getProductCategories({ _id: storeId });
 
         setSelectedStoreProductCategories(categories.data);
         if (categories.data.length > 0) {
@@ -45,7 +45,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
 
     const fetchProducts = async () => {
       try {
-        const products = await storesMethods.getProducts({ _id: store._id });
+        const products = await storesMethod.getProducts({ _id: store._id });
         setSelectedStoreProducts(products.data);
       } catch (error) {
         Log.error(error);

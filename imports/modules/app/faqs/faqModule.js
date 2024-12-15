@@ -1,6 +1,6 @@
 import {FAQS_PUBLICATION} from "./enums/publication";
 import {faqRepository} from "./faqRepository";
-import {faqsMethod} from "./faqs.methods";
+import {faqsMethod} from "./faqsMethod";
 import {ROUTE} from "../../../../client/routes/enums/route";
 
 export const faqModule = {

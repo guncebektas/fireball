@@ -1,2 +1,4 @@
-import './doc.publish';
-import './doc.rateLimiter';
+import './publications';
+import './rateLimiter';
+
+import '../docsMethod';

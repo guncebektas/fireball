@@ -14,7 +14,7 @@ export const Hello = () => {
   const {me} = useUserStore();
   const userGreeting = `${t('Greeting {$name}', {name: me.firstname})}!`
 
-  const {carousel} = Meteor.settings.public.pages.aboutUs;
+  const {homepage} = Meteor.settings.public.pages;
 
   return (
     <>
@@ -33,11 +33,11 @@ export const Hello = () => {
         </div>
 
         <div className="mb-3">
-          <Slider carousel={carousel} showCaption={false}/>
+          <Slider carousel={homepage.carousel1} showCaption={false}/>
         </div>
 
         <div className="mb-3">
-          <Slider carousel={carousel} interval={5000} showCaption={false}/>
+          <Slider carousel={homepage.carousel2} interval={5000} showCaption={false}/>
         </div>
       </div>
     </>

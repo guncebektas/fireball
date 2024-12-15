@@ -1,6 +1,6 @@
 import {USER_PROFILE_PUBLICATION} from "./enums/publication";
 import {userProfileRepository} from "./userProfileRepository";
-import {userProfilesMethods} from "./userProfile.methods";
+import {userProfilesMethods} from "./userProfileMethod";
 import {ROUTE} from "../../../../../client/routes/enums/route";
 
 export const userProfileModule = {

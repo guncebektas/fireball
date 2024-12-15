@@ -1,3 +1,5 @@
-import './contactRequests.guards';
-import './contactRequests.publications';
-import './contactRequests.rateLimiter';
+import './guards';
+import './publications';
+import './rateLimiter';
+
+import '../contactRequestMethod';

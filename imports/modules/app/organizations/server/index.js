@@ -1,2 +1,2 @@
 import './event';
-import './organization.rateLimiter'
+import './rateLimiter'

@@ -11,7 +11,7 @@ import {H2} from "../../components/heading/Headings";
 import {useStoreStore} from "../../stores/useStoreStore";
 import {Log} from "meteor/logging";
 import {FaShoppingCart} from "react-icons/fa";
-import {franchisesMethods} from "../../../../imports/modules/app/stores/franchises.methods";
+import {franchisesMethod} from "../../../../imports/modules/app/stores/franchisesMethod";
 
 export const Stores = () => {
   const t = useTranslator();
@@ -23,7 +23,7 @@ export const Stores = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        return franchisesMethods.getMembers();
+        return franchisesMethod.getMembers();
       } catch (error) {
         Log.error(error);
       }

@@ -1,5 +1,5 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
-import {userSetPassword, userSendResetPasswordEmail} from "../user.methods";
+import {userSetPassword, userSendResetPasswordEmail} from "../userMethod";
 import {userResetPasswordSchema} from "../schemas/userResetPasswordSchema";
 
 const LISTS_METHODS = [

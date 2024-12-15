@@ -27,29 +27,4 @@ export class BaseService {
       };
     });
   }
-
-  /**
-   * @param object {object}
-   * @return {Promise<void>}
-   */
-  async upsert(object) {
-    return this.repository.upsertAsync({
-      _id: object?._id
-    }, {
-      $set: {
-        ...object,
-        ...{
-          organizationId: Meteor.settings.public.app._id
-        }
-      }
-    });
-  }
-
-  /**
-   * @param _id {string}
-   * @return {Promise<number>}
-   */
-  async remove(_id) {
-    return this.repository.removeAsync(_id);
-  }
 }

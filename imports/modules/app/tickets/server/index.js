@@ -1,2 +1,5 @@
-import './ticket.publications.js';
-import './ticket.rateLimiter.js';
+import './guards';
+import './publications.js';
+import './rateLimiter.js';
+
+import '../ticketMethod.js';

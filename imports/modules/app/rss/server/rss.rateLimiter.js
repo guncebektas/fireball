@@ -1,5 +1,5 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
-import {rssFeedFetch} from "../rss.methods";
+import {rssFeedFetch} from "../rssMethods";
 
 const LISTS_METHODS = [
   rssFeedFetch

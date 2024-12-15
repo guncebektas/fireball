@@ -38,6 +38,7 @@ const InnerLayout = () => {
     return (
       <section className="dark:bg-gray-800">
         <Header onToggleSidebar={handleToggleSidebar}/>
+
         <Nav isOpen={isSidebarOpen}/>
 
         <main className="px-0 md:px-4 py-16 md:pt-20 md:ml-64 h-auto">
@@ -55,38 +56,42 @@ const InnerLayout = () => {
   }
 
   return (
-    <section className="dark:bg-gray-900">
-      <Navbar rounded className="mb-3">
-        <Navbar.Brand as={Link} href="/">
-          <img src={icon} alt={name} className="mr-3"/>
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{name}</span>
-        </Navbar.Brand>
-        <Navbar.Toggle/>
-        <Navbar.Collapse>
-          <Navbar.Link href="#" onClick={handleOpenAboutModal}>
-            {t('About')}
-          </Navbar.Link>
-          <Navbar.Link>
-            <LanguageSelector/>
-          </Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar>
-      <main>
-        <div className="mx-auto px-4 sm:px-6 lg:items-center lg:justify-between lg:py-16 lg:px-8">
-          <Auth/>
-        </div>
-      </main>
+    <>
+      <section className="dark:bg-gray-900">
+        <Navbar rounded className="mb-3">
+          <Navbar.Brand as={Link} href="/">
+            <img src={icon} alt={name} className="mr-3"/>
+            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{name}</span>
+          </Navbar.Brand>
 
-      <Modal dismissible show={isAboutModalOpen} onClose={handleCloseAboutModal}>
+          <Navbar.Toggle/>
+
+          <Navbar.Collapse>
+            <Navbar.Link href="#" onClick={handleOpenAboutModal}>
+              {t('About')}
+            </Navbar.Link>
+            <Navbar.Link>
+              <LanguageSelector/>
+            </Navbar.Link>
+          </Navbar.Collapse>
+        </Navbar>
+        <main>
+          <div className="mx-auto px-4 sm:px-6 lg:items-center lg:justify-between lg:py-16 lg:px-8">
+            <Auth/>
+          </div>
+        </main>
+      </section>
+
+      <Modal dismissible show={isAboutModalOpen} onClose={handleCloseAboutModal} size="lg">
         <Modal.Header>{t('About')}</Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="m-modal-body">
           <AboutUs fullPage={false}/>
         </Modal.Body>
         <Modal.Footer>
           <Button color="gray" onClick={handleCloseAboutModal}>{t('Close')}</Button>
         </Modal.Footer>
       </Modal>
-    </section>
+    </>
   );
 };
 

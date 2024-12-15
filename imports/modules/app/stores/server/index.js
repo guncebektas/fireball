@@ -1,2 +1,2 @@
-import './franchises.rateLimiter';
-import './stores.rateLimiter';
+import './rateLimiter.franchises';
+import './rateLimiter.stores';

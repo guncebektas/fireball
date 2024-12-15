@@ -1,4 +1,4 @@
 // import './images.hooks.js';
-import './images.onAfterUpload.js';
-import './images.publications.js';
-import './images.rateLimiter.js';
+import './onAfterUpload.js';
+import './publications.js';
+import './rateLimiter.js';

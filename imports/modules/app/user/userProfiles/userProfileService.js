@@ -20,7 +20,7 @@ class UserProfileService extends BaseService {
   }
 
   async edit(userId, object) {
-    return this.repository.updateAsync({
+    return this.repository.upsertAsync({
       _id: userId
     }, {
       $set: object
@@ -28,7 +28,7 @@ class UserProfileService extends BaseService {
   }
 
   async saveOtp(userId, otp) {
-    return this.repository.updateAsync({
+    return this.repository.upsertAsync({
       _id: userId
     }, {
       $set: {

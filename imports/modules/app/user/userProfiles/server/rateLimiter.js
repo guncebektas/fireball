@@ -1,13 +1,16 @@
 import {RATE_LIMITER} from '../enums/rateLimitter.js';
-import {userProfilesMethods} from "../userProfile.methods.js";
+import {USER_PROFILES_METHOD} from "../enums/method";
+import {USER_PROFILE_PUBLICATION} from "../enums/publication";
 
-const LISTS_METHODS = [
-  Object.keys(userProfilesMethods)
-].map(method => method.name);
+const LISTS_METHODS =  Object.values(USER_PROFILES_METHOD)
+const LIST_PUBLICATIONS =   Object.values(USER_PROFILE_PUBLICATION);
 
 DDPRateLimiter.addRule({
-  name(name) {
-    return LISTS_METHODS.includes(name);
+  name() {
+    return [
+      ...LISTS_METHODS,
+      ...LIST_PUBLICATIONS
+    ];
   },
   connectionId() {
     return true;

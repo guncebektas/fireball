@@ -1,2 +1,2 @@
-import './userWallet.api';
-import './userWallet.rateLimiter';
+import './api';
+import './rateLimiter';

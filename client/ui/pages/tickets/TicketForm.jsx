@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {H2} from "../../components/heading/Headings.jsx";
 import {AutoForm} from '../../../../imports/modules/shared/uniforms-tailwind/src';
-import {ticketsMethods} from "../../../../imports/modules/app/tickets/ticket.methods.js";
+import {ticketsMethod} from "../../../../imports/modules/app/tickets/ticketMethod.js";
 import {useParams} from "react-router-dom";
 import {useTracker} from "meteor/react-meteor-data";
 import {TICKET_PUBLICATION} from "../../../../imports/modules/app/tickets/enums/publication.js";
@@ -30,7 +30,7 @@ export const TicketForm = ({schema}) => {
   }
 
   const handleSubmit = async function (formData) {
-    ticketsMethods.upsert(formData)
+    ticketsMethod.upsert(formData)
       .then(response => {
         ToastSuccess();
       })

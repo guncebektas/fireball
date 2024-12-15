@@ -1,6 +1,6 @@
 import React from "react";
 import {useFind, useSubscribe} from "meteor/react-meteor-data";
-import {PUBLISH} from "../../../../imports/modules/app/docs/enums/publish";
+import {PUBLISH} from "../../../../imports/modules/app/docs/enums/publication";
 import {docRepository} from "../../../../imports/modules/app/docs/docRepository";
 
 function classNames(...classes) {
