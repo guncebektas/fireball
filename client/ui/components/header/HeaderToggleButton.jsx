@@ -1,6 +1,6 @@
 import React from "react";
-import { useTranslator } from "../../providers/i18n";
-import { useAppStore } from "../../stores/useAppStore";
+import {useTranslator} from "../../providers/i18n";
+import {useAppStore} from "../../stores/useAppStore";
 
 export const HeaderToggleButton = () => {
   const t = useTranslator();
