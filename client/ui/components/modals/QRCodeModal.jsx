@@ -3,7 +3,7 @@ import { Button, Modal } from 'flowbite-react';
 import { QRCodeCanvas } from 'qrcode.react';
 import { Meteor } from 'meteor/meteor';
 import Countdown from '../countDown/CountDown';
-import { userProfilesMethods } from '../../../../imports/modules/app/user/userProfiles/userProfile.methods';
+import { userProfilesMethods } from '../../../../imports/modules/app/user/userProfiles/userProfileMethod';
 import { useTranslator } from '../../providers/i18n';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotate } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +20,7 @@ export const QRCodeModal = () => {
   // Generate OTP
   const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
   const [otp, setOtp] = useState(generateOTP);
+  const [timer, setTimer] = useState(0);
 
   const saveOtp = (newOtp) => {
     userProfilesMethods.saveOtp({ otp: newOtp });
@@ -32,15 +33,24 @@ export const QRCodeModal = () => {
     }
   }, [isQRCodeModalOpen, otp, resetCountdown]);
 
+  useEffect(() => {
+    let timerId;
+    if (timer > 0) {
+      timerId = setTimeout(() => setTimer(timer - 1), 1000);
+    }
+    return () => clearTimeout(timerId);
+  }, [timer]);
+
   const handleExpire = () => {
     const newOtp = generateOTP();
     setOtp(newOtp);
     saveOtp(newOtp);
     resetCountdown(); // Reset countdown when OTP is refreshed
+    setTimer(10); // Start 10 seconds timer
   };
 
   return (
-    <Modal dismissible show={isQRCodeModalOpen} onClose={closeQRCodeModal} size="md">
+    <Modal show={isQRCodeModalOpen} onClose={closeQRCodeModal} size="md">
       <Modal.Header>{t('Your qr code')}</Modal.Header>
       <Modal.Body>
         <div className="flex justify-center">
@@ -65,9 +75,9 @@ export const QRCodeModal = () => {
           <Button color="default" onClick={closeQRCodeModal}>
             {t('Close')}
           </Button>
-          <Button color="blue" onClick={handleExpire}>
+          <Button color="blue" onClick={handleExpire} disabled={timer > 0}>
             <FontAwesomeIcon icon={faRotate} className="mr-2" />
-            {t('Reload')}
+            {timer > 0 ? `${t('Reload')} (${timer})` : t('Reload')}
           </Button>
         </div>
       </Modal.Footer>
