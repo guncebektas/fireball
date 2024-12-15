@@ -16,7 +16,7 @@ import {franchisesMethod} from "../../../../imports/modules/app/stores/franchise
 export const Stores = () => {
   const t = useTranslator();
 
-  const {links} = Meteor.settings.public.app;
+  const {logo, links} = Meteor.settings.public.app;
 
   const {stores, setStores, selectedStore, setSelectedStore} = useStoreStore();
 
@@ -63,10 +63,13 @@ export const Stores = () => {
 
       <div className="mt-6 space-y-6">
         {selectedStore ?
-          <div className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4 bg-green-200 border-b-green-500 dark-bg-green-500 dark-border-b-green-900 mb-3">
-            <div className="w-full">
-              <span className="m-text">{t('Selected store')}:</span>
-              <h4 className="m-title text-xl uppercase font-semibold mb-0">{selectedStore.name}</h4>
+          <div key="selected-store" className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4 mb-1">
+            <div className="w-10">
+              <img src={logo} alt={selectedStore.name} className="w-full"/>
+            </div>
+            <div className="w-90">
+              <h1 className="m-title text-xl font-semibold">{selectedStore.name}</h1>
+              <h5 className="text-gray-500">{t('Selected store')}</h5>
             </div>
           </div> : ''}
 
@@ -75,7 +78,7 @@ export const Stores = () => {
             <div key="ecommerce" className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
               <div className="w-10">
                 <h1 className="m-title max-w-md">
-                  <FaShoppingCart className="text-5xl"/>
+                  <FaShoppingCart className="text-4xl"/>
                 </h1>
               </div>
               <div className="w-90">
