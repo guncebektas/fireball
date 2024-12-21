@@ -14,18 +14,14 @@ enough to contribute.
 - Install [Meteor.js](https://www.meteor.com/developers/install)
 - Make sure you have [Docker](https://docs.docker.com/install) and [Docker Compose](https://docs.docker.com/compose/install/) installed and operational.
 
-### Packages
-Soma of the important packages used in the project.
-- alanning:roles
-- jam:methods
-- jam:pub-sub
-- jam:offline
-- uniforms
-- universe:i18n
-- zod
+## Installation
+First of all clone the repository and create your own settings.json file from settings,example.json
 
-### Dev environment
-Run mongodb (replica set) and redis for development environment
+```bash
+
+### Install dev environment
+Run mongodb (replica set) and redis for development environment.
+You can meet these requirements with a single command.
 
 ```bash 
 npm run dev-env
@@ -62,6 +58,16 @@ We are using mup to deploy, so check .deploy folder for details
 ```bash 
 npm run deploy
 ```
+
+### Packages
+Soma of the important packages used in the project.
+- alanning:roles
+- jam:methods
+- jam:pub-sub
+- jam:offline
+- uniforms
+- universe:i18n
+- zod
 
 ### APM
 Monti

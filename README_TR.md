@@ -13,18 +13,12 @@ Meteor.js 'e yaklaşımımızda bazı küçük farklılıklar var. Ancak Meteor.
 - [Meteor.js](https://www.meteor.com/developers/install)'i kurun.
 - [Docker](https://docs.docker.com/install) ve [Docker Compose](https://docs.docker.com/compose/install/) kurulmuş ve çalışır olması gerekir.
 
-### Paketler
-Proje içerisinde kullanılan önemli paketler
-- alanning:roles
-- jam:methods
-- jam:pub-sub
-- jam:offline
-- uniforms
-- universe:i18n
-- zod
+## Kurulum
+İlk olarak depoyu klonlayın ve settings,example.json dosyasından kendi settings.json dosyanızı oluşturun.
 
 ### Geliştirici ortamı
-Geliştirici ortamı için Mongodb (replica set) ve redis.
+Geliştirici ortamı için Mongodb (replica set) ve redis gereklidir.
+Tek bir komutla bu gereksinimleri karşılayabilirsiniz.
 
 ```bash 
 npm run dev-env
@@ -61,9 +55,18 @@ Canlıya almak için "mup" kullanıyoruz bu nedenle .deploy dosyasını kontrol 
 npm run deploy
 ```
 
+### Paketler
+Proje içerisinde kullanılan önemli paketler
+- alanning:roles
+- jam:methods
+- jam:pub-sub
+- jam:offline
+- uniforms
+- universe:i18n
+- zod
+
 ### APM
 Monti
-
 
 ### Özellikler & Yol haritası
 - [ ] Kullanıcı doğrulama
