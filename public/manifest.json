@@ -1,7 +1,7 @@
 {
-  "short_name": "SaaS Boilerplate",
-  "name": "SaaS Boilerplate - Meteor.js 3",
-  "description": "Powerful yet simple saas boilerplate that is written with Meteor.js",
+  "short_name": "Rewarita",
+  "name": "Rewarita - Meteor.js 3",
+  "description": "Rewarita for loyalty programs",
   "theme_color": "#0032a0",
   "background_color": "#edf2f9",
   "start_url": "/",
@@ -13,12 +13,12 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "/online/ritapos/icons/favicon-192.png",
+      "src": "/online/pablo/icons/favicon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/online/ritapos/icons/favicon-512.png",
+      "src": "/online/pablo/icons/favicon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
@@ -34,10 +34,11 @@
     }
   ],
   "lang": "en",
-  "id": "saas-boilerplate",
+  "id": "rewarita",
   "categories": [
     "business",
     "finance",
+    "loyalty",
     "utilities"
   ]
 }

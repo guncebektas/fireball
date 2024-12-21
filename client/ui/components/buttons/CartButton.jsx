@@ -5,7 +5,7 @@ import {faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import {useTranslator} from "../../providers/i18n";
 import {useCartStore} from "../../stores/useCartStore";
 
-export const CartButton = () => {
+export const CartButton = ({showLabel}) => {
   const t = useTranslator();
 
   const openCartModal = useCartStore((state) => state.openCartModal);
@@ -22,7 +22,7 @@ export const CartButton = () => {
         {productCount}
       </span>
 
-      {t('Your cart')}
+      {showLabel && t('Your cart')}
     </Button>
   )
 };

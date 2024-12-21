@@ -1,16 +1,14 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {NavItem} from "./NavItem.jsx";
 import {ROUTE} from "../../../routes/enums/route.js";
-import {Sidebar} from 'flowbite-react';
-import {HiOutlineMinusSm, HiOutlinePlusSm, HiShoppingBag} from "react-icons/hi";
-import {twMerge} from "tailwind-merge";
+import {Badge, Sidebar} from 'flowbite-react';
 import {NavFooter} from "./NavFooter";
 import {useTranslator} from "../../providers/i18n";
 import {useAppStore} from "../../stores/useAppStore";
 
 export const Nav = ({isOpen}) => {
   const t = useTranslator();
-  const { isSidebarOpen } = useAppStore();
+  const {isSidebarOpen} = useAppStore();
 
   const {showDummyPages} = Meteor.settings.public;
 
@@ -43,20 +41,6 @@ export const Nav = ({isOpen}) => {
           </ul>
           {showDummyPages ?
             <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-              <Sidebar.Collapse
-                icon={HiShoppingBag}
-                label="Parent"
-                renderChevronIcon={(theme, open) => {
-                  const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
-
-                  return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])}/>;
-                }}
-              >
-                <Sidebar.Item href="#">Sub item</Sidebar.Item>
-                <Sidebar.Item href="#">Sub item</Sidebar.Item>
-                <Sidebar.Item href="#">Sub item</Sidebar.Item>
-                <Sidebar.Item href="#">Sub item</Sidebar.Item>
-              </Sidebar.Collapse>
               <li>
                 <NavItem link={ROUTE.DOCS} icon="clipboard" text={t('Documents')}/>
               </li>
@@ -67,8 +51,24 @@ export const Nav = ({isOpen}) => {
                 <NavItem link={ROUTE.RSS_FEED_LIST} icon="rss" text="RSS"/>
               </li>
             </ul>
-          : '' }
+            : ''}
+
+          <Sidebar.CTA>
+            <div className="mb-3 flex items-center">
+              <Badge color="warning">Beta</Badge>
+            </div>
+            <div className="mb-3 text-sm text-cyan-900 dark:text-gray-400">
+              Akıllı işletmelerin tercihi Ritapos tarafından geliştirilmektedir.
+            </div>
+            <a
+              className="text-sm text-cyan-900 underline hover:text-cyan-800 dark:text-gray-400 dark:hover:text-gray-300"
+              href="https://ritapos.com"
+            >
+              Ritapos
+            </a>
+          </Sidebar.CTA>
         </div>
+
         <NavFooter/>
       </Sidebar>
     </>

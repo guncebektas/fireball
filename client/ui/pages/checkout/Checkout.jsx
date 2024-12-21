@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Button,TextInput, Label, Textarea } from 'flowbite-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCreditCard, faWallet } from '@fortawesome/free-solid-svg-icons';
-import { useCartStore } from '../../stores/useCartStore';
+import React, {useState} from 'react';
+import {Label, Textarea, TextInput} from 'flowbite-react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCreditCard, faMoneyBill, faWallet} from '@fortawesome/free-solid-svg-icons';
+import {useCartStore} from '../../stores/useCartStore';
 import CurrencyDisplay from "../../components/currencyDisplay/currencyDiplay";
 import {useTranslator} from "../../providers/i18n";
 import {H2, H3} from "../../components/heading/Headings";
@@ -44,14 +44,14 @@ export const Checkout = () => {
         <H2 text={'Checkout'} />
 
         <div className="m-title text-lg">
-          <p>{products.length} {products.length === 1 ? 'item' : 'items'}</p>
+          <p>{products.length} {products.length === 1 ? t('product') : t('products')}</p>
           <CurrencyDisplay price={products.reduce((total, product) => total + product.priceOut, 0)} currency="TRY" locale="tr-TR" />
         </div>
       </div>
 
       {/* Order Summary and Checkout Button */}
       <div className={"m-border rounded-lg p-4 shadow-md"}>
-        <H3 text={'Order Summary'}/>
+        <H3 text={'Order summary'}/>
 
         <div className="mt-4">
           {products.map((product) => (
@@ -62,7 +62,7 @@ export const Checkout = () => {
           ))}
         </div>
         <div className="mt-4 flex justify-between items-center">
-          <p className="m-text font-bold">{'Total'}</p>
+          <p className="m-text font-bold">{t('Total')}</p>
           <CurrencyDisplay
             price={products.reduce((total, product) => total + product.priceOut, 0)}
             currency="TRY"
@@ -71,13 +71,12 @@ export const Checkout = () => {
         </div>
       </div>
 
-      {/* Billing Information */}
       <div className={"m-border rounded-lg p-4 shadow-md"}>
-        <H3 text={'Billing Information'} />
+        <H3 text={'Billing information'} />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 mt-4">
           <div>
-            <Label htmlFor="firstName">{'First Name'}</Label>
+            <Label htmlFor="firstName">{t('First name')}</Label>
             <TextInput
               id="firstName"
               type="text"
@@ -88,7 +87,7 @@ export const Checkout = () => {
             />
           </div>
           <div>
-            <Label htmlFor="lastName">{'Last Name'}</Label>
+            <Label htmlFor="lastName">{t('Last name')}</Label>
             <TextInput
               id="lastName"
               type="text"
@@ -100,7 +99,7 @@ export const Checkout = () => {
           </div>
         </div>
         <div className="mt-4">
-          <Label htmlFor="email">{'Email'}</Label>
+          <Label htmlFor="email">{t('Email address')}</Label>
           <TextInput
             id="email"
             type="email"
@@ -111,7 +110,7 @@ export const Checkout = () => {
           />
         </div>
         <div className="mt-4">
-          <Label htmlFor="address">{'Address'}</Label>
+          <Label htmlFor="address">{t('Address')}</Label>
           <Textarea
             id="address"
             name="address"
@@ -122,7 +121,7 @@ export const Checkout = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 mt-4">
           <div>
-            <Label htmlFor="city">{'City'}</Label>
+            <Label htmlFor="city">{t('City')}</Label>
             <TextInput
               id="city"
               type="text"
@@ -133,7 +132,7 @@ export const Checkout = () => {
             />
           </div>
           <div>
-            <Label htmlFor="postalCode">{'Postal Code'}</Label>
+            <Label htmlFor="postalCode">{t('Postal Code')}</Label>
             <TextInput
               id="postalCode"
               type="text"
@@ -146,9 +145,8 @@ export const Checkout = () => {
         </div>
       </div>
 
-      {/* Payment Method */}
       <div className={"m-border rounded-lg p-4 shadow-md"}>
-        <H3 text={'Payment Method'}/>
+        <H3 text={'Payment method'}/>
 
         <div className="mt-4">
           <div className="flex items-center">
@@ -162,20 +160,20 @@ export const Checkout = () => {
             />
             <Label htmlFor="creditCard" className="ml-2 text-lg">
               <FontAwesomeIcon icon={faCreditCard} className="mr-2"/>
-              {'Credit Card'}
+              {t('Credit card')}
             </Label>
           </div>
           {selectedPaymentMethod === 'creditCard' && (
             <div className="mt-4">
               <TextInput
                 type="text"
-                placeholder="Card Number"
+                placeholder={t('Card number')}
                 className="mb-4"
                 required
               />
               <TextInput
                 type="text"
-                placeholder="Expiration Date"
+                placeholder={t('MM/YY')}
                 className="mb-4"
                 required
               />
@@ -191,6 +189,22 @@ export const Checkout = () => {
           <div className="flex items-center">
             <TextInput
               type="radio"
+              id="cash"
+              name="paymentMethod"
+              value="cash"
+              checked={selectedPaymentMethod === 'cash'}
+              onChange={() => handlePaymentMethodChange('cash')}
+            />
+            <Label htmlFor="cash" className="ml-2 text-lg">
+              <FontAwesomeIcon icon={faMoneyBill} className="mr-2"/>
+              {t('Cash')}
+            </Label>
+          </div>
+        </div>
+        <div className="mt-4">
+          <div className="flex items-center">
+            <TextInput
+              type="radio"
               id="wallet"
               name="paymentMethod"
               value="wallet"
@@ -199,16 +213,9 @@ export const Checkout = () => {
             />
             <Label htmlFor="wallet" className="ml-2 text-lg">
               <FontAwesomeIcon icon={faWallet} className="mr-2"/>
-              {'Wallet'}
+              {t('Wallet')}
             </Label>
           </div>
-          {selectedPaymentMethod === 'wallet' && (
-            <div className="mt-4">
-              <p className={'m-text'}>{'Your current balance: '}</p>
-              <CurrencyDisplay price={1000} currency="TRY" locale="tr-TR"/>
-              <p className="text-sm text-gray-500">{'Balance will be deducted on payment.'}</p>
-            </div>
-          )}
         </div>
       </div>
     </div>

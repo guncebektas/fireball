@@ -8,8 +8,8 @@ export const Hello = () => {
   const t = useTranslator();
 
   const {name, logo, color} = Meteor.settings.public.app;
-  const welcomeMessage = `${t('Welcome to {$name}', {name: name})}!`
   const welcomeSlogan = `Probably the best coffee in your town`
+  const welcomeMessage = `${t('Welcome to {$name}', {name: name})}!`
 
   const {me} = useUserStore();
   const userGreeting = `${t('Greeting {$name}', {name: me.firstname})}!`
@@ -19,11 +19,11 @@ export const Hello = () => {
   return (
     <>
       <div className="mb-6">
+        <div className={"flex items-center justify-center opacity-50"}>
+          <h4 className="m-text font-bold mb-1">{t(welcomeSlogan)}</h4>
+        </div>
         <div className={"flex items-center justify-center"}>
           <H2 text={welcomeMessage}/>
-        </div>
-        <div className={"flex items-center justify-center opacity-50"}>
-          <H4 text={welcomeSlogan}/>
         </div>
       </div>
 

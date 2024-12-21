@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Map from '../../components/map/Map';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faMapMarkerAlt, faPhone} from '@fortawesome/free-solid-svg-icons';
+import {faInfoCircle, faMapMarkerAlt, faPhone, faUtensils} from '@fortawesome/free-solid-svg-icons';
 import {Button} from 'flowbite-react';
 import {useTranslator} from "../../providers/i18n";
 import {StoreDetailsModal} from "./StoreDetailsModal";
@@ -12,11 +12,12 @@ import {useStoreStore} from "../../stores/useStoreStore";
 import {Log} from "meteor/logging";
 import {FaShoppingCart} from "react-icons/fa";
 import {franchisesMethod} from "../../../../imports/modules/app/stores/franchisesMethod";
+import {SelectedStore} from "./SelectedStore";
 
 export const Stores = () => {
   const t = useTranslator();
 
-  const {logo, links} = Meteor.settings.public.app;
+  const {links} = Meteor.settings.public.app;
 
   const {stores, setStores, selectedStore, setSelectedStore} = useStoreStore();
 
@@ -62,16 +63,7 @@ export const Stores = () => {
       <H2 text="Stores"/>
 
       <div className="mt-6 space-y-6">
-        {selectedStore ?
-          <div key="selected-store" className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4 mb-1">
-            <div className="w-10">
-              <img src={logo} alt={selectedStore.name} className="w-full"/>
-            </div>
-            <div className="w-90">
-              <h1 className="m-title text-xl font-semibold">{selectedStore.name}</h1>
-              <h5 className="text-gray-500">{t('Selected store')}</h5>
-            </div>
-          </div> : ''}
+        <SelectedStore/>
 
         {links.ecommerce ?
           <Link to={links.ecommerce} target="_blank">
@@ -103,9 +95,14 @@ export const Stores = () => {
                 <span className={"text-gray-500"}>{store.phone}</span>
               </div>
 
-              <div className="flex">
-                <Button color={"blue"} onClick={() => handleOpenDetailsModal(store)} className="mr-1">{t('More')}</Button>
-                <Button color={"blue"} onClick={() => handleOpenMenuModal(store)}>{t('Menu')}</Button>
+              <div className="flex space-x-2">
+                <Button color="blue" onClick={() => handleOpenDetailsModal(store)} className="flex-1 flex items-center justify-center">
+                  <FontAwesomeIcon icon={faInfoCircle}/>
+                </Button>
+                <Button color="blue" onClick={() => handleOpenMenuModal(store)} className="flex-1 flex items-center justify-center">
+                  <FontAwesomeIcon icon={faUtensils} className="mr-1"/>
+                  {t('Menu')}
+                </Button>
               </div>
             </div>
 

@@ -10,7 +10,7 @@ export const QRCodeButton = () => {
   const t = useTranslator();
 
   return (
-    <Button color="blue" onClick={openQRCodeModal} className="mr-3">
+    <Button color="blue" onClick={openQRCodeModal} className="mr-1">
       <FontAwesomeIcon icon={faQrcode} /> {t('Your qr code')}
     </Button>
   );

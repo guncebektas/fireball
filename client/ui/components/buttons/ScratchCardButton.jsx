@@ -10,8 +10,9 @@ export const ScratchCardButton = () => {
   const t = useTranslator();
 
   return (
-    <Button color="blue" onClick={openScratchCardModal} className="mr-3">
-      <FontAwesomeIcon icon={faTicket} /> {t('Scratch to win')}
+    <Button color="blue" onClick={openScratchCardModal} className="mr-1">
+      <FontAwesomeIcon icon={faTicket} />
+      {t('Scratch to win')}
     </Button>
   );
 };

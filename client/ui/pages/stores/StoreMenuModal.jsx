@@ -84,7 +84,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
       </Modal.Header>
       <Modal.Body className="m-modal-body">
         <div className="absolute top-4 right-16 z-10">
-          <CartButton/>
+          <CartButton showLabel={true}/>
         </div>
 
         <div className="gap-3 mx-auto max-w-screen-xl dark:text-white relative">

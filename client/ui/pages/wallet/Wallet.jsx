@@ -13,6 +13,7 @@ import ProgressBar from "./ProgressBar";
 import {useConfettiStore} from "../../stores/useConfettiStore";
 import {StarShapedConfetti} from "../../components/confetti/StarShappedConfetti";
 import {CartButton} from "../../components/buttons/CartButton";
+import {SelectedStore} from "../stores/SelectedStore";
 
 export const Wallet = () => {
   const {wallet} = Meteor.settings.public.pages;
@@ -23,9 +24,11 @@ export const Wallet = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const showConfetti = useConfettiStore((state) => state.showConfetti);
+  const {showConfetti, closeConfetti} = useConfettiStore();
 
   useEffect(() => {
+    closeConfetti();
+
     userWalletMethod.getCustomer()
       .then(response => {
         console.log(response);
@@ -52,7 +55,7 @@ export const Wallet = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    // return <div>Loading...</div>;
   }
 
   if (error) {
@@ -61,17 +64,21 @@ export const Wallet = () => {
 
   return (
     <div className="flex flex-col space-y-4">
+      <SelectedStore/>
+
       <div className="mb-3">
         <Slider carousel={wallet.carousel} showCaption={false} indicators={false}/>
       </div>
 
       <ProgressBar/>
 
-      <Button.Group>
-        <ScratchCardButton/>
-        <QRCodeButton/>
+      <div className="flex justify-between">
+        <div className="flex space-x-1">
+          <ScratchCardButton/>
+          <QRCodeButton/>
+        </div>
         <CartButton/>
-      </Button.Group>
+      </div>
 
       <ScratchCardModal/>
       <QRCodeModal/>

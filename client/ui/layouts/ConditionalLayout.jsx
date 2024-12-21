@@ -16,6 +16,7 @@ import {CartModal} from "../components/modals/CartModal";
 const InnerLayout = () => {
   const t = useTranslator();
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const handleOpenAboutModal = () => {
     setIsAboutModalOpen(true);
@@ -25,16 +26,15 @@ const InnerLayout = () => {
     setIsAboutModalOpen(false);
   };
 
+  const handleToggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
   const {name, logo, icon} = Meteor.settings.public.app;
 
   const user = useTracker(() => { return Meteor.userId() });
+
   if (user) {
-    const [isSidebarOpen, setSidebarOpen] = useState(false);
-
-    const handleToggleSidebar = () => {
-      setSidebarOpen(!isSidebarOpen);
-    };
-
     return (
       <section className="dark:bg-gray-800">
         <Header onToggleSidebar={handleToggleSidebar}/>
