@@ -47,6 +47,11 @@ In addition to this, Meteor.js provides performance monitoring tools to help you
 ### Community and Support
 A strong community and extensive documentation provide ample support and resources for developers working with Meteor.js.
 
+## Why Fireball?
+Fireball is a production-ready boilerplate for your new SaaS App. It is built on top of Meteor.js and includes all the necessary features and tools to help you get started quickly.
+
+> Burn brighter, build faster with Fireball.
+
 ## Let's Start
 - [English](https://github.com/guncebektas/saas-boilerplate/blob/main/README_EN.md)
 - [Turkish](https://github.com/guncebektas/saas-boilerplate/blob/main/README_TR.md)
