@@ -5,7 +5,7 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Saas Boilerplate APIs',
+      title: 'Fireball APIs',
       version: '1.0.0',
       description: 'API documentation for your Meteor.js application',
     },

@@ -3,7 +3,7 @@
     "app": {
       "_id": "acsXwvPe5P2dHkQDY",
       "guid": "hlOpDRMMbMzAvOew11qzkE-xHZx7IC3cKAMFK1GBxaq",
-      "name": "Saas Boilerplate",
+      "name": "Fireball",
       "icon": "/online/brand/icons/icon.png",
       "logo": "/online/brand/logo.svg",
       "color": {
@@ -124,7 +124,7 @@
   "private": {
     "mail": {
       "url": "smtp://username:password@smtp.xxx.com:587",
-      "fromName": "Saas Boilerplate",
+      "fromName": "Fireball",
       "fromEmail": "info@xxx.com",
       "siteName": "xxx.com"
     },

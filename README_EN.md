@@ -1,5 +1,5 @@
 <h1 align="center">
-  SaaS Boilerplate Setup and Guide
+  Setup and Guide
 </h1>
 
 ### Introduction
