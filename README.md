@@ -3,7 +3,7 @@
     <img alt="Meteor.js" src="https://dmtgy0px4zdqn.cloudfront.net/images/meteor-logo.webp" width="200" />
   </a>
   <br>
-  SaaS Boilerplate
+  Fireball
 </h1>
 
 <p align="center">

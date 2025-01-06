@@ -14,7 +14,7 @@ class ServerInit {
     this._setAccountConfigurations();
 
     Log.warn({message: '################################', app: 'INIT'});
-    Log.warn({message: 'Meteor SaaS Boilerplate started!', app: 'INIT'});
+    Log.warn({message: 'Fireball started!', app: 'INIT'});
     Log.warn({message: '################################', app: 'INIT'});
   }
 

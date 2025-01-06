@@ -1,5 +1,5 @@
  <h1 style="text-align: center;">
-  SaaS Boilerplate Kurulum ve Kullanımı
+  Kurulum ve Kullanımı
 </h1>
 
 ### Giriş
