@@ -15,7 +15,7 @@ import {StarShapedConfetti} from "../../components/confetti/StarShappedConfetti"
 import {CartButton} from "../../components/buttons/CartButton";
 import {SelectedStore} from "../stores/SelectedStore";
 
-export const Wallet = () => {
+export const Wallet = ({showBanner = true}) => {
   const {wallet} = Meteor.settings.public.pages;
   const useWallet = false;
 
@@ -66,9 +66,11 @@ export const Wallet = () => {
     <div className="flex flex-col space-y-4">
       <SelectedStore/>
 
-      <div className="mb-3">
-        <Slider carousel={wallet.carousel} showCaption={false} indicators={false}/>
-      </div>
+      {showBanner ?
+        <div className="mb-3">
+          <Slider carousel={wallet.carousel} showCaption={false} indicators={false}/>
+        </div> : ''
+      }
 
       <ProgressBar/>
 
