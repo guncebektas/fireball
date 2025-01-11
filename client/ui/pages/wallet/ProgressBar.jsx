@@ -47,7 +47,7 @@ const ProgressBar = () => {
         </div>
       </div>
 
-      <p className="m-text text-center font-bold" style={{'margin-top': '-15px'}}>{stampCount % targetCount}/{targetCount}</p>
+      <p className="m-text text-center font-bold" style={{marginTop: '-15px'}}>{stampCount % targetCount}/{targetCount}</p>
     </div>
   );
 };
