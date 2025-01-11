@@ -1,12 +1,11 @@
 import React, {useRef, useState} from 'react';
-import {Button, Label, Modal, TextInput} from 'flowbite-react';
+import {Button, FloatingLabel, Label, Modal, TextInput} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 import {useTranslator} from "../../../providers/i18n";
-import PasswordInput from "../../../components/form/PasswordInput";
 import {Alert} from "../../../components/alert/Alert"
 import {LoginWithGoogle} from "../services/LoginWithGoogle";
-import {LoginWithGithub} from "../services/LoginWithGithub";
 import {Log} from "meteor/logging";
+import FloatingPasswordInput from "../../../components/form/FloatingPasswordInput";
 
 export const Login = ({onStateChange}) => {
   const t = useTranslator();
@@ -90,7 +89,7 @@ export const Login = ({onStateChange}) => {
         </form>
       </Modal>
 
-      <div className="sm:mx-auto sm:w-full sm:max-w-md" >
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="m-title text-center text-3xl md:text-4xl">
           {t('Login')}
         </h2>
@@ -105,27 +104,14 @@ export const Login = ({onStateChange}) => {
               <div className="mb-1">
                 {
                   isUsernameLoginEnabled ?
-                    <>
-                      <div className="mb-2 block">
-                        <Label htmlFor="username" value={t('Username')}/>
-                      </div>
-                      <TextInput id="email" type="text" ref={emailRef} placeholder={t('Type your username')} required/>
-                    </>
+                    <FloatingLabel variant="filled" label={t('Type your username')} id="email" type="text" ref={emailRef} required/>
                     :
-                    <>
-                      <div className="mb-2 block">
-                        <Label htmlFor="email" value={t('Email address')}/>
-                      </div>
-                      <TextInput id="email" type="email" placeholder={t('Type your email')} ref={emailRef} required/>
-                    </>
+                    <FloatingLabel variant="filled" label={t('Type your email')} id="email" type="email" ref={emailRef} required/>
                 }
               </div>
 
               <div className="mb-1">
-                <div className="mb-2 block">
-                  <Label htmlFor="password" value={t('Password')}/>
-                </div>
-                <PasswordInput ref={passwordRef} required/>
+                <FloatingPasswordInput ref={passwordRef} required/>
               </div>
 
               <div className="flex items-center justify-between">
