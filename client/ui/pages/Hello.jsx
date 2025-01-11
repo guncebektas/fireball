@@ -19,7 +19,7 @@ export const Hello = () => {
 
   return (
     <>
-      <div className="grid gap-3">
+      <div className="grid">
         <div className={"flex items-center justify-center opacity-50"}>
           <h4 className="m-text font-bold mb-1">{t(welcomeSlogan)}</h4>
         </div>

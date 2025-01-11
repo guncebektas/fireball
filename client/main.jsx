@@ -4,6 +4,7 @@ import {createRoot} from 'react-dom/client';
 import {App} from '/client/ui/App';
 import {onChangeLocale} from "../imports/modules/shared/functions/onChangeLocale";
 import {DeviceUtility} from "./shared/utilities/DeviceUtility";
+import './main.css';
 
 /**
  * @param language {string} [optional]
