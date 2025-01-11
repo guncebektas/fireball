@@ -1,10 +1,10 @@
 import React from 'react';
-import { H2, H4, H5 } from "../components/heading/Headings.jsx";
-import { Slider } from "../components/slider/Slider";
-import { StoryBoard } from "../components/storyBoard/StoryBoard";
-import { useTranslator } from "../providers/i18n";
-import { useUserStore } from "../stores/useUserStore";
-import { Wallet } from "./wallet/Wallet";
+import {H2, H4, H5} from "../components/heading/Headings.jsx";
+import {useTranslator} from "../providers/i18n";
+import {Slider} from "../components/slider/Slider";
+import {useUserStore} from "../stores/useUserStore";
+import {Wallet} from "./wallet/Wallet";
+import {StoryBoard} from "../components/storyBoard/StoryBoard";
 
 export const Hello = () => {
   const t = useTranslator();
@@ -39,7 +39,7 @@ export const Hello = () => {
         <Wallet showBanner={false}/>
       </div>
 
-      <section className="bg-gray-100 dark:bg-gray-800 rounded-lg rounded-b-none p-4 sm:p-6 pr-0">
+      <section className="bg-gray-100 dark:bg-gray-800 rounded-t-lg p-4 sm:p-6 pr-0">
         <div className="grid gap-6 my-6">
           <StoryBoard />
         </div>
