@@ -4,9 +4,13 @@ import {H5} from "../../components/heading/Headings";
 import {Faqs} from "../help/Faqs";
 import {useTranslator} from "../../providers/i18n";
 import {useStampCountStore} from "../../stores/useStampCountStore";
+import {CircularProgressBar} from "../../components/progressBar/CircularProgressBar";
 
 const ProgressBar = () => {
   const t = useTranslator();
+
+  const {logo} = Meteor.settings.public.app;
+
   const {stampCount , targetCount} = useStampCountStore();
 
   let progressPercentage = 0
@@ -15,8 +19,6 @@ const ProgressBar = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    console.log(stampCount);
-
     progressPercentage = (stampCount % targetCount / targetCount) * 100;
     if (progressPercentage > 100) {
       progressPercentage = 100;
@@ -27,21 +29,20 @@ const ProgressBar = () => {
 
   return (
     <div className="mb-3">
+      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <CircularProgressBar
+          progress={progressPercentage}
+          size={100}
+          strokeWidth={8}
+          icon={logo}
+        />
+      </div>
+      <p className="m-text text-center font-bold" style={{'margin-top': '-15px'}}>{stampCount % targetCount}/{targetCount}</p>
+
       <div className="flex items-center space-x-4">
         <H5 text={t(`Earn one coffee with {$target} stars`, {target: targetCount})}/>
       </div>
       <div className="flex items-center space-x-4">
-        <div className="flex items-center">
-          <span className="m-text font-bold">{stampCount % targetCount}/{targetCount}</span>
-        </div>
-
-        <div className="relative w-full h-4 bg-gray-200 dark:bg-gray-700 rounded">
-          <div
-            className="absolute h-full bg-green-700 rounded"
-            style={{width: `${progressPercentage}%`}}
-          />
-        </div>
-
         <div className="flex items-center ml-2">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 mr-1">
             <span className="text-white lg font-bold">{reward}</span>
@@ -61,7 +62,7 @@ const ProgressBar = () => {
             <Faqs showTitle={false}/>
           </Modal.Body>
           <Modal.Footer>
-            <Button  color="default" onClick={() => setModalOpen(false)}>
+            <Button color="default" onClick={() => setModalOpen(false)}>
               {t('Close')}
             </Button>
           </Modal.Footer>
