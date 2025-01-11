@@ -4,6 +4,7 @@
       "_id": "acsXwvPe5P2dHkQDY",
       "guid": "hlOpDRMMbMzAvOew11qzkE-xHZx7IC3cKAMFK1GBxaq",
       "name": "Fireball",
+      "coinName": "FireballCoin",
       "icon": "/online/brand/icons/icon.png",
       "logo": "/online/brand/logo.svg",
       "color": {
@@ -36,7 +37,15 @@
         "languageCode": "tr-TR",
         "languageLabel": "Türkçe"
       }],
-      "showMobileNavigation": true
+      "showMobileNavigation": true,
+      "customIcons": {
+        "campaign": "/online/ritapos/svgIcons/campaign.svg",
+        "house": "/online/ritapos/svgIcons/house.svg",
+        "qrcode": "/online/ritapos/svgIcons/qrcode.svg",
+        "star": "/online/ritapos/svgIcons/star.svg",
+        "store": "/online/ritapos/svgIcons/store.svg",
+        "user": "/online/ritapos/svgIcons/user.svg"
+      }
     },
     "company": {
       "name": "Kahvee",
