@@ -107,11 +107,11 @@ export const Stores = () => {
             </div>
 
             {/* Map Component */}
-            <div className="sm:w-1/3 w-full h-48 rounded-lg overflow-hidden border">
-              {store.location?.latitude !== undefined && store.location?.longitude !== undefined && (
+            {store.location?.latitude !== undefined && store.location?.longitude !== undefined && (
+              <div className="sm:w-1/3 w-full h-48 m-border rounded-lg overflow-hidden border">
                 <Map markers={[{title: store.title, latitude: store.location.latitude, longitude: store.location.longitude}]} zoomControls={false}/>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
