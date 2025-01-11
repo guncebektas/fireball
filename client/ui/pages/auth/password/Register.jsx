@@ -1,14 +1,14 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Button, Label, TextInput, ToggleSwitch, Modal} from 'flowbite-react';
+import React, {useRef, useState} from 'react';
+import {Button, FloatingLabel, Modal, ToggleSwitch} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 import {Accounts} from "meteor/accounts-base";
-import PasswordInput from "../../../components/form/PasswordInput";
 import {Alert} from "../../../components/alert/Alert";
 import {useTranslator} from "../../../providers/i18n";
 import {H4} from "../../../components/heading/Headings";
 import {Log} from "meteor/logging";
 import TermsAndConditions from "../legal/termsAndConditions";
 import PrivacyPolicy from "../legal/privacyPolicy";
+import FloatingPasswordInput from "../../../components/form/FloatingPasswordInput";
 
 export const Register = ({onStateChange}) => {
   const t = useTranslator();
@@ -117,32 +117,16 @@ export const Register = ({onStateChange}) => {
                   <div className="mb-2">
                     {
                       isUsernameLoginEnabled ?
-                        <>
-                          <div className="mb-2 block">
-                            <Label htmlFor="username" value={t('Username')}/>
-                          </div>
-                          <TextInput id="email" type="text" ref={emailRef} placeholder={t('Type your username')} required/>
-                        </>
+                        <FloatingLabel variant="standard" label={t('Type your username')} id="email" type="text" ref={emailRef} required/>
                         :
-                        <>
-                          <div className="mb-2 block">
-                            <Label htmlFor="email" value="Email Address"/>
-                          </div>
-                          <TextInput id="email" type="email" ref={emailRef} placeholder={t('Type your email')} required/>
-                        </>
+                        <FloatingLabel variant="standard" label={t('Type your email')} id="email" type="email" ref={emailRef} required/>
                     }
                   </div>
                   <div className="mb-2">
-                    <div className="mb-2 block">
-                      <Label htmlFor="password" value={t('Password')}/>
-                    </div>
-                    <PasswordInput ref={passwordRef} required/>
+                    <FloatingPasswordInput ref={passwordRef} required/>
                   </div>
                   <div className="mb-2">
-                    <div className="mb-2 block">
-                      <Label htmlFor="passwordAgain" value={t('Password again')}/>
-                    </div>
-                    <PasswordInput ref={passwordAgainRef} required/>
+                    <FloatingPasswordInput ref={passwordAgainRef} required/>
                   </div>
 
                   <div className="mb-2 flex items-center">

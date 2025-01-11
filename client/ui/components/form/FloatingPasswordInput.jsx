@@ -16,7 +16,7 @@ const FloatingPasswordInput = forwardRef((props, ref) => {
   return (
     <div className="relative w-full">
       <FloatingLabel
-        variant="filled"
+        variant="standard"
         label={t('Type your password')}
         id="email"
         type={passwordVisible ? 'text' : 'password'}
