@@ -5,6 +5,7 @@ import {profileDetails} from "./schemas/profileDetails";
 import {profileOtp} from "./schemas/profileOtp";
 import {profilePreferences} from "./schemas/profilePreferences";
 import {USER_PROFILES_METHOD} from "./enums/method";
+import {profileBillingDetails} from "./schemas/profileBillingDetails";
 
 export const userProfilesMethods = {
   updateDetails: createMethod({
@@ -20,6 +21,14 @@ export const userProfilesMethods = {
     schema: profilePreferences,
     async run({theme}) {
       return userProfileService.edit(this.userId, {theme});
+    }
+  }),
+
+  updateBillingDetails: createMethod({
+    name: USER_PROFILES_METHOD.UPDATE_BILLING_DETAILS,
+    schema: profileBillingDetails,
+    async run({firstname, lastname, email, address, city, postalCode, country}) {
+      return userProfileService.edit(this.userId, {firstname, lastname, email, address, city, postalCode, country});
     }
   }),
 
