@@ -3,8 +3,7 @@ import {useTranslator} from "../../providers/i18n";
 import {CartButton} from "../../components/buttons/CartButton";
 import {useStoreStore} from "../../stores/useStoreStore";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCartShopping, faTimes} from "@fortawesome/free-solid-svg-icons";
-import {Button} from "flowbite-react";
+import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
 export const SelectedStore = () => {
   const t = useTranslator();
@@ -33,7 +32,7 @@ export const SelectedStore = () => {
 
       <button
         onClick={() => cancelSelectedStore()}
-        className="absolute right-2 p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+        className="absolute right-3 p-3 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group m-text"
       >
         <FontAwesomeIcon icon={faTimes}/>
       </button>
