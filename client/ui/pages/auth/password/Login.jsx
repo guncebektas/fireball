@@ -104,9 +104,9 @@ export const Login = ({onStateChange}) => {
               <div className="mb-1">
                 {
                   isUsernameLoginEnabled ?
-                    <FloatingLabel variant="filled" label={t('Type your username')} id="email" type="text" ref={emailRef} required/>
+                    <FloatingLabel variant="standard" label={t('Type your username')} id="email" type="text" ref={emailRef} required/>
                     :
-                    <FloatingLabel variant="filled" label={t('Type your email')} id="email" type="email" ref={emailRef} required/>
+                    <FloatingLabel variant="standard" label={t('Type your email')} id="email" type="email" ref={emailRef} required/>
                 }
               </div>
 

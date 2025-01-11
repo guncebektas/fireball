@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {Button, Label, TextInput} from 'flowbite-react';
+import {Button, FloatingLabel} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 import {useTranslator} from "../../../providers/i18n";
 import {ToastSuccess} from "../../../components/alert/Toast";
@@ -37,10 +37,7 @@ export const ForgottenPassword = ({onStateChange}) => {
         <div>
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="mb-2">
-              <div className="mb-2 block">
-                <Label htmlFor="email" value={t('Email address')}/>
-              </div>
-              <TextInput id="email" type="email" placeholder={t('Type your email')} ref={emailRef} required/>
+              <FloatingLabel variant="standard" label={t('Type your email')} id="email" type="email" ref={emailRef} required/>
             </div>
             <div>
               <Button type="submit" color="primary">{t('Submit')}</Button>
