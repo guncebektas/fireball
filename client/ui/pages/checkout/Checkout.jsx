@@ -41,11 +41,11 @@ export const Checkout = () => {
   return (
     <div className="container mx-auto p-6 space-y-8">
       <div className="flex justify-between">
-        <H2 text={'Checkout'} />
+        <H2 text={'Checkout'}/>
 
         <div className="m-title text-lg">
           <p>{products.length} {products.length === 1 ? t('product') : t('products')}</p>
-          <CurrencyDisplay price={products.reduce((total, product) => total + product.priceOut, 0)} currency="TRY" locale="tr-TR" />
+          <CurrencyDisplay price={products.reduce((total, product) => total + product.priceOut, 0)} currency="TRY" locale="tr-TR"/>
         </div>
       </div>
 
@@ -72,9 +72,9 @@ export const Checkout = () => {
       </div>
 
       <div className={"m-border rounded-lg p-4 shadow-md"}>
-        <H3 text={'Billing information'} />
+        <H3 text={'Billing information'}/>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
           <div>
             <Label htmlFor="firstName">{t('First name')}</Label>
             <TextInput
@@ -97,29 +97,30 @@ export const Checkout = () => {
               required
             />
           </div>
-        </div>
-        <div className="mt-4">
-          <Label htmlFor="email">{t('Email address')}</Label>
-          <TextInput
-            id="email"
-            type="email"
-            name="email"
-            value={billingDetails.email}
-            onChange={handleBillingChange}
-            required
-          />
-        </div>
-        <div className="mt-4">
-          <Label htmlFor="address">{t('Address')}</Label>
-          <Textarea
-            id="address"
-            name="address"
-            value={billingDetails.address}
-            onChange={handleBillingChange}
-            required
-          />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 mt-4">
+
+          <div className="col-span-2">
+            <Label htmlFor="email">{t('Email address')}</Label>
+            <TextInput
+              id="email"
+              type="email"
+              name="email"
+              value={billingDetails.email}
+              onChange={handleBillingChange}
+              required
+            />
+          </div>
+
+          <div className="col-span-2">
+            <Label htmlFor="address">{t('Address')}</Label>
+            <Textarea
+              id="address"
+              name="address"
+              value={billingDetails.address}
+              onChange={handleBillingChange}
+              required
+            />
+          </div>
+
           <div>
             <Label htmlFor="city">{t('City')}</Label>
             <TextInput
