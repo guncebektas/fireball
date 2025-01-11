@@ -77,7 +77,7 @@ export const CartModal = () => {
           <Button color="default" className={"m-text"} onClick={closeCartModal}>
             {t('Close')}
           </Button>
-          <Link to={ROUTE.CHECKOUT} className="m-button flex items-center" color={"blue"}>
+          <Link to={ROUTE.CHECKOUT} className="flex items-center" color={"blue"} onClick={closeCartModal}>
             <FontAwesomeIcon icon={faHeart} className="mr-2" />
             {t('Pay now')}
           </Link>

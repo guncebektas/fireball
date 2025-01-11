@@ -16,7 +16,7 @@ export const CartButton = ({showLabel}) => {
   }
 
   return (
-    <Button color="blue" onClick={() => openCartModal()}>
+    <Button color="primary" onClick={() => openCartModal()}>
       <FontAwesomeIcon icon={faCartShopping}/>
       <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
         {productCount}

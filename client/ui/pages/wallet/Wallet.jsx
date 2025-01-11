@@ -74,11 +74,9 @@ export const Wallet = ({showBanner = true}) => {
 
       <ProgressBar/>
 
-      <div className="flex justify-between">
-        <div className="flex space-x-1">
-          <ScratchCardButton/>
-          <QRCodeButton/>
-        </div>
+      <div className="flex space-x-1">
+        <ScratchCardButton/>
+        <QRCodeButton/>
         <CartButton/>
       </div>
 
