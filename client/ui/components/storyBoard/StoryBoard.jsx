@@ -50,7 +50,7 @@ export const StoryBoard = () => {
                 draggable="false"
               />
             </div>
-            <span className="text-sm font-medium text-center">{product.name}</span>
+            <span className="m-text text-sm font-medium text-center">{product.name}</span>
           </div>
         ))}
       </div>
