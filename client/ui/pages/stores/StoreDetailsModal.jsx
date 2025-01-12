@@ -18,11 +18,11 @@ export const StoreDetailsModal = ({store, isOpen, onClose}) => {
         <p className="text-gray-500 mb-2">{store.description}</p>
 
         <div className="mb-2">
-          <FontAwesomeIcon icon={faMapMarkerAlt} className="text-blue-500 mr-2"/>
+          <FontAwesomeIcon icon={faMapMarkerAlt} className="text-primary-600 mr-2"/>
           <span className={"text-gray-500"}>{store.street} {store.city}/{store.country}</span>
         </div>
         <div className="mb-2">
-          <FontAwesomeIcon icon={faPhone} className="text-blue-500 mr-2"/>
+          <FontAwesomeIcon icon={faPhone} className="text-primary-600 mr-2"/>
           <span className={"text-gray-500"}>{store.phone}</span>
         </div>
 

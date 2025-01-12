@@ -84,7 +84,7 @@ function Select({
                 }
               }}
               type="checkbox"
-              className="form-checkbox text-blue-500"
+              className="form-checkbox text-primary-600"
             />
             <label
               htmlFor={`${id}-${item.key ?? escape(item.value)}`}

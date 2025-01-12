@@ -27,7 +27,7 @@ export const SelectedStore = () => {
         <h5 className="text-gray-500">{t('Selected store')}</h5>
       </div>
       <div className="w-50">
-        <CartButton showLabel={true}/>
+        <CartButton showLabel={false}/>
       </div>
 
       <button

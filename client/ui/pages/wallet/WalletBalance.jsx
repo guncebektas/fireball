@@ -23,7 +23,7 @@ export const WalletBalance = ({balance = 0, onAddMoney}) => {
       <div className="mt-2 grid grid-cols-3 gap-2"> {/* Change to grid layout */}
         {amounts.map((amount) => (
           <Button
-            color="blue"
+            color="primary"
             key={amount}
             onClick={() => onAddMoney(amount)}
           >

@@ -45,7 +45,7 @@ export const ProfileLocation = () => {
       <Button
         type="button"
         onClick={getLocation}
-        className="w-full flex justify-center items-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        color="primary"
         disabled={loading} // Disable button while loading
       >
         {loading ? (

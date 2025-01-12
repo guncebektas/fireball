@@ -87,19 +87,19 @@ export const Stores = () => {
               <h3 className="m-title text-xl uppercase font-semibold mb-4">{store.name}</h3>
 
               <div className="mb-2">
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-blue-500 mr-2"/>
+                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-primary-600 mr-2"/>
                 <span className={"text-gray-500"}>{store.street} {store.city}/{store.country}</span>
               </div>
               <div className="mb-2">
-                <FontAwesomeIcon icon={faPhone} className="text-blue-500 mr-2"/>
+                <FontAwesomeIcon icon={faPhone} className="text-primary-600 mr-2"/>
                 <span className={"text-gray-500"}>{store.phone}</span>
               </div>
 
               <div className="flex space-x-2">
-                <Button color="blue" onClick={() => handleOpenDetailsModal(store)} className="flex-1 flex items-center justify-center">
+                <Button color="secondary" onClick={() => handleOpenDetailsModal(store)} className="flex-1 flex items-center justify-center">
                   <FontAwesomeIcon icon={faInfoCircle}/>
                 </Button>
-                <Button color="blue" onClick={() => handleOpenMenuModal(store)} className="flex-1 flex items-center justify-center">
+                <Button color="primary" onClick={() => handleOpenMenuModal(store)} className="flex-1 flex items-center justify-center">
                   <FontAwesomeIcon icon={faUtensils} className="mr-1"/>
                   {t('Menu')}
                 </Button>
