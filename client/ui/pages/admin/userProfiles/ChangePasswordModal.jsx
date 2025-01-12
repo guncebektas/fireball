@@ -58,7 +58,7 @@ export const ChangePasswordModal = ({userId, isOpen, onClose}) => {
         </Modal.Body>
         <Modal.Footer>
           <Button color="default" onClick={onClose}>{t('Close')}</Button>
-          <Button color="blue" onClick={handlePasswordChange}>{t('Reset password')}</Button>
+          <Button color="primary" onClick={handlePasswordChange}>{t('Reset password')}</Button>
         </Modal.Footer>
       </form>
     </Modal>

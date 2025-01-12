@@ -5,6 +5,7 @@ import {useTranslator} from "../../../providers/i18n";
 import {Alert} from "../../../components/alert/Alert"
 import {LoginWithGoogle} from "../services/LoginWithGoogle";
 import {Log} from "meteor/logging";
+import FloatingInput from "../../../components/form/FloatingInput";
 import FloatingPasswordInput from "../../../components/form/FloatingPasswordInput";
 
 export const Login = ({onStateChange}) => {
@@ -104,9 +105,9 @@ export const Login = ({onStateChange}) => {
               <div className="mb-1">
                 {
                   isUsernameLoginEnabled ?
-                    <FloatingLabel variant="standard" label={t('Type your username')} id="email" type="text" ref={emailRef} required/>
+                    <FloatingInput label={t('Type your username')} id="email" type="text" ref={emailRef} required/>
                     :
-                    <FloatingLabel variant="standard" label={t('Type your email')} id="email" type="email" ref={emailRef} required/>
+                    <FloatingInput label={t('Type your email')} id="email" type="email" ref={emailRef} required/>
                 }
               </div>
 
