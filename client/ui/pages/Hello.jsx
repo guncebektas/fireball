@@ -39,13 +39,13 @@ export const Hello = () => {
         <Wallet showBanner={false}/>
       </div>
 
-      <section className="bg-gray-100 dark:bg-gray-800 rounded-t-lg p-4 sm:p-6 pr-0">
+      <section className="bg-gray-100 dark:bg-gray-800 rounded-t-lg py-4 pl-4 pr-0">
         <div className="grid gap-6 my-6">
           <StoryBoard />
         </div>
       </section>
 
-      <section className="bg-gray-100 dark:bg-gray-800 p-4 sm:p-6 pb-0">
+      <section className="bg-gray-100 dark:bg-gray-800 pt-4 px-4 pb-0">
         <div className="grid gap-3">
           <H5 text={'Champaigns'}/>
 
