@@ -40,7 +40,7 @@ function Radio(props: RadioFieldProps) {
       >
         <input
           checked={item.value === props.value}
-          className="form-radio text-blue-500" // Tailwind CSS class for radio input, text color for default
+          className="form-radio text-primary-600" // Tailwind CSS class for radio input, text color for default
           disabled={props.disabled}
           id={`${props.id}-${item.key ?? escape(item.value)}`}
           name={props.name}

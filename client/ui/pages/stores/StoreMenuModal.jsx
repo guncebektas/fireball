@@ -93,7 +93,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
               {categoriesWithProducts.map(category => (
                 <li key={category._id} className="cursor-pointer">
                   <button
-                    className={`uppercase py-2 px-4 ${activeTab === category._id ? 'border-b-2 border-blue-500' : ''}`}
+                    className={`uppercase py-2 px-4 ${activeTab === category._id ? 'border-b-2 border-primary-600' : ''}`}
                     onClick={() => handleTabChange(category._id)}
                   >
                     {t(category.title)}

@@ -31,7 +31,7 @@ export const QRCodeModal = () => {
           <Button color="default" onClick={closeQRCodeModal}>
             {t('Close')}
           </Button>
-          <Button color="blue" onClick={handleExpire} disabled={timer > 0}>
+          <Button color="primary" onClick={handleExpire} disabled={timer > 0}>
             <FontAwesomeIcon icon={faRotate} className="mr-2" />
             {timer > 0 ? `${t('Reload')} (${timer})` : t('Reload')}
           </Button>

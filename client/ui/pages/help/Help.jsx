@@ -15,22 +15,22 @@ export const Help = () => {
   const buttons = [{
     icon: <FaQuestionCircle className="text-xl mr-1"/>,
     text: t('FAQs'),
-    color: 'success',
+    color: 'secondary',
     onClick: () => navigate(ROUTE.FAQS),
   }, {
     icon: <FaEnvelope className="text-xl mr-1"/>,
     text: t('Contact us'),
-    color: 'success',
+    color: 'primary',
     onClick: () => navigate(ROUTE.CONTACT_FORM),
   }, {
     icon: <FaClipboardList className="text-xl mr-1"/>,
     text: t('Send your requests'),
-    color: 'success',
+    color: 'primary',
     onClick: () => navigate(ROUTE.TICKETS_FORM),
   }, {
     icon: <FaWhatsapp className="text-xl mr-1"/>,
     text: t('Chat with us on WhatsApp'),
-    gradient: 'greenToBlue',
+    color: 'primary',
     onClick: () => window.open(`https://wa.me/${whatsappNumber}`, '_blank'),
   }];
 

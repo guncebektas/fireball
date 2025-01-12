@@ -22,7 +22,7 @@ export const PriceItem = ({title, subTitle, price, features, onClick}) => {
           )
         }
       </ul>
-      <Button color="blue">Get started</Button>
+      <Button color="primary">Get started</Button>
     </div>
   )
 }

@@ -23,7 +23,7 @@ export const Profile = () => {
   const TabButton = ({ id, label }) => (
     <li className="cursor-pointer">
       <button
-        className={`py-2 px-4 ${activeTab === id ? 'border-b-2 border-blue-500' : ''}`}
+        className={`py-2 px-4 ${activeTab === id ? 'border-b-2 border-primary-600' : ''}`}
         onClick={() => setActiveTab(id)}
       >
         {label}

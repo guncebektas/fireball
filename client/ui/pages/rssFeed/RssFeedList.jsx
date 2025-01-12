@@ -70,7 +70,7 @@ export const RssFeedList = () => {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
+                    className="text-primary-600 hover:underline"
                   >
                     <h2 className="font-bold text-xl text-blue-600">{item.title}</h2>
                   </a>
@@ -82,7 +82,7 @@ export const RssFeedList = () => {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
+                    className="text-primary-600 hover:underline"
                   >
                     {t('Read more')}
                   </a>
