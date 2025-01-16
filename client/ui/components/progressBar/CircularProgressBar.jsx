@@ -1,13 +1,23 @@
 import React from 'react';
 
-export const CircularProgressBar = ({ progress, size = 100, strokeWidth = 10, icon }) => {
+export const CircularProgressBar = ({ progress = 2, size = 100, strokeWidth = 10, icon }) => {
+
+  const {color} = Meteor.settings.public.app;
+
   const radius = (size - strokeWidth) / 2; // Radius of the circle
   const circumference = 2 * Math.PI * radius; // Circumference of the full circle
   const gapAngle = 90; // The angle for the gap at the bottom (in degrees)
   const gapFraction = gapAngle / 360; // Fraction of the circle that is the gap
   const visibleCircumference = circumference * (1 - gapFraction); // Adjusted circumference for the visible part
 
+  if (progress < 3) {
+    progress = 2;
+  }
+
   const offset = visibleCircumference - (progress / 100) * visibleCircumference; // Offset for progress
+  const normalizedProgress = Math.min(Math.max(progress, 0), 100); // Ensure progress is between 0-100
+  const progressOffset = (1 - normalizedProgress / 100) * visibleCircumference;
+  const startOffset = circumference * (gapFraction / 2);
 
   return (
     <div style={{ position: 'relative', width: size, height: size }}>
@@ -32,7 +42,7 @@ export const CircularProgressBar = ({ progress, size = 100, strokeWidth = 10, ic
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="#00aaff"
+          stroke={color.text.accent}
           strokeWidth={strokeWidth}
           fill="none"
           strokeDasharray={`${visibleCircumference} ${circumference}`}
@@ -50,7 +60,7 @@ export const CircularProgressBar = ({ progress, size = 100, strokeWidth = 10, ic
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <img src={icon} alt="center icon" style={{ width: size / 1.5 }} />
+        <img src={icon} alt="center icon" style={{ width: size / 4 }} />
       </div>
     </div>
   );
