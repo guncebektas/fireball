@@ -1,10 +1,9 @@
+import { faFacebook, faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { Button, Modal } from 'flowbite-react';
 import React from 'react';
-import {Modal, Button} from 'flowbite-react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faMapMarkerAlt, faPhone} from '@fortawesome/free-solid-svg-icons';
-import {useTranslator} from "../../providers/i18n";
-import {SocialMediaIcons} from "../../components/buttons/SocialMediaIcons";
-import {faFacebook, faInstagram, faXTwitter} from "@fortawesome/free-brands-svg-icons";
+import { SocialMediaIcons } from "../../components/buttons/SocialMediaIcons";
+import { Icon } from "../../components/icon/Icon";
+import { useTranslator } from "../../providers/i18n";
 
 export const StoreDetailsModal = ({store, isOpen, onClose}) => {
   const t = useTranslator();
@@ -18,11 +17,11 @@ export const StoreDetailsModal = ({store, isOpen, onClose}) => {
         <p className="text-gray-500 mb-2">{store.description}</p>
 
         <div className="mb-2">
-          <FontAwesomeIcon icon={faMapMarkerAlt} className="text-primary-600 mr-2"/>
+          <Icon icon="store" className="text-primary-600 mr-2"/>
           <span className={"text-gray-500"}>{store.street} {store.city}/{store.country}</span>
         </div>
         <div className="mb-2">
-          <FontAwesomeIcon icon={faPhone} className="text-primary-600 mr-2"/>
+          <Icon icon="phone" className="text-primary-600 mr-2"/>
           <span className={"text-gray-500"}>{store.phone}</span>
         </div>
 

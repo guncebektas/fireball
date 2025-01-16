@@ -8,7 +8,7 @@ import {faTimes} from "@fortawesome/free-solid-svg-icons";
 export const SelectedStore = () => {
   const t = useTranslator();
 
-  const {logo} = Meteor.settings.public.app;
+  const {icon} = Meteor.settings.public.app;
 
   const {selectedStore, setSelectedStore} = useStoreStore()
   if (!selectedStore) return null;
@@ -20,7 +20,7 @@ export const SelectedStore = () => {
   return (
     <div key="selected-store" className="relative m-border rounded-lg p-4 shadow-md flex items-start space-x-4 mb-1">
       <div className="w-10">
-        <img src={logo} alt={selectedStore.name} className="w-full"/>
+        <img src={icon} alt={selectedStore.name} className="w-full"/>
       </div>
       <div className="w-40">
         <h1 className="m-title text-xl font-semibold">{selectedStore.name}</h1>

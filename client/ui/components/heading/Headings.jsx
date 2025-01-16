@@ -9,28 +9,56 @@ const translateWithSymbol = (text, t) => {
   return t(textContent) + (hasSymbol ? lastChar : '');
 };
 
-export const H2 = ({text, showBackButton = false, ...props}) => {
+export const H1 = ({text, showBackButton = false, className = '', ...props}) => {
   const t = useTranslator();
   return (
-    <>
-      <h2 className="m-title text-3xl mb-1" {...props}>
-        {showBackButton ? <BackButton /> : ''} {translateWithSymbol(text, t)}
-      </h2>
-    </>
-  )
+    <h1 className={`m-title text-4xl ${className}`} {...props}>
+      {showBackButton && <BackButton />} {translateWithSymbol(text, t)}
+    </h1>
+  );
 };
 
-export const H3 = ({text, ...props}) => {
+export const H2 = ({text, showBackButton = false, className = '', ...props}) => {
   const t = useTranslator();
-  return (<h3 className="m-title text-2xl mb-3" {...props}>{translateWithSymbol(text, t)}</h3>);
+  return (
+    <h2 className={`m-title text-3xl ${className}`} {...props}>
+      {showBackButton && <BackButton />} {translateWithSymbol(text, t)}
+    </h2>
+  );
 };
 
-export const H4 = ({text, ...props}) => {
+export const H3 = ({text, className = '', ...props}) => {
   const t = useTranslator();
-  return (<h4 className="m-title text-xl mb-3" {...props}>{translateWithSymbol(text, t)}</h4>);
+  return (
+    <h3 className={`m-title text-2xl ${className}`} {...props}>
+      {translateWithSymbol(text, t)}
+    </h3>
+  );
 };
 
-export const H5 = ({text, ...props}) => {
+export const H4 = ({text, className = '', ...props}) => {
   const t = useTranslator();
-  return (<h5 className="m-title text-lg" {...props}>{translateWithSymbol(text, t)}</h5>);
+  return (
+    <h4 className={`m-title text-xl ${className}`} {...props}>
+      {translateWithSymbol(text, t)}
+    </h4>
+  );
+};
+
+export const H5 = ({text, className = '', ...props}) => {
+  const t = useTranslator();
+  return (
+    <h5 className={`m-title text-lg ${className}`} {...props}>
+      {translateWithSymbol(text, t)}
+    </h5>
+  );
+};
+
+export const H6 = ({text, className = '', ...props}) => {
+  const t = useTranslator();
+  return (
+    <h6 className={`m-title text-base ${className}`} {...props}>
+      {translateWithSymbol(text, t)}
+    </h6>
+  );
 };

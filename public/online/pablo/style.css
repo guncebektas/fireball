@@ -1,0 +1,6 @@
+.bg-background-image {
+  background-image: url('/online/pablo/images/background.svg');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: repeat;
+}
