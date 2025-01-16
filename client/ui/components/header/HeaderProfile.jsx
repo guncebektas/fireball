@@ -10,6 +10,7 @@ import {ROUTE} from "../../../routes/enums/route.js";
 import {useTranslator} from "../../providers/i18n";
 import {ProfileAvatar} from "../profileAvatar/profileAvatar";
 import {useUserStore} from "../../stores/useUserStore";
+import {Icon} from "../icon/Icon";
 
 export const HeaderProfile = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ export const HeaderProfile = () => {
     <Dropdown
       arrowIcon={false}
       inline={true}
-      label={<FontAwesomeIcon icon="user"/>}
+      label={<Icon icon="user"/>}
     >
       <Dropdown.Header>
         <div className="flex items-center">
@@ -58,7 +59,7 @@ export const HeaderProfile = () => {
 
       <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white py-1">
         <Link to={ROUTE.PROFILE}>
-          <FontAwesomeIcon icon="user" className="mr-2"/>
+          <Icon icon="user" className="mr-2"/>
           {t('My profile')}
         </Link>
       </Dropdown.Item>

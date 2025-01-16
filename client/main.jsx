@@ -46,7 +46,13 @@ Meteor.startup(async () => {
     }
   }
 
+  const brand = Meteor.settings.public.app["brand"];
+  const linkElement = document.createElement('link');
+  linkElement.rel = 'stylesheet';
+  linkElement.href = `/online/${brand}/style.css?v=4`;
+  document.head.appendChild(linkElement);
+
   const container = document.getElementById('react-target');
   const root = createRoot(container);
-  root.render(<App tab="home" />);
+  root.render(<App tab="home" data-brand={brand} />);
 });

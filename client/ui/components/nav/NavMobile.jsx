@@ -1,14 +1,13 @@
+import { Navbar } from 'flowbite-react';
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import {Navbar} from 'flowbite-react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {Meteor} from 'meteor/meteor';
-import {QRCodeModal} from "../modals/QRCodeModal/QRCodeModal";
-import {ROUTE} from "../../../routes/enums/route";
-import {useNavigate} from "react-router-dom";
-import {useQRCodeStore} from "../../stores/useQRCodeStore";
-
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "../../../routes/enums/route";
+import { useQRCodeStore } from "../../stores/useQRCodeStore";
+import { QRCodeModal } from "../modals/QRCodeModal/QRCodeModal";
+import { Icon } from "../icon/Icon";
 export const NavMobile = () => {
-  const {showMobileNavigation, customIcons} = Meteor.settings.public.app;
+  const {showMobileNavigation} = Meteor.settings.public.app;
   const openQRCodeModal = useQRCodeStore((state) => state.openQRCodeModal);
   const navigate = useNavigate();
 
@@ -49,8 +48,6 @@ export const NavMobile = () => {
     return null;
   }
 
-  console.log(customIcons[navLinks[0].icon]);
-
   return (
     <>
       <Navbar className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-10 sm:hidden">
@@ -62,16 +59,7 @@ export const NavMobile = () => {
               href={href}
               onClick={onClick}
             >
-              {customIcons[icon] ?
-                <svg className="svg-inline--fa fa-life-ring w-6 h-5 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
-                  <use href={`#${icon}`}/>
-                </svg>
-                :
-                <FontAwesomeIcon
-                  icon={icon}
-                  className="w-6 h-5 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                />
-              }
+              <Icon icon={icon} />
             </Navbar.Link>
           ))}
         </ul>

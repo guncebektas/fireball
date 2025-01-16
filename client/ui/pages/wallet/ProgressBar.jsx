@@ -6,7 +6,7 @@ import {CircularProgressBar} from "../../components/progressBar/CircularProgress
 const ProgressBar = () => {
   const t = useTranslator();
 
-  const {logo, coinName} = Meteor.settings.public.app;
+  const {coinName, coinIcon} = Meteor.settings.public.app;
 
   const {stampCount, targetCount} = useStampCountStore();
 
@@ -18,6 +18,8 @@ const ProgressBar = () => {
     if (progressPercentage > 100) {
       progressPercentage = 100;
     }
+
+    progressPercentage = 20;
 
     reward = Math.floor(stampCount / targetCount);
   }, [stampCount]);
@@ -36,7 +38,7 @@ const ProgressBar = () => {
           progress={progressPercentage}
           size={100}
           strokeWidth={8}
-          icon={logo}
+          icon={coinIcon}
         />
 
         <div className="flex w-1/3 items-center justify-center ml-2">

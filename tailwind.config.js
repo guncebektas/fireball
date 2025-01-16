@@ -30,7 +30,7 @@ module.exports = {
           '950': '#0d0001',
         },
         secondary: {
-          '50': '#fdf2e3',
+          '50': '#f9f7f2',
           '100': '#fbe4c7',
           '200': '#f7d1a3',
           '300': '#e6c99d',
@@ -44,7 +44,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'],
+        sans: ['Helvetica Neue', 'Arial', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     },
   },

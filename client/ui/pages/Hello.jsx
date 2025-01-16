@@ -19,33 +19,35 @@ export const Hello = () => {
   const {homepage} = Meteor.settings.public.pages;
 
   return (
-    <>
-      <div className="grid">
-        <div className={"flex items-center justify-center opacity-50"}>
-          <h4 className="m-text font-bold mb-1">{t(welcomeSlogan)}</h4>
+    <div className="bg-background-image">
+      <div class="p-3">
+        <div className="grid">
+          <div className={"flex items-center justify-center opacity-50"}>
+            <h4 className="m-text font-bold mb-1">{t(welcomeSlogan)}</h4>
+          </div>
+          <div className={"flex items-center justify-center"}>
+            <H2 text={welcomeMessage} className="font-extrabold"/>
+          </div>
         </div>
-        <div className={"flex items-center justify-center"}>
-          <H2 text={welcomeMessage}/>
+
+        <div className="grid gap-3">
+          <div className={"flex items-center justify-center"}>
+            <H4 text={userGreeting} style={{color: color.text.accent}}/>
+          </div>
+        </div>
+
+        <div className="grid gap-3 mb-6">
+          <Wallet showBanner={false}/>
         </div>
       </div>
 
-      <div className="grid gap-3">
-        <div className={"flex items-center justify-center"}>
-          <H4 text={userGreeting} style={{color: color.text.accent}}/>
-        </div>
-      </div>
-
-      <div className="grid gap-3 mb-6">
-        <Wallet showBanner={false}/>
-      </div>
-
-      <section className="bg-gray-100 dark:bg-gray-800 rounded-t-lg py-4 pl-4 pr-0">
+      <section className="bg-secondary-50 dark:bg-gray-800 rounded-t-lg py-4 pl-4 pr-0">
         <div className="grid gap-6 my-6">
           <StoryBoard />
         </div>
       </section>
 
-      <section className="bg-gray-100 dark:bg-gray-800 pt-4 px-4 pb-0">
+      <section className="bg-secondary-50 dark:bg-gray-800 pt-4 px-4 pb-0">
         <div className="grid gap-3">
           <H5 text={'Champaigns'}/>
 
@@ -54,6 +56,7 @@ export const Hello = () => {
           <Slider carousel={homepage.carousel2} interval={5000} showCaption={false}/>
         </div>
       </section>
-    </>
+    </div>
   );
 };
+
