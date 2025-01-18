@@ -43,7 +43,7 @@ export const StoryBoard = () => {
   return (
     <>
       <H5 text={'Have you tried these?'}/>
-      <div className="flex overflow-x-auto gap-3 pb-4 no-scrollbar snap-x snap-mandatory touch-pan-x">
+      <div className="flex overflow-x-auto gap-3 py-3 no-scrollbar snap-x snap-mandatory touch-pan-x">
         {selectedStoreProducts.map((product) => (
           <div 
             key={product._id} 
@@ -57,7 +57,7 @@ export const StoryBoard = () => {
                 draggable="false"
               />
             </div>
-            <span className="m-text text-sm font-medium text-center">
+            <span className="m-text text-xs font-medium text-center">
               {product.title}
             </span>
           </div>

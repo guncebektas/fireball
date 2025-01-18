@@ -8,7 +8,7 @@ import {useTranslator} from "../../providers/i18n";
 const DropdownItem = ({ icon, label }) => (
   <a
     href="#"
-    className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+    className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
   >
     <FontAwesomeIcon
       icon={icon}

@@ -44,7 +44,7 @@ fontawesome.library.add(
 const customTheme = {
   button: {
     color: {
-      default: "py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white",
+      default: "py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white",
       primary: "w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white !bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
       secondary: "w-full flex justify-center py-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white !bg-secondary-600 hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
     },
@@ -62,15 +62,11 @@ export function App() {
   return (
     <Flowbite theme={{theme: customTheme}}>
       <BrowserRouter>
-        <div className="antialiased bg-white dark:bg-gray-800">
-          <div className="min-h-screen mx-auto !font-sans">
-            <LocaleProvider>
-              <SvgSprite/>
-              <ConnectionAlert/>
-              <ConditionalLayout/>
-            </LocaleProvider>
-          </div>
-        </div>
+        <LocaleProvider>
+          <SvgSprite/>
+          <ConnectionAlert/>
+          <ConditionalLayout/>
+        </LocaleProvider>
       </BrowserRouter>
     </Flowbite>
   );

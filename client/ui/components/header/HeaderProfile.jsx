@@ -57,7 +57,7 @@ export const HeaderProfile = () => {
         </div>
       </Dropdown.Header>
 
-      <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white py-1">
+      <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white py-1">
         <Link to={ROUTE.PROFILE}>
           <Icon icon="user" className="mr-2"/>
           {t('My profile')}
@@ -66,7 +66,7 @@ export const HeaderProfile = () => {
 
       {
         showDevTools ?
-          <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
+          <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
             <a href="https://github.com" className="flex items-center">
               <FontAwesomeIcon icon="code-merge" className="mr-2"/>
               Github
@@ -76,7 +76,7 @@ export const HeaderProfile = () => {
 
       {
         showDevTools ?
-          <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
+          <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
             <a href="https://meteor.com/" target="_blank" className="flex items-center">
               <FontAwesomeIcon icon="meteor" className="mr-2"/>
               Meteor.js
@@ -86,7 +86,7 @@ export const HeaderProfile = () => {
 
       {
         showDevTools ?
-          <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
+          <Dropdown.Item className="hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
             <a href="https://flowbite.com/" target="_blank" className="flex items-center">
               <FontAwesomeIcon icon="pen-ruler" className="mr-2"/>
               Flowbite
@@ -97,7 +97,7 @@ export const HeaderProfile = () => {
 
       <Dropdown.Divider className="border-gray-200 dark:border-gray-600"/>
 
-      <Dropdown.Item onClick={handleLogout} className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">
+      <Dropdown.Item onClick={handleLogout} className="hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
         <FontAwesomeIcon icon="right-from-bracket" className="mr-2"/>
         {t('Logout')}
       </Dropdown.Item>

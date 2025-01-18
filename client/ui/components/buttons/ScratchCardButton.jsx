@@ -8,8 +8,8 @@ export const ScratchCardButton = () => {
   const t = useTranslator();
 
   return (
-    <Button color="secondary" onClick={openScratchCardModal} className="uppercase mr-1">
-      <Icon icon='ticket' />
+    <Button color="primary" size="lg" onClick={openScratchCardModal}>
+      <Icon icon='ticket' className='mr-1'/>
       {t('Scratch to win')}
     </Button>
   );

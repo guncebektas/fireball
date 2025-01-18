@@ -11,7 +11,7 @@ export const QRCodeButton = () => {
 
   return (
     <div className="hidden sm:block">
-      <Button color="primary" onClick={openQRCodeModal} className="mr-1">
+      <Button color="primary" size="lg" onClick={openQRCodeModal} className="mr-4">
         <FontAwesomeIcon icon={faQrcode}/>
         QR
       </Button>
