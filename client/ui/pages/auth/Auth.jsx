@@ -1,8 +1,8 @@
 import React from 'react';
-import {AuthToken} from "./passwordless/AuthToken.jsx";
-import {AuthPassword} from "./password/AuthPassword.jsx";
-import {useLocation, useParams} from "react-router-dom";
-import {ResetPassword} from "./password/ResetPassword";
+import { useLocation } from "react-router-dom";
+import { AuthPassword } from "./password/AuthPassword.jsx";
+import { ResetPassword } from "./password/ResetPassword";
+import { AuthToken } from "./passwordless/AuthToken.jsx";
 
 export const Auth = () => {
   const {isPasswordlessLoginEnabled} = Meteor.settings.public;

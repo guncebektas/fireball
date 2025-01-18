@@ -51,7 +51,7 @@ export const Header = ({ onToggleSidebar }) => {
   }, []);
 
   return (
-    <nav className="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
+    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 fixed top-0 right-0 left-0 px-4 py-2.5 z-50">
       <div className="flex flex-wrap justify-between items-center">
         <div className="flex justify-start items-center">
           <HeaderToggleButton onClick={onToggleSidebar} />
@@ -64,7 +64,7 @@ export const Header = ({ onToggleSidebar }) => {
               type="button"
               data-drawer-toggle="drawer-navigation"
               aria-controls="drawer-navigation"
-              className="p-2 mr-1 text-gray-500 rounded-lg md:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              className="p-2 mr-1 text-gray-500 rounded-lg md:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
               <span className="sr-only">{t('Toggle search')}</span>
               <FontAwesomeIcon icon={faSearch} />

@@ -42,13 +42,13 @@ export const NavFooter = () => {
   ];
 
   return (
-    <div className="absolute bottom-0 left-0 w-full flex justify-center p-4 space-x-4 bg-white dark:bg-gray-800">
+    <div className="absolute bottom-0 left-0 w-full flex justify-center p-4 space-x-4 bg-white dark:bg-gray-900">
       {links.map(({to, icon, tooltip, tooltipId}) => (
         <Link
           key={tooltipId}
           to={to}
           data-tooltip-target={tooltipId}
-          className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+          className="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           <FontAwesomeIcon icon={icon}/>
           <Tooltip content={t(tooltip)} placement="top" id={tooltipId}/>

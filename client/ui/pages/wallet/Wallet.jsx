@@ -74,7 +74,7 @@ export const Wallet = ({showBanner = true}) => {
 
       <ProgressBar/>
 
-      <div className="flex space-x-1">
+      <div className="flex space-x-6 px-6">
         <ScratchCardButton/>
         <QRCodeButton/>
         <CartButton/>

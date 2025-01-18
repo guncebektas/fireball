@@ -16,7 +16,7 @@ export const baseFieldClasses: string[] = [
   'focus:border-cyan-500',
   'focus:ring-cyan-500',
   'dark:border-gray-600',
-  'dark:bg-gray-700',
+  'dark:bg-gray-800',
   'dark:focus:border-cyan-500',
   'dark:focus:ring-cyan-500',
   'rounded-md'

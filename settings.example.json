@@ -16,6 +16,10 @@
         "background": {
           "main": "#e50b0b",
           "accent": "#e50b0b"
+        },
+        "progressBar": {
+          "background": "#843E3C",
+          "progress": "#D3CAB1"
         }
       },
       "links": {

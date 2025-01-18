@@ -31,7 +31,7 @@ export const CircularProgressBar = ({ progress = 2, size = 100, strokeWidth = 10
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="#e6e6e6"
+          stroke={color.progressBar.background}
           strokeWidth={strokeWidth}
           fill="none"
           strokeDasharray={`${visibleCircumference} ${circumference}`} // Visible part + gap
@@ -42,7 +42,7 @@ export const CircularProgressBar = ({ progress = 2, size = 100, strokeWidth = 10
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke={color.text.accent}
+          stroke={color.progressBar.progress}
           strokeWidth={strokeWidth}
           fill="none"
           strokeDasharray={`${visibleCircumference} ${circumference}`}

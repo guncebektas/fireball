@@ -32,7 +32,7 @@ export const SelectedStore = () => {
 
       <button
         onClick={() => cancelSelectedStore()}
-        className="absolute right-3 p-3 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group m-text"
+        className="absolute right-3 p-3 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group m-text"
       >
         <FontAwesomeIcon icon={faTimes}/>
       </button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Meteor} from 'meteor/meteor';
 import {createRoot} from 'react-dom/client';
-import {App} from '/client/ui/App';
+import {App} from './ui/App';
 import {onChangeLocale} from "../imports/modules/shared/functions/onChangeLocale";
 import {DeviceUtility} from "./shared/utilities/DeviceUtility";
 import './main.css';
@@ -49,7 +49,7 @@ Meteor.startup(async () => {
   const brand = Meteor.settings.public.app["brand"];
   const linkElement = document.createElement('link');
   linkElement.rel = 'stylesheet';
-  linkElement.href = `/online/${brand}/style.css?v=4`;
+  linkElement.href = `/online/${brand}/style.css?v=5`;
   document.head.appendChild(linkElement);
 
   const container = document.getElementById('react-target');

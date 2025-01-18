@@ -32,7 +32,7 @@ module.exports = {
         secondary: {
           '50': '#f9f7f2',
           '100': '#fbe4c7',
-          '200': '#f7d1a3',
+          '200': '#BFAE90',
           '300': '#e6c99d',
           '400': '#f3be7f',
           '500': '#efab5b',

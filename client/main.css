@@ -37,9 +37,9 @@ td button .svg-inline--fa {
   .header-dropdown-wrapper {
     @apply p-2 mr-1 text-gray-500 rounded-lg
     cursor-pointer
-    dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700
+    dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800
     hover:text-gray-900 hover:bg-gray-100
-    focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700
+    focus:bg-gray-100 dark:focus:bg-gray-800 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700
   }
 }
 

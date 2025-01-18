@@ -14,40 +14,38 @@ export const Hello = () => {
   const welcomeMessage = `${t('Welcome to {$name}', {name: name})}!`
 
   const {me} = useUserStore();
-  const userGreeting = `${t('Greeting {$name}', {name: me.firstname})}!`
+  const userGreeting = `${t('Greeting {$name}', {name: me.firstname})},`
 
   const {homepage} = Meteor.settings.public.pages;
 
   return (
     <div className="bg-background-image">
       <div class="p-3">
-        <div className="grid">
+        <div className="grid mb-6">
           <div className={"flex items-center justify-center opacity-50"}>
-            <h4 className="m-text font-bold mb-1">{t(welcomeSlogan)}</h4>
+            <h4 className="m-text !text-secondary-100 mb-1">{t(welcomeSlogan)}</h4>
           </div>
           <div className={"flex items-center justify-center"}>
-            <H2 text={welcomeMessage} className="font-extrabold"/>
+            <H2 text={welcomeMessage} className="font-extrabold text-white"/>
           </div>
         </div>
 
         <div className="grid gap-3">
           <div className={"flex items-center justify-center"}>
-            <H4 text={userGreeting} style={{color: color.text.accent}}/>
+            <H4 text={userGreeting} className="font-normal text-white"/>
           </div>
         </div>
 
-        <div className="grid gap-3 mb-6">
+        <div className="grid gap-3 mt-3 mb-6">
           <Wallet showBanner={false}/>
         </div>
       </div>
 
-      <section className="bg-secondary-50 dark:bg-gray-800 rounded-t-lg py-4 pl-4 pr-0">
-        <div className="grid gap-6 my-6">
-          <StoryBoard />
-        </div>
+      <section className="bg-secondary-50 dark:bg-gray-900 rounded-t-3xl py-6 pl-4 pr-0 mt-6">
+        <StoryBoard />
       </section>
 
-      <section className="bg-secondary-50 dark:bg-gray-800 pt-4 px-4 pb-0">
+      <section className="bg-secondary-50 dark:bg-gray-900 pt-4 px-4 pb-0">
         <div className="grid gap-3">
           <H5 text={'Champaigns'}/>
 
