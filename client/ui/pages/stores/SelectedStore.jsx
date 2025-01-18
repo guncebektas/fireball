@@ -18,7 +18,7 @@ export const SelectedStore = () => {
   }
 
   return (
-    <div key="selected-store" className="relative m-border rounded-lg p-4 shadow-md flex items-start space-x-4 mb-1">
+    <div key="selected-store" className="relative bg-white dark:bg-gray-900 m-border rounded-lg p-4 shadow-md flex items-start space-x-4 mb-1">
       <div className="w-10">
         <img src={icon} alt={selectedStore.name} className="w-full"/>
       </div>

@@ -30,7 +30,7 @@ export const CartModal = () => {
         <FontAwesomeIcon icon={faCartShopping}/>
         <span className={"relative"}>
           {t('Your cart')}
-          <span className="absolute top-0 left-20 -translate-y-1/2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+          <span className="absolute top-0 left-20 -translate-y-1/2 bg-secondary-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
             {productCount}
           </span>
         </span>
@@ -77,7 +77,7 @@ export const CartModal = () => {
           <Button color="default" className={"m-text"} onClick={closeCartModal}>
             {t('Close')}
           </Button>
-          <Link to={ROUTE.CHECKOUT} className="flex items-center" color={"blue"} onClick={closeCartModal}>
+          <Link to={ROUTE.CHECKOUT} className="flex items-center text-primary-600" onClick={closeCartModal}>
             <FontAwesomeIcon icon={faHeart} className="mr-2" />
             {t('Pay now')}
           </Link>

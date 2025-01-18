@@ -39,7 +39,7 @@ export const Checkout = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 space-y-8">
+    <div className="container mx-auto pb-12 space-y-8">
       <div className="flex justify-between">
         <H2 text={'Checkout'}/>
 
@@ -50,7 +50,7 @@ export const Checkout = () => {
       </div>
 
       {/* Order Summary and Checkout Button */}
-      <div className={"m-border rounded-lg p-4 shadow-md"}>
+      <div className={"m-border rounded-lg p-3 shadow-md"}>
         <H3 text={'Order summary'}/>
 
         <div className="mt-4">
@@ -71,7 +71,7 @@ export const Checkout = () => {
         </div>
       </div>
 
-      <div className={"m-border rounded-lg p-4 shadow-md"}>
+      <div className={"m-border rounded-lg p-3 shadow-md"}>
         <H3 text={'Billing information'}/>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
@@ -146,7 +146,7 @@ export const Checkout = () => {
         </div>
       </div>
 
-      <div className={"m-border rounded-lg p-4 shadow-md"}>
+      <div className={"m-border rounded-lg p-3 shadow-md"}>
         <H3 text={'Payment method'}/>
 
         <div className="mt-4">
