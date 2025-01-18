@@ -106,7 +106,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
           {/* Tab Content */}
           <div className="mt-4">
             {filteredProducts.map(product => (
-              <div key={product._id} className="border p-4 mb-2 flex justify-between items-center">
+              <div key={product._id} className="relative border p-4 mb-2 flex justify-between items-center">
                 <div>
                   <h3 className="m-title font-bold uppercase flex items-center">
                     {product.title}
@@ -116,10 +116,10 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
                         onPushToCart(product)
                       }}
                       size="sm"
-                      className="ml-2 p-2 w-8 h-8 flex justify-center items-center rounded-full"
+                      className="absolute bottom-5 right-5 p-3 w-8 h-8 flex justify-center items-center border-secondary-100 border-2 rounded-full"
                       title="Add to Cart"
                     >
-                      <FontAwesomeIcon icon={faCartPlus} className="text-white"/>
+                      <FontAwesomeIcon icon={faCartPlus} className="text-secondary-100"/>
                     </Button>
                   </h3>
                   <CurrencyDisplay price={product.priceOut} currency="TRY" locale="tr-TR"/>
@@ -128,7 +128,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
                   </p>
                 </div>
                 <img
-                  src={product.image || 'https://via.placeholder.com/100'}
+                  src={product.image || 'https://placehold.co/100x100'}
                   alt={product.title}
                   className="ml-4 w-24 h-24 object-cover"
                 />
