@@ -39,7 +39,7 @@ const InnerLayout = () => {
 
   if (user) {
     return (
-      <section className="dark:bg-gray-900">
+      <section className="dark:bg-gray-900 h-screen">
         <Header onToggleSidebar={handleToggleSidebar}/>
 
         <Nav isOpen={isSidebarOpen}/>
