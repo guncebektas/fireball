@@ -22,7 +22,8 @@ module.exports = {
     servers: {
       one: {
         env: {
-          HOST_NAME: 'host1'
+          HOST_NAME: 'host1',
+          HTTP_FORWARDED_COUNT: 1,
         }
       },
     },
