@@ -23,7 +23,7 @@ export const NavMobile = () => {
     {
       href: '#',
       icon: 'house',
-      label: 'Home',
+      label: 'Dashboard',
       onClick: () => handleNavigate(ROUTE.HOME),
     },
     {
