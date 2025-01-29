@@ -20,19 +20,19 @@ export const Hello = () => {
 
   return (
     <div className="bg-background-image">
-      <div class="p-3">
+      <div className="p-3">
         <div className="grid mb-6">
           <div className={"flex items-center justify-center opacity-50"}>
-            <h4 className="m-text !text-secondary-100 mb-1">{t(welcomeSlogan)}</h4>
+            <h4 className="m-text mb-1">{t(welcomeSlogan)}</h4>
           </div>
           <div className={"flex items-center justify-center"}>
-            <H2 text={welcomeMessage} className="font-extrabold text-white"/>
+            <H2 text={welcomeMessage} className="font-extrabold"/>
           </div>
         </div>
 
         <div className="grid gap-3">
           <div className={"flex items-center justify-center"}>
-            <H4 text={userGreeting} className="font-normal text-white"/>
+            <H4 text={userGreeting} className="font-normal"/>
           </div>
         </div>
 
@@ -41,13 +41,13 @@ export const Hello = () => {
         </div>
       </div>
 
-      <section className="bg-secondary-50 dark:bg-gray-900 rounded-t-3xl py-6 pl-4 pr-0 mt-6">
+      <section className="bg-secondary-50 dark:bg-gray-900 rounded-t-3xl py-6 pl-4 pr-0 mt-3">
         <StoryBoard />
       </section>
 
       <section className="bg-secondary-50 dark:bg-gray-900 pt-4 px-4 pb-0">
         <div className="grid gap-3">
-          <H5 text={'Champaigns'}/>
+          <H5 text={'Champaigns'} className={'m-text text-primary-600 text-lg'}/>
 
           <Slider carousel={homepage.carousel1} showCaption={false}/>
 
