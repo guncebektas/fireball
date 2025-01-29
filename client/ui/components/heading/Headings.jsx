@@ -45,19 +45,19 @@ export const H4 = ({text, className = '', ...props}) => {
   );
 };
 
-export const H5 = ({text, className = '', ...props}) => {
+export const H5 = ({text, className = 'm-title text-lg', ...props}) => {
   const t = useTranslator();
   return (
-    <h5 className={`m-title text-lg ${className}`} {...props}>
+    <h5 className={className} {...props}>
       {translateWithSymbol(text, t)}
     </h5>
   );
 };
 
-export const H6 = ({text, className = '', ...props}) => {
+export const H6 = ({text, className = 'm-title text-base', ...props}) => {
   const t = useTranslator();
   return (
-    <h6 className={`m-title text-base ${className}`} {...props}>
+    <h6 className={className} {...props}>
       {translateWithSymbol(text, t)}
     </h6>
   );

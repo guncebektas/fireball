@@ -31,8 +31,8 @@ const ProgressBar = () => {
       <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <div className="flex w-1/3 items-center justify-center ml-2">
           <div className="items-center justify-center">
-            <p className={`${isHomepage ? '!text-secondary-100' : 'm-text'} font-normal`}>{coinName}</p>
-            <h5 className={`${isHomepage ? 'text-white' : 'm-text'} text-center font-extrabold`}>{reward}</h5>
+            <p className={`${isHomepage ? 'm-text' : 'm-text'} font-normal`}>{coinName}</p>
+            <h5 className={`${isHomepage ? 'm-text' : 'm-text'} text-center font-extrabold`}>{reward}</h5>
           </div>
         </div>
 
@@ -45,8 +45,8 @@ const ProgressBar = () => {
 
         <div className="flex w-1/3 items-center justify-center ml-2">
           <div className="items-center justify-center">
-            <p className={`${isHomepage ? '!text-secondary-100' : 'm-text'} font-normal`}>{t('Free')}</p>
-            <h5 className={`${isHomepage ? 'text-white' : 'm-text'} text-center font-extrabold`}>{reward}</h5>
+            <p className={`${isHomepage ? 'm-text' : 'm-text'} font-normal`}>{t('Free')}</p>
+            <h5 className={`${isHomepage ? 'm-text' : 'm-text'} text-center font-extrabold`}>{reward}</h5>
           </div>
         </div>
       </div>
