@@ -47,10 +47,7 @@ export class ApiService {
 
     try {
       // Parse and validate the response using the specified contract
-      return contract.parse({
-        status: response.status.toString(),
-        data: response.data,
-      });
+      return contract.parse(response);
     } catch (validationError) {
       if (validationError instanceof ZodError) {
         console.error('Response validation failed:', validationError.errors);
