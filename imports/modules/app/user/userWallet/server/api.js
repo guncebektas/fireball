@@ -1,8 +1,10 @@
 import {AxiosExampleContract} from "../../../../infrastructure/axios/axiosExample.contract";
 import {ApiService} from "../../../../infrastructure/axios/apiService";
 
+const apiBaseUrl = Meteor.settings.public.app.remoteServiceUrls.ritapos;
+
 const contractRegistry = [
-  { pattern: 'https://app.ritapos.com/api/v1/customers/*', contract: AxiosExampleContract },
+  { pattern: `${apiBaseUrl}/api/v1/customers/*`, contract: AxiosExampleContract },
 ];
 
 // Create an instance of ApiService with the pattern-based contract configuration
