@@ -1,11 +1,11 @@
+import { Button } from 'flowbite-react';
 import React from "react";
-import {H2} from "../../components/heading/Headings";
-import {useTranslator} from "../../providers/i18n";
-import {Button} from 'flowbite-react';
-import {FaQuestionCircle, FaEnvelope, FaWhatsapp, FaInfoCircle, FaClipboardList} from 'react-icons/fa';
-import {ROUTE} from "../../../routes/enums/route";
-import {useNavigate} from "react-router-dom";
-import {NavItem} from "../../components/nav/NavItem";
+import { FaClipboardList, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "../../../routes/enums/route";
+import { H2 } from "../../components/heading/Headings";
+import { Icon } from "../../components/icon/Icon";
+import { useTranslator } from "../../providers/i18n";
 
 export const Help = () => {
   const t = useTranslator();
@@ -13,22 +13,22 @@ export const Help = () => {
   const whatsappNumber = '1234567890';
 
   const buttons = [{
-    icon: <FaQuestionCircle className="text-xl mr-1"/>,
+    icon: <Icon icon="question-circle" className="text-xl mr-1"/>,
     text: t('FAQs'),
     color: 'secondary',
     onClick: () => navigate(ROUTE.FAQS),
   }, {
-    icon: <FaEnvelope className="text-xl mr-1"/>,
+    icon: <Icon icon="envelope" className="text-xl mr-1"/>,
     text: t('Contact us'),
     color: 'primary',
     onClick: () => navigate(ROUTE.CONTACT_FORM),
   }, {
-    icon: <FaClipboardList className="text-xl mr-1"/>,
+    icon: <Icon icon="clipboard-list" className="text-xl mr-1"/>,
     text: t('Send your requests'),
     color: 'primary',
     onClick: () => navigate(ROUTE.TICKETS_FORM),
   }, {
-    icon: <FaWhatsapp className="text-xl mr-1"/>,
+    icon: <Icon icon="whatsapp" className="text-xl mr-1"/>,
     text: t('Chat with us on WhatsApp'),
     color: 'primary',
     onClick: () => window.open(`https://wa.me/${whatsappNumber}`, '_blank'),
