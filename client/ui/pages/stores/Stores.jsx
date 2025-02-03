@@ -1,16 +1,16 @@
-import { Button } from 'flowbite-react';
-import { Log } from "meteor/logging";
-import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
-import { franchisesMethod } from "../../../../imports/modules/app/stores/franchisesMethod";
-import { H2 } from "../../components/heading/Headings";
-import { Icon } from "../../components/icon/Icon";
+import {Button} from 'flowbite-react';
+import {Log} from "meteor/logging";
+import React, {useEffect, useState} from 'react';
+import {Link} from "react-router-dom";
+import {franchisesMethod} from "../../../../imports/modules/app/stores/franchisesMethod";
+import {H2} from "../../components/heading/Headings";
+import {Icon} from "../../components/icon/Icon";
 import Map from '../../components/map/Map';
-import { useTranslator } from "../../providers/i18n";
-import { useStoreStore } from "../../stores/useStoreStore";
-import { SelectedStore } from "./SelectedStore";
-import { StoreDetailsModal } from "./StoreDetailsModal";
-import { StoreMenuModal } from "./StoreMenuModal";
+import {useTranslator} from "../../providers/i18n";
+import {useStoreStore} from "../../stores/useStoreStore";
+import {SelectedStore} from "./SelectedStore";
+import {StoreDetailsModal} from "./StoreDetailsModal";
+import {StoreMenuModal} from "./StoreMenuModal";
 
 export const Stores = () => {
   const t = useTranslator();

@@ -1,19 +1,18 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {Button} from 'flowbite-react';
-import {Slider} from "../../components/slider/Slider";
-import {Meteor} from "meteor/meteor";
+import { Meteor } from "meteor/meteor";
+import React, { useCallback, useEffect, useState } from 'react';
+import { CartButton } from "../../components/buttons/CartButton";
+import { QRCodeButton } from "../../components/buttons/QRCodeButton";
+import { ScratchCardButton } from "../../components/buttons/ScratchCardButton";
+import { StarShapedConfetti } from "../../components/confetti/StarShappedConfetti";
+import { QRCodeModal } from "../../components/modals/QRCodeModal/QRCodeModal";
 import ScratchCardModal from "../../components/modals/ScratchCardModal/ScratchCardModal";
-import {userWalletMethod} from "../../../../imports/modules/app/user/userWallet/userWalletMethod";
-import {QRCodeModal} from "../../components/modals/QRCodeModal/QRCodeModal";
-import {ScratchCardButton} from "../../components/buttons/ScratchCardButton";
-import {QRCodeButton} from "../../components/buttons/QRCodeButton";
-import {WalletBalance} from "./WalletBalance";
-import {useStampCountStore} from '../../stores/useStampCountStore';
+import { Slider } from "../../components/slider/Slider";
+import { useWalletData } from "../../hooks/useWalletData";
+import { useConfettiStore } from "../../stores/useConfettiStore";
+import { useStampCountStore } from '../../stores/useStampCountStore';
+import { SelectedStore } from "../stores/SelectedStore";
 import ProgressBar from "./ProgressBar";
-import {useConfettiStore} from "../../stores/useConfettiStore";
-import {StarShapedConfetti} from "../../components/confetti/StarShappedConfetti";
-import {CartButton} from "../../components/buttons/CartButton";
-import {SelectedStore} from "../stores/SelectedStore";
+import { WalletBalance } from "./WalletBalance";
 
 export const Wallet = ({showBanner = true}) => {
   const {wallet} = Meteor.settings.public.pages;
@@ -25,29 +24,21 @@ export const Wallet = ({showBanner = true}) => {
   const [error, setError] = useState(null);
 
   const {showConfetti, closeConfetti} = useConfettiStore();
+  const { refreshWalletData } = useWalletData();
+
+  const initializeWallet = async () => {
+    try {
+      await refreshWalletData();
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     closeConfetti();
-
-    userWalletMethod.getCustomer()
-      .then(response => {
-        console.log(response);
-
-        if (response.data.status) {
-          setStampCount(response.data.stampCount);
-          setBalance(response.data.balance);
-        } else {
-          setStampCount(0);
-          setBalance(0);
-        }
-      })
-      .catch(error => {
-        console.error("Error fetching customer data:", error);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    initializeWallet()
   }, [setStampCount]);
 
   const addMoney = useCallback((amount) => {

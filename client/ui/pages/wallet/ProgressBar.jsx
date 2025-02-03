@@ -32,7 +32,7 @@ const ProgressBar = () => {
         <div className="flex w-1/3 items-center justify-center ml-2">
           <div className="items-center justify-center">
             <p className={`${isHomepage ? 'm-text' : 'm-text'} font-normal`}>{coinName}</p>
-            <h5 className={`${isHomepage ? 'm-text' : 'm-text'} text-center font-extrabold`}>{reward}</h5>
+            <h5 className={`${isHomepage ? 'm-text' : 'm-text'} text-center font-extrabold`}>{stampCount}</h5>
           </div>
         </div>
 

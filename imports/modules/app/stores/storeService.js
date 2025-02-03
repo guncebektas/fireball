@@ -4,9 +4,9 @@ class StoreService extends ApiServiceInstance {
   constructor() {
     super();
 
-    this.url = `${this.baseUrl}api/v1/stores/`;
-    this.productCategoriesUrl = `${this.baseUrl}api/v1/product-categories/`;
-    this.productsUrl = `${this.baseUrl}api/v1/products/`;
+    this.url = `${this.baseUrl}/api/v1/stores/`;
+    this.productCategoriesUrl = `${this.baseUrl}/api/v1/product-categories/`;
+    this.productsUrl = `${this.baseUrl}/api/v1/products/`;
   }
 
   getProductCategories(storeId) {

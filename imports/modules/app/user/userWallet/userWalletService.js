@@ -4,7 +4,7 @@ class UserWalletService extends ApiServiceInstance{
   constructor() {
     super();
 
-    this.url = `${this.baseUrl}api/v1/customers/`;
+    this.url = `${this.baseUrl}/api/v1/customers/`;
   }
 
   async getCustomer(userId) {
