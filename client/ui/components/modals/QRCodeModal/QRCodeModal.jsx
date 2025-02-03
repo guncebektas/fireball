@@ -1,13 +1,14 @@
-import React from 'react';
+import { faRotate } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Modal } from 'flowbite-react';
 import { Meteor } from 'meteor/meteor';
-import Countdown from '../../countDown/CountDown';
+import React from 'react';
 import { useTranslator } from '../../../providers/i18n';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRotate } from '@fortawesome/free-solid-svg-icons';
 import { useQRCodeStore } from '../../../stores/useQRCodeStore';
+import Countdown from '../../countDown/CountDown';
 import QRCodeDisplay from './QRCodeDisplay';
 import { useOtp } from './useOtp';
+import { useWalletData } from '../../../hooks/useWalletData';
 
 export const QRCodeModal = () => {
   const t = useTranslator();
@@ -17,10 +18,17 @@ export const QRCodeModal = () => {
   const closeQRCodeModal = useQRCodeStore((state) => state.closeQRCodeModal);
   const resetCountdown = useQRCodeStore((state) => state.resetCountdown);
 
+  const { refreshWalletData } = useWalletData();
+
+  const handleClose = () => {
+    closeQRCodeModal();
+    refreshWalletData();
+  };
+
   const { otp, timer, handleExpire } = useOtp(isQRCodeModalOpen, resetCountdown);
 
   return (
-    <Modal show={isQRCodeModalOpen} onClose={closeQRCodeModal} size="md">
+    <Modal show={isQRCodeModalOpen} onClose={handleClose} size="md">
       <Modal.Header>{t('Your qr code')}</Modal.Header>
       <Modal.Body>
         <QRCodeDisplay otp={otp} icon={icon}/>

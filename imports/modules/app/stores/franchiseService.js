@@ -4,7 +4,7 @@ class FranchiseService extends ApiServiceInstance {
   constructor() {
     super();
 
-    this.url = `${this.baseUrl}api/v1/franchises/`;
+    this.url = `${this.baseUrl}/api/v1/franchises/`;
   }
 
   async getMembers(guid) {
