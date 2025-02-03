@@ -44,12 +44,22 @@
       }],
       "showMobileNavigation": true,
       "customIcons": [
-        "campaign", 
-        "house", 
-        "qrcode", 
-        "star", 
-        "store", 
-        "user"
+        "campaign",
+        "clipboard-list",
+        "circle-info",
+        "envelope",
+        "house",
+        "life-ring",
+        "phone",
+        "qrcode",
+        "question-circle",
+        "shopping-cart",
+        "star",
+        "store",
+        "user",
+        "utensils",
+        "ticket",
+        "whatsapp"
       ]
     },
     "company": {
@@ -136,6 +146,9 @@
     "rssUrl": "https://sports.yahoo.com/rss/"
   },
   "private": {
+    "remoteServiceUrls": {
+      "ritapos": "https://app.ritapos.com"
+    },
     "mail": {
       "url": "smtp://username:password@smtp.xxx.com:587",
       "fromName": "Fireball",
