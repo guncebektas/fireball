@@ -47,9 +47,9 @@ module.exports = {
   redis: {
     // Server to run redis on.
     servers: {
-      one: {},
+      one: {}
     },
     // Version of redis. Add '-alpine' to use a much smaller docker image
     version: '3.2.10-alpine'
-  },
+  }
 };
