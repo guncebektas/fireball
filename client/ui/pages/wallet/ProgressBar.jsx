@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTranslator} from "../../providers/i18n";
 import {useStampCountStore} from "../../stores/useStampCountStore";
 import {CircularProgressBar} from "../../components/progressBar/CircularProgressBar";
@@ -11,20 +11,21 @@ const ProgressBar = () => {
   const {coinName, coinIcon} = Meteor.settings.public.app;
 
   const {stampCount, targetCount} = useStampCountStore();
-
-  let progressPercentage = 0
-  let reward = 0;
+  
+  // Add state for progress and reward
+  const [progressPercentage, setProgressPercentage] = useState(0);
+  const [reward, setReward] = useState(0);
 
   useEffect(() => {
-    progressPercentage = (stampCount % targetCount / targetCount) * 100;
-    if (progressPercentage > 100) {
-      progressPercentage = 100;
+    // Calculate progress percentage
+    let progress = (stampCount % targetCount / targetCount) * 100;
+    if (progress > 100) {
+      progress = 100;
     }
-
-    progressPercentage = 20;
-
-    reward = Math.floor(stampCount / targetCount);
-  }, [stampCount]);
+    
+    setProgressPercentage(progress);
+    setReward(Math.floor(stampCount / targetCount));
+  }, [stampCount, targetCount]);
 
   return (
     <div className="mb-3">
