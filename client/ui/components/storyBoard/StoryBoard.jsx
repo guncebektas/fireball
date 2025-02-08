@@ -21,8 +21,8 @@ export const StoryBoard = () => {
         const products = await storesMethod.getProducts({ _id });
 
         const cleanedProducts = products.data.filter(product =>
-          product.priceOut > 50 &&
-          product.title.length < 12 && // adjust this number based on your needs
+          product.priceOut > Meteor.settings.public.pages.homepage.storyBoard.filter.price &&
+          product.title.length < Meteor.settings.public.pages.homepage.storyBoard.filter.titleLength && // adjust this number based on your needs
           !product.title.toLowerCase().includes('sepet') &&
           !product.title.toLowerCase().includes('fark')
         );
@@ -38,7 +38,7 @@ export const StoryBoard = () => {
     };
 
     fetchProducts();
-  }, [_id, setSelectedStoreProducts]);
+  }, [_id, selectedStoreProducts, setSelectedStoreProducts]);
 
   return (
     <>
