@@ -6,16 +6,63 @@
   <meta name="mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
 
-  <link rel="manifest" href="/manifest.json"/>
+  <link rel="manifest" href="/manifest.json?v=4"/>
 
-  <link rel="shortcut icon" type="image/png" href="/online/pablo/icons/favicon-24.png?v=1" />
-  <link rel="shortcut icon" type="image/x-icon" href="/online/pablo/icons/favicon-24.png?v=1" />
+  <link rel="shortcut icon" type="image/png" href="/online/pablo/icons/favicon-24.png?v=3" />
+  <link rel="shortcut icon" type="image/x-icon" href="/online/pablo/icons/favicon-24.png?v=3" />
   <script>
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <script type="application/json" id="manifest-placeholder">
+    {
+      "short_name": "Rewarita",
+      "name": "Rewarita - Ritapos",
+      "description": "Rewarita for loyalty programs",
+      "theme_color": "#fff",
+      "background_color": "#edf2f9",
+      "start_url": "/",
+      "display_override": [
+        "fullscreen",
+        "minimal-ui",
+        "window-controls-overlay"
+      ],
+      "display": "standalone",
+      "icons": [
+        {
+          "src": "/online/pablo/icons/favicon-192.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        },
+        {
+          "src": "/online/pablo/icons/favicon-512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ],
+      "related_applications": [
+        {
+          "platform": "play",
+          "url": "",
+          "id": ""
+        },
+        {
+          "platform": "itunes",
+          "url": ""
+        }
+      ],
+      "lang": "en",
+      "id": "rewarita",
+      "categories": [
+        "business",
+        "finance",
+        "loyalty",
+        "utilities"
+      ]
     }
   </script>
 </head>

@@ -1,44 +1,21 @@
 {
   "short_name": "Rewarita",
-  "name": "Rewarita - Meteor.js 3",
+  "name": "Rewarita - Ritapos",
   "description": "Rewarita for loyalty programs",
-  "theme_color": "#0032a0",
+  "theme_color": "#fff",
   "background_color": "#edf2f9",
   "start_url": "/",
-  "display_override": [
-    "fullscreen",
-    "minimal-ui",
-    "window-controls-overlay"
-  ],
   "display": "standalone",
   "icons": [
     {
-      "src": "/online/pablo/icons/favicon-192.png",
+      "src": "/online/pablo/icons/favicon-192.png?v=2",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/online/pablo/icons/favicon-512.png",
+      "src": "/online/pablo/icons/favicon-512.png?v=2",
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "related_applications": [
-    {
-      "platform": "play",
-      "url": "",
-      "id": ""
-    }, {
-      "platform": "itunes",
-      "url": ""
-    }
-  ],
-  "lang": "en",
-  "id": "rewarita",
-  "categories": [
-    "business",
-    "finance",
-    "loyalty",
-    "utilities"
   ]
 }
