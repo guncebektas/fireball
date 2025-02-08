@@ -87,9 +87,37 @@
         "title": "Privacy policy",
         "text": "Your GDPR policy content goes here"
       },
+      "homepage": {
+        "storyBoard": {
+          "filter": {
+            "price": 0,
+            "titleLength": 5
+          }
+        },
+        "carousel1": [
+          {
+            "caption": "Ritapos 1",
+            "image": "/online/ritapos/images/banner-1.jpg"
+          },
+          {
+            "caption": "Ritapos 2",
+            "image": "/online/ritapos/images/banner-2.jpg"
+          }
+        ],
+        "carousel2": [
+          {
+            "caption": "Ritapos 2",
+            "image": "/online/ritapos/images/banner-2.jpg"
+          },
+          {
+            "caption": "Ritapos 1",
+            "image": "/online/ritapos/images/banner-1.jpg"
+          }
+        ]
+      },
       "aboutUs": {
         "title": "About us",
-        "imageUrl": "/online/pablo/images/about-us.jpg",
+        "imageUrl": "/online/ritapos/images/about-us.jpg",
         "paragraphs": [
           {
             "title": "Kahvenin Ötesinde Bir Deneyim",
