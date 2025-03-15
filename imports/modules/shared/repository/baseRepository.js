@@ -133,7 +133,7 @@ export class BaseRepository {
    * @param document {object}
    * @returns {string}
    */
-  insert(document) {;
+  insert(document) {
     document = {...document, ...{organizationId: Meteor.settings.public.app._id}}
     return this._collection.insert(document);
   }
@@ -196,7 +196,7 @@ export class BaseRepository {
    */
   async updateAsync(selector, updateObject, options = null) {
     updateObject.$set = {...updateObject.$set, ...{organizationId: Meteor.settings.public.app._id}}
-    return this._collection.updateAsync(selector, updateObject, options);
+    return this._collection.update(selector, updateObject, options);
   }
 
   /**
@@ -216,7 +216,7 @@ export class BaseRepository {
    * @return {Promise<number>}
    */
   async updateManyAsync(selector, updateObject) {
-    return this._collection.updateAsync(selector, updateObject, {multi: true});
+    return this._collection.update(selector, updateObject, {multi: true});
   }
 
   /**

@@ -42,6 +42,7 @@
         "languageCode": "tr-TR",
         "languageLabel": "Türkçe"
       }],
+      "showScratchCard": true,
       "showMobileNavigation": true,
       "customIcons": [
         "campaign",

@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "MONGO_URL=mongodb://localhost:27017/saas meteor --exclude-archs web.browser.legacy,web.cordova --settings settings.json --port 3001",
+    "start-rewarita": "MONGO_URL=mongodb://localhost:27017/saas meteor --exclude-archs web.browser.legacy,web.cordova --settings settings.rewarita.json --port 3001",
     "simulate-production": "MONGO_URL=mongodb://localhost:27017/saas meteor -s settings.json --port 3001 --production",
     "start-warn-old-api": "MONGO_URL=mongodb://localhost:27017/saas WARN_WHEN_USING_OLD_API=true meteor --exclude-archs web.browser.legacy,web.cordova --settings settings.json --port 3001",
     "start-verbose": "MONGO_URL=mongodb://localhost:27017/saas NODE_OPTIONS=--trace-warnings meteor -s settings.json --port 3001 --verbose",
