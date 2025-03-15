@@ -1,16 +1,18 @@
-import {Button} from 'flowbite-react';
-import {Log} from "meteor/logging";
-import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
-import {franchisesMethod} from "../../../../imports/modules/app/stores/franchisesMethod";
-import {H2} from "../../components/heading/Headings";
-import {Icon} from "../../components/icon/Icon";
+import { Button } from 'flowbite-react';
+import { Log } from "meteor/logging";
+import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+import { franchisesMethod } from "../../../../imports/modules/app/stores/franchisesMethod";
+import FloatingInput from '../../components/form/FloatingInput';
+import { H2 } from "../../components/heading/Headings";
+import { Icon } from "../../components/icon/Icon";
 import Map from '../../components/map/Map';
-import {useTranslator} from "../../providers/i18n";
-import {useStoreStore} from "../../stores/useStoreStore";
-import {SelectedStore} from "./SelectedStore";
-import {StoreDetailsModal} from "./StoreDetailsModal";
-import {StoreMenuModal} from "./StoreMenuModal";
+import { useTranslator } from "../../providers/i18n";
+import { useStoreStore } from "../../stores/useStoreStore";
+import { SelectedStore } from "./SelectedStore";
+import { StoreDetailsModal } from "./StoreDetailsModal";
+import { StoreMenuModal } from "./StoreMenuModal";
+
 
 export const Stores = () => {
   const t = useTranslator();
@@ -18,6 +20,7 @@ export const Stores = () => {
   const {links} = Meteor.settings.public.app;
 
   const {stores, setStores, selectedStore, setSelectedStore} = useStoreStore();
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchMembers = async () => {
@@ -34,6 +37,7 @@ export const Stores = () => {
           a.name.localeCompare(b.name, 'tr', {sensitivity: 'base'})
         );
 
+        console.log(sortedStores)
         setStores(sortedStores)
       })
       .catch(error => {
@@ -55,6 +59,11 @@ export const Stores = () => {
     setSelectedStore(store);
   };
   /** endregion */
+
+  // Filter stores based on search query
+  const filteredStores = stores?.filter(store => 
+    store.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
@@ -79,7 +88,19 @@ export const Stores = () => {
           </Link> : ''
         }
 
-        {stores && stores?.map(store => (
+        {/* Search Input */}
+        <div className="mb-4">
+          <FloatingInput
+            id="storeSearch"
+            type="text"
+            placeholder={`${t('Search stores')}...`}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full"
+          />
+        </div>
+
+        {filteredStores && filteredStores?.map(store => (
           <div key={store._id} className="m-border rounded-lg p-4 shadow-md flex items-start space-x-4">
             <div className="w-full">
               <h3 className="m-title text-xl uppercase font-semibold mb-4">{store.name}</h3>
@@ -88,28 +109,35 @@ export const Stores = () => {
                 <Icon icon="store" className="text-primary-600 mr-2"/>
                 <span className={"text-gray-500"}>{store.street} {store.city}/{store.country}</span>
               </div>
-              <div className="mb-2">
+              <div className="mb-5">
                 <Icon icon="phone" className="text-primary-600 mr-2"/>
-                <span className={"text-gray-500"}>{store.phone}</span>
+                <span className={"text-gray-500"}><a href={`tel:${store?.phone || store?.commercial?.authorizedPhone}`}>{store?.phone || store?.commercial?.authorizedPhone}</a></span>
               </div>
 
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 mb-2">
                 <Button color="secondary" onClick={() => handleOpenDetailsModal(store)} className="flex-1 flex items-center justify-center">
                   <Icon icon="store" className='mr-1'/>
+                  <span className="inline-flex items-center">{t('Details')}</span>
                 </Button>
-                <Button color="primary" onClick={() => handleOpenMenuModal(store)} className="flex-1 flex items-center justify-center">
-                  <Icon icon="utensils" className="mr-1"/>
-                  {t('Menu')}
+                <Button color="primary" onClick={() => handleOpenMenuModal(store)} className="flex-1 flex items-center justify-center gap-2">
+                  <Icon icon="utensils" className="flex-shrink-0 mr-1"/>
+                  <span className="inline-flex items-center">{t('Menu')}</span>
                 </Button>
               </div>
-            </div>
 
-            {/* Map Component */}
-            {store.location?.latitude !== undefined && store.location?.longitude !== undefined && (
-              <div className="sm:w-1/3 w-full h-48 m-border rounded-lg overflow-hidden border">
-                <Map markers={[{title: store.title, latitude: store.location.latitude, longitude: store.location.longitude}]} zoomControls={false}/>
-              </div>
-            )}
+              {/* Map Component */}
+              {store?.location !== undefined && (
+                <div className="w-full h-48 m-border rounded-lg overflow-hidden border">
+                  {/* Parse location string from format "latitude,longitude" */}
+                  {(() => {
+                    const [latitude, longitude] = store.location.split(',').map(coord => parseFloat(coord));
+                    return (
+                      <Map markers={[{title: store.name, latitude, longitude}]} zoomControls={false}/>
+                    );
+                  })()}
+                </div>
+              )}
+            </div>
           </div>
         ))}
       </div>

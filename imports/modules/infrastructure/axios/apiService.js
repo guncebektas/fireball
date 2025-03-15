@@ -71,11 +71,11 @@ export class ApiService {
 
   _handleError(error) {
     if (error.code === 'ECONNABORTED') {
-      console.error('Request timeout:', error.message);
+      Log.error('Request timeout:', error.message);
     } else if (error.response) {
-      console.error('Server error:', error.response.status, error.response.data);
+      Log.error('Server error:', error.response.status, error.response.data);
     } else {
-      console.error('Network error:', error.message);
+      Log.error('Network error:', error.message);
     }
 
     throw error;

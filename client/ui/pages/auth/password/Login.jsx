@@ -1,12 +1,12 @@
-import React, {useRef, useState} from 'react';
-import {Button, FloatingLabel, Label, Modal, TextInput} from 'flowbite-react';
-import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
-import {useTranslator} from "../../../providers/i18n";
-import {Alert} from "../../../components/alert/Alert"
-import {LoginWithGoogle} from "../services/LoginWithGoogle";
-import {Log} from "meteor/logging";
+import { Button, Label, Modal, TextInput } from 'flowbite-react';
+import { Log } from "meteor/logging";
+import React, { useRef, useState } from 'react';
+import { Alert } from "../../../components/alert/Alert";
 import FloatingInput from "../../../components/form/FloatingInput";
 import FloatingPasswordInput from "../../../components/form/FloatingPasswordInput";
+import { useTranslator } from "../../../providers/i18n";
+import { LoginWithGoogle } from "../services/LoginWithGoogle";
+import { STATE_AUTH_PASSWORD_FORM } from "./enums/state.js";
 
 export const Login = ({onStateChange}) => {
   const t = useTranslator();
