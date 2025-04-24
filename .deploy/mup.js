@@ -31,10 +31,10 @@ module.exports = {
       serverOnly: true,
       // Set to true to skip building mobile apps
       // but still build the web.cordova architecture. (recommended)
-      server: 'https://rewarita.ritapos.com'
+      server: 'https://pablo.ritapos.com'
     },
     env: {
-      ROOT_URL: 'https://rewarita.ritapos.com',
+      ROOT_URL: 'https://pablo.ritapos.com',
       MONGO_URL: 'mongodb://rewarita:xer78pDeneme99*@178.62.199.21:27017,128.140.14.197:27017,88.198.201.90:27017/rewarita?replicaSet=rs0'
     },
     // lets you define which port to check after the deployment process, if it
