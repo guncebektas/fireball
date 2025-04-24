@@ -11,7 +11,7 @@ export const LoginWithGoogle = () => {
   const handleGoogleLogin = () => {
     Meteor.loginWithGoogle({
       requestPermissions: ['email'],
-      loginStyle: 'popup'
+      loginStyle: 'redirect'
     });
   };
 
