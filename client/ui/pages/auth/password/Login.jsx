@@ -40,7 +40,7 @@ export const Login = ({onStateChange}) => {
           setOpenModal(true)
         } else {
           setOpenAlert(true)
-          setErrorMessage(error.reason)
+          setErrorMessage(t(`Something went wrong. Please check your credentials`))
         }
 
         return;
@@ -97,8 +97,8 @@ export const Login = ({onStateChange}) => {
 
         <div className="bg-white dark:bg-gray-900 py-8 px-4 mt-8 shadow sm:rounded-lg sm:px-10">
           <div>
-            <Alert show={openAlert} color="failure" iconName="warning">
-              <span className="font-medium">{t('Error')}:</span> {errorMessage}
+            <Alert show={openAlert} color="failure" iconName="warning" className="mb-3">
+              <span className="font-medium">{t('Error')}:</span> {t(errorMessage)}
             </Alert>
 
             <form className="space-y-6 mb-5" onSubmit={handleLogin}>
