@@ -3,7 +3,7 @@ import {TICKET_PUBLICATION} from "../enums/publication.js";
 import {check} from "meteor/check";
 import {ticketRepository} from "../ticketRepository.js";
 
-Meteor.publish.stream(TICKET_PUBLICATION.ONE, function (ticketId) {
+Meteor.publish(TICKET_PUBLICATION.ONE, function (ticketId) {
   check(ticketId, String);
 
   if (!this.userId) {
@@ -13,7 +13,7 @@ Meteor.publish.stream(TICKET_PUBLICATION.ONE, function (ticketId) {
   return ticketRepository.find({_id: ticketId});
 });
 
-Meteor.publish.stream(TICKET_PUBLICATION.ALL, function () {
+Meteor.publish(TICKET_PUBLICATION.ALL, function () {
   if (!this.userId) {
     return this.ready();
   }
