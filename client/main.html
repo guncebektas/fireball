@@ -1,15 +1,15 @@
 <head>
-  <title>Rewarita</title>
+  <title>Fireball</title>
   <meta charset="utf-8"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-  <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
   <meta name="mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
 
   <link rel="manifest" href="/manifest.json?v=4"/>
 
-  <link rel="shortcut icon" type="image/png" href="/online/pablo/icons/favicon-24.png?v=3" />
-  <link rel="shortcut icon" type="image/x-icon" href="/online/pablo/icons/favicon-24.png?v=3" />
+  <link rel="shortcut icon" type="image/png" href="/online/pablo/icons/favicon-24.png?v=4"/>
+  <link rel="shortcut icon" type="image/x-icon" href="/online/pablo/icons/favicon-24.png?v=4"/>
   <script>
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -68,13 +68,13 @@
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
   <script>
     window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
+    OneSignalDeferred.push(async function (OneSignal) {
       await OneSignal.init({
         appId: "bd988c85-1c7c-4d60-bc0a-3ce819d25bc3",
         safari_web_id: "web.onesignal.auto.253751a8-ac24-4181-97da-883dbdadac49",
         notifyButton: {
           enable: true,
-        },
+        }
       });
     });
   </script>
