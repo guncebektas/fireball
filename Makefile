@@ -10,4 +10,4 @@ run-simple-example:
 
 run:
     @echo Running application with external mongodb
-    MONGO_URL=mongodb://localhost:27017/saas meteor --exclude-archs web.browser.legacy,web.cordova --settings settings.json --port 3001
+    MONGO_URL=mongodb://localhost:27017/fireball meteor --exclude-archs web.browser.legacy,web.cordova --settings settings.json --port 3001
