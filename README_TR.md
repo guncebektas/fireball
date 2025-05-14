@@ -14,7 +14,9 @@ Meteor.js 'e yaklaşımımızda bazı küçük farklılıklar var. Ancak Meteor.
 - [Docker](https://docs.docker.com/install) ve [Docker Compose](https://docs.docker.com/compose/install/) kurulmuş ve çalışır olması gerekir.
 
 ## Kurulum
-İlk olarak depoyu klonlayın ve settings,example.json dosyasından kendi settings.json dosyanızı oluşturun.
+İlk olarak repoyu klonlayın ve `settings,example.json` dosyasından kendi `settings.json` dosyanızı oluşturun.
+Sonrasında `/ui/client/main.html` dosyasını düzenleyin.
+Son olarakta `public/online/` klasörüne yeni görsellerini tanımlayınç
 
 ### Geliştirici ortamı
 Geliştirici ortamı için Mongodb (replica set) ve redis gereklidir.
