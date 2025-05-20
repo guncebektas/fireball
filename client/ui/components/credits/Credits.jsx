@@ -10,7 +10,7 @@ export const Credits = () => {
           target="_blank"
           className="float-right align-bottom"
         >
-          <img src="https://app.ritapos.com/logo.png" alt="Ritapos" width="36" className="float-right"/>
+          <img src="https://app.ritapos.com/logo.png?v=2" alt="Ritapos" width="65" className="float-right" style={{padding: '1px 0 0 4px'}}/>
         </a>
       </p>
     </section>
