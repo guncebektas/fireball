@@ -175,6 +175,7 @@
     "rssUrl": "https://sports.yahoo.com/rss/"
   },
   "private": {
+    "token": "xxx",
     "remoteServiceUrls": {
       "ritapos": "https://app.ritapos.com"
     },
