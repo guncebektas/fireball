@@ -200,6 +200,9 @@
   "High": "Yüksek",
   "Medium": "Orta",
   "Low": "Düşük",
+  "Suggestion": "Öneri",
+  "Complaint": "Şikayet",
+  "Job application": "İş başvurusu",
   "Message": "Mesaj",
   "Response": "Cevap"
 }
