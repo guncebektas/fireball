@@ -8,6 +8,8 @@ export const useWalletData = () => {
 
   const refreshWalletData = async () => {
     try {
+      await userWalletMethod.postCustomer();
+
       const response = await userWalletMethod.getCustomer();
       if (response.status) {
         setStampCount(response.data.stampCount);
@@ -27,4 +29,4 @@ export const useWalletData = () => {
   }, []);
 
   return { refreshWalletData, balance, addMoney };
-}; 
+};

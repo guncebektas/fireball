@@ -12,6 +12,14 @@ export const userWalletMethod = {
     }
   }),
 
+  postCustomer: createMethod({
+    name: USER_WALLET_METHOD.POST_CUSTOMER,
+    serverOnly: true,
+    async run() {
+      return userWalletService.postCustomer(this.userId);
+    }
+  }),
+
   increaseCustomerStamp: createMethod({
     name: USER_WALLET_METHOD.INCREASE_STAMP_COUNT,
     schema: z.object({
