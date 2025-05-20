@@ -6,6 +6,7 @@ import {profileOtp} from "./schemas/profileOtp";
 import {profilePreferences} from "./schemas/profilePreferences";
 import {USER_PROFILES_METHOD} from "./enums/method";
 import {profileBillingDetails} from "./schemas/profileBillingDetails";
+import {oneRowSchema} from "../../../shared/schemas/oneRowSchema";
 
 export const userProfilesMethods = {
   updateDetails: createMethod({
@@ -48,5 +49,13 @@ export const userProfilesMethods = {
     async run({ fileId }) {
       return userProfileService.saveProfilePictureId(fileId);
     }
-  })
+  }),
+
+  resetScratchedAt: createMethod({
+    name: USER_PROFILES_METHOD.RESET_SCRATCHED_AT,
+    schema: oneRowSchema,
+    async run({_id}) {
+      return userProfileService.resetScratchedAt(_id);
+    }
+  }),
 }
