@@ -22,7 +22,7 @@ export const StoreDetailsModal = ({store, isOpen, onClose}) => {
         </div>
         <div className="mb-2">
           <Icon icon="phone" className="text-primary-600 mr-2"/>
-          <span className={"text-gray-500"}>{store.phone}</span>
+          <span className={"text-gray-500"}><a href={`tel:${store?.phone || store?.commercial?.authorizedPhone}`}>{store?.phone || store?.commercial?.authorizedPhone}</a></span>
         </div>
 
         <div className="mb-4">
