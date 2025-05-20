@@ -41,7 +41,7 @@ export class ApiService {
 
     // If no contract is found, return the raw response data without validation
     if (!contract) {
-      Log.debug(`The response has no contract so will return data directly`)
+      Log.debug(`The response of ${url} has no contract so will return data directly`)
       return response.data;
     }
 
@@ -50,7 +50,7 @@ export class ApiService {
       return contract.parse(response);
     } catch (validationError) {
       if (validationError instanceof ZodError) {
-        console.error('Response validation failed:', validationError.errors);
+        Log.error('Response validation failed:', validationError.errors);
         throw new Error('Invalid response structure');
       }
       throw validationError;
