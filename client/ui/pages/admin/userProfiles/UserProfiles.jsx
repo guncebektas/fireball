@@ -3,11 +3,12 @@ import {H2} from "../../../components/heading/Headings.jsx";
 import {useTracker} from "meteor/react-meteor-data";
 import DataGrid from '../../../components/dataGrid/DataGrid'; // Import the new DataGrid component
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEdit, faUser} from '@fortawesome/free-solid-svg-icons';
+import {faEdit, faRefresh, faUser} from '@fortawesome/free-solid-svg-icons';
 import {ChangePasswordModal} from "./ChangePasswordModal";
 import {userProfileModule} from "../../../../../imports/modules/app/user/userProfiles/userProfileModule";
 import {useTranslator} from "../../../providers/i18n";
 import {userRolesMethods} from "../../../../../imports/modules/app/user/userRoles/userRolesMethods";
+import {userProfilesMethods} from "../../../../../imports/modules/app/user/userProfiles/userProfileMethod";
 
 export const UserProfiles = () => {
   const t = useTranslator();
@@ -22,7 +23,7 @@ export const UserProfiles = () => {
     {key: 'firstname', label: 'First name'},
     {key: 'lastname', label: 'Last name'},
     {key: 'gender', label: 'Gender'},
-    {key: 'phone', label: 'Phone number'},
+    {key: 'phone', label: 'Phone number'}
   ];
 
   // Track items and loading state
@@ -35,6 +36,11 @@ export const UserProfiles = () => {
     };
   });
 
+  const handleResetScratchedAt = async (_id) => {
+    setSelectedUserId(_id);
+    await userProfilesMethods.resetScratchedAt({_id});
+  };
+
   const handleSetRoleManager = async (_id) => {
     setSelectedUserId(_id);
     await userRolesMethods.setAsManager({_id});
@@ -46,6 +52,11 @@ export const UserProfiles = () => {
   };
 
   const actions = [{
+    label: t('Reset scratched at'),
+    icon: () => <FontAwesomeIcon icon={faRefresh}/>,
+    classes: 'bg-blue-500 hover:bg-blue-600',
+    onClick: handleResetScratchedAt,
+  },{
     label: t('Set as manager'),
     icon: () => <FontAwesomeIcon icon={faUser}/>,
     classes: 'bg-blue-500 hover:bg-blue-600',

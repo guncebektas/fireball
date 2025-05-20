@@ -3,5 +3,6 @@ export const USER_PROFILES_METHOD = {
   UPDATE_PREFERENCES: 'userProfiles.updatePreferences',
   UPDATE_BILLING_DETAILS: 'userProfiles.updateBillingDetails',
   SAVE_OTP: 'userProfiles.saveOtp',
-  SAVE_PROFILE_PICTURE: 'userProfiles.saveProfilePicture'
+  SAVE_PROFILE_PICTURE: 'userProfiles.saveProfilePicture',
+  RESET_SCRATCHED_AT: 'userProfiles.resetScratchedAt',
 }

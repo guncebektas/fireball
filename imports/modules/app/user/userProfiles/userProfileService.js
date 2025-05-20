@@ -66,6 +66,16 @@ class UserProfileService extends BaseService {
     });
   }
 
+  async resetScratchedAt(userId) {
+    return this.repository.updateAsync({
+      _id: userId
+    }, {
+      $unset: {
+        scratchedAt: ''
+      }
+    });
+  }
+
   async updatePayload(userId, payload) {
     return this.repository.updateAsync({
       _id: userId
