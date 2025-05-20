@@ -2,6 +2,7 @@ import React from 'react';
 import {ScratchCard} from 'next-scratchcard';
 import {Table} from 'flowbite-react';
 import {WalletIcon} from "../../../pages/wallet/WalletIcon";
+import {Meteor} from "meteor/meteor";
 
 const ScratchCardContent = ({shuffledNumbers, handleComplete}) => (
   <div className="scratch-card p-2">
@@ -16,7 +17,7 @@ const ScratchCardContent = ({shuffledNumbers, handleComplete}) => (
         <img
           width={150}
           height={150}
-          src={`https://via.placeholder.com/150x150`}
+          src={`/online/${Meteor.settings.public.app.brand}/images/scratch-card-bg.png`}
           alt="Background"
         />
         <Table className="w-full scratch-card-reward-table">
