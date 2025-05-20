@@ -70,7 +70,17 @@ export class BaseRepository {
   async findOneAsync(selector = {}, options = {}) {
     // XXX: limit data with organizationId for publications
     if (Meteor.isServer) {
-      selector = {...selector, ...{organizationId: Meteor.settings.public.app._id}}
+      if (typeof selector === 'string') {
+        selector = {
+          ...{_id: selector},
+          ...{organizationId: Meteor.settings.public.app._id}
+        }
+      } else {
+        selector = {
+          ...selector,
+          ...{organizationId: Meteor.settings.public.app._id}
+        }
+      }
     }
 
     return this._collection.findOneAsync(selector, options);
@@ -253,6 +263,7 @@ export class BaseRepository {
   async removeAsync(selector) {
     return this._collection.removeAsync(selector);
   }
+
   /** endregion remove */
 
   /**
