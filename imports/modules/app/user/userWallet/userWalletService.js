@@ -16,6 +16,22 @@ class UserWalletService extends ApiServiceInstance {
     return this.get(endpoint);
   }
 
+  async postCustomer(userId) {
+    const endpoint = `${this.url}${userId}/create`
+    Log.debug(`Sending customer with id ${userId}`);
+    const user = await this.userProfileRepository.findOneAsync(userId);
+
+    return this.post(endpoint, {
+      token: Meteor.settings.private.token,
+      _id: user._id,
+      storeId: Meteor.settings.public.app._id,
+      name: user.firstname || '-',
+      surname: user.lastname || '-',
+      phone: user.phoneNumber || '-',
+      email: user.email || '-'
+    });
+  }
+
   async increaseStampCount(userId, amount) {
     const _self = this;
 
