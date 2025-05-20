@@ -12,7 +12,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/online/pablo/icons/favicon-24.png?v=4"/>
   <script>
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.getItem('flowbite-theme-mode') === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
@@ -81,7 +81,7 @@
 </head>
 
 <body>
-<div id="react-target"></div>
+<div id="react-target" class="bg-white dark:bg-gray-900 min-h-screen"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
