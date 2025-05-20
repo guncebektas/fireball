@@ -143,10 +143,10 @@ table thead th.datatable-descending::after {
 }
 
 .scratch-card {
-  background-image: url("/online/images/scratch-card.svg");
+  background-image: url("/online/pablo/images/scratch-card.svg?v=2");
   background-repeat: no-repeat;
   background-size: contain;
-  min-height: 200px;
+  min-height: 205px;
 }
 
 .scratch-card-content {
@@ -162,4 +162,8 @@ table thead th.datatable-descending::after {
 
 .grecaptcha-badge {
   visibility: hidden !important;
+}
+
+.onesignal-bell-container {
+  display: none;
 }
