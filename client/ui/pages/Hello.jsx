@@ -19,7 +19,7 @@ export const Hello = () => {
   const {homepage} = Meteor.settings.public.pages;
 
   return (
-    <div className="bg-background-image">
+    <div className="bg-background-image dark:bg-gray-800">
       <div className="p-3">
         <div className="grid mb-6">
           <div className={"flex items-center justify-center opacity-50"}>
