@@ -16,7 +16,7 @@ export const Header = ({ onToggleSidebar }) => {
   const t = useTranslator();
 
   useEffect(() => {
-    const theme = localStorage.getItem('color-theme');
+    const theme = localStorage.getItem('flowbite-theme-mode');
     const htmlElement = document.querySelector('html');
 
     if (theme === 'dark') {
@@ -37,7 +37,7 @@ export const Header = ({ onToggleSidebar }) => {
       for (const mutation of mutationsList) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
           const isDarkMode = htmlElement.classList.contains('dark');
-          // localStorage.setItem('color-theme', isDarkMode ? 'dark' : 'light');
+          localStorage.setItem('flowbite-theme-mode', isDarkMode ? 'dark' : 'light');
         }
       }
     };
@@ -70,7 +70,6 @@ export const Header = ({ onToggleSidebar }) => {
               <FontAwesomeIcon icon={faSearch} />
             </button>
           )}
-          <DarkThemeToggle />
           <HeaderNotifications />
           <HeaderOrganization />
           <div className="header-dropdown-wrapper p-2.5">

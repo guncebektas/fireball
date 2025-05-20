@@ -33,6 +33,12 @@ export const HeaderProfile = () => {
         lastname: me.lastname || '',
         pictureUrl: me.pictureUrl || ''
       });
+
+      if (me.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
   }, [user]);
 
@@ -93,7 +99,6 @@ export const HeaderProfile = () => {
             </a>
           </Dropdown.Item> : ''
       }
-
 
       <Dropdown.Divider className="border-gray-200 dark:border-gray-600"/>
 

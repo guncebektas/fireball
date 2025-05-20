@@ -7,7 +7,7 @@ import {userProfileRepository} from '../../../../imports/modules/app/user/userPr
 import {USER_PROFILE_PUBLICATION} from '../../../../imports/modules/app/user/userProfiles/enums/publication';
 import {useTranslator} from "../../providers/i18n";
 import SubmitButton from "../../components/buttons/SubmitButton";
-import {H2} from "../../components/heading/Headings"; // Import spinner icon
+import {H2} from "../../components/heading/Headings";
 
 export const ProfilePreferences = () => {
   const t = useTranslator();
@@ -18,16 +18,15 @@ export const ProfilePreferences = () => {
 
   const user = useTracker(() => Meteor.user(), []);
 
-  useTracker(() => {
-    const subscription = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
-    if (subscription.ready()) {
-      const userProfile = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
-      const theme = userProfile?.theme || 'light';
+  const subscription = Meteor.subscribe(USER_PROFILE_PUBLICATION.ME);
+  if (subscription.ready()) {
+    const me = userProfileRepository.findOne({_id: Meteor.userId()}) || {};
+    useTracker(() => {
       setFormData({
-        theme
+        theme: me?.theme || 'light'
       });
-    }
-  }, [user]);
+    }, [user]);
+  }
 
   const handleChange = (e) => {
     const {id, value} = e.target;
@@ -42,7 +41,7 @@ export const ProfilePreferences = () => {
       theme: formData.theme,
     })
       .then(response => {
-        console.log(response);
+        localStorage.setItem('flowbite-theme-mode', formData.theme);
         // ToastSuccess();
       })
       .catch(error => {
