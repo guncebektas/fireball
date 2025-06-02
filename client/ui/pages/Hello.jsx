@@ -45,13 +45,13 @@ export const Hello = () => {
         <StoryBoard />
       </section>
 
-      <section className="bg-secondary-50 dark:bg-gray-900 pt-4 px-4 pb-0">
+      <section className="bg-secondary-50 dark:bg-gray-900 pt-4 px-4 pb-10">
         <div className="grid gap-3">
           <H5 text={'Champaigns'} className={'m-text text-primary-600 text-lg'}/>
 
-          <Slider carousel={homepage.carousel1} showCaption={false}/>
+          <Slider carousel={homepage.carousel1} showCaption={true}/>
 
-          <Slider carousel={homepage.carousel2} interval={5000} showCaption={false}/>
+          <Slider carousel={homepage.carousel2} interval={5000} showCaption={true}/>
         </div>
       </section>
     </div>

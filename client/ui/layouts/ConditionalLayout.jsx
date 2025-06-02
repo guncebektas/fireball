@@ -1,25 +1,25 @@
-import { Button, Modal, Navbar } from "flowbite-react";
-import { useTracker } from "meteor/react-meteor-data";
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-import { Router } from "../../routes/Router.js";
-import { useRouteUtility } from "../../shared/utilities/RouteUtility.js";
-import { Credits } from "../components/credits/Credits";
-import { Header } from "../components/header/Header.jsx";
-import { LanguageSelector } from "../components/languageSelector/LanguageSelector";
-import { CartModal } from "../components/modals/CartModal";
-import { Nav } from "../components/nav/Nav.jsx";
-import { NavMobile } from "../components/nav/NavMobile";
-import { AboutUs } from "../pages/aboutUs/AboutUs";
-import { Auth } from "../pages/auth/Auth.jsx";
-import { useTranslator } from "../providers/i18n";
-
+import {Button, Modal, Navbar} from "flowbite-react";
+import {useTracker} from "meteor/react-meteor-data";
+import React, {useState} from 'react';
+import {Link} from "react-router-dom";
+import {Router} from "../../routes/Router.js";
+import {useRouteUtility} from "../../shared/utilities/RouteUtility.js";
+import {Credits} from "../components/credits/Credits";
+import {Header} from "../components/header/Header.jsx";
+import {LanguageSelector} from "../components/languageSelector/LanguageSelector";
+import {StoreMenuModal} from "../components/modals/StoreMenuModal";
+import {CartModal} from "../components/modals/CartModal";
+import {Nav} from "../components/nav/Nav.jsx";
+import {NavMobile} from "../components/nav/NavMobile";
+import {AboutUs} from "../pages/aboutUs/AboutUs";
+import {Auth} from "../pages/auth/Auth.jsx";
+import {useTranslator} from "../providers/i18n";
 
 const InnerLayout = () => {
   const t = useTranslator();
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const { isHomepage } = useRouteUtility();
+  const {isHomepage} = useRouteUtility();
 
   const handleOpenAboutModal = () => {
     setIsAboutModalOpen(true);
@@ -35,7 +35,9 @@ const InnerLayout = () => {
 
   const {name, logo} = Meteor.settings.public.app;
 
-  const user = useTracker(() => { return Meteor.userId() });
+  const user = useTracker(() => {
+    return Meteor.userId()
+  });
 
   if (user) {
     return (
@@ -51,6 +53,7 @@ const InnerLayout = () => {
         </main>
 
         <NavMobile/>
+        <StoreMenuModal/>
         <CartModal/>
 
         <Credits/>
@@ -82,7 +85,7 @@ const InnerLayout = () => {
           <Auth/>
         </div>
       </main>
-      
+
       <Modal dismissible show={isAboutModalOpen} onClose={handleCloseAboutModal} size="lg">
         <Modal.Header>{t('About')}</Modal.Header>
         <Modal.Body className="m-modal-body">

@@ -1,25 +1,24 @@
-import { Button } from 'flowbite-react';
-import { Log } from "meteor/logging";
-import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
-import { franchisesMethod } from "../../../../imports/modules/app/stores/franchisesMethod";
+import {Button} from 'flowbite-react';
+import {Log} from "meteor/logging";
+import React, {useEffect, useState} from 'react';
+import {Link} from "react-router-dom";
+import {franchisesMethod} from "../../../../imports/modules/app/stores/franchisesMethod";
 import FloatingInput from '../../components/form/FloatingInput';
-import { H2 } from "../../components/heading/Headings";
-import { Icon } from "../../components/icon/Icon";
+import {H2} from "../../components/heading/Headings";
+import {Icon} from "../../components/icon/Icon";
 import Map from '../../components/map/Map';
-import { useTranslator } from "../../providers/i18n";
-import { useStoreStore } from "../../stores/useStoreStore";
-import { SelectedStore } from "./SelectedStore";
-import { StoreDetailsModal } from "./StoreDetailsModal";
-import { StoreMenuModal } from "./StoreMenuModal";
-
+import {useTranslator} from "../../providers/i18n";
+import {useStoreStore} from "../../stores/useStoreStore";
+import {SelectedStore} from "./SelectedStore";
+import {StoreDetailsModal} from "./StoreDetailsModal";
+import {HtmlUtility} from "../../../shared/utilities/HtmlUtility";
 
 export const Stores = () => {
   const t = useTranslator();
 
   const {links} = Meteor.settings.public.app;
 
-  const {stores, setStores, selectedStore, setSelectedStore} = useStoreStore();
+  const {stores, setStores, selectedStore, setSelectedStore, openMenuModal, closeMenuModal} = useStoreStore();
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
@@ -37,7 +36,6 @@ export const Stores = () => {
           a.name.localeCompare(b.name, 'tr', {sensitivity: 'base'})
         );
 
-        console.log(sortedStores)
         setStores(sortedStores)
       })
       .catch(error => {
@@ -47,7 +45,6 @@ export const Stores = () => {
 
   /** region modals */
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
-  const [openMenuModal, setOpenMenuModal] = useState(false);
 
   const handleOpenDetailsModal = (store) => {
     setOpenDetailsModal(true);
@@ -55,22 +52,22 @@ export const Stores = () => {
   };
 
   const handleOpenMenuModal = (store) => {
-    setOpenMenuModal(true);
+    openMenuModal(true);
     setSelectedStore(store);
   };
   /** endregion */
 
-  // Filter stores based on search query
-  const filteredStores = stores?.filter(store => 
-    store.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+    // Filter stores based on search query
+  const filteredStores = stores?.filter(store =>
+      store.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
   return (
     <>
       <H2 text="Stores"/>
 
-      <div className="mt-6 space-y-6">
-        <SelectedStore/>
+      <div className="my-6 space-y-6">
+        <SelectedStore showIcon={true}/>
 
         {links.ecommerce ?
           <Link to={links.ecommerce} target="_blank">
@@ -107,11 +104,16 @@ export const Stores = () => {
 
               <div className="mb-2">
                 <Icon icon="store" className="text-primary-600 mr-2"/>
-                <span className={"text-gray-500"}>{store.street} {store.city}/{store.country}</span>
+                <span className={"text-gray-500"}>
+                  {HtmlUtility.CapitalizeWordLetters(store.street)}&nbsp;
+                  {HtmlUtility.CapitalizeWordLetters(store.city)}/
+                  {HtmlUtility.CapitalizeWordLetters(store.country)}
+                </span>
               </div>
+
               <div className="mb-5">
                 <Icon icon="phone" className="text-primary-600 mr-2"/>
-                <span className={"text-gray-500"}><a href={`tel:${store?.phone || store?.commercial?.authorizedPhone}`}>{store?.phone || store?.commercial?.authorizedPhone}</a></span>
+                <span className={"text-gray-500"}><a href={`tel:${HtmlUtility.PadPhoneNumber(store?.phone || store?.commercial?.authorizedPhone)}`}>{HtmlUtility.PadPhoneNumber(store?.phone || store?.commercial?.authorizedPhone, true)}</a></span>
               </div>
 
               <div className="flex space-x-2 mb-2">
@@ -143,7 +145,6 @@ export const Stores = () => {
       </div>
 
       <StoreDetailsModal store={selectedStore} isOpen={openDetailsModal} onClose={() => setOpenDetailsModal(false)}/>
-      <StoreMenuModal store={selectedStore} isOpen={openMenuModal} onClose={() => setOpenMenuModal(false)}/>
     </>
   );
 };

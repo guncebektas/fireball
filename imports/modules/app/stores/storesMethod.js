@@ -24,7 +24,7 @@ export const storesMethod = {
     serverOnly: true,
     async run({_id}) {
       try {
-        return storeService.getProducts(_id);
+        return storeService.getProductsFilteredByImages(_id);
       } catch (error) {
         throw new Meteor.Error(ERROR_CODE["500"].LABEL, ERROR_CODE["500"].DESCRIPTION);
       }
