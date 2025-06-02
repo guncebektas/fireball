@@ -8,5 +8,8 @@ export const useStoreStore = create((set) => ({
   selectedStoreProductCategories: [],
   setSelectedStoreProductCategories: (rows) => set({ selectedStoreProductCategories: rows }),
   selectedStoreProducts: [],
-  setSelectedStoreProducts: (rows) => set({ selectedStoreProducts: rows })
+  setSelectedStoreProducts: (rows) => set({ selectedStoreProducts: rows }),
+  isMenuModalOpen: false,
+  openMenuModal: () => set({ isMenuModalOpen: true }),
+  closeMenuModal: () => set({ isMenuModalOpen: false }),
 }));

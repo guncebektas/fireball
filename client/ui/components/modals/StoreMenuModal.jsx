@@ -5,21 +5,22 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useStoreStore} from "../../stores/useStoreStore";
 import {storesMethod} from "../../../../imports/modules/app/stores/storesMethod";
 import {Log} from "meteor/logging";
-import {WalletIcon} from "../wallet/WalletIcon";
-import CurrencyDisplay from "../../components/currencyDisplay/currencyDiplay";
+import {WalletIcon} from "../../pages/wallet/WalletIcon";
+import CurrencyDisplay from "../currencyDisplay/currencyDiplay";
 import {faCartPlus} from "@fortawesome/free-solid-svg-icons/faCartPlus";
 import {useCartStore} from "../../stores/useCartStore";
-import {CartButton} from "../../components/buttons/CartButton";
+import {CartButton} from "../buttons/CartButton";
 
-export const StoreMenuModal = ({ store, isOpen, onClose }) => {
-  if (!isOpen || !store) return null;
-
+export const StoreMenuModal = () => {
   const t = useTranslator();
   const {
+    selectedStore,
     selectedStoreProductCategories,
     setSelectedStoreProductCategories,
     selectedStoreProducts,
-    setSelectedStoreProducts
+    setSelectedStoreProducts,
+    isMenuModalOpen,
+    closeMenuModal,
   } = useStoreStore();
 
   const pushProduct = useCartStore((state) => state.pushProduct);
@@ -30,7 +31,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
     const fetchProductCategories = async () => {
       try {
         const {_id} = Meteor.settings.public.app;
-        const storeId = _id || store.franchiseId || store._id;
+        const storeId = _id || selectedStore.franchiseId || selectedStore._id;
 
         const categories = await storesMethod.getProductCategories({ _id: storeId });
 
@@ -45,7 +46,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
 
     const fetchProducts = async () => {
       try {
-        const products = await storesMethod.getProducts({ _id: store._id });
+        const products = await storesMethod.getProducts({ _id: selectedStore._id });
         setSelectedStoreProducts(products.data);
       } catch (error) {
         Log.error(error);
@@ -54,7 +55,7 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
 
     fetchProductCategories();
     fetchProducts();
-  }, [store, setSelectedStoreProductCategories, setSelectedStoreProducts]);
+  }, [selectedStore, setSelectedStoreProductCategories, setSelectedStoreProducts]);
 
   // Filter out categories with no products
   const categoriesWithProducts = selectedStoreProductCategories.filter(category =>
@@ -78,9 +79,9 @@ export const StoreMenuModal = ({ store, isOpen, onClose }) => {
   };
 
   return (
-    <Modal dismissible show={isOpen} onClose={onClose}>
+    <Modal dismissible show={isMenuModalOpen} onClose={closeMenuModal}>
       <Modal.Header>
-        {store.name}
+        {selectedStore.name}
       </Modal.Header>
       <Modal.Body className="m-modal-body">
         <div className="absolute top-4 right-16 z-10">

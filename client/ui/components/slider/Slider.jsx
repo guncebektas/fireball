@@ -17,7 +17,7 @@ export const Slider = ({carousel, showCaption = false, indicators = false, inter
 
             {
               showCaption ?
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3 text-center">
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3 text-center text-white fs-normal-l">
                   {t(slide.caption)}
                 </div> : ''
             }

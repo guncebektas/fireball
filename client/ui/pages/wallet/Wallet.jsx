@@ -55,12 +55,17 @@ export const Wallet = ({showBanner = true}) => {
 
   return (
     <div className="flex flex-col space-y-4">
-      <SelectedStore/>
-
       {showBanner ?
-        <div className="mb-3">
-          <Slider carousel={wallet.carousel} showCaption={false} indicators={false}/>
-        </div> : ''
+        <>
+          <SelectedStore showIcon={true}/>
+          <div className="mb-3">
+            <Slider carousel={wallet.carousel} showCaption={false} indicators={false}/>
+          </div>
+        </>
+        :
+        <div className="px-6">
+          <SelectedStore showIcon={false}/>
+        </div>
       }
 
       <ProgressBar/>
@@ -68,7 +73,6 @@ export const Wallet = ({showBanner = true}) => {
       <div className="flex space-x-6 px-6">
         <ScratchCardButton/>
         <QRCodeButton/>
-        <CartButton/>
       </div>
 
       <ScratchCardModal/>

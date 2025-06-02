@@ -18,6 +18,11 @@ class StoreService extends ApiServiceInstance {
     const endpoint = `${this.productsUrl}${storeId}/qr-menu`
     return this.get(endpoint);
   }
+
+  getProductsFilteredByImages(storeId) {
+    const endpoint = `${this.productsUrl}${storeId}/qr-menu?filter=image`;
+    return this.get(endpoint);
+  }
 }
 
 export const storeService = new StoreService();

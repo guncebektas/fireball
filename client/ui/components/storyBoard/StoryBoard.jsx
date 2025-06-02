@@ -5,6 +5,8 @@ import {useEffect} from "react";
 import {storesMethod} from "../../../../imports/modules/app/stores/storesMethod";
 import {Log} from "meteor/logging";
 import {useStoreStore} from "../../stores/useStoreStore";
+import {Meteor} from "meteor/meteor";
+import {HtmlUtility} from "../../../shared/utilities/HtmlUtility";
 
 export const StoryBoard = () => {
   const t = useTranslator();
@@ -18,7 +20,7 @@ export const StoryBoard = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const products = await storesMethod.getProducts({ _id });
+        const products = await storesMethod.getProducts({_id});
 
         const cleanedProducts = products.data.filter(product =>
           product.priceOut > Meteor.settings.public.pages.homepage.storyBoard.filter.price &&
@@ -40,6 +42,26 @@ export const StoryBoard = () => {
     fetchProducts();
   }, [_id, selectedStoreProducts, setSelectedStoreProducts]);
 
+  const imageUrl = url => {
+    return `https://ritapos-files.s3.eu-central-1.amazonaws.com/${url}`;
+  }
+
+  const imageUrlOnError = url => {
+    Log.error(`An error occurred when loading ${imageUrl(url)}`);
+
+    const brand = Meteor.settings.public.app["brand"];
+    return `/online/${brand}/icons/favicon-144.png`;
+  }
+
+  const clearTitle = title => {
+    if (!title) return title;
+
+    const suffixRegex = / (B|Çb|S|M|L|Xl|Xxl)$/i;
+
+    // Then use HtmlUtility to capitalize words properly with Turkish locale support
+    return HtmlUtility.CapitalizeWordLetters(title).replace(suffixRegex, '');
+  };
+
   return (
     <>
       <H5 text={'Have you tried these?'} className={'m-text text-primary-600 text-lg'}/>
@@ -51,14 +73,18 @@ export const StoryBoard = () => {
           >
             <div className="w-[80px] h-[80px] rounded-full overflow-hidden mb-2">
               <img
-                src={product.imageUrl || 'https://placehold.co/80x80'}
+                src={imageUrl(product.imageUrl) || 'https://placehold.co/80x80'}
                 alt={product.title}
                 className="w-full h-full object-cover"
                 draggable="false"
+                onError={(e) => {
+                  e.target.onerror = null; // Prevents infinite loop
+                  e.target.src = imageUrlOnError(product.imageUrl);
+                }}
               />
             </div>
             <span className="m-text text-xs font-medium text-center">
-              {product.title}
+              {clearTitle(product.title)}
             </span>
           </div>
         ))}

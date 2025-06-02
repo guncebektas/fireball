@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Label, Textarea, TextInput} from 'flowbite-react';
+import {Button, Label, Textarea, TextInput} from 'flowbite-react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCreditCard, faMoneyBill, faWallet} from '@fortawesome/free-solid-svg-icons';
 import {useCartStore} from '../../stores/useCartStore';
@@ -11,6 +11,9 @@ export const Checkout = () => {
   const t = useTranslator();
 
   const products = useCartStore((state) => state.products);
+  const groupedProducts = useCartStore((state) => state.groupedProducts);
+  console.log(groupedProducts);
+
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('creditCard');
   const [billingDetails, setBillingDetails] = useState({
     firstName: '',
@@ -38,6 +41,18 @@ export const Checkout = () => {
     console.log('Checkout with payment method:', selectedPaymentMethod);
   };
 
+  const onPayWithCreditCart = () => {
+    alert('Coming soon');
+  }
+
+  const onPlaceOrder = () => {
+    alert('Coming soon');
+  }
+
+  const onPayWithWallet = () => {
+    alert('Coming soon');
+  }
+
   return (
     <div className="container mx-auto pb-12 space-y-8">
       <div className="flex justify-between">
@@ -54,13 +69,14 @@ export const Checkout = () => {
         <H3 text={'Order summary'}/>
 
         <div className="mt-4">
-          {products.map((product) => (
+          {groupedProducts.map((product) => (
             <div key={product.rowNumber} className="flex justify-between items-center mt-2">
-              <p className="m-text">{product.title}</p>
+              <p className="m-text">{product.quantity} x {product.title}</p>
               <CurrencyDisplay price={product.priceOut} currency="TRY" locale="tr-TR"/>
             </div>
           ))}
         </div>
+
         <div className="mt-4 flex justify-between items-center">
           <p className="m-text font-bold">{t('Total')}</p>
           <CurrencyDisplay
@@ -165,25 +181,33 @@ export const Checkout = () => {
             </Label>
           </div>
           {selectedPaymentMethod === 'creditCard' && (
-            <div className="mt-4">
-              <TextInput
-                type="text"
-                placeholder={t('Card number')}
-                className="mb-4"
-                required
-              />
-              <TextInput
-                type="text"
-                placeholder={t('MM/YY')}
-                className="mb-4"
-                required
-              />
-              <TextInput
-                type="text"
-                placeholder="CVV"
-                required
-              />
-            </div>
+            <>
+              <div className="my-4">
+                <TextInput
+                  type="text"
+                  placeholder={t('Card number')}
+                  className="mb-4"
+                  required
+                />
+                <TextInput
+                  type="text"
+                  placeholder={t('MM/YY')}
+                  className="mb-4"
+                  required
+                />
+                <TextInput
+                  type="text"
+                  placeholder="CVV"
+                  required
+                />
+              </div>
+              <Button
+                color="secondary"
+                onClick={() => onPayWithCreditCart()}
+              >
+                {t('Pay now')}
+              </Button>
+            </>
           )}
         </div>
         <div className="mt-4">
@@ -201,6 +225,15 @@ export const Checkout = () => {
               {t('Cash')}
             </Label>
           </div>
+          {selectedPaymentMethod === 'cash' && (
+            <Button
+              color="secondary"
+              className="mt-1"
+              onClick={() => onPlaceOrder()}
+            >
+              {t('Place the order')}
+            </Button>
+          )}
         </div>
         <div className="mt-4">
           <div className="flex items-center">
@@ -217,6 +250,15 @@ export const Checkout = () => {
               {t('Wallet')}
             </Label>
           </div>
+          {selectedPaymentMethod === 'wallet' && (
+            <Button
+              color="secondary"
+              className="mt-1"
+              onClick={() => onPayWithWallet()}
+            >
+              {t('Pay now')}
+            </Button>
+          )}
         </div>
       </div>
     </div>
