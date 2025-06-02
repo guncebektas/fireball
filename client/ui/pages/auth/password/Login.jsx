@@ -40,7 +40,7 @@ export const Login = ({onStateChange}) => {
           setOpenModal(true)
         } else {
           setOpenAlert(true)
-          setErrorMessage(t(`Something went wrong. Please check your credentials`))
+          setErrorMessage(`Something went wrong. Please check your credentials`)
         }
 
         return;
