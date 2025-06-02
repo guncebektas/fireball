@@ -97,22 +97,38 @@
         },
         "carousel1": [
           {
-            "caption": "Ritapos 1",
-            "image": "/online/ritapos/images/banner-1.jpg"
+            "caption": "Pablo 1",
+            "image": "/online/pablo/images/banner-1.jpeg"
           },
           {
-            "caption": "Ritapos 2",
-            "image": "/online/ritapos/images/banner-2.jpg"
+            "caption": "Pablo 2",
+            "image": "/online/pablo/images/banner-2.jpeg"
+          },
+          {
+            "caption": "Pablo 2",
+            "image": "/online/pablo/images/banner-3.jpeg"
+          },
+          {
+            "caption": "Pablo 2",
+            "image": "/online/pablo/images/banner-4.jpeg"
+          },
+          {
+            "caption": "Pablo 2",
+            "image": "/online/pablo/images/banner-5.jpeg"
           }
         ],
         "carousel2": [
           {
-            "caption": "Ritapos 2",
-            "image": "/online/ritapos/images/banner-2.jpg"
+            "caption": "Pablo 2",
+            "image": "/online/pablo/images/banner-6.jpeg"
           },
           {
-            "caption": "Ritapos 1",
-            "image": "/online/ritapos/images/banner-1.jpg"
+            "caption": "Pablo 2",
+            "image": "/online/pablo/images/banner-7.jpeg"
+          },
+          {
+            "caption": "Pablo 2",
+            "image": "/online/pablo/images/banner-8.jpeg"
           }
         ]
       },
