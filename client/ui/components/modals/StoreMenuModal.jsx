@@ -10,6 +10,7 @@ import CurrencyDisplay from "../currencyDisplay/currencyDiplay";
 import {faCartPlus} from "@fortawesome/free-solid-svg-icons/faCartPlus";
 import {useCartStore} from "../../stores/useCartStore";
 import {CartButton} from "../buttons/CartButton";
+import {HtmlUtility} from "../../../shared/utilities/HtmlUtility";
 
 export const StoreMenuModal = () => {
   const t = useTranslator();
@@ -129,9 +130,13 @@ export const StoreMenuModal = () => {
                   </p>
                 </div>
                 <img
-                  src={product.image || 'https://placehold.co/100x100'}
+                  src={HtmlUtility.ImageUrl(product.imageUrl) || 'https://placehold.co/100x100'}
                   alt={product.title}
                   className="ml-4 w-24 h-24 object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = HtmlUtility.ImageUrlOnError(product.imageUrl);
+                  }}
                 />
               </div>
             ))}
