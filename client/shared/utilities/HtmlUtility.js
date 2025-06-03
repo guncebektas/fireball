@@ -1,3 +1,6 @@
+import {Log} from "meteor/logging";
+import {Meteor} from "meteor/meteor";
+
 export class HtmlUtility {
   /**
    * Capitalizes the first letter of each word in a string and makes the rest lowercase.
@@ -23,12 +26,23 @@ export class HtmlUtility {
     if (!phoneNumber) return phoneNumber;
     // Remove any non-digit characters and pad with leading zeros to make it 12 digits
     const cleanedNumber = phoneNumber.replace(/\D/g, '').padStart(11, '0');
-    
+
     // Format the number with spaces
     if (format) {
       return cleanedNumber.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/, '$1($2) $3 $4 $5');
     }
 
     return cleanedNumber;
-  } 
-} 
+  }
+
+  static ImageUrl(url) {
+    return `https://ritapos-files.s3.eu-central-1.amazonaws.com/${url}`;
+  }
+
+  static ImageUrlOnError(url) {
+    Log.error(`An error occurred when loading ${HtmlUtility.ImageUrl(url)}`);
+
+    const brand = Meteor.settings.public.app["brand"];
+    return `/online/${brand}/icons/favicon-144.png`;
+  }
+}
