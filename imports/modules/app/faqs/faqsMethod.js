@@ -12,7 +12,6 @@ export const faqsMethod = {
       return faqService.upsert(object);
     }
   }),
-
   delete: createMethod({
     name: 'faqs.delete',
     schema: oneRowSchema,
@@ -20,7 +19,6 @@ export const faqsMethod = {
       return faqService.delete(_id);
     }
   }),
-
   list: createMethod({
     name: 'faqs.list',
     schema: faqsListSchema,
