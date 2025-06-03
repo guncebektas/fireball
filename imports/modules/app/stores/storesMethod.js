@@ -24,6 +24,19 @@ export const storesMethod = {
     serverOnly: true,
     async run({_id}) {
       try {
+        return storeService.getProducts(_id);
+      } catch (error) {
+        throw new Meteor.Error(ERROR_CODE["500"].LABEL, ERROR_CODE["500"].DESCRIPTION);
+      }
+    }
+  }),
+
+  getProductsFilteredByImages: createMethod({
+    name: STORE_METHOD.GET_PRODUCTS_FILTERED_BY_IMAGES,
+    schema: oneRowSchema,
+    serverOnly: true,
+    async run({_id}) {
+      try {
         return storeService.getProductsFilteredByImages(_id);
       } catch (error) {
         throw new Meteor.Error(ERROR_CODE["500"].LABEL, ERROR_CODE["500"].DESCRIPTION);
