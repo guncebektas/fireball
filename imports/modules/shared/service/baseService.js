@@ -27,4 +27,16 @@ export class BaseService {
       };
     });
   }
+
+  list(selector) {
+    return this.repository.find(selector).fetchAsync();
+  }
+
+  upsert(formData) {
+    return this.repository.upsertAsync(formData);
+  }
+
+  delete(select) {
+    return this.repository.removeAsync(select);
+  }
 }
