@@ -29,6 +29,8 @@ export const StoreMenuModal = () => {
   const [activeTab, setActiveTab] = useState(null);
 
   useEffect(() => {
+    if (!selectedStore) return;
+
     const fetchProductCategories = async () => {
       try {
         const {_id} = Meteor.settings.public.app;
@@ -74,11 +76,12 @@ export const StoreMenuModal = () => {
 
   const onPushToCart = (product) => {
     pushProduct(product); // Add the product to the cart
-    console.log(product);
-
-    console.log(`Product added to cart: ${product._id}`);
+    Log.info(`Product added to cart: ${product._id}`);
   };
 
+  // Early return if no store is selected
+  if (!selectedStore || !isMenuModalOpen) return null;
+  
   return (
     <Modal dismissible show={isMenuModalOpen} onClose={closeMenuModal}>
       <Modal.Header>
