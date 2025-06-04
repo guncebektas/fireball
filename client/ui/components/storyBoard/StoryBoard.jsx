@@ -1,16 +1,12 @@
-import React from 'react';
-import {useTranslator} from "../../providers/i18n";
-import {H5} from "../heading/Headings.jsx";
-import {useEffect} from "react";
-import {storesMethod} from "../../../../imports/modules/app/stores/storesMethod";
-import {Log} from "meteor/logging";
-import {useStoreStore} from "../../stores/useStoreStore";
-import {Meteor} from "meteor/meteor";
-import {HtmlUtility} from "../../../shared/utilities/HtmlUtility";
+import { Log } from "meteor/logging";
+import { Meteor } from "meteor/meteor";
+import React, { useEffect } from 'react';
+import { storesMethod } from "../../../../imports/modules/app/stores/storesMethod";
+import { HtmlUtility } from "../../../shared/utilities/HtmlUtility";
+import { useStoreStore } from "../../stores/useStoreStore";
+import { H5 } from "../heading/Headings.jsx";
 
 export const StoryBoard = () => {
-  const t = useTranslator();
-
   const {_id} = Meteor.settings.public.app;
   const {
     selectedStoreProducts,
@@ -40,7 +36,7 @@ export const StoryBoard = () => {
     };
 
     fetchProducts();
-  }, [_id, selectedStoreProducts]);
+  }, [_id]);
 
   const clearTitle = title => {
     if (!title) return title;
