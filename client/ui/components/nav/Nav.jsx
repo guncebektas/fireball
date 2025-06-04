@@ -58,14 +58,16 @@ export const Nav = ({isOpen}) => {
               <Badge color="warning">Beta</Badge>
             </div>
             <div className="mb-3 text-sm text-cyan-900 dark:text-gray-400">
-              Akıllı işletmelerin tercihi Ritapos tarafından geliştirilmektedir.
+              <p className={'mb-1'}>Akıllı işletmelerin tercihi Ritapos tarafından geliştirilmektedir.</p>
+
+              <a
+                href="https://ritapos.com"
+                target="_blank"
+                className="float-left align-bottom"
+              >
+                <img src="https://ritapos.com/wp-content/uploads/2025/04/logo.svg" alt="Ritapos" width="65" className="float-right" style={{padding: '1px 0 0 4px'}}/>
+              </a>
             </div>
-            <a
-              className="text-sm text-cyan-900 underline hover:text-cyan-800 dark:text-gray-400 dark:hover:text-gray-300"
-              href="https://ritapos.com"
-            >
-              Ritapos
-            </a>
           </Sidebar.CTA>
         </div>
 
