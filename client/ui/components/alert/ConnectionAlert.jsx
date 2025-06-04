@@ -11,30 +11,44 @@ export const ConnectionAlert = () => {
 
   const [isConnected, setIsConnected] = useState(true);
   const [isDismissed, setIsDismissed] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
+    let connectionTimer;
     // Tracker autorun runs reactively whenever Meteor.status() changes
     const computation = Tracker.autorun(() => {
-      setIsConnected(Meteor.status().connected);
-      if (!Meteor.status().connected) {
+      const connected = Meteor.status().connected;
+      setIsConnected(connected);
+      
+      if (!connected) {
         setIsDismissed(false); // Reset dismissal when connection is lost
+        // Start a 3-second timer before showing the alert
+        connectionTimer = setTimeout(() => {
+          setShowAlert(true);
+        }, 3000);
+      } else {
+        setShowAlert(false);
+        clearTimeout(connectionTimer);
       }
     });
 
-    // Clean up the Tracker computation when the component unmounts
-    return () => computation.stop();
+    // Clean up the Tracker computation and timer when the component unmounts
+    return () => {
+      computation.stop();
+      clearTimeout(connectionTimer);
+    };
   }, []);
 
   useEffect(() => {
     let timer;
-    if (!isConnected && !isDismissed) {
+    if (!isConnected && !isDismissed && showAlert) {
       // Auto-dismiss after 10 seconds
       timer = setTimeout(() => {
         setIsDismissed(true);
       }, 10000);
     }
-    return () => clearTimeout(timer); // Clear timeout on component unmount or if reconnected
-  }, [isConnected, isDismissed]);
+    return () => clearTimeout(timer);
+  }, [isConnected, isDismissed, showAlert]);
 
   // Handler for reconnecting manually
   const handleReconnect = () => {
@@ -50,8 +64,8 @@ export const ConnectionAlert = () => {
     }, 10000);
   };
 
-  // Don't show the alert if it's dismissed and the connection is active
-  if (isConnected || isDismissed) {
+  // Don't show the alert if it's dismissed, the connection is active, or we're still in the delay period
+  if (isConnected || isDismissed || !showAlert) {
     return null;
   }
 
