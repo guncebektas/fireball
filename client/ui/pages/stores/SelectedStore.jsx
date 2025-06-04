@@ -11,11 +11,12 @@ export const SelectedStore = ({showIcon = true}) => {
   const {icon} = Meteor.settings.public.app;
 
   const {selectedStore, setSelectedStore, openMenuModal} = useStoreStore()
-  if (!selectedStore) return null;
 
   function cancelSelectedStore() {
     setSelectedStore(null);
   }
+
+  if (!selectedStore) return null;
 
   return (
     <div key="selected-store" className="relative bg-white dark:bg-gray-900 m-border rounded-lg p-4 shadow-md flex flex-col mb-1">
