@@ -1,16 +1,16 @@
+import { Badge, Sidebar } from 'flowbite-react';
 import React from "react";
-import {NavItem} from "./NavItem.jsx";
-import {ROUTE} from "../../../routes/enums/route.js";
-import {Badge, Sidebar} from 'flowbite-react';
-import {NavFooter} from "./NavFooter";
-import {useTranslator} from "../../providers/i18n";
-import {useAppStore} from "../../stores/useAppStore";
+import { ROUTE } from "../../../routes/enums/route.js";
+import { useTranslator } from "../../providers/i18n";
+import { useAppStore } from "../../stores/useAppStore";
+import { NavFooter } from "./NavFooter";
+import { NavItem } from "./NavItem.jsx";
 
-export const Nav = ({isOpen}) => {
+export const Nav = () => {
   const t = useTranslator();
-  const {isSidebarOpen} = useAppStore();
+  const { isSidebarOpen } = useAppStore();
 
-  const {showDummyPages} = Meteor.settings.public;
+  const { showDummyPages } = Meteor.settings.public;
 
   return (
     <>
@@ -22,33 +22,33 @@ export const Nav = ({isOpen}) => {
         <div className="overflow-y-auto pt-16 px-3 h-full">
           <ul className="space-y-2">
             <li>
-              <NavItem link={ROUTE.HOME} icon="house" text={t('Dashboard')}/>
+              <NavItem link={ROUTE.HOME} icon="house" text={t('Dashboard')} />
             </li>
           </ul>
           <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <li>
-              <NavItem link={ROUTE.WALLET} icon="star" text={t('Wallet')}/>
+              <NavItem link={ROUTE.WALLET} icon="star" text={t('Wallet')} />
             </li>
             <li>
-              <NavItem link={ROUTE.STORES} icon="store" text={t('Stores')}/>
+              <NavItem link={ROUTE.STORES} icon="store" text={t('Stores')} />
             </li>
             <li>
-              <NavItem link={ROUTE.HELP} icon="life-ring" text={t('Help')}/>
+              <NavItem link={ROUTE.HELP} icon="life-ring" text={t('Help')} />
             </li>
             <li>
-              <NavItem link={ROUTE.ABOUT_US} icon="circle-info" text={t('About us')}/>
+              <NavItem link={ROUTE.ABOUT_US} icon="circle-info" text={t('About us')} />
             </li>
           </ul>
           {showDummyPages ?
             <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
               <li>
-                <NavItem link={ROUTE.DOCS} icon="clipboard" text={t('Documents')}/>
+                <NavItem link={ROUTE.DOCS} icon="clipboard" text={t('Documents')} />
               </li>
               <li>
-                <NavItem link={ROUTE.PRICE} icon="money-bill-wave" text={t('Prices')}/>
+                <NavItem link={ROUTE.PRICE} icon="money-bill-wave" text={t('Prices')} />
               </li>
               <li>
-                <NavItem link={ROUTE.RSS_FEED_LIST} icon="rss" text="RSS"/>
+                <NavItem link={ROUTE.RSS_FEED_LIST} icon="rss" text="RSS" />
               </li>
             </ul>
             : ''}
@@ -65,13 +65,13 @@ export const Nav = ({isOpen}) => {
                 target="_blank"
                 className="float-left align-bottom"
               >
-                <img src="https://ritapos.com/wp-content/uploads/2025/04/logo.svg" alt="Ritapos" width="65" className="float-right" style={{padding: '1px 0 0 4px'}}/>
+                <img src="https://ritapos.com/wp-content/uploads/2025/04/logo.svg" alt="Ritapos" width="65" className="float-right" style={{ padding: '1px 0 0 4px' }} />
               </a>
             </div>
           </Sidebar.CTA>
         </div>
 
-        <NavFooter/>
+        <NavFooter />
       </Sidebar>
     </>
   );
