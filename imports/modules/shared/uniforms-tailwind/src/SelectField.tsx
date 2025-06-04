@@ -123,7 +123,7 @@ function Select({
         ref={inputRef}
         value={value ?? ''}
       >
-        {(!!placeholder || !required || value === undefined) && !multiple && (
+        {(!!placeholder || !required || typeof value === undefined) && !multiple && (
           <option value="" disabled={required} hidden={required}>
             {placeholder || label}
           </option>
