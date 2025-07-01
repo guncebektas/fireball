@@ -7,16 +7,16 @@ import { useStoreStore } from "../../stores/useStoreStore";
 import { H5 } from "../heading/Headings.jsx";
 
 export const StoryBoard = () => {
-  const {_id} = Meteor.settings.public.app;
-  const {
-    selectedStoreProducts,
-    setSelectedStoreProducts
-  } = useStoreStore();
+  const { _id } = Meteor.settings.public.app;
+  const { storyBoardProducts, setStoryBoardProducts} = useStoreStore();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const products = await storesMethod.getProductsFilteredByImages({_id});
+        let products = await storesMethod.getProductsFilteredByImages({ _id });
+        if (products) {
+          products = await storesMethod.getProducts({ _id });
+        }
 
         const cleanedProducts = products.data.filter(product =>
           product.priceOut > Meteor.settings.public.pages.homepage.storyBoard.filter.price &&
@@ -24,12 +24,12 @@ export const StoryBoard = () => {
           !product.title.toLowerCase().includes('sepet') &&
           !product.title.toLowerCase().includes('fark')
         );
-
+        
         const shuffledProducts = cleanedProducts
-          .sort(() => Math.random() - 0.5)
-          .slice(0, 10);
-
-        setSelectedStoreProducts(shuffledProducts);
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 10);
+                
+        setStoryBoardProducts(shuffledProducts);
       } catch (error) {
         Log.error(error);
       }
@@ -49,9 +49,9 @@ export const StoryBoard = () => {
 
   return (
     <>
-      <H5 text={'Have you tried these?'} className={'m-text text-primary-600 text-lg'}/>
+      <H5 text={'Have you tried these?'} className={'m-text text-primary-600 text-lg'} />
       <div className="flex overflow-x-auto gap-3 py-3 no-scrollbar snap-x snap-mandatory touch-pan-x">
-        {selectedStoreProducts.map((product) => (
+        {storyBoardProducts.map((product) => (
           <div
             key={product._id}
             className="flex flex-col items-center min-w-[80px] snap-center"

@@ -11,13 +11,16 @@ export const useStoreStore = create(
       selectedStoreProductCategories: [],
       setSelectedStoreProductCategories: (rows) => set({ selectedStoreProductCategories: rows }),
       selectedStoreProducts: [],
+      setSelectedStoreProducts: (rows) => set({ selectedStoreProducts: rows }),
+      // story board
       storyBoardLastFetch: 0,
-      setSelectedStoreProducts: (rows) => set((state) => {
+      storyBoardProducts: [],
+      setStoryBoardProducts: (rows) => set((state) => {
         const currentTime = Date.now();
         // Only update products if cache is expired (1 minute)
-        if (currentTime - state.storyBoardLastFetch > 60000 || state.selectedStoreProducts.length === 0) {
+        if (currentTime - state.storyBoardLastFetch > 60000 || state.storyBoardProducts.length === 0) {
           return { 
-            selectedStoreProducts: rows,
+            storyBoardProducts: rows,
             storyBoardLastFetch: currentTime
           };
         }
@@ -28,10 +31,10 @@ export const useStoreStore = create(
       closeMenuModal: () => set({ isMenuModalOpen: false }),
     }),
     {
-      name: 'store-store',
+      name: 'story-board-products-store',
       storage: localStorage,
       partialize: (state) => ({
-        selectedStoreProducts: state.selectedStoreProducts,
+        storyBoardProducts: state.storyBoardProducts,
         storyBoardLastFetch: state.storyBoardLastFetch
       })
     }
