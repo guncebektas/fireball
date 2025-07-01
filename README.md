@@ -10,8 +10,8 @@
 Production ready boilerplate for your new app.</p>
 
 <h4 align="center">
-    <a href="https://saas-boilerplate.meteorapp.com/">Demo</a><br>  
-    <a href="https://github.com/guncebektas/saas-boilerplate">Documentation</a>
+    <a href="https://fireball.meteorapp.com/">Demo</a><br>  
+    <a href="https://github.com/guncebektas/fireball">Documentation</a>
 </h4>
 
 ## Introduction
@@ -53,8 +53,8 @@ Fireball is a production-ready boilerplate for your new SaaS App. It is built on
 > Burn brighter, build faster with Fireball.
 
 ## Let's Start
-- [English](https://github.com/guncebektas/saas-boilerplate/blob/main/README_EN.md)
-- [Turkish](https://github.com/guncebektas/saas-boilerplate/blob/main/README_TR.md)
+- [English](https://github.com/guncebektas/fireball/blob/main/README_EN.md)
+- [Turkish](https://github.com/guncebektas/fireball/blob/main/README_TR.md)
 
 ## Thanks
 - [Meteor.js](https://meteor.com)
