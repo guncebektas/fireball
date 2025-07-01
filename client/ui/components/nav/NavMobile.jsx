@@ -24,18 +24,20 @@ export const NavMobile = () => {
       href: '#',
       icon: 'house',
       label: 'Dashboard',
+      specialClass: 'pr-1 mr-0',
       onClick: () => handleNavigate(ROUTE.HOME),
     },
     {
       href: '#',
       icon: 'star',
       label: 'Wallet',
+      specialClass: 'pr-1 mr-0',
       onClick: () => handleNavigate(ROUTE.WALLET),
     },
     {
       href: "#",
       icon: 'qrcode',
-      specialClass: "m-text bg-primary-600 hover:bg-primary-700 focus:ring-primary-300 active:bg-primary-300 dark:bg-primary-600 dark:hover:bg-primary-900 dark:focus:ring-primary-800 dark:active:bg-primary-800 text-white dark:text-white rounded-full p-2 w-12 h-12 flex items-center justify-center transform scale-150 mt--20 mx-3",
+      specialClass: "m-text bg-primary-600 hover:bg-primary-700 focus:ring-primary-300 active:bg-primary-300 dark:bg-primary-600 dark:hover:bg-primary-900 dark:focus:ring-primary-800 dark:active:bg-primary-800 text-white dark:text-white rounded-full p-2 w-12 h-12 flex items-center justify-center transform scale-150 ml--3 mt--20 mx-3",
       onClick: openQRCodeModal, // Open QR Code modal
     },
     {
@@ -58,12 +60,13 @@ export const NavMobile = () => {
 
   return (
     <>
-      <Navbar className="fixed bottom-0 left-0 right-0 bg-white border-t border-secondary-200 z-10 sm:hidden">
-        <ul className="flex justify-evenly w-full list-none p-0 m-0">
+      <Navbar className="fixed right-0 bottom-0 left-0 bg-white border-t border-secondary-200 z-10 sm:hidden">
+        {/** Nav Mobile */}
+        <ul className="flex w-full list-none p-0 m-0">
           {navLinks.map(({href, icon, label = "", specialClass = "", onClick = null}, index) => (
             <Navbar.Link
               key={index}
-              className={`flex-1 text-center nav-mobile nav-mobile-items text-secondary-200 !border-none ${specialClass}`}
+              className={`flex-1 text-center text-secondary-200 !border-none ${specialClass}`}
               href={href}
               onClick={onClick}
             >
