@@ -40,8 +40,6 @@ export class HtmlUtility {
   }
 
   static ImageUrlOnError(url) {
-    Log.error(`An error occurred when loading ${HtmlUtility.ImageUrl(url)}`);
-
     const brand = Meteor.settings.public.app["brand"];
     return `/online/${brand}/icons/favicon-144.png`;
   }
