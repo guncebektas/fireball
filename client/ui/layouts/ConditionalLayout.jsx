@@ -7,7 +7,7 @@ import {useRouteUtility} from "../../shared/utilities/RouteUtility.js";
 import {Credits} from "../components/credits/Credits";
 import {Header} from "../components/header/Header.jsx";
 import {LanguageSelector} from "../components/languageSelector/LanguageSelector";
-import {StoreMenuModal} from "../components/modals/StoreMenuModal";
+import {StoreMenuModal} from "../components/modals/StoreMenuModal/StoreMenuModal";
 import {CartModal} from "../components/modals/CartModal";
 import {Nav} from "../components/nav/Nav.jsx";
 import {NavMobile} from "../components/nav/NavMobile";
