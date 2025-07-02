@@ -15,7 +15,7 @@ class StoreService extends ApiServiceInstance {
   }
 
   getProducts(storeId) {
-    const endpoint = `${this.productsUrl}${storeId}/qr-menu`
+    const endpoint = `${this.productsUrl}${storeId}`
     return this.get(endpoint);
   }
 
