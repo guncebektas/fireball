@@ -8,7 +8,10 @@ export const useWalletData = () => {
 
   const refreshWalletData = async () => {
     try {
-      await userWalletMethod.postCustomer();
+      setStampCount(0);
+      setBalance(0);
+
+      // await userWalletMethod.postCustomer();
 
       const response = await userWalletMethod.getCustomer();
       if (response.status) {

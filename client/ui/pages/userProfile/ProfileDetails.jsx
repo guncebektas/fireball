@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Label, Select, TextInput} from 'flowbite-react';
+import {Button, Label, Select, TextInput} from 'flowbite-react';
 import {Meteor} from 'meteor/meteor';
 import {useTracker} from 'meteor/react-meteor-data';
 import {userProfilesMethods} from '../../../../imports/modules/app/user/userProfiles/userProfileMethod';
@@ -7,7 +7,11 @@ import {userProfileRepository} from '../../../../imports/modules/app/user/userPr
 import {USER_PROFILE_PUBLICATION} from '../../../../imports/modules/app/user/userProfiles/enums/publication';
 import {useTranslator} from "../../providers/i18n";
 import SubmitButton from "../../components/buttons/SubmitButton";
-import {H2} from "../../components/heading/Headings"; // Import spinner icon
+import {H2} from "../../components/heading/Headings";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from "react-router-dom";
+import {ROUTE} from "../../../routes/enums/route"; // Import spinner icon
 
 export const ProfileDetails = () => {
   const {isUsernameLoginEnabled} = Meteor.settings.public;
@@ -66,6 +70,13 @@ export const ProfileDetails = () => {
       });
   };
 
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    Meteor.logout();
+    navigate(ROUTE.HOME);
+    location.reload();
+  };
+
   return (
     <>
       <div className="flex items-center">
@@ -100,8 +111,14 @@ export const ProfileDetails = () => {
         <SubmitButton
           isLoading={loading}
           text={{default: t('Save'), loading: t('Loading...')}} // Pass loading and default text
+          className="mb-4"
         />
       </form>
+
+      <Button type="button" color="secondary" onClick={handleLogout} className={'mb-6'}>
+        <FontAwesomeIcon icon={faRightFromBracket} className="mr-2"/>
+        {t('Logout')}
+      </Button>
     </>
   );
 };

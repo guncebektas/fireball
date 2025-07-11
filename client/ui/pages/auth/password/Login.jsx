@@ -131,7 +131,7 @@ export const Login = ({onStateChange}) => {
               </div>
 
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                {t('Don’t have an account yet')}?
+                {t('Do not have an account yet')}?
                 <button className="font-medium hover:underline mx-1" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.REGISTER)}>{t('Register')}</button>
               </p>
             </form>

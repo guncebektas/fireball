@@ -27,7 +27,7 @@ export const StoreMenuModal = () => {
     const fetchProductCategories = async () => {
       try {
         const {_id} = Meteor.settings.public.app;
-        const storeId = _id || selectedStore.franchiseId || selectedStore._id;
+        const storeId = _id || selectedStore.franchiseId || selectedStore._id
 
         const categories = await storesMethod.getProductCategories({_id: storeId});
         const filteredCategories = categories.data.filter(category => category.isVisible && category.isVisibleInQrMenu);
@@ -43,7 +43,10 @@ export const StoreMenuModal = () => {
 
     const fetchProducts = async () => {
       try {
-        const products = await storesMethod.getProducts({_id: selectedStore._id});
+        const {_id} = Meteor.settings.public.app;
+        const storeId = _id || selectedStore._id || selectedStore._id
+
+        const products = await storesMethod.getProducts({_id: storeId});
         setSelectedStoreProducts(products.data);
       } catch (error) {
         Log.error(error);
@@ -55,8 +58,6 @@ export const StoreMenuModal = () => {
   }, [selectedStore, setSelectedStoreProductCategories, setSelectedStoreProducts]);
 
   const productMap = Object.fromEntries(selectedStoreProducts.map(p => [p.franchiseProductId, p]));
-  console.log('productMap');
-  console.log(productMap);
 
   // Filter out categories with no products
   const categoriesWithProducts = selectedStoreProductCategories.filter(category =>
@@ -70,7 +71,6 @@ export const StoreMenuModal = () => {
 
   const expandedProducts = filteredProducts.flatMap(product => {
     if (product.variation && product.variation.length > 0) {
-      // Tekilleştir
       const uniqueVariation = Array.from(
         new Map(product.variation.map(v => [v.productId, v])).values()
       );
@@ -80,8 +80,6 @@ export const StoreMenuModal = () => {
     }
     return [product];
   });
-  console.log('expandedProducts');
-  console.log(expandedProducts);
 
   const handleTabChange = (categoryId) => {
     setActiveTab(categoryId);
