@@ -14,7 +14,7 @@ export const StoryBoard = () => {
     const fetchProducts = async () => {
       try {
         let products = await storesMethod.getProductsFilteredByImages({ _id });
-        if (products) {
+        if (!products) {
           products = await storesMethod.getProducts({ _id });
         }
 
@@ -24,11 +24,11 @@ export const StoryBoard = () => {
           !product.title.toLowerCase().includes('sepet') &&
           !product.title.toLowerCase().includes('fark')
         );
-        
+
         const shuffledProducts = cleanedProducts
         .sort(() => Math.random() - 0.5)
         .slice(0, 10);
-                
+
         setStoryBoardProducts(shuffledProducts);
       } catch (error) {
         Log.error(error);

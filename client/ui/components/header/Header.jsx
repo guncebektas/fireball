@@ -1,16 +1,16 @@
 import React, {useEffect} from "react";
-import {DarkThemeToggle} from "flowbite-react";
 import {HeaderLogo} from "./HeaderLogo.jsx";
 import {HeaderSearch} from "./HeaderSearch.jsx";
 import {HeaderToggleButton} from "./HeaderToggleButton.jsx";
 import {HeaderNotifications} from "./HeaderNotifications.jsx";
 import {HeaderOrganization} from "./HeaderOrganization.jsx";
-import {HeaderProfile} from "./HeaderProfile.jsx";
-import {LanguageSelector} from "../languageSelector/LanguageSelector";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {isSearchEnabled} from "../../../../imports/modules/shared/functions/isSearchEnabled";
 import {useTranslator} from "../../providers/i18n";
+import {ROUTE} from "../../../routes/enums/route";
+import {Icon} from "../icon/Icon";
+import {Link} from "react-router-dom";
 
 export const Header = ({ onToggleSidebar }) => {
   const t = useTranslator();
@@ -72,11 +72,11 @@ export const Header = ({ onToggleSidebar }) => {
           )}
           <HeaderNotifications />
           <HeaderOrganization />
+
           <div className="header-dropdown-wrapper p-2.5">
-            <HeaderProfile />
-          </div>
-          <div className="header-dropdown-wrapper p-2.5">
-            <LanguageSelector />
+            <Link to={ROUTE.PROFILE}>
+              <Icon icon="user"/>
+            </Link>
           </div>
         </div>
       </div>

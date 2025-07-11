@@ -39,7 +39,7 @@ export const Stores = () => {
         setStores(sortedStores)
       })
       .catch(error => {
-        console.error("Error fetching customer data:", error);
+        console.error("Error fetching members data:", error);
       });
   }, []);
 

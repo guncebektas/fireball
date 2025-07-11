@@ -49,10 +49,10 @@ const InnerLayout = () => {
         <main className="px-0 md:px-4 py-16 md:pt-20 md:ml-64 h-auto">
           <section className={`bg-white dark:bg-gray-900 ${isHomepage ? '' : 'px-4 py-5 sm:p-0'}`}>
             <Router/>
-            <NavMobile/>
           </section>
         </main>
 
+        <NavMobile/>
         <StoreMenuModal/>
         <CartModal/>
 

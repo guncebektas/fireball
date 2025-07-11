@@ -10,7 +10,7 @@ import { useTranslator } from "../../providers/i18n";
 export const Help = () => {
   const t = useTranslator();
   const navigate = useNavigate();
-  const whatsappNumber = Meteor.settings.public.company.whatsapp;
+  const whatsappNumber = Meteor.settings.public.app.whatsapp;
 
   const buttons = [{
     icon: <Icon icon="question-circle" className="text-xl mr-1"/>,
