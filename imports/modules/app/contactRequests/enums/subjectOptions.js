@@ -4,5 +4,6 @@ export const SUBJECT_OPTIONS = [
   i18n.__('Suggestion'),
   i18n.__('Complaint'),
   i18n.__('Job application'),
+  i18n.__('Data deletion'),
   i18n.__('Other'),
 ]
