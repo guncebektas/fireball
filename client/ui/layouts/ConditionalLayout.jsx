@@ -1,7 +1,6 @@
 import {Button, Modal, Navbar} from "flowbite-react";
 import {useTracker} from "meteor/react-meteor-data";
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
 import {Router} from "../../routes/Router.js";
 import {useRouteUtility} from "../../shared/utilities/RouteUtility.js";
 import {Credits} from "../components/credits/Credits";
@@ -12,9 +11,11 @@ import {CartModal} from "../components/modals/CartModal";
 import {Nav} from "../components/nav/Nav.jsx";
 import {NavMobile} from "../components/nav/NavMobile";
 import {AboutUs} from "../pages/aboutUs/AboutUs";
-import {Auth} from "../pages/auth/Auth.jsx";
 import {useTranslator} from "../providers/i18n";
 import {PrivacyPolicy} from "../pages/auth/legal/PrivacyPolicy";
+import {PublicRouter} from "../../routes/PublicRouter";
+import {ROUTE} from "../../routes/enums/route";
+import {Link} from "react-router-dom";
 
 const InnerLayout = () => {
   const t = useTranslator();
@@ -75,8 +76,10 @@ const InnerLayout = () => {
   return (
     <>
       <Navbar rounded className="mb-3">
-        <Navbar.Brand as={Link} href="/">
-          <img src={logo} alt={name} style={{'width': 'auto', 'height': '24px'}}/>
+        <Navbar.Brand>
+          <Link to={ROUTE.HOME}>
+            <img src={logo} alt={name} style={{'width': 'auto', 'height': '24px'}}/>
+          </Link>
         </Navbar.Brand>
 
         <Navbar.Toggle/>
@@ -96,7 +99,7 @@ const InnerLayout = () => {
 
       <main>
         <div className="mx-auto px-4 sm:px-6 lg:items-center lg:justify-between lg:py-16 lg:px-8">
-          <Auth/>
+          <PublicRouter/>
         </div>
       </main>
 
