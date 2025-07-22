@@ -14,10 +14,13 @@ import {NavMobile} from "../components/nav/NavMobile";
 import {AboutUs} from "../pages/aboutUs/AboutUs";
 import {Auth} from "../pages/auth/Auth.jsx";
 import {useTranslator} from "../providers/i18n";
+import {PrivacyPolicy} from "../pages/auth/legal/PrivacyPolicy";
 
 const InnerLayout = () => {
   const t = useTranslator();
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [isPrivacyPolicyModalOpen, setIsPrivacyPolicyModalOpen] = useState(false);
+
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const {isHomepage} = useRouteUtility();
 
@@ -27,6 +30,14 @@ const InnerLayout = () => {
 
   const handleCloseAboutModal = () => {
     setIsAboutModalOpen(false);
+  };
+
+  const handleOpenPrivacyPolicyModal = () => {
+    setIsPrivacyPolicyModalOpen(true);
+  };
+
+  const handleClosePrivacyPolicyModal = () => {
+    setIsPrivacyPolicyModalOpen(false);
   };
 
   const handleToggleSidebar = () => {
@@ -74,6 +85,9 @@ const InnerLayout = () => {
           <Navbar.Link href="#" onClick={handleOpenAboutModal}>
             {t('About')}
           </Navbar.Link>
+          <Navbar.Link href="#" onClick={handleOpenPrivacyPolicyModal}>
+            {t('Privacy policy')}
+          </Navbar.Link>
           <Navbar.Link>
             <LanguageSelector/>
           </Navbar.Link>
@@ -93,6 +107,16 @@ const InnerLayout = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button color="default" onClick={handleCloseAboutModal}>{t('Close')}</Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal dismissible show={isPrivacyPolicyModalOpen} onClose={handleClosePrivacyPolicyModal} size="lg">
+        <Modal.Header>{t('Privacy policy')}</Modal.Header>
+        <Modal.Body className="m-modal-body">
+          <PrivacyPolicy fullPage={false}/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="default" onClick={handleClosePrivacyPolicyModal}>{t('Close')}</Button>
         </Modal.Footer>
       </Modal>
     </>

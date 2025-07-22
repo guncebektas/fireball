@@ -38,6 +38,9 @@ export const Nav = () => {
             <li>
               <NavItem link={ROUTE.ABOUT_US} icon="circle-info" text={t('About us')} />
             </li>
+            <li>
+              <NavItem link={ROUTE.PRIVACY_POLICY} icon="circle-info" text={t('Privacy policy')} />
+            </li>
           </ul>
           {showDummyPages ?
             <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">

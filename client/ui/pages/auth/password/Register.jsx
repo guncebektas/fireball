@@ -6,8 +6,8 @@ import {Alert} from "../../../components/alert/Alert";
 import {useTranslator} from "../../../providers/i18n";
 import {H4} from "../../../components/heading/Headings";
 import {Log} from "meteor/logging";
-import TermsAndConditions from "../legal/termsAndConditions";
-import PrivacyPolicy from "../legal/privacyPolicy";
+import {TermsAndConditions} from "../legal/TermsAndConditions";
+import {PrivacyPolicy} from "../legal/PrivacyPolicy";
 import FloatingPasswordInput from "../../../components/form/FloatingPasswordInput";
 
 export const Register = ({onStateChange}) => {

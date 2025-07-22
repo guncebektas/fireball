@@ -115,10 +115,12 @@ export const ProfileDetails = () => {
         />
       </form>
 
-      <Button type="button" color="secondary" onClick={handleLogout} className={'mb-6'}>
-        <FontAwesomeIcon icon={faRightFromBracket} className="mr-2"/>
-        {t('Logout')}
-      </Button>
+      <div className={'flex max-w-md flex-col gap-4'}>
+        <Button type="button" color="secondary" onClick={handleLogout} className={'mb-6'}>
+          <FontAwesomeIcon icon={faRightFromBracket} className="mr-2"/>
+          {t('Logout')}
+        </Button>
+      </div>
     </>
   );
 };

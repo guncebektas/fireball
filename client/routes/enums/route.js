@@ -10,6 +10,7 @@ export const ROUTE = {
   HOME: '/',
   LOGOUT: '/logout',
   PRICE: '/price',
+  PRIVACY_POLICY: '/privacy-policy',
   PROFILE: '/profile',
   RESET_PASSWORD: '/reset-password/:_id',
   RSS_FEED_DETAIL: '/rss-feed/:_id',
