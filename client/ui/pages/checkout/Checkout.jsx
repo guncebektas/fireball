@@ -12,7 +12,6 @@ export const Checkout = () => {
 
   const products = useCartStore((state) => state.products);
   const groupedProducts = useCartStore((state) => state.groupedProducts);
-  console.log(groupedProducts);
 
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('creditCard');
   const [billingDetails, setBillingDetails] = useState({
