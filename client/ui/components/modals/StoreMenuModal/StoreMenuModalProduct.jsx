@@ -7,8 +7,10 @@ import {HtmlUtility} from "../../../../shared/utilities/HtmlUtility";
 import React from "react";
 import {Log} from "meteor/logging";
 import {useCartStore} from "../../../stores/useCartStore";
+import {Meteor} from "meteor/meteor";
 
 export const StoreMenuModalProduct = ({products}) => {
+  const {showAddToCartButton} = Meteor.settings.public.app;
   const pushProduct = useCartStore((state) => state.pushProduct);
 
   const onPushToCart = (product) => {
@@ -22,17 +24,21 @@ export const StoreMenuModalProduct = ({products}) => {
         <div>
           <h3 className="m-title font-bold uppercase flex items-center">
             {product.title}
-            <Button
-              color="primary"
-              onClick={() => {
-                onPushToCart(product)
-              }}
-              size="sm"
-              className="absolute bottom-5 right-5 p-3 w-8 h-8 flex justify-center items-center border-secondary-100 border-2 rounded-full"
-              title="Add to Cart"
-            >
-              <FontAwesomeIcon icon={faCartPlus} className="text-secondary-100"/>
-            </Button>
+            {
+              showAddToCartButton ?
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    onPushToCart(product)
+                  }}
+                  size="sm"
+                  className="absolute bottom-5 right-5 p-3 w-8 h-8 flex justify-center items-center border-secondary-100 border-2 rounded-full"
+                  title="Add to Cart"
+                >
+                  <FontAwesomeIcon icon={faCartPlus} className="text-secondary-100"/>
+                </Button>
+                : null
+            }
           </h3>
           <CurrencyDisplay price={product.priceOut} currency="TRY" locale="tr-TR"/>
           <p className="m-text text-xs">
