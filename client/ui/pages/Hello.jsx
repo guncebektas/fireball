@@ -26,7 +26,7 @@ export const Hello = () => {
             <h4 className="m-text mb-1">{t(welcomeSlogan)}</h4>
           </div>
           <div className={"flex items-center justify-center"}>
-            <H2 text={welcomeMessage} className="font-extrabold"/>
+            <H2 text={welcomeMessage} className="font-extrabold text-center"/>
           </div>
         </div>
 
