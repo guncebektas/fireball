@@ -5,4 +5,5 @@ export const USER_PROFILES_METHOD = {
   SAVE_OTP: 'userProfiles.saveOtp',
   SAVE_PROFILE_PICTURE: 'userProfiles.saveProfilePicture',
   RESET_SCRATCHED_AT: 'userProfiles.resetScratchedAt',
+  DELETE_MY_ACCOUNT: 'userProfiles.deleteMyAccount',
 }
