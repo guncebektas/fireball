@@ -83,6 +83,18 @@ class UserProfileService extends BaseService {
       $set: payload
     });
   }
+
+  async deleteMyAccount() {
+    const userId = await Meteor.userId();
+    this.repository.removeAsync({_id: userId})
+      .then(() => {
+        Meteor.users.removeAsync({_id: userId});
+      })
+      .then(() => {
+        Meteor.logout();
+        location.href = '/';
+      });
+  }
 }
 
 export const userProfileService = new UserProfileService({

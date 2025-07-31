@@ -84,10 +84,6 @@ export const ProfileDetails = () => {
       </div>
       <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
         <div>
-          <Label htmlFor="email" value={isUsernameLoginEnabled ? t('Username') : t('Email')}/>
-          <TextInput id="email" type="text" value={formData.email} disabled/>
-        </div>
-        <div>
           <Label htmlFor="firstname" value={t('First name')}/>
           <TextInput id="firstname" type="text" value={formData.firstname} onChange={handleChange}/>
         </div>

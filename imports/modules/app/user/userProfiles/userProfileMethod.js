@@ -58,4 +58,12 @@ export const userProfilesMethods = {
       return userProfileService.resetScratchedAt(_id);
     }
   }),
+
+  deleteMyAccount: createMethod({
+    name: USER_PROFILES_METHOD.DELETE_MY_ACCOUNT,
+    schema: null,
+    async run() {
+      return userProfileService.deleteMyAccount();
+    }
+  }),
 }

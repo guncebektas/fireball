@@ -12,6 +12,7 @@ import {Meteor} from "meteor/meteor";
 import {ROUTE} from "../../../routes/enums/route";
 import {useNavigate} from "react-router-dom";
 import {faRightFromBracket, faSpinner} from "@fortawesome/free-solid-svg-icons";
+import {ProfileDeleteMyAccount} from "./ProfileDeleteMyAccount";
 
 export const Profile = () => {
   const t = useTranslator();
@@ -24,6 +25,7 @@ export const Profile = () => {
     {id: 'changePassword', label: t('Change password'), component: <ProfileChangePassword/>},
     {id: '2fa', label: t('2FA'), component: <Profile2fa/>},
     {id: 'location', label: t('Location'), component: <ProfileLocation/>},
+    {id: 'deleteMyAccount', label: t('Delete my account'), component: <ProfileDeleteMyAccount/>},
   ];
 
   const TabButton = ({id, label}) => (
