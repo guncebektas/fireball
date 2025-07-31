@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TermsAndConditions = () => {
+export const TermsAndConditions = () => {
   const {name} = Meteor.settings.public.app;
   const company = Meteor.settings.public.company;
 
@@ -50,5 +50,3 @@ const TermsAndConditions = () => {
     </>
   );
 };
-
-export default TermsAndConditions;
