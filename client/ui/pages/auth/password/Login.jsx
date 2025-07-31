@@ -1,12 +1,13 @@
-import { Button, Label, Modal, TextInput } from 'flowbite-react';
-import { Log } from "meteor/logging";
-import React, { useRef, useState } from 'react';
-import { Alert } from "../../../components/alert/Alert";
+import {Button, Label, Modal, TextInput} from 'flowbite-react';
+import {Log} from "meteor/logging";
+import React, {useRef, useState} from 'react';
+import {Alert} from "../../../components/alert/Alert";
 import FloatingInput from "../../../components/form/FloatingInput";
 import FloatingPasswordInput from "../../../components/form/FloatingPasswordInput";
-import { useTranslator } from "../../../providers/i18n";
-import { LoginWithGoogle } from "../services/LoginWithGoogle";
-import { STATE_AUTH_PASSWORD_FORM } from "./enums/state.js";
+import {useTranslator} from "../../../providers/i18n";
+import {LoginWithApple} from "../services/LoginWithApple";
+import {LoginWithGoogle} from "../services/LoginWithGoogle";
+import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 
 export const Login = ({onStateChange}) => {
   const t = useTranslator();
@@ -136,6 +137,7 @@ export const Login = ({onStateChange}) => {
               </p>
             </form>
 
+            <LoginWithApple/>
             <LoginWithGoogle/>
           </div>
         </div>
