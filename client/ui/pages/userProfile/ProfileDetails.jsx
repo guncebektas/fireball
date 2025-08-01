@@ -70,13 +70,6 @@ export const ProfileDetails = () => {
       });
   };
 
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    Meteor.logout();
-    navigate(ROUTE.HOME);
-    location.reload();
-  };
-
   return (
     <>
       <div className="my-3">
@@ -110,13 +103,6 @@ export const ProfileDetails = () => {
           className="mb-4"
         />
       </form>
-
-      <div className={'flex max-w-md flex-col gap-4'}>
-        <Button type="button" color="secondary" onClick={handleLogout} className={'mb-6'}>
-          <FontAwesomeIcon icon={faRightFromBracket} className="mr-2"/>
-          {t('Logout')}
-        </Button>
-      </div>
     </>
   );
 };

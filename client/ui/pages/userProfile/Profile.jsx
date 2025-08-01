@@ -39,6 +39,13 @@ export const Profile = () => {
     </li>
   );
 
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    Meteor.logout();
+    navigate(ROUTE.HOME);
+    location.reload();
+  };
+
   return (
     <div className="gap-3 mx-auto max-w-screen-xl dark:text-white relative">
       <div className="overflow-x-auto relative">
@@ -52,6 +59,13 @@ export const Profile = () => {
       {/* Tab Content */}
       <div className="my-4">
         {tabs.find((tab) => tab.id === activeTab)?.component}
+      </div>
+
+      <div className={'flex max-w-md flex-col gap-4'}>
+        <Button type="button" color="secondary" onClick={handleLogout} className={'mb-6'}>
+          <FontAwesomeIcon icon={faRightFromBracket} className="mr-2"/>
+          {t('Logout')}
+        </Button>
       </div>
     </div>
   );
