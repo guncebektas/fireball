@@ -38,34 +38,36 @@ export const ProfileLocation = () => {
 
   return (
     <>
-      <div className="flex items-center">
+      <div className="my-3">
         <H2 text="Location"/>
       </div>
 
-      <Button
-        type="button"
-        onClick={getLocation}
-        color="primary"
-        disabled={loading} // Disable button while loading
-      >
-        {loading ? (
-          <FontAwesomeIcon icon={faSpinner} spin className="h-5 w-5 text-white mr-2"/>
-        ) : (
-          t('Get location')
-        )}
-      </Button>
+      <div className="flex max-w-md flex-col gap-4">
+        <Button
+          type="button"
+          onClick={getLocation}
+          color="primary"
+          disabled={loading} // Disable button while loading
+        >
+          {loading ? (
+            <FontAwesomeIcon icon={faSpinner} spin className="h-5 w-5 text-white mr-2"/>
+          ) : (
+            t('Get location')
+          )}
+        </Button>
 
-      {location.latitude && location.longitude ? (
-        <div className="mt-4">
-          <h3 className="text-lg font-semibold">{t('Your location')}:</h3>
-          <p className="text-gray-700">Latitude: {location.latitude}</p>
-          <p className="text-gray-700">Longitude: {location.longitude}</p>
-        </div>
-      ) : (
-        <p className="mt-4 text-gray-500">
-          {error ? error : t('Click the button to get your location')}.
-        </p>
-      )}
+        {location.latitude && location.longitude ? (
+          <div className="mt-4">
+            <h3 className="text-lg font-semibold">{t('Your location')}:</h3>
+            <p className="text-gray-700">Latitude: {location.latitude}</p>
+            <p className="text-gray-700">Longitude: {location.longitude}</p>
+          </div>
+        ) : (
+          <p className="text-gray-500">
+            {error ? error : t('Click the button to get your location')}.
+          </p>
+        )}
+      </div>
     </>
   );
 };

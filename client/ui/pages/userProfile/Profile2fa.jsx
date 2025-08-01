@@ -112,17 +112,12 @@ export const Profile2fa = () => {
 
           <div className="grid grid-flow-col justify-stretch space-x-4">
             <form className="flex max-w-md flex-col gap-4" onSubmit={enable2fa}>
-              <div className="mb-2">
-                <div className="mb-2 block">
-                  <Label htmlFor="code" value={t('Code')}/>
-                  <TextInput id="code" type="number" onChange={handleInputChange}/>
-                </div>
+              <div className="mb-2 block">
+                <Label htmlFor="code" value={t('Code')}/>
+                <TextInput id="code" type="number" onChange={handleInputChange}/>
               </div>
-              <div className="mb-2">
-                <div className="mb-2 block">
-                  <Button type="submit" color="primary">{t('Save')}</Button>
-                </div>
-              </div>
+
+              <Button type="submit" color="primary">{t('Save')}</Button>
             </form>
           </div>
         </>

@@ -42,13 +42,13 @@ export const ProfilePicture = () => {
 
   return (
     <>
-      <div className="flex items-center">
+      <div className="my-3">
         <H2 text="Upload profile picture"/>
       </div>
 
       <div className="grid grid-flow-col justify-stretch space-x-4">
         <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
-          <div className="mb-2">
+          <div>
             <DropZone onFileSelect={handleFileSelect} />
           </div>
           <div>

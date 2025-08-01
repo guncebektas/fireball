@@ -3,14 +3,27 @@ import {Button} from 'flowbite-react';
 import {H2} from '../../components/heading/Headings.jsx';
 import {useTranslator} from "../../providers/i18n";
 import {userProfilesMethods} from "../../../../imports/modules/app/user/userProfiles/userProfileMethod";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 export const ProfileDeleteMyAccount = () => {
   const t = useTranslator();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    userProfilesMethods.deleteMyAccount()
+    await withReactContent(Swal).fire({
+      title: t('Warning'),
+      text: `${t('Are you sure')}?`,
+      icon: 'warning',
+      showCloseButton: true,
+      showCancelButton: true,
+      cancelButtonText: t('Cancel'),
+      confirmButtonText: t('Confirm'),
+      preConfirm: async () => {
+        await userProfilesMethods.deleteMyAccount()
+      },
+    })
   };
 
   return (

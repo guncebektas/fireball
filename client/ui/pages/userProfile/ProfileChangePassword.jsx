@@ -57,15 +57,15 @@ export const ProfileChangePassword = () => {
       </div>
 
       <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
-        <div className="mb-2">
+        <div>
           <Label htmlFor="currentPassword" value={t('Current password')}/>
           <PasswordInput ref={currentPasswordRef} required/>
         </div>
-        <div className="mb-2">
+        <div>
           <Label htmlFor="newPassword1" value={t('New password')}/>
           <PasswordInput ref={password1Ref} required/>
         </div>
-        <div className="mb-2">
+        <div>
           <Label htmlFor="newPassword2" value={t('Confirm new password')}/>
           <PasswordInput ref={password2Ref} required/>
         </div>

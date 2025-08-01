@@ -79,7 +79,7 @@ export const ProfileDetails = () => {
 
   return (
     <>
-      <div className="flex items-center">
+      <div className="my-3">
         <H2 text="Details"/>
       </div>
       <form className="flex max-w-md flex-col gap-4" onSubmit={handleSubmit}>
