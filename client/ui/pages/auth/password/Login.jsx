@@ -136,9 +136,6 @@ export const Login = ({onStateChange}) => {
                 <button className="font-medium hover:underline mx-1" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.REGISTER)}>{t('Register')}</button>
               </p>
             </form>
-
-            <LoginWithApple/>
-            <LoginWithGoogle/>
           </div>
         </div>
       </div>

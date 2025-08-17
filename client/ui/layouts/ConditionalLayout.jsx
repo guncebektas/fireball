@@ -5,7 +5,6 @@ import {Router} from "../../routes/Router.js";
 import {useRouteUtility} from "../../shared/utilities/RouteUtility.js";
 import {Credits} from "../components/credits/Credits";
 import {Header} from "../components/header/Header.jsx";
-import {LanguageSelector} from "../components/languageSelector/LanguageSelector";
 import {StoreMenuModal} from "../components/modals/StoreMenuModal/StoreMenuModal";
 import {CartModal} from "../components/modals/CartModal";
 import {Nav} from "../components/nav/Nav.jsx";
@@ -16,11 +15,19 @@ import {PrivacyPolicy} from "../pages/auth/legal/PrivacyPolicy";
 import {PublicRouter} from "../../routes/PublicRouter";
 import {ROUTE} from "../../routes/enums/route";
 import {Link} from "react-router-dom";
+import {onChangeLocale} from "../../../imports/modules/shared/functions/onChangeLocale";
+import i18n from "meteor/universe:i18n";
 
 const InnerLayout = () => {
   const t = useTranslator();
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isPrivacyPolicyModalOpen, setIsPrivacyPolicyModalOpen] = useState(false);
+
+  const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
+  const currentLanguage = i18n.getLocale();
+  const {supportedLanguages} = Meteor.settings.public.app;
+  const languageLabel = <img src={`/online/images/flags/${currentLanguage}.svg`} alt={t("Language")} className="w-5 mr-1 pt-1"/>;
+
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const {isHomepage} = useRouteUtility();
@@ -40,6 +47,14 @@ const InnerLayout = () => {
   const handleClosePrivacyPolicyModal = () => {
     setIsPrivacyPolicyModalOpen(false);
   };
+
+  const handleOpenLanguageModal = () => {
+    setIsLanguageModalOpen(true);
+  }
+
+  const handleCloseLanguageModal = () => {
+    setIsLanguageModalOpen(false);
+  }
 
   const handleToggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -91,8 +106,8 @@ const InnerLayout = () => {
           <Navbar.Link href="#" onClick={handleOpenPrivacyPolicyModal}>
             {t('Privacy policy')}
           </Navbar.Link>
-          <Navbar.Link>
-            <LanguageSelector/>
+          <Navbar.Link href="#" onClick={handleOpenLanguageModal}>
+            {languageLabel}
           </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
@@ -120,6 +135,21 @@ const InnerLayout = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button color="default" onClick={handleClosePrivacyPolicyModal}>{t('Close')}</Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal dismissible show={isLanguageModalOpen} onClose={handleCloseLanguageModal} size="lg">
+        <Modal.Header>{t('Language')}</Modal.Header>
+        <Modal.Body className="m-modal-body">
+          {supportedLanguages.map(({languageCode, languageLabel}) => (
+            <Button color="default"  key={languageCode} onClick={() => onChangeLocale(languageCode)} className={'w-100 mb-3 cursor-pointer'}>
+              <img src={`/online/images/flags/${languageCode}.svg`} alt={languageLabel} className="w-5 mr-1 pt-1 float-left"/>
+              {languageLabel}
+            </Button>
+          ))}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="default" onClick={handleCloseLanguageModal}>{t('Close')}</Button>
         </Modal.Footer>
       </Modal>
     </>
