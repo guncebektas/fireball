@@ -10,8 +10,7 @@ export const LoginWithApple = () => {
 
   const handleAppleLogin = () => {
     Meteor.loginWithApple({
-      requestPermissions: ['name', 'email'],
-      shard: "2"
+      requestPermissions: ['name', 'email']
     });
   };
 
