@@ -5,9 +5,10 @@ import {Alert} from "../../../components/alert/Alert";
 import FloatingInput from "../../../components/form/FloatingInput";
 import FloatingPasswordInput from "../../../components/form/FloatingPasswordInput";
 import {useTranslator} from "../../../providers/i18n";
-import {LoginWithApple} from "../services/LoginWithApple";
-import {LoginWithGoogle} from "../services/LoginWithGoogle";
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
+import {Link} from "react-router-dom";
+import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const Login = ({onStateChange}) => {
   const t = useTranslator();
@@ -134,6 +135,12 @@ export const Login = ({onStateChange}) => {
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 {t('Do not have an account yet')}?
                 <button className="font-medium hover:underline mx-1" onClick={() => handleState(STATE_AUTH_PASSWORD_FORM.REGISTER)}>{t('Register')}</button>
+              </p>
+
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                <Link to="/stores" passHref>
+                  <FontAwesomeIcon icon={faArrowRight}/> {t('Continue without registration')}
+                </Link>
               </p>
             </form>
           </div>

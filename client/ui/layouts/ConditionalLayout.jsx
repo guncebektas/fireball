@@ -152,6 +152,8 @@ const InnerLayout = () => {
           <Button color="default" onClick={handleCloseLanguageModal}>{t('Close')}</Button>
         </Modal.Footer>
       </Modal>
+
+      <StoreMenuModal/>
     </>
   );
 };

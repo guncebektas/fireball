@@ -9,6 +9,7 @@ export const storesMethod = {
     name: STORE_METHOD.GET_PRODUCT_CATEGORIES,
     schema: oneRowSchema,
     serverOnly: true,
+    open: true,
     async run({_id}) {
       try {
         return storeService.getProductCategories(_id);
@@ -22,6 +23,7 @@ export const storesMethod = {
     name: STORE_METHOD.GET_PRODUCTS,
     schema: oneRowSchema,
     serverOnly: true,
+    open: true,
     async run({_id}) {
       try {
         return storeService.getProducts(_id);
@@ -35,6 +37,7 @@ export const storesMethod = {
     name: STORE_METHOD.GET_PRODUCTS_FILTERED_BY_IMAGES,
     schema: oneRowSchema,
     serverOnly: true,
+    open: true,
     async run({_id}) {
       try {
         return storeService.getProductsFilteredByImages(_id);

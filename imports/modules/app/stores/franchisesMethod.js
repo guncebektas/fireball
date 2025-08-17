@@ -7,6 +7,7 @@ export const franchisesMethod = {
   getMembers: createMethod({
     name: FRANCHISE_METHOD.GET_MEMBERS,
     serverOnly: true,
+    open: true,
     async run() {
       try {
         const {_id} = Meteor.settings.public.app;
