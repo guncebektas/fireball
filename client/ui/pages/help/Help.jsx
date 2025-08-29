@@ -36,7 +36,7 @@ export const Help = () => {
 
   return (
     <>
-      <H2 text={t('Help & Support')}/>
+      <H2 text={t('Help & Support')} showBackButton={true}/>
 
       {buttons.map((button, index) => (
         <div key={index} className="my-6">

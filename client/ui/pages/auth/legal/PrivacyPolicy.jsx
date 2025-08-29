@@ -9,10 +9,10 @@ export const PrivacyPolicy = ({fullPage}) => {
   return (
     <>
       {fullPage && (
-        <H2 text={title}/>
+        <H2 text={title} showBackButton={true}/>
       )}
 
-      <div className="text-lg text-gray-500 space-y-6 mb-8">
+      <div className="text-lg text-gray-500 space-y-6 mt-4 mb-8">
         <H3 text="1. Veri Sorumlusunun Kimliği"/>
 
         <p>{company.name} (“Şirket”) olarak {name} Uygulaması üzerinden (“Uygulama”) ürün ve hizmetlerimizi en iyi şekilde sunabilmek bizim için büyük önem arz etmektedir. Bu doğrultuda veri sorumlusu sıfatıyla elde ettiğimiz kişisel verilerinize ilişkin olarak 6698 sayılı Kişisel Verilerin Korunması Kanunu (“Kanun”) kapsamında sizleri bilgilendirmek istiyoruz.</p>

@@ -8,7 +8,8 @@ export const contactRequestMethod = {
   upsert: createMethod({
     name: CONTACT_REQUESTS_METHOD.UPSERT,
     schema: contactSchema,
-    async run(object) {
+    open: true,
+    async run({object}) {
       return contactRequestService.upsert(object);
     }
   }),

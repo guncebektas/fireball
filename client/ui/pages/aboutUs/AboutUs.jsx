@@ -20,7 +20,7 @@ export const AboutUs = ({ fullPage = true }) => {
   return (
     <>
       {fullPage && (
-        <H2 text={title}/>
+        <H2 text={title} showBackButton={true}/>
       )}
 
       <div className="mt-6 mb-10 bg-center bg-no-repeat bg-cover h-[33vh] w-full"

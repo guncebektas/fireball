@@ -1,4 +1,4 @@
-import {Button, Modal, Navbar} from "flowbite-react";
+import {Button, Modal, Navbar, NavbarLink} from "flowbite-react";
 import {useTracker} from "meteor/react-meteor-data";
 import React, {useState} from 'react';
 import {Router} from "../../routes/Router.js";
@@ -106,6 +106,9 @@ const InnerLayout = () => {
           <Navbar.Link href="#" onClick={handleOpenPrivacyPolicyModal}>
             {t('Privacy policy')}
           </Navbar.Link>
+          <NavbarLink href={ROUTE.CONTACT_FORM}>
+            {t('Contact us')}
+          </NavbarLink>
           <Navbar.Link href="#" onClick={handleOpenLanguageModal}>
             {languageLabel}
           </Navbar.Link>

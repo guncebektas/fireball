@@ -39,7 +39,7 @@ export const Router = () => (
       <Route path={ROUTE.HELP} element={<Help/>}/>
       <Route path={ROUTE.PRICE} element={<Prices/>}/>
       <Route path={ROUTE.PROFILE} element={<Profile/>}/>
-      <Route path={ROUTE.PRIVACY_POLICY} element={<PrivacyPolicy/>}/>
+      <Route path={ROUTE.PRIVACY_POLICY} element={<PrivacyPolicy fullPage={true}/>}/>
       <Route path={ROUTE.RESET_PASSWORD} element={<ResetPassword/>}/>
       {/* Lazy-loaded route */}
       <Route path={ROUTE.RSS_FEED_LIST} element={<RssFeedList/>}/>

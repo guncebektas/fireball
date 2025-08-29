@@ -64,7 +64,7 @@ export const Stores = () => {
 
   return (
     <>
-      <H2 text="Stores"/>
+      <H2 text="Stores" showBackButton={true}/>
 
       <div className="my-6 space-y-6">
         <SelectedStore showIcon={true}/>
