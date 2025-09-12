@@ -41,6 +41,9 @@
       }, {
         "languageCode": "tr-TR",
         "languageLabel": "Türkçe"
+      }, {
+        "languageCode": "de-DE",
+        "languageLabel": "Deutsch"
       }],
       "showScratchCard": true,
       "showMobileNavigation": true,
