@@ -5,12 +5,12 @@ import {oneRowSchema} from "../../shared/schemas/oneRowSchema";
 import {CONTACT_REQUESTS_METHOD} from "./enums/method";
 
 export const contactRequestMethod = {
-  upsert: createMethod({
-    name: CONTACT_REQUESTS_METHOD.UPSERT,
+  insert: createMethod({
+    name: CONTACT_REQUESTS_METHOD.INSERT,
     schema: contactSchema,
     open: true,
     async run({object}) {
-      return contactRequestService.upsert(object);
+      return contactRequestService.insert(object);
     }
   }),
   delete: createMethod({

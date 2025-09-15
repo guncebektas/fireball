@@ -1,4 +1,4 @@
 export const CONTACT_REQUESTS_METHOD = {
-  UPSERT: 'contactRequest.upsert',
+  INSERT: 'contactRequest.insert',
   DELETE: 'contactRequest.delete'
 }

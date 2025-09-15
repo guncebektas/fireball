@@ -32,6 +32,10 @@ export class BaseService {
     return this.repository.find(selector).fetchAsync();
   }
 
+  insert(formData) {
+    return this.repository.insertAsync(formData);
+  }
+
   upsert(formData) {
     return this.repository.upsertAsync(formData);
   }

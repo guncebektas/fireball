@@ -1,4 +1,4 @@
 export const TICKET_METHOD = {
-  UPSERT: 'tickets.upsert',
+  INSERT: 'tickets.insert',
   DELETE: 'tickets.delete',
 }

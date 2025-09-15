@@ -30,7 +30,7 @@ export const TicketForm = ({schema}) => {
   }
 
   const handleSubmit = async function (formData) {
-    ticketsMethod.upsert(formData)
+    ticketsMethod.insert(formData)
       .then(response => {
         ToastSuccess();
       })

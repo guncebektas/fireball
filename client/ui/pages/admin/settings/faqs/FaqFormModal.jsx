@@ -21,7 +21,7 @@ export const FaqFormModal = ({ _id, closeDrawer }) => {
   }
 
   const handleSubmit = async (formData) => {
-    _module.methods.upsert(formData)
+    _module.methods.insert(formData)
       .then(response => {
         ToastSuccess();
         closeDrawer();

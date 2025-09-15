@@ -36,7 +36,7 @@ export const ContactRequestForm = () => {
         formData.recaptchaToken = token;
 
         // Submit form data with reCAPTCHA token
-        _module.methods.upsert(formData)
+        _module.methods.insert(formData)
           .then(response => {
             ToastSuccess();
             formRef.current.reset(); // Call the formRef properly

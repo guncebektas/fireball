@@ -5,14 +5,13 @@ import {oneRowSchema} from "../../shared/schemas/oneRowSchema";
 import {TICKET_METHOD} from "./enums/method";
 
 export const ticketsMethod = {
-  upsert: createMethod({
-    name: TICKET_METHOD.UPSERT,
+  insert: createMethod({
+    name: TICKET_METHOD.INSERT,
     schema: ticketSchema,
     async run(object) {
-      return ticketService.upsert(object);
+      return ticketService.insert(object);
     }
   }),
-
   delete: createMethod({
     name: TICKET_METHOD.DELETE,
     schema: oneRowSchema,

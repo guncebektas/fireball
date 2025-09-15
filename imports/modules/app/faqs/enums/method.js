@@ -1,5 +1,5 @@
 export const FAQS_METHOD = {
-  UPSERT: 'faqs.upsert',
+  INSERT: 'faqs.insert',
   DELETE: 'faqs.delete',
   LIST: 'faqs.list'
 }
