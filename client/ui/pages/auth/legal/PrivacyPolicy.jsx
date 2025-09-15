@@ -39,9 +39,8 @@ export const PrivacyPolicy = ({fullPage}) => {
         <p>{t('privacy.content.5-2', {companyWebsite: company.website})}</p>
         <ul>
           <li>{t('privacy.content.5-3', {companyAddress: company.address})}</li>
-          <li>{t('privacy.content.5-4', {companyKepEmail: company.email.kep})}</li>
-          <li>{t('privacy.content.5-5', {companyMainEmail: company.email.main})}</li>
-          <li>{t('privacy.content.5-6')}</li>
+          <li>{t('privacy.content.5-4', {companyMainEmail: company.email.main})}</li>
+          <li>{t('privacy.content.5-5')}</li>
         </ul>
         <p>{t('privacy.content.5-7')}</p>
       </div>
