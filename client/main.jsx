@@ -5,11 +5,12 @@ import {App} from './ui/App';
 import {onChangeLocale} from "../imports/modules/shared/functions/onChangeLocale";
 import {DeviceUtility} from "./shared/utilities/DeviceUtility";
 import './main.css';
+import { LOCAL_STORAGE } from './shared/enums/localStorage';
 
 /**
  * @param language {string} [optional]
  */
-const _setLocalization = language => {
+const _setLocalization = async language => {
 
   /**
    * @param language {string} [optional]
@@ -17,13 +18,18 @@ const _setLocalization = language => {
    * @private
    */
   function _getLang(language) {
+    const savedLanguage = localStorage.getItem(LOCAL_STORAGE.LANGUAGE);
+
     language =
       language ||
+      savedLanguage ||
       navigator.languages && navigator.languages[0] ||
       navigator.language ||
       navigator.browserLanguage ||
       navigator.userLanguage ||
       Meteor.settings.public.app["defaultLanguage"];
+
+    localStorage.setItem(LOCAL_STORAGE.LANGUAGE, language);
 
     document.documentElement.setAttribute('translate', 'no');
     document.documentElement.setAttribute('lang', language);
@@ -32,11 +38,12 @@ const _setLocalization = language => {
   }
 
   // Set global i18n language
-  onChangeLocale(_getLang(language));
+  await onChangeLocale(_getLang(language));
 }
 
 Meteor.startup(async () => {
-  _setLocalization(Meteor.settings.public.app.defaultLanguage);
+  const savedLanguage = localStorage.getItem(LOCAL_STORAGE.LANGUAGE);
+  await _setLocalization(savedLanguage || Meteor.settings.public.app.defaultLanguage);
 
   if (DeviceUtility.isServiceWorkerAvailable()) {
     try {
