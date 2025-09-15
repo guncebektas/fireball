@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Button, FloatingLabel, Modal, ToggleSwitch} from 'flowbite-react';
+import {Button, Checkbox, FloatingLabel, Label, Modal, ToggleSwitch} from 'flowbite-react';
 import {STATE_AUTH_PASSWORD_FORM} from "./enums/state.js";
 import {Accounts} from "meteor/accounts-base";
 import {Alert} from "../../../components/alert/Alert";
@@ -130,27 +130,27 @@ export const Register = ({onStateChange}) => {
                   </div>
 
                   <div className="mb-2 flex items-center">
-                    <ToggleSwitch
-                      checked={termsAccepted}
-                      color="success"
-                      label={t('I accept the terms and conditions')}
-                      onChange={setTermsAccepted}
-                    />
-                    <Button onClick={openTermsModal} size="xs" color="gray" className="ml-2">
-                      {t('Read')}
-                    </Button>
+                    <div className="flex items-center gap-2">
+                      <Checkbox id="termsModal" onChange={setTermsAccepted} checked={termsAccepted}/>
+                      <Label htmlFor="termsModal">{t('I accept the terms and conditions')}</Label>
+                    </div>
+                    <div className="flex">
+                      <Button onClick={openTermsModal} size="xs" color="gray" className="ml-2">
+                        {t('Read')}
+                      </Button>
+                    </div>
                   </div>
 
                   <div className="mb-2 flex items-center">
-                    <ToggleSwitch
-                      checked={gdprAccepted}
-                      color="success"
-                      label={t('I accept the privacy policy')}
-                      onChange={setGdprAccepted}
-                    />
-                    <Button onClick={openPrivacyModal} size="xs" color="gray" className="ml-2">
-                      {t('Read')}
-                    </Button>
+                    <div className="flex items-center gap-2">
+                      <Checkbox id="privacyModal" onChange={setGdprAccepted} checked={gdprAccepted}/>
+                      <Label htmlFor="privacyModal">{t('I accept the privacy policy')}</Label>
+                    </div>
+                    <div className="flex">
+                      <Button onClick={openPrivacyModal} size="xs" color="gray" className="ml-2">
+                        {t('Read')}
+                      </Button>
+                    </div>
                   </div>
 
                   <div>
