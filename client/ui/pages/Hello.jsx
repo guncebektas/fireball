@@ -9,9 +9,9 @@ import {StoryBoard} from "../components/storyBoard/StoryBoard";
 export const Hello = () => {
   const t = useTranslator();
 
-  const {name, logo, color} = Meteor.settings.public.app;
+  const {nameAccent, logo, color} = Meteor.settings.public.app;
   const welcomeSlogan = `Probably the best coffee in your town`
-  const welcomeMessage = `${t('Welcome to {$name}', {name: name})}!`
+  const welcomeMessage = `${t('Welcome to {$name}', {name: nameAccent})}!`
 
   const {me} = useUserStore();
   const userGreeting = `${t('Greeting {$name}', {name: me.firstname})},`

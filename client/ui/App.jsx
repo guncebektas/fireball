@@ -1,14 +1,13 @@
-import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
-import {Flowbite} from "flowbite-react";
-import {ConditionalLayout} from "./layouts/ConditionalLayout.jsx";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Flowbite } from "flowbite-react";
+import { ConditionalLayout } from "./layouts/ConditionalLayout.jsx";
 import * as fontawesome from "@fortawesome/fontawesome-svg-core";
-import {faBell, faCheck, faCircleInfo, faClipboard, faClipboardList, faCodeMerge, faCoffee, faCog, faDashboard, faEnvelope, faEnvelopesBulk, faFile, faHeart, faHouse, faLifeRing, faMeteor, faMoneyBillWave, faPenRuler, faPhone, faRightFromBracket, faRss, faStar, faStore, faSuitcase, faUser, faUserTie} from "@fortawesome/free-solid-svg-icons";
-import {LocaleProvider} from "./providers/i18n";
-import {faGithub} from "@fortawesome/free-brands-svg-icons/faGithub";
-import {faGoogle} from "@fortawesome/free-brands-svg-icons";
-import {ConnectionAlert} from "./components/alert/ConnectionAlert";
-import SvgSprite from "./components/icon/svgSprite";
+import { faBell, faCheck, faCircleInfo, faClipboard, faClipboardList, faCodeMerge, faCoffee, faCog, faDashboard, faEnvelope, faEnvelopesBulk, faFile, faHeart, faHouse, faLifeRing, faMeteor, faMoneyBillWave, faPenRuler, faPhone, faRightFromBracket, faRss, faStar, faStore, faSuitcase, faUser, faUserTie } from "@fortawesome/free-solid-svg-icons";
+import { LocaleProvider } from "./providers/i18n";
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { ConnectionAlert } from "./components/alert/ConnectionAlert";
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 fontawesome.library.add(
@@ -60,13 +59,46 @@ const customTheme = {
 };
 
 export function App() {
+  const [SvgSprite, setSvgSprite] = useState(null);
+
+  useEffect(() => {
+    const loadSvgSprite = async () => {
+      try {
+        let sprite;
+        const brand = Meteor.settings.public.app.brand;
+        
+        // Use static imports to avoid dynamic import issues
+        switch (brand) {
+          case 'gua':
+            sprite = await import('../assets/gua/svgSprite.jsx');
+            break;
+          case 'pablo':
+            sprite = await import('../assets/pablo/svgSprite.jsx');
+            break;
+          case 'ritapos':
+            sprite = await import('../assets/ritapos/svgSprite.jsx');
+            break;
+          default:
+            console.warn(`Unknown brand: ${brand}, falling back to ritapos`);
+            sprite = await import('../assets/ritapos/svgSprite.jsx');
+        }
+        
+        setSvgSprite(() => sprite.default);
+      } catch (error) {
+        console.error('Failed to load SVG sprite:', error);
+      }
+    };
+
+    loadSvgSprite();
+  }, []);
+
   return (
-    <Flowbite theme={{theme: customTheme}}>
+    <Flowbite theme={{ theme: customTheme }}>
       <BrowserRouter>
         <LocaleProvider>
-          <SvgSprite/>
-          <ConnectionAlert/>
-          <ConditionalLayout/>
+          {SvgSprite && <SvgSprite />}
+          <ConnectionAlert />
+          <ConditionalLayout />
         </LocaleProvider>
       </BrowserRouter>
     </Flowbite>

@@ -56,7 +56,7 @@ Meteor.startup(async () => {
   const brand = Meteor.settings.public.app["brand"];
   const linkElement = document.createElement('link');
   linkElement.rel = 'stylesheet';
-  linkElement.href = `/online/${brand}/style.css?v=12`;
+  linkElement.href = `/online/${brand}/style.css?v=18`;
   document.head.appendChild(linkElement);
 
   const container = document.getElementById('react-target');

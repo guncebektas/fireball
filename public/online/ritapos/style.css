@@ -1,0 +1,11 @@
+.bg-background-image {
+  background-image: url('/online/pablo/images/background.svg?v=5');
+  background-color: #cabca1;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: repeat;
+}
+
+.bg-nav-mobile {
+  background-color: #fff;
+}

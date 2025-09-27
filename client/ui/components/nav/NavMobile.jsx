@@ -60,7 +60,7 @@ export const NavMobile = () => {
 
   return (
     <>
-      <Navbar className="fixed right-0 bottom-0 left-0 bg-white border-t border-secondary-200 z-10 sm:hidden">
+      <Navbar className="fixed right-0 bottom-0 left-0 bg-nav-mobile border-t border-secondary-200 z-10 sm:hidden">
         {/** Nav Mobile */}
         <ul className="flex w-full list-none p-0 m-0">
           {navLinks.map(({href, icon, label = "", specialClass = "", onClick = null}, index) => (
