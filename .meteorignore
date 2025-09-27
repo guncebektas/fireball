@@ -1,7 +1,13 @@
+.deploy*
+.deploy/
 .doc/
 .docker/
 .github/
 .generators/
+.idea/
+.kiro/
+.scripts/
+.vscode/
 backups/
 cypress/
 tests/cypress/
